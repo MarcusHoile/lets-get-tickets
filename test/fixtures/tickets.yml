@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  on_sale: 2014-02-03 19:09:26
+  price: 1
+  purchased: false
+  event_id: 
+  user_id: 
+
+two:
+  on_sale: 2014-02-03 19:09:26
+  price: 1
+  purchased: false
+  event_id: 
+  user_id: 

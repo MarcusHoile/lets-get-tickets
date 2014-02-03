@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>When:</strong>
+  <%= @event.when %>
+</p>
+
+<p>
+  <strong>What:</strong>
+  <%= @event.what %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Where:</strong>
+  <%= @event.where %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= link_to @user.name, @user %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
