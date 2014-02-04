@@ -25,7 +25,7 @@ class InvitesController < ApplicationController
   # POST /invites.json
   def create
     @user = User.find(params[:user_id])
-    @invite = @user.invites.new(:user_id => params[:user_id])
+    # @invite = @user.invites.new (:user_id => params[:user_id])
 
     respond_to do |format|
       if @invite.save

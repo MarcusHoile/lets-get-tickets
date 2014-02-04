@@ -38,15 +38,12 @@ ActiveRecord::Schema.define(version: 20140204054702) do
   end
 
   create_table "invites", force: true do |t|
-    t.boolean  "attending"
+    t.string   "attending"
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "invites", ["event_id"], name: "index_invites_on_event_id", using: :btree
-  add_index "invites", ["user_id"], name: "index_invites_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

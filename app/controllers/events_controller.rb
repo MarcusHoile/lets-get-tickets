@@ -12,8 +12,9 @@ class EventsController < ApplicationController
   def show
     @user = @event.owner
     @guests = @event.users
+    @invites = @event.invites
     # if params is invite id present?
-    session[:invite_id] = params[:invite_id]
+    # session[:invite_id] = params[:invite_id]
     @date = @event.when
 
     # delete the invite id once rsvpd
@@ -41,14 +42,22 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @guests = @event.users
     @user = User.find(params[:event][:user_id])
+    # set all invites to false as they have not responded yet
+    # no_invitation = @event.invites
+    # no_invitation.each do ||
 
 
 
     respond_to do |format|
       if @event.save
-        @guests.each do |invitee|
-          UserMailer.invite_email(@user, invitee, @event).deliver
-        end
+        # @user.invites.each do |invite|
+        #   invite.update(attending: false)
+        #   invite.save
+        # end
+        # @guests.each do |guest|
+          # guest.invite.attending = false
+          # UserMailer.invite_email(@user, guest, @event).deliver
+        # end
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render action: 'show', status: :created, location: @event }
       else

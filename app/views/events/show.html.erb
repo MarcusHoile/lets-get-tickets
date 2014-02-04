@@ -31,17 +31,17 @@
 <div id="right">
   <p>
     <strong>On Sale:</strong>
-    <%= @event.on_sale.strftime"%I:%M%p %b %d" %>
+    <!-- @event.on_sale.strftime"%I:%M%p %b %d" %> -->
   </p>
   <p>
     <strong>Price:</strong>
-    <%= @event.price %>
+    <!-- @event.price %> -->
   </p>
 
   <p>
-    <strong>Guests:</strong>
-    <% @guests.each do |guest| %>
-      <p><%= link_to guest.name, guest %></p>
+    <strong>Who Wants Tickets:</strong>
+    <% @invites.each do |invite| %>
+    <p><%= invite.user.name %> - <%= invite.attending %></p>
     <% end %>
     <%= link_to "Invite friends", edit_event_path(@event) %>
   </p>
