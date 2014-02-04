@@ -29,6 +29,16 @@
   </div>
  
  <%= f.hidden_field :user_id, value: @user.id  %>
+<div>
+  <%= hidden_field_tag "event[user_ids][]", nil %>
+ <% @users.each do |user| %>
+  <p><%= check_box_tag "event[user_ids][]", user.id, @event.user_ids.include?(user.id), id: dom_id(user) %>
+  <%= label_tag dom_id(user), user.name %>
+   </p>
+</label>
+  <hr>
+  <% end %>
+</div>
 
   <div class="actions">
     <%= f.submit %>

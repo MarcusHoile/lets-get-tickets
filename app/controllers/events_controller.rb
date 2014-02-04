@@ -11,25 +11,37 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @user = @event.owner
+
   end
 
   # GET /events/new
   def new
     @event = Event.new
     @user = User.find(params[:user_id])
+    @users = User.all
   end
 
   # GET /events/1/edit
   def edit
+    @event = Event.find(params[:id])
+    @user = @event.owner
+    @users = User.all
   end
 
   # POST /events
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @guests = @event.users
+    @user = User.find(params[:event][:user_id])
+
+
 
     respond_to do |format|
       if @event.save
+        @guests.each do |invitee|
+          UserMailer.invite_email(@user, invitee, @event).deliver
+        end
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render action: 'show', status: :created, location: @event }
       else
@@ -69,8 +81,10 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
     end
 
+ 
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:when, :what, :description, :where, :user_id)
+      params.require(:event).permit(:when, :what, :description, :where, :user_id, user_ids:[])
     end
 end

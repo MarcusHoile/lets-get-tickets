@@ -4,14 +4,13 @@ GetTickets::Application.routes.draw do
   resources :invites
 
   resources :events do
-    resources :users
-    resources :invites
-    resources :tickets
+    resources :invites, shallow: true
+    resources :tickets, shallow: true
   end
 
   resources :users do
-    resources :events
-    resources :tickets
+    resources :events, shallow: true
+    resources :tickets, shallow: true
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
