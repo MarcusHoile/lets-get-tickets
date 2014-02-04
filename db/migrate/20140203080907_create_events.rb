@@ -5,6 +5,8 @@ class CreateEvents < ActiveRecord::Migration
       t.string :what
       t.text :description
       t.string :where
+      t.datetime :on_sale
+      t.integer :price
       t.references :user, index: true
 
       t.timestamps

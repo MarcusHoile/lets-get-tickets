@@ -1,7 +1,7 @@
 class CreateInvites < ActiveRecord::Migration
   def change
     create_table :invites do |t|
-      t.boolean :attending
+      t.string :attending
       t.references :user, index: true
       t.references :event, index: true
 
