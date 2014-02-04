@@ -14,6 +14,7 @@ class EventsController < ApplicationController
     @guests = @event.users
     # if params is invite id present?
     session[:invite_id] = params[:invite_id]
+    @date = @event.when
 
     # delete the invite id once rsvpd
     

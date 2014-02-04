@@ -2,7 +2,7 @@
 <div id="main">
 <p>
   <strong>When:</strong>
-  <%= @event.when %>
+  <%= @event.when.strftime"%I:%M%p %b %d" %>
 </p>
 
 <p>
@@ -31,7 +31,7 @@
 <div id="right">
   <p>
     <strong>On Sale:</strong>
-    <%= @event.on_sale %>
+    <%= @event.on_sale.strftime"%I:%M%p %b %d" %>
   </p>
   <p>
     <strong>Price:</strong>

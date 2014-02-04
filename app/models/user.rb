@@ -8,6 +8,11 @@ class User < ActiveRecord::Base
 	has_many :events, through: :invites
 
 	has_many :tickets
+
+has_many :friendships
+has_many :friends, :through => :friendships
+has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 	# has_many :pending_invites,
  #         :through => :invites,
  #         :source => :guest,
