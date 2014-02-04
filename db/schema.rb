@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204020004) do
+ActiveRecord::Schema.define(version: 20140204035459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,31 +24,11 @@ ActiveRecord::Schema.define(version: 20140204020004) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "on_sale"
+    t.integer  "price"
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
-
-  create_table "guestlists", force: true do |t|
-    t.boolean  "attending"
-    t.integer  "user_id"
-    t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "guestlists", ["event_id"], name: "index_guestlists_on_event_id", using: :btree
-  add_index "guestlists", ["user_id"], name: "index_guestlists_on_user_id", using: :btree
-
-  create_table "guests", force: true do |t|
-    t.boolean  "attending"
-    t.integer  "user_id"
-    t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "guests", ["event_id"], name: "index_guests_on_event_id", using: :btree
-  add_index "guests", ["user_id"], name: "index_guests_on_user_id", using: :btree
 
   create_table "invites", force: true do |t|
     t.boolean  "attending"
@@ -60,19 +40,6 @@ ActiveRecord::Schema.define(version: 20140204020004) do
 
   add_index "invites", ["event_id"], name: "index_invites_on_event_id", using: :btree
   add_index "invites", ["user_id"], name: "index_invites_on_user_id", using: :btree
-
-  create_table "tickets", force: true do |t|
-    t.datetime "on_sale"
-    t.integer  "price"
-    t.boolean  "purchased"
-    t.integer  "event_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "tickets", ["event_id"], name: "index_tickets_on_event_id", using: :btree
-  add_index "tickets", ["user_id"], name: "index_tickets_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

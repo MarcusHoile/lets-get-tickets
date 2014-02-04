@@ -7,12 +7,14 @@ class UserMailer < ActionMailer::Base
   	mail(to: @user.email, subject: "Welcome to my site")
   end
 
-  def invite_email(user, invitee, event)
+  def invite_email(user, guest, event)
   	@user = user
-  	@url = "http://example.com/event"
-  	@invitee = invitee
+  	
+  	@guest = guest
   	@event = event
-  	mail(to: @invitee.email, subject: "Let's get tickets for #{event.what}")
+    @url = "http://localhost:3000/events/#{@event.id}"
+    # add invite object id as identifier
+  	mail(to: @guest.email, subject: "Let's get tickets for #{event.what}")
   end
 
 end

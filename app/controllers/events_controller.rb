@@ -12,6 +12,11 @@ class EventsController < ApplicationController
   def show
     @user = @event.owner
     @guests = @event.users
+    # if params is invite id present?
+    session[:invite_id] = params[:invite_id]
+
+    # delete the invite id once rsvpd
+    
 
   end
 
@@ -86,6 +91,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:when, :what, :description, :where, :user_id, user_ids:[])
+      params.require(:event).permit(:when, :what, :description, :on_sale, :price, :where, :user_id, user_ids:[])
     end
 end

@@ -27,6 +27,20 @@
     <%= f.label :where %><br>
     <%= f.text_field :where %>
   </div>
+    <div class="field">
+    <%= f.label :on_sale %><br>
+    <%= f.datetime_select :on_sale %>
+  </div>
+   <div class="field">
+    <%= f.label :price %><br>
+    <%= f.number_field :price %>
+  </div>
+
+
+    <div class="field">
+    <%= f.label :where %><br>
+    <%= f.text_field :where %>
+  </div>
  
  <%= f.hidden_field :user_id, value: @user.id  %>
 <div>

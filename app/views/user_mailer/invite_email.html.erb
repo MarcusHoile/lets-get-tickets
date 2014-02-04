@@ -4,13 +4,13 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Hi <%= @invitee.name %>,</h1>
+    <h1>Hi <%= @guest.name %>,</h1>
     <p>
-      <%= @user.name %> has invited you to go to <%= @event.what %>.<br/>
+      <%= @user.name %> wants to see <%= @event.what %> with you at <%= @event.where %> on <%= @event.when%>.<br/>
     </p>
     <p>
-      Check out the details and rsvp here <%= @url %>
+      If you want to go <%= @user.name %> will buy the tickets on your behalf.<a href="<%= @url %>"><h2>RSVP here</h2></a>
     </p>
-    <p>Thanks for joining and have a great day!</p>
+
   </body>
 </html>

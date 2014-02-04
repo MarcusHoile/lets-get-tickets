@@ -19,6 +19,17 @@ body {
 	margin: 0 auto 400px auto;
 }
 
+#main {
+	float:left;
+	margin: 0;
+	width: 70%;
+}
+#right {
+	float:left;
+	margin: 0;
+	width: 30%;
+}
+
 img {
 	max-height: 200px;
 }
