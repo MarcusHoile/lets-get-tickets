@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @user = @event.owner
+    @guests = @event.users
 
   end
 

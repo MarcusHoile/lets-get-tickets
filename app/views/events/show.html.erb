@@ -10,10 +10,6 @@
   <%= @event.what %>
 </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
 
 <p>
   <strong>Where:</strong>
@@ -21,9 +17,17 @@
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong>Host:</strong>
   <%= link_to @user.name, @user %>
 </p>
+
+<p>
+  <strong>Guests:</strong>
+  <% @guests.each do |guest| %>
+  <p><%= link_to guest.name, guest %></p>
+  <% end %>
+</p>
+
 
 <%= link_to "Invite friends", edit_event_path(@event) %>
 
