@@ -3,7 +3,7 @@
 	<p>Looks like you are a Scott's No :(</p>
 <% else %>
   <% @user.friendships.each do |friendship| %>
-  <%= friendship.friend.name %> <%= link_to "remove", friendship, :method => :delete %>
+ <p><%= friendship.friend.name %> <%= link_to "remove", friendship, :method => :delete %></p>
   <% end %>
 <% end %>
   

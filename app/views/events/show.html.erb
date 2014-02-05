@@ -66,7 +66,9 @@
     <% @invites.each do |invite| %>
     <p><%= invite.user.name %> - <%= invite.attending %></p>
     <% end %>
-    <%= link_to "Invite friends", edit_event_path(@event) %>
+    <% if current_user == @event.owner %>
+    <p><%= link_to "Invite friends", edit_event_path(@event) %></p>
+    <% end %>
   </p>
 
 </div>
