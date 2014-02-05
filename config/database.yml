@@ -19,7 +19,7 @@ development:
   encoding: unicode
   database: get_tickets_development
   pool: 5
-  username: 
+  username: marcushoile
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a

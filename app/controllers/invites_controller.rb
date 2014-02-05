@@ -41,9 +41,10 @@ class InvitesController < ApplicationController
   # PATCH/PUT /invites/1
   # PATCH/PUT /invites/1.json
   def update
+    @event = @invite.event
     respond_to do |format|
       if @invite.update(invite_params)
-        format.html { redirect_to @invite, notice: 'Invite was successfully updated.' }
+        format.html { redirect_to @event, notice: 'Invite was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

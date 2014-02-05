@@ -10,12 +10,15 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+
     @user = @event.owner
     @guests = @event.users
     @invites = @event.invites
     # if params is invite id present?
     # session[:invite_id] = params[:invite_id]
     @date = @event.when
+    @invite = @event.invites.where(user_id: current_user.id).first
+
 
     # delete the invite id once rsvpd
     
