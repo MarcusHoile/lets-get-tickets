@@ -8,14 +8,14 @@ class UsersController < ApplicationController
     @users = User.all
     @friends = []
     @not_friends = []
-    if @user.friendships.empty?
-      @users
-    else
       # if user has no friends then all users should be available to add
       # find friends of user and put in array
-      @user.friendships.each do |friendship|
-        @friends << friendship.friend
-      end
+    @user.friendships.each do |friendship|
+      @friends << friendship.friend
+    end
+    if @friends.empty?
+      @not_friends = @users
+    else
       # check against all users which are in friends array and return nonpfriends
       @users.each do |user|
         if !@friends.include?(user)
