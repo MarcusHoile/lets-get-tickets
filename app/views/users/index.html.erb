@@ -16,7 +16,7 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'Add as friend', friendships_path(:friend_id => user), :method => :post %></td>
+    
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,3 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>

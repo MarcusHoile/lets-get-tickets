@@ -21,7 +21,7 @@ class FriendshipsController < ApplicationController
   # GET /friendships/1/edit
   def edit
     @user = current_user
-    @users = User.where("id != ?", @user.id )
+    @users = User.where("id != ?", @user.id)
   end
 
   # POST /friendships
@@ -57,9 +57,10 @@ class FriendshipsController < ApplicationController
   # DELETE /friendships/1
   # DELETE /friendships/1.json
   def destroy
+    @friendship = current_user.friendships.find(params[:id])
     @friendship.destroy
     respond_to do |format|
-      format.html { redirect_to friendships_url }
+      format.html { redirect_to current_user }
       format.json { head :no_content }
     end
   end

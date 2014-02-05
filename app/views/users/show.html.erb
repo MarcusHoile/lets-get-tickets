@@ -25,10 +25,10 @@
 
 
 <h4>Friends:</h4>
-<button><%= link_to "Add friends", edit_friendship_path %></button><br><br>
+<%= link_to "Add friends", edit_friendship_path %><br><br>
 
 <% @user.friendships.each do |friendship| %>
-<p><%= friendship.friend.name %></p>
+<p><%= friendship.friend.name %><%= link_to "remove", friendship, :method => :delete %></p>
 <% end %>
 
 

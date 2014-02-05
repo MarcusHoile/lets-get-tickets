@@ -2,8 +2,10 @@
 
  <h2>Friends:</h2>
   <% current_user.friendships.each do |friendship| %>
-<p><%= friendship.friend.name %></p>
+<p><%= friendship.friend.name %><%= link_to "remove", friendship, :method => :delete %></p>
 <% end %>
+
+<%= link_to "Add friends", edit_friendship_path(current_user) %>
 
 <br>
 

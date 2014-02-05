@@ -1,17 +1,4 @@
-<%= form_for(@friendship) do |f| %>
-  <% if @friendship.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@friendship.errors.count, "error") %> prohibited this friendship from being saved:</h2>
 
-      <ul>
-      <% @friendship.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= f.hidden_field :user_id, value: @user.id  %>
   <h4>Add Friends:</h4>
   <div>
     <% @users.each do |user| %>
@@ -19,7 +6,5 @@
       <hr>
     <% end %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
+
