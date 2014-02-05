@@ -8,7 +8,27 @@
 <h2>Events you have been invited to:</h2>
 
 <% @invites.each do |invite| %>
-<p><%= link_to invite.event.what, event_path(invite.event) %></p>
+<div id="invite">
+<p><%= link_to invite.event.what, event_path(invite.event) %> <%= invite.attending %>
+	
+  <%= form_for(invite) do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id  %>
+    <%= f.hidden_field :attending, value: "Going"  %>
+    <button>
+    Accept
+    </button>
+  <% end %>
+
+	
+  <%= form_for(invite) do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id  %>
+    <%= f.hidden_field :attending, value: "Not Going"  %>
+    <button>
+    Decline
+    </button>
+  <% end %>
+  </div>
+</p>
 <% end %>
 
 
