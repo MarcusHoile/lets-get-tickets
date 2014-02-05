@@ -5,23 +5,24 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @user = current_user
-    
-    # @not_friends = []
+    @users = User.all
     if @user.friendships.empty?
-      @users = User.all
+      @users
     else
-      @users = []
+      @friends = []
+      @not_friends = []
       # if user has no friends then all users should be available to add
-      # users who are not friends of user
+      # find friends of user and put in array
       @user.friendships.each do |friendship|
-        users.each do |user|
-          if user != friendship.friend
-            @users << user
-          end
+        @friends << friendship.friend
+      end
+      # check against all users which are in friends array and return nonpfriends
+      @users.each do |user|
+        if !@friends.include?(user)
+          @not_friends << user
         end
       end
     end
-    @users
   end
 
   # GET /users/1
