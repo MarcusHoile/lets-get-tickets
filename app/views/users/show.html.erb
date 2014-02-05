@@ -4,7 +4,7 @@
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
-
+<h4>Events you are hosting:</h4>
 <% @events.each do |event| %>
 <p><%= link_to event.what, event_path(event) %></p>
 <% end %>
@@ -15,10 +15,12 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
-
+<h4>Friends:</h4>
+<button>Add friends</button><br><br>
 <% @user.friendships.each do |friendship| %>
 <p><%= friendship.friend.name %></p>
 <% end %>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

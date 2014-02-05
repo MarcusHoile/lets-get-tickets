@@ -1,19 +1,24 @@
 <p id="notice"><%= notice %></p>
-<%= form_for(@invite) do |f| %>
-<%= f.hidden_field :user_id, value: current_user.id  %>
-<%= f.hidden_field :attending, value: "Going"  %>
-  <button>
-   Accept
-  </button>
+<% if @user != current_user %>
+<div id="invite">
+  <%= form_for(@invite) do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id  %>
+    <%= f.hidden_field :attending, value: "Going"  %>
+    <button>
+    Accept
+    </button>
   <% end %>
 
+
   <%= form_for(@invite) do |f| %>
-<%= f.hidden_field :user_id, value: current_user.id  %>
-<%= f.hidden_field :attending, value: "Not Going"  %>
-  <button>
-   Decline
-  </button>
+    <%= f.hidden_field :user_id, value: current_user.id  %>
+    <%= f.hidden_field :attending, value: "Not Going"  %>
+    <button>
+    Decline
+    </button>
   <% end %>
+  </div>
+<% end %>
 
 
 <div id="main">
