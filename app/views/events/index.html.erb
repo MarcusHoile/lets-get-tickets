@@ -1,33 +1,15 @@
-<h1>Listing events</h1>
+<h2>Events you are hosting:</h2>
+<% @events.each do |event| %>
+<p><%= link_to event.what, event_path(event) %></p>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>When</th>
-      <th>What</th>
-      <th>Description</th>
-      <th>Where</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<p><%= link_to "Add an event", new_user_event_path(@user) %></p>
 
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.when %></td>
-        <td><%= event.what %></td>
-        <td><%= event.description %></td>
-        <td><%= event.where %></td>
+<h2>Events you have been invited to:</h2>
 
+<% @invites.each do |invite| %>
+<p><%= link_to invite.event.what, event_path(invite.event) %></p>
+<% end %>
 
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
 
 

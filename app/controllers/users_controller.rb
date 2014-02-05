@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @events = Event.where(user_id: @user.id)
-    @invites = Invite.where(user_id: @user.id)
+    
     # @events_owner = @user.events.owner
 
   end
