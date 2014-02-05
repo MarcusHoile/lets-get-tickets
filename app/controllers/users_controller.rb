@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @user = current_user
-    @users = User.all
+    # all users except current user
+    @users = User.where("id != ?", @user.id)
     @friends = []
     @not_friends = []
       # if user has no friends then all users should be available to add

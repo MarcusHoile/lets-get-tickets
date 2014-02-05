@@ -14,8 +14,8 @@
 
 <h4>Friends:</h4>
 <%= link_to "Add friends", users_path%><br><br>
-<% if !@user.friendships.empty? %>
-	<% @user.friendships.each do |friendship| %>
+<% if !current_user.friendships.empty? %>
+	<% current_user.friendships.each do |friendship| %>
 		<p><%= friendship.friend.name %> <%= link_to "remove", friendship, :method => :delete %></p>
 	<% end %>
 <% end %>

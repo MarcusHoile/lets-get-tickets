@@ -1,6 +1,8 @@
 <h2>Friends</h2>
 <% if @user.friendships.empty? %>
-	<p>Looks like you are a Scott's No :(</p>
+	<p>If you had friends they would be listed here :(</p>
+	<p>Hi Scott No!</p>
+	
 <% else %>
   <% @user.friendships.each do |friendship| %>
  <p><%= friendship.friend.name %> <%= link_to "remove", friendship, :method => :delete %></p>
