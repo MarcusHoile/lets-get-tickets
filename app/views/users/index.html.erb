@@ -1,10 +1,13 @@
 <h2>Friends</h2>
+<% if @user.friendships.empty? %>
+	<p>Looks like you are a Scott's No :(</p>
+	<% end %>
   <% @user.friendships.each do |friendship| %>
   <%= friendship.friend.name %> <%= link_to "remove", friendship, :method => :delete %>
   <% end %>
 
   <h2>Add Friends</h2>
-  <% @not_friends.each do |user| %>
+  <% @users.each do |user| %>
     <p><%= user.name %> <%= link_to "Add friend", friendships_path(:friend_id => user), :method => :post %></p>
     <% end %>
 

@@ -5,19 +5,23 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @user = current_user
-    # users who are not friends of user
-    users = User.all
-    @not_friends = []
-    @user.friendships.each do |friendship|
-      users.each do |user|
-        if user != friendship.friend
-          @not_friends << user
+    
+    # @not_friends = []
+    if @user.friendships.empty?
+      @users = User.all
+    else
+      @users = []
+      # if user has no friends then all users should be available to add
+      # users who are not friends of user
+      @user.friendships.each do |friendship|
+        users.each do |user|
+          if user != friendship.friend
+            @users << user
+          end
         end
       end
     end
-
-    #all users who arent current user
-    @users = User.where("id != ?", current_user.id )
+    @users
   end
 
   # GET /users/1
