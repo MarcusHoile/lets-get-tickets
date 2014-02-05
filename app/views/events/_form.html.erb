@@ -33,11 +33,12 @@
   </div>
  
   <%= f.hidden_field :user_id, value: @user.id  %>
+  <h4>Invite Friends:</h4>
   <div>
     <%= hidden_field_tag "event[user_ids][]", nil %>
-    <% @users.each do |user| %>
-      <p><%= check_box_tag "event[user_ids][]", user.id, @event.user_ids.include?(user.id), id: dom_id(user) %>
-        <%= label_tag dom_id(user), user.name %>
+    <% @friends.each do |friend| %>
+      <p><%= check_box_tag "event[user_ids][]", friend.id, @event.user_ids.include?(friend.id), id: dom_id(friend) %>
+        <%= label_tag dom_id(friend), friend.user.name %>
       </p>
       </label>
       <hr>
