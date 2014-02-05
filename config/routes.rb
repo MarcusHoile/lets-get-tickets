@@ -20,7 +20,14 @@ GetTickets::Application.routes.draw do
     resources :tickets, shallow: true
   end
 
-  root 'pages#landing'
+  resources :pages
+
+  authenticated :user do
+  root :to => "users#index"
+  end
+
+  get '/' => "pages#landing"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
