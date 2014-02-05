@@ -1,26 +1,10 @@
-<h1>Listing users</h1>
+<h2>Friends</h2>
+  <% @user.friendships.each do |friendship| %>
+  <%= friendship.friend.name %> <%= link_to "remove", friendship, :method => :delete %>
+  <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-    
-      </tr>
+  <h2>Add Friends</h2>
+  <% @not_friends.each do |user| %>
+    <p><%= user.name %> <%= link_to "Add friend", friendships_path(:friend_id => user), :method => :post %></p>
     <% end %>
-  </tbody>
-</table>
-
-<br>
 

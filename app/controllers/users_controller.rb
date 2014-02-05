@@ -4,9 +4,19 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-
-   
     @user = current_user
+    # users who are not friends of user
+    users = User.all
+    @not_friends = []
+    @user.friendships.each do |friendship|
+      users.each do |user|
+        if user != friendship.friend
+          @not_friends << user
+        end
+      end
+    end
+
+    #all users who arent current user
     @users = User.where("id != ?", current_user.id )
   end
 
