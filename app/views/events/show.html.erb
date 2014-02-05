@@ -53,9 +53,9 @@
 </div>
 <div id="right">
   <p>
-    <strong>I'll be buying tickets in:</strong>
+    <strong>Countdown:</strong>
   </p>
-  <p id="countdown"><%= distance_of_time_in_words(Time.now, @event.on_sale) %></p>
+  <p id="countdown"><%= distance_of_time_in_words(Time.now, @event.on_sale) %> until i buy tickets!</p>
   <p>
     <strong>Price:</strong>
     <%= number_to_currency(@event.price)  %>
@@ -66,7 +66,7 @@
     <% @invites.each do |invite| %>
     <p><%= invite.user.name %> - <%= invite.attending %></p>
     <% end %>
-    <%= link_to "Invite friends", friendship_path(current_user) %>
+    <%= link_to "Invite friends", edit_event_path(@event) %>
   </p>
 
 </div>
