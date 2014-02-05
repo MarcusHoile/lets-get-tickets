@@ -36,7 +36,7 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
     @user = @event.owner
-    @users = User.all
+    @users = User.find(:all, conditions: ["id != ?", @user.id])
   end
 
   # POST /events
