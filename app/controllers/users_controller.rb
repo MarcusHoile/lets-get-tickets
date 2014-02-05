@@ -6,11 +6,11 @@ class UsersController < ApplicationController
   def index
     @user = current_user
     @users = User.all
+    @friends = []
+    @not_friends = []
     if @user.friendships.empty?
       @users
     else
-      @friends = []
-      @not_friends = []
       # if user has no friends then all users should be available to add
       # find friends of user and put in array
       @user.friendships.each do |friendship|
