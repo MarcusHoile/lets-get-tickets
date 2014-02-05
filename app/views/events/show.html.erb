@@ -53,9 +53,9 @@
 </div>
 <div id="right">
   <p>
-    <strong>On Sale:</strong>
-    <%= @event.on_sale.strftime"%I:%M%p %b %d" %>
+    <strong>I'll be buying tickets in:</strong>
   </p>
+  <p id="countdown"><%= distance_of_time_in_words(Time.now, @event.on_sale) %></p>
   <p>
     <strong>Price:</strong>
     <%= number_to_currency(@event.price)  %>

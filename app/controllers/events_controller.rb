@@ -20,6 +20,7 @@ class EventsController < ApplicationController
     # session[:invite_id] = params[:invite_id]
     @date = @event.when
     @invite = @event.invites.where(user_id: current_user.id).first
+    @countdown = (@event.on_sale - Time.now).abs
 
 
     # delete the invite id once rsvpd

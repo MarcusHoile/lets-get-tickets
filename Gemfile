@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'devise'
 
+gem 'dotiw'
+
 gem 'httparty'
 
 group :doc do
