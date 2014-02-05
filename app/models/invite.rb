@@ -4,7 +4,7 @@ class Invite < ActiveRecord::Base
   belongs_to :event
   belongs_to :user
 
-  after_create :init
+  before_create :init
 
   def init
   	self.attending = "Not Responded"
