@@ -1,27 +1,12 @@
-<h1>Listing friendships</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Create</th>
-      <th>Destroy</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @friendships.each do |friendship| %>
-      <tr>
-        <td><%= friendship.user_id %></td>
-
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+ <h2>Friends:</h2>
+  <% current_user.friendships.each do |friendship| %>
+<p><%= friendship.friend.name %></p>
+<% end %>
 
 <br>
 
-<%= link_to 'New Friendship', new_friendship_path %>
+
+
+

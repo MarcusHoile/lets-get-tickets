@@ -25,7 +25,7 @@
 
 
 <h4>Friends:</h4>
-<button>Add friends</button><br><br>
+<button><%= link_to "Add friends", edit_friendship_path %></button><br><br>
 
 <% @user.friendships.each do |friendship| %>
 <p><%= friendship.friend.name %></p>

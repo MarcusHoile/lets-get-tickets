@@ -29,14 +29,15 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @user = User.find(params[:user_id])
-    @friends = Friendship.where(user_id: params[:user_id])
+    @friendships = current_user.friendships
   end
 
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
     @user = @event.owner
-    @users = User.find(:all, conditions: ["id != ?", @user.id])
+    # @users = User.where("id != ?", @user.id)
+    @friends = current_user.friendships
   end
 
   # POST /events

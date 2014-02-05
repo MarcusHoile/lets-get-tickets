@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @friendship.user_id %>
+  <strong>Friends:</strong>
+  <% current_user.friendships.each do |friendship| %>
+<p><%= friendship.friend.name %></p>
+<% end %>
 </p>
 
 

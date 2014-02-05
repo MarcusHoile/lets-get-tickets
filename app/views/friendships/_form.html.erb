@@ -11,9 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+  <%= f.hidden_field :user_id, value: @user.id  %>
+  <h4>Add Friends:</h4>
+  <div>
+    <% @users.each do |user| %>
+      <%= user.name %> <%= link_to "Add friend", friendships_path(:friend_id => user), :method => :post %>
+      <hr>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>

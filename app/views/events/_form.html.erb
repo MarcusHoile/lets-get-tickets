@@ -36,9 +36,9 @@
   <h4>Invite Friends:</h4>
   <div>
     <%= hidden_field_tag "event[user_ids][]", nil %>
-    <% @friends.each do |friend| %>
-      <p><%= check_box_tag "event[user_ids][]", friend.id, @event.user_ids.include?(friend.id), id: dom_id(friend) %>
-        <%= label_tag dom_id(friend), friend.user.name %>
+    <% @friendships.each do |friendship| %>
+      <p><%= check_box_tag "event[user_ids][]", friendship.id, @event.user_ids.include?(friendship.id), id: dom_id(friendship) %>
+        <%= label_tag dom_id(friendship), friendship.friend.name %>
       </p>
       </label>
       <hr>

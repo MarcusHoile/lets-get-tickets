@@ -10,6 +10,7 @@ class FriendshipsController < ApplicationController
   # GET /friendships/1
   # GET /friendships/1.json
   def show
+
   end
 
   # GET /friendships/new
@@ -19,6 +20,8 @@ class FriendshipsController < ApplicationController
 
   # GET /friendships/1/edit
   def edit
+    @user = current_user
+    @users = User.where("id != ?", @user.id )
   end
 
   # POST /friendships
@@ -28,7 +31,7 @@ class FriendshipsController < ApplicationController
 
     respond_to do |format|
       if @friendship.save
-        format.html { redirect_to @friendship, notice: 'Friend added.' }
+        format.html { redirect_to users_path, notice: 'Friend added.' }
         format.json { render action: 'show', status: :created, location: @friendship }
       else
         format.html { render action: 'new' }
