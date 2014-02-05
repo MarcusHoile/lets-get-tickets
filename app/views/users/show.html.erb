@@ -13,12 +13,11 @@
 
 
 <h4>Friends:</h4>
-<%= link_to "Add friends", edit_friendship_path %><br><br>
+<%= link_to "Add friends", edit_friendship_path(current_user) %><br><br>
 
 <% @user.friendships.each do |friendship| %>
-<p><%= friendship.friend.name %><%= link_to "remove", friendship, :method => :delete %></p>
+<p><%= friendship.friend.name %><%= link_to "remove", friendship(current_user), :method => :delete %></p>
 <% end %>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+

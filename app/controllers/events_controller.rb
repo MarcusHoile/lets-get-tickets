@@ -39,7 +39,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @user = @event.owner
     # @users = User.where("id != ?", @user.id)
-    @friends = current_user.friendships
+    @friendships = current_user.friendships
   end
 
   # POST /events

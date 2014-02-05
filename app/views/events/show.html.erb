@@ -54,11 +54,11 @@
 <div id="right">
   <p>
     <strong>On Sale:</strong>
-    <!-- @event.on_sale.strftime"%I:%M%p %b %d" %> -->
+    <%= @event.on_sale.strftime"%I:%M%p %b %d" %>
   </p>
   <p>
     <strong>Price:</strong>
-    <!-- @event.price %> -->
+    <%= number_to_currency(@event.price)  %>
   </p>
 
   <p>
