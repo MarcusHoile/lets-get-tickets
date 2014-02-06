@@ -14,28 +14,39 @@ class InvitesController < ApplicationController
 
   # GET /invites/new
   def new
-    @invite = Invite.new
+    
+    @event = Event.find(params[:event_id])
+    @invite = @event.invites.new
+    @friendships = current_user.friendships
   end
 
   # GET /invites/1/edit
   def edit
+    # @event = Event.find(params[:id])
+    # @friendships = current_user.friendships
   end
 
   # POST /invites
   # POST /invites.json
   def create
-    @user = User.find(params[:user_id])
+    @event = Event.find(params[:event_id])
+    
+    params[:invitee_ids].each do |user_id|
+      Invite.create(event_id: @event.id, user_id: user_id.to_i)
+    end
+    redirect_to @event
+
     # @invite = @user.invites.new (:user_id => params[:user_id])
 
-    respond_to do |format|
-      if @invite.save
-        format.html { redirect_to @invite, notice: 'Invite was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @invite }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @invite.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @invite.save
+    #     format.html { redirect_to @event, notice: 'Invites were emailed.' }
+    #     format.json { render action: 'show', status: :created, location: @invite }
+    #   else
+    #     format.html { render action: 'new' }
+    #     format.json { render json: @invite.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /invites/1
@@ -71,6 +82,6 @@ class InvitesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def invite_params
-      params.require(:invite).permit(:attending, :user_id, :event_id)
+      params.require(:invite).permit(:attending, :event_id, :user_id)
     end
 end

@@ -84,7 +84,7 @@
         <p><%= invite.user.name %> - <%= invite.attending %></p>
       <% end %>
       <% if current_user == @event.owner %>
-        <p><%= link_to "Invite friends", edit_event_path(@event) %></p>
+        <p><%= link_to "Invite friends", new_event_invite_path(@event) %></p>
       <% end %>
     </p>
 
