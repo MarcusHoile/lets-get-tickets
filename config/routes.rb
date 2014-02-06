@@ -23,7 +23,7 @@ GetTickets::Application.routes.draw do
   resources :pages
 
   authenticated :user do
-  root :to => "users#index"
+  root :to => "events#index"
   end
 
   get '/' => "pages#landing"

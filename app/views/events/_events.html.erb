@@ -1,0 +1,44 @@
+<h1>My Events</h1>
+
+<h4>Events you are hosting:</h4>
+<% @events.each do |event| %>
+<p><%= link_to event.what, event_path(event) %></p>
+<% end %>
+
+<p><%= link_to "Add an event", new_user_event_path(@user) %></p>
+
+<h4>Events you have been invited to:</h4>
+
+<% @invites.each do |invite| %>
+	<div class="row">
+		<div class="col-md-6">
+			<h4><%= link_to invite.event.what, event_path(invite.event) %> <%= invite.event.when.strftime"%b %d %I:%M%p" %> </h4><p>You are <%= invite.attending %></p>
+			
+		  <%= form_for(invite) do |f| %>
+		    <%= f.hidden_field :user_id, value: current_user.id  %>
+		    <%= f.hidden_field :attending, value: "Going"  %>
+    </div>
+    <div class="col-md-3">
+		    <button type="submit" class="btn btn-success">
+		    Accept
+		    </button>
+		  <% end %>
+	  </div>
+
+			
+		  <%= form_for(invite) do |f| %>
+		    <%= f.hidden_field :user_id, value: current_user.id  %>
+		    <%= f.hidden_field :attending, value: "Not Going"  %>
+		    <div class="col-md-3">
+			    <button type="submit" class="btn btn-danger">
+			    Decline
+			    </button>
+			  </div>
+		  <% end %>
+  </div>
+  <hr>
+	
+	<% end %>
+
+
+

@@ -30,7 +30,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    @user = User.find(params[:user_id])
+    @user = current_user
     @friendships = current_user.friendships
   end
 
