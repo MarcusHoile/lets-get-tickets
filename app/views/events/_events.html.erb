@@ -12,30 +12,35 @@
 <hr>
 <% @invites.each do |invite| %>
 	<div class="row">
-		<div class="col-md-6">
-			<h4><%= link_to invite.event.what, event_path(invite.event) %> <%= invite.event.when.strftime"%b %d %I:%M%p" %> </h4><p>You are <%= invite.attending %></p>
-			
+
+		<div class="col-md-2">
 		  <%= form_for(invite) do |f| %>
 		    <%= f.hidden_field :user_id, value: current_user.id  %>
 		    <%= f.hidden_field :attending, value: "Going"  %>
-    </div>
-    <div class="col-md-3">
+    
+    
 		    <button type="submit" class="btn btn-success btn-sm">
 		    Accept
 		    </button>
-		  <% end %>
-	  </div>
+	  	<% end %>
+		</div>
 
-			
+		<div class="col-md-2">
 		  <%= form_for(invite) do |f| %>
 		    <%= f.hidden_field :user_id, value: current_user.id  %>
 		    <%= f.hidden_field :attending, value: "Not Going"  %>
-		    <div class="col-md-3">
-			    <button type="submit" class="btn btn-danger btn-sm">
+		    
+		    <button type="submit" class="btn btn-danger btn-sm">
 			    Decline
-			    </button>
-			  </div>
+		    </button>
+	  	
 		  <% end %>
+	  </div>
+		<div class="col-md-8">
+			<strong><%= link_to invite.event.what, event_path(invite.event) %> <%= invite.event.when.strftime"%b %d %I:%M%p" %></strong>
+			<p>You are <%= invite.attending %></p>
+		</div>
+
   </div>
   <hr>
 	
