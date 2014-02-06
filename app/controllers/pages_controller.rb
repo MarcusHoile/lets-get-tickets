@@ -8,6 +8,7 @@ class PagesController < ApplicationController
   end
 
   def landing
+  	render layout: "landing_layout"
   end
 
 end
