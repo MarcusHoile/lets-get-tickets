@@ -1,14 +1,15 @@
-<h1>My Events</h1>
-
+<br>
 <h4>Events you are hosting:</h4>
 <% @events.each do |event| %>
 <p><%= link_to event.what, event_path(event) %></p>
 <% end %>
 
-<p><%= link_to "Add an event", new_user_event_path(@user) %></p>
+<p><%= link_to "Add an event", new_user_event_path(@user) %></p><br>
+
+
 
 <h4>Events you have been invited to:</h4>
-
+<hr>
 <% @invites.each do |invite| %>
 	<div class="row">
 		<div class="col-md-6">
@@ -19,7 +20,7 @@
 		    <%= f.hidden_field :attending, value: "Going"  %>
     </div>
     <div class="col-md-3">
-		    <button type="submit" class="btn btn-success">
+		    <button type="submit" class="btn btn-success btn-sm">
 		    Accept
 		    </button>
 		  <% end %>
@@ -30,7 +31,7 @@
 		    <%= f.hidden_field :user_id, value: current_user.id  %>
 		    <%= f.hidden_field :attending, value: "Not Going"  %>
 		    <div class="col-md-3">
-			    <button type="submit" class="btn btn-danger">
+			    <button type="submit" class="btn btn-danger btn-sm">
 			    Decline
 			    </button>
 			  </div>
