@@ -17,7 +17,7 @@
 		    <%= f.hidden_field :attending, value: "Going"  %>
     </div>
     <div class="col-md-3">
-		    <button class="btn btn-success">
+		    <button type="submit" class="btn btn-success">
 		    Accept
 		    </button>
 		  <% end %>
@@ -28,7 +28,7 @@
 		    <%= f.hidden_field :user_id, value: current_user.id  %>
 		    <%= f.hidden_field :attending, value: "Not Going"  %>
 		    <div class="col-md-3">
-			    <button class="btn btn-danger">
+			    <button type="submit" class="btn btn-danger">
 			    Decline
 			    </button>
 			  </div>
