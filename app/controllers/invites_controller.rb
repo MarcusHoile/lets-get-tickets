@@ -16,14 +16,48 @@ class InvitesController < ApplicationController
   def new
     
     @event = Event.find(params[:event_id])
-    @invite = @event.invites.new
+   
+
+    # all the user's friendships
     @friendships = current_user.friendships
+
+    # all invites for this event
+    @invites = @event.invites
+    @to_invite = []
+    if !@invites.empty?
+
+    # store all the user ids for users who are already invited
+      @invited = []
+      @invites.each do |invite|
+        @invited << invite.user_id
+      end
+
+    # store all the friends user ids
+      @friends = []
+      @friendships.each do |friendship|
+        @friends << friendship.friend_id
+      end
+
+      # Filter out all invited user ids from full friend list
+      @uninvited = @friends - @invited
+      
+      @uninvited.each do |user_id|
+        @to_invite << User.find(user_id)
+      end
+    else
+      @friendships.each do |friendship|
+        @to_invite << friendship.friend
+      end
+    end
+
+     @invite = @event.invites.new
+  
   end
 
   # GET /invites/1/edit
   def edit
-    # @event = Event.find(params[:id])
-    # @friendships = current_user.friendships
+
+
   end
 
   # POST /invites

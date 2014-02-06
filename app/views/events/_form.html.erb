@@ -36,6 +36,7 @@
    
     <%= f.hidden_field :user_id, value: @user.id  %>
     <div>
+      <% if !current_user.friendships.empty?%>
       <h4>Invite Friends:</h4>
       <div class="checkbox">
         <%= hidden_field_tag "event[user_ids][]", nil %>
@@ -47,6 +48,7 @@
           <hr>
         <% end %>
       </div>
+      <% end %>
 
       <div class="actions">
         <button class="btn btn-primary">Create Event</button>

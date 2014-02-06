@@ -1,4 +1,27 @@
-<h1>Editing invite</h1>
+<%= form_for(@invite) do |f| %>
+  <% if @invite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@invite.errors.count, "error") %> prohibited this invite from being saved:</h2>
 
-<%= render 'form' %>
+      <ul>
+      <% @invite.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
+  <h4>Invite Friends:</h4>
+  <div class="checkbox">
+    <% @uninvited.each do |user| %>
+      <p><%= check_box_tag "invitee_ids[]", user.id %>
+        <%= label_tag "invitee_ids[]", user.name %>
+      </p>
+      </label>
+      <hr>
+    <% end %>x`
+  </div>
+  <button type="submit">
+    Send invites
+  </button>
+<% end %>
