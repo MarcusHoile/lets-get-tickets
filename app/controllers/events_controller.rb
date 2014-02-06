@@ -12,14 +12,14 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    
+
     @user = @event.owner
     @guests = @event.users
     @invites = @event.invites
     @date = @event.when
     # find the invite for the current user, for each evnet there is only one
     @invite = @event.invites.where(user_id: current_user.id).first
-    @countdown = (@event.on_sale - Time.now).abs
+    
 
 
     # delete the invite id once rsvpd

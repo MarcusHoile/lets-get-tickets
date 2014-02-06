@@ -7,6 +7,6 @@ class Invite < ActiveRecord::Base
   before_create :init
 
   def init
-  	self.attending = "Not Sure"
+  	self.attending = "Undecided"
   end
 end

@@ -1,51 +1,56 @@
-<%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+<div class="row">
+  <%= form_for(@event, :class => "role col-md-12", ) do |f| %>
+    <% if @event.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-      <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :when %><br>
-    <%= f.datetime_select :when %>
-  </div>
-  <div class="field">
-    <%= f.label :what %><br>
-    <%= f.text_field :what %>
-  </div>
-  <div class="field">
-    <%= f.label :where %><br>
-    <%= f.text_field :where %>
-  </div>
-  <div class="field">
-    <%= f.label :on_sale %><br>
-    <%= f.datetime_select :on_sale %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.number_field :price %>
-  </div>
- 
-  <%= f.hidden_field :user_id, value: @user.id  %>
-  <h4>Invite Friends:</h4>
-  <div>
-    <%= hidden_field_tag "event[user_ids][]", nil %>
-    <% @friendships.each do |friendship| %>
-      <p><%= check_box_tag "event[user_ids][]", friendship.id, @event.user_ids.include?(friendship.id), id: dom_id(friendship) %>
-        <%= label_tag dom_id(friendship), friendship.friend.name %>
-      </p>
-      </label>
-      <hr>
+        <ul>
+        <% @event.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     <% end %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="form-group">
+      <label for="what">What is the gig?</label><br>
+      <%= f.text_field :what, :class => "form-control" %>
+    </div>
+      <div class="form-group">
+      <label for="where">Where is it at?</label><br>
+      <%= f.text_field :where, :class => "form-control"  %>
+    </div>
+      <div class="form-group">
+      <label for="price">How much is it?</label><br>
+      <%= f.number_field :price, :class => "form-control"%>
+    </div>
+    <div class="form-group">
+      <label for="When">When is the gig?</label><br>
+      <%= f.datetime_select :when, :class => "form-control"  %>
+    </div>
+    <div class="field">
+      <label for="on_sale">When are you buying the tickets?</label><br>
+      <%= f.datetime_select :on_sale %>
+    </div>
+    <br>
+   
+    <%= f.hidden_field :user_id, value: @user.id  %>
+    <div>
+      <h4>Invite Friends:</h4>
+      <div class="checkbox">
+        <%= hidden_field_tag "event[user_ids][]", nil %>
+        <% @friendships.each do |friendship| %>
+          <p><%= check_box_tag "event[user_ids][]", friendship.id, @event.user_ids.include?(friendship.id), id: dom_id(friendship)%>
+            <%= label_tag dom_id(friendship), friendship.friend.name %>
+          </p>
+          </label>
+          <hr>
+        <% end %>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary">Create Event</button>
+      </div>
+    </div>
+</div>
 <% end %>

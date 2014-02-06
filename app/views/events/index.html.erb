@@ -8,28 +8,35 @@
 <h2>Events you have been invited to:</h2>
 
 <% @invites.each do |invite| %>
-<div id="invite">
-<p><%= link_to invite.event.what, event_path(invite.event) %> <%= invite.attending %>
-	
-  <%= form_for(invite) do |f| %>
-    <%= f.hidden_field :user_id, value: current_user.id  %>
-    <%= f.hidden_field :attending, value: "Going"  %>
-    <button>
-    Accept
-    </button>
-  <% end %>
+	<div class="row">
+		<div class="col-md-6">
+			<h4><%= link_to invite.event.what, event_path(invite.event) %> <%= invite.event.when.strftime"%I:%M%p %b %d" %> </h4><p>You are <%= invite.attending %></p>
+			
+		  <%= form_for(invite) do |f| %>
+		    <%= f.hidden_field :user_id, value: current_user.id  %>
+		    <%= f.hidden_field :attending, value: "Going"  %>
+    </div>
+    <div class="col-md-3">
+		    <button class="btn btn-success">
+		    Accept
+		    </button>
+		  <% end %>
+	  </div>
 
-	
-  <%= form_for(invite) do |f| %>
-    <%= f.hidden_field :user_id, value: current_user.id  %>
-    <%= f.hidden_field :attending, value: "Not Going"  %>
-    <button>
-    Decline
-    </button>
-  <% end %>
+			
+		  <%= form_for(invite) do |f| %>
+		    <%= f.hidden_field :user_id, value: current_user.id  %>
+		    <%= f.hidden_field :attending, value: "Not Going"  %>
+		    <div class="col-md-3">
+			    <button class="btn btn-danger">
+			    Decline
+			    </button>
+			  </div>
+		  <% end %>
   </div>
-</p>
-<% end %>
+  <hr>
+	
+	<% end %>
 
 
 

@@ -1,0 +1,94 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require scaffolds
+ *= require_self
+ */
+
+
+ .field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+.row {
+	padding: 5px;
+}
+
+
+@import 'bootstrap';
+
+.container {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 100px; /* bottom = footer height */
+}
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    text-align:center;
+  	padding: 30px;
+		margin: 5px;
+		background: #e6e6e6;
+
+}
+footer a {
+	padding: 20px;
+}
+
+
+button {
+	margin: 5px;
+	width: 140px;
+}
+
+header {
+	padding: 10px;
+	margin: 0;
+	background: #01E1FB;
+	text-align:center;
+
+}
+header a {
+	padding:20px;
+	color:white;
+}
+
+
+
+.clearfix:after {
+   content: " "; 
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+.alert-notice {
+	color:green;
+	border: solid black 1px;
+}
+.alert-error {
+	color:red;
+	font-size: 18px;
+}
+
+

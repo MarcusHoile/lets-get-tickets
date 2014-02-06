@@ -60,7 +60,7 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.find(params[:id])
     @friendship.destroy
     respond_to do |format|
-      format.html { redirect_to current_user }
+      format.html { redirect_to users_path }
       format.json { head :no_content }
     end
   end
