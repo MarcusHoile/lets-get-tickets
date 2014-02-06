@@ -52,7 +52,12 @@
       <% end %>
 
       <div class="actions">
-        <button class="btn btn-primary">Create Event</button>
+        <% # display differnt copy for button when updating %>
+        <% if @event.id == nil %>
+          <button class="btn btn-primary">Create Event</button>
+        <% else %>
+          <button class="btn btn-primary">Update Event</button>
+        <% end %>
       </div>
     </div>
 </div>

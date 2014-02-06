@@ -2,7 +2,7 @@
 <% # render view based on user's events and friends %>
 <% if current_user.friendships.empty? %>
 	<%= render "friend" %>
-<% elsif current_user.events.empty? %>
+<% elsif @events.empty? %>
 	<%= render "add_event" %>
 <% else %>
 	<%= render "events" %>

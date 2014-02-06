@@ -63,7 +63,6 @@ class EventsController < ApplicationController
         # if user invited friends when creating event
         # invite emails are triggered
         @guests.each do |guest|
-          guest.invite.attending = false
           UserMailer.invite_email(@user, guest, @event).deliver
         end
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
