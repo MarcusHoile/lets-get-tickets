@@ -36,6 +36,7 @@
    
     <%= f.hidden_field :user_id, value: @user.id  %>
     <div>
+      <% # display friends to invite only if available %>
       <% if !current_user.friendships.empty?%>
       <h4>Invite Friends:</h4>
       <div class="checkbox">

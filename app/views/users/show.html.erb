@@ -4,21 +4,21 @@
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
+
 <p>
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
 
 
-
-
 <h4>Friends:</h4>
-<%= link_to "Add friends", users_path%><br><br>
-<% if !current_user.friendships.empty? %>
-	<% current_user.friendships.each do |friendship| %>
-		<p><%= friendship.friend.name %> <%= link_to "remove", friendship, :method => :delete %></p>
+	<%= link_to "Add friends", users_path%><br><br>
+	<% # only display list of friends if any exist 	%>
+	<% if !current_user.friendships.empty? %>
+		<% current_user.friendships.each do |friendship| %>
+			<p><%= friendship.friend.name %> <%= link_to "remove", friendship, :method => :delete %></p>
+		<% end %>
 	<% end %>
-<% end %>
 
 
 

@@ -1,3 +1,4 @@
+<% # the habtm relsationship allows for event.invites hence 2 arguments for the form helper %>
 <%= form_for([@event, @invite]) do |f| %>
   <% if @invite.errors.any? %>
     <div id="error_explanation">
@@ -14,7 +15,7 @@
   <h4>Invite Friends:</h4>
   <div class="checkbox">
 
-
+    <% # for each friendship store the friend id in an array %>
     <% @friendships.each do |friendship| %>
 
       <p><%= check_box_tag "invitee_ids[]", friendship.friend_id %>

@@ -1,3 +1,6 @@
+<% # all invites are new, you can not edit. %>
+<% # this view is displayed when inviting friends after event creation %>
+
 <%= form_for([@event, @invite]) do |f| %>
   <% if @invite.errors.any? %>
     <div id="error_explanation">

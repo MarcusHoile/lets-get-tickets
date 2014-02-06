@@ -21,6 +21,8 @@ class FriendshipsController < ApplicationController
   # GET /friendships/1/edit
   def edit
     @user = current_user
+    # find all users except current user
+    # this is to block user from friending them self
     @users = User.where("id != ?", @user.id)
   end
 

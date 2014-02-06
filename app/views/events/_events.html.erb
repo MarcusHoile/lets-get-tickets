@@ -1,3 +1,4 @@
+<% # view for when user has any events %>
 <br>
 <h4>Events you are hosting:</h4>
 <% @events.each do |event| %>
@@ -10,6 +11,7 @@
 
 <h4>Events you have been invited to:</h4>
 <hr>
+<% # display each invite with buttons to rsvp %>
 <% @invites.each do |invite| %>
 	<div class="row">
 

@@ -4,6 +4,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
+    # it is the index of invites for the current user
+    # you can only see events that you host or have been invited to
     @user = current_user
     @invites = Invite.where(user_id: @user.id)
     @events = Event.where(user_id: @user.id)
@@ -12,12 +14,14 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-
+    # display event details
+    # event owner has different view, can edit and add friends
     @user = @event.owner
     @guests = @event.users
     @invites = @event.invites
     @date = @event.when
-    # find the invite for the current user, for each evnet there is only one
+    # find the invite for the current user, for each event
+    # there is only one invite per person per event
     @invite = @event.invites.where(user_id: current_user.id).first
     
 
@@ -31,14 +35,18 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @user = current_user
+    # need to lookup friendships to determine appropriate view
+    # if user has no friends they are prompted to add friends before creating event
+    # if user has no events but has friends, they can create event
+    # else they see all events they are included in
     @friendships = current_user.friendships
   end
 
   # GET /events/1/edit
   def edit
+    # need the same data as new above
     @event = Event.find(params[:id])
     @user = @event.owner
-    # @users = User.where("id != ?", @user.id)
     @friendships = current_user.friendships
   end
 
@@ -46,20 +54,18 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-    # @guests = @event.users
+    @guests = @event.users
     # @user = User.find(params[:event][:user_id])
   
 
     respond_to do |format|
       if @event.save
-        # @user.invites.each do |invite|
-        #   invite.update(attending: false)
-        #   invite.save
-        # end
-        # @guests.each do |guest|
-          # guest.invite.attending = false
-          # UserMailer.invite_email(@user, guest, @event).deliver
-        # end
+        # if user invited friends when creating event
+        # invite emails are triggered
+        @guests.each do |guest|
+          guest.invite.attending = false
+          UserMailer.invite_email(@user, guest, @event).deliver
+        end
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render action: 'show', status: :created, location: @event }
       else
@@ -74,6 +80,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
+        # will need an update email notification here
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { head :no_content }
       else
@@ -86,6 +93,7 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
+    # there is no links to destroy atm
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_url }

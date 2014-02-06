@@ -1,9 +1,3 @@
-<p id="notice"><%= notice %></p>
+<% # this page is not in any user journey %>
 
-<p>
-  <strong>Friends:</strong>
-  <% current_user.friendships.each do |friendship| %>
-<p><%= friendship.friend.name %></p>
-<% end %>
-</p>
-
+<h1>Show Friends</h1>

@@ -1,5 +1,5 @@
 <h1>My Events</h1>
-
+<% # render view based on user's events and friends %>
 <% if current_user.friendships.empty? %>
 	<%= render "friend" %>
 <% elsif current_user.events.empty? %>

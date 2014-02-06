@@ -24,7 +24,7 @@ class InvitesController < ApplicationController
     # variable to be passed to the view
     @to_invite = []
 
-    # if statement to figure who hasn't been invited
+    # figure who hasn't been invited
     if @invites.empty?
       # all friends need to be listed, user objects stored in array
       @friendships.each do |friendship|
@@ -65,7 +65,7 @@ class InvitesController < ApplicationController
   # POST /invites.json
   def create
     @event = Event.find(params[:event_id])
-    
+    # the invitee ids is an array, need to iterate to get each user id
     params[:invitee_ids].each do |user_id|
       Invite.create(event_id: @event.id, user_id: user_id.to_i)
     end
@@ -87,6 +87,7 @@ class InvitesController < ApplicationController
   # PATCH/PUT /invites/1
   # PATCH/PUT /invites/1.json
   def update
+    # invite updates are not in the user flow.
     @event = @invite.event
     respond_to do |format|
       if @invite.update(invite_params)
@@ -102,6 +103,7 @@ class InvitesController < ApplicationController
   # DELETE /invites/1
   # DELETE /invites/1.json
   def destroy
+    # you can not destroy invites
     @invite.destroy
     respond_to do |format|
       format.html { redirect_to invites_url }

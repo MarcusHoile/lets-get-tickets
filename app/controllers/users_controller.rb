@@ -9,15 +9,16 @@ class UsersController < ApplicationController
     @users = User.where("id != ?", @user.id)
     @friends = []
     @not_friends = []
-      # if user has no friends then all users should be available to add
-      # find friends of user and put in array
+    
+    # find friends of user and store in array
     @user.friendships.each do |friendship|
       @friends << friendship.friend
     end
     if @friends.empty?
+      # if user has no friends, then all users should be available to add
       @not_friends = @users
     else
-      # check against all users which are in friends array and return nonpfriends
+      # check against all users which are in friends array and return non-friends
       @users.each do |user|
         if !@friends.include?(user)
           @not_friends << user
@@ -51,6 +52,7 @@ class UsersController < ApplicationController
     
     respond_to do |format|
       if @user.save
+        # welcome email is triggered at this point
         # UserMailer.welcome_email(@user).deliver
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }

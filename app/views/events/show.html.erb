@@ -36,7 +36,7 @@
       <strong>Host:</strong>
       <%= @user.name %>
     </p>
-
+      <% # event owner does not need to rsvp. these buttons are hidden %>
         <% if @user != current_user %>
           <%= form_for(@invite) do |f| %>
             <%= f.hidden_field :user_id, value: current_user.id  %>
