@@ -10,7 +10,7 @@
 <% @invites.each do |invite| %>
 	<div class="row">
 		<div class="col-md-6">
-			<h4><%= link_to invite.event.what, event_path(invite.event) %> <%= invite.event.when.strftime"%I:%M%p %b %d" %> </h4><p>You are <%= invite.attending %></p>
+			<h4><%= link_to invite.event.what, event_path(invite.event) %> <%= invite.event.when.strftime"%b %d %I:%M%p" %> </h4><p>You are <%= invite.attending %></p>
 			
 		  <%= form_for(invite) do |f| %>
 		    <%= f.hidden_field :user_id, value: current_user.id  %>
