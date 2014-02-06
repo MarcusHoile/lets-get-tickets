@@ -40,7 +40,7 @@
       <div class="checkbox">
         <%= hidden_field_tag "event[user_ids][]", nil %>
         <% @friendships.each do |friendship| %>
-          <p><%= check_box_tag "event[user_ids][]", friendship.id, @event.user_ids.include?(friendship.id), id: dom_id(friendship)%>
+          <p><%= check_box_tag "event[user_ids][]", friendship.friend_id, @event.user_ids.include?(friendship.friend_id), id: dom_id(friendship)%>
             <%= label_tag dom_id(friendship), friendship.friend.name %>
           </p>
           </label>

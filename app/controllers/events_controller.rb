@@ -46,13 +46,9 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-    @guests = @event.users
-    @user = User.find(params[:event][:user_id])
-    # set all invites to false as they have not responded yet
-    # no_invitation = @event.invites
-    # no_invitation.each do ||
-
-
+    # @guests = @event.users
+    # @user = User.find(params[:event][:user_id])
+  
 
     respond_to do |format|
       if @event.save
