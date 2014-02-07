@@ -1,5 +1,7 @@
 <% # view for when user has any events %>
-<br>
+<p><%= link_to "Add an event", new_user_event_path(@user) %></p>
+
+
 <div class="row">
 	<div class="col-md-12">
 	<h4>Events you are hosting:</h4>
@@ -8,7 +10,7 @@
 	<hr>
 	<% end %>
 
-	<p><%= link_to "Add an event", new_user_event_path(@user) %></p><br>
+	<p></p><br>
 </div>
 </div>
 
