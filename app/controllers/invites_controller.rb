@@ -68,6 +68,8 @@ class InvitesController < ApplicationController
     # the invitee ids is an array, need to iterate to get each user id
     params[:invitee_ids].each do |user_id|
       Invite.create(event_id: @event.id, user_id: user_id.to_i)
+      @guest = User.find_by_id(user_id.to_i)
+      UserMailer.invite_email(current_user, @guest, @event).deliver
     end
     redirect_to @event
 
