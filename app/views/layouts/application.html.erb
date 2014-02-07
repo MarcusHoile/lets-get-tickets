@@ -8,13 +8,12 @@
   </head>
   <body>
     <header class="row clearfix">
-      <div class="col-md-4 logo nav left">
+      <div class="col-md-4 logo left">
         <a href="/"><%= image_tag("LetsGetTickets-logo.png", :class => "logo") %></a>
       </div>
 
       <div class="col-md-8 nav">
         <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.name %></strong>.
           <%= link_to 'Create event', new_event_path %>
           <%= link_to 'My Events', events_path %>
           <%= link_to 'My Profile', current_user   %>

@@ -29,17 +29,25 @@
 
 .container {
 	max-width: 700px;
-	margin: 0 auto;
+	margin: 5px auto;
 	height: 700px;
+	background: #fff;
+	padding: 15px;
+	border-radius: 10px;
 }
 
 /*html {
     position: relative;
     min-height: 100%;
 }*/
-/*body {
-    margin: 0 0 100px;  bottom = footer height 
-}*/
+body {
+    background: #DCD982;
+}
+
+.details {
+	padding: 0 15px;
+}
+
 footer {
 		position:relative;
 		left:0;
@@ -63,6 +71,7 @@ footer a {
 .nav {
 	display:inline-block;
 	height: 40px;
+	padding: 10px 0 0 0;
 }
 
 .left {
@@ -99,23 +108,27 @@ footer a {
 
 #landing-header {
 	font-family:'Rock Salt', cursive;
-	color:white;
+	color:#fff;
 	font-size:60px;
 	text-align:center;
 	margin-top: 40px;
 }
-
+.landing {
+	background:none;
+}
 #cta {
 	font-family:'Rock Salt', cursive;
 	font-size: 36px;
 	text-align:center;
+
 }
 
 #tagline {
-	color:#fff;
+	color:#000;
 	margin:20px;
 	font-size: 24px;
 	text-align:center;
+
 }
 button {
 	margin: 5px;
