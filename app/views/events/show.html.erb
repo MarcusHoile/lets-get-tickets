@@ -14,11 +14,11 @@
 </div>
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-6">
 
     <p>
       <strong>When:</strong>
-      <%= @event.when.strftime"%b %d %I:%M%p" %>
+      <%= @event.when.strftime"%a %d %b %I:%M%p" %>
     </p>
 
     <p>
@@ -32,32 +32,19 @@
       <%= @event.where %>
     </p>
 
-    <p>
-      <strong>Host:</strong>
-      <%= @user.name %>
+    
+      <strong>Host:</strong><p>
+      <%= image_tag("silhouette.png") %><%= @user.name %>
     </p>
-      <% # event owner does not need to rsvp. these buttons are hidden %>
-        <% if @user != current_user %>
-          <%= form_for(@invite) do |f| %>
-            <%= f.hidden_field :user_id, value: current_user.id  %>
-            <%= f.hidden_field :attending, value: "Going"  %>
-            <button type="submit" class="btn btn-success">
-            Get me a ticket
-            </button>
-          <% end %>
-        
-
-          <%= form_for(@invite) do |f| %>
-            <%= f.hidden_field :user_id, value: current_user.id  %>
-            <%= f.hidden_field :attending, value: "Not Going"  %>
-            <button type="submit" class="btn btn-danger">
-            Decline
-            </button>
-          <% end %>
-        <% end %>
-
-
-
+    <p>
+      <strong>Invited:</strong>
+      <% @invites.each do |invite| %>
+        <p><%= image_tag("silhouette.png") %><%= invite.user.name %> is <%= invite.attending %></p>
+      <% end %>
+      <% if current_user == @event.owner %>
+          <p><%= link_to "Invite friends", new_event_invite_path(@event) %></p>
+      <% end %>
+    </p>    
 
 
     <% if @user == current_user %>
@@ -68,25 +55,37 @@
   </div>
 
 
-  <div class="col-md-8">
+  <div class="col-md-6">
+      <p>I will buy tickets in:</p>
+    <p class="spotlight"><%= distance_of_time_in_words(Time.now, @event.on_sale) %></p>
     <p>
-      <strong>Countdown:</strong>
-    </p>
-    <p id="countdown"><%= distance_of_time_in_words(Time.now, @event.on_sale) %> until i buy tickets!</p>
-    <p>
-      <strong>Price:</strong>
-      <%= number_to_currency(@event.price)  %>
+      <strong>Cost:</strong>
+      <p class="spotlight"><%= number_to_currency(@event.price)  %></p>
     </p>
 
-    <p>
-      <strong>Who Wants Tickets:</strong>
-      <% @invites.each do |invite| %>
-        <p><%= invite.user.name %> - <%= invite.attending %></p>
+      <% # event owner does not need to rsvp. these buttons are hidden %>
+    <div>
+      <% if @user != current_user %>
+        <%= form_for(@invite) do |f| %>
+          <%= f.hidden_field :user_id, value: current_user.id  %>
+          <%= f.hidden_field :attending, value: "Going"  %>
+          <button type="submit" class="btn btn-success rsvp">
+          Get me a ticket
+          </button>
+        <% end %>
+      
+
+        <%= form_for(@invite) do |f| %>
+          <%= f.hidden_field :user_id, value: current_user.id  %>
+          <%= f.hidden_field :attending, value: "Not Going"  %>
+          <button type="submit" class="btn btn-danger rsvp">
+          Decline
+          </button>
+        <% end %>
       <% end %>
-      <% if current_user == @event.owner %>
-          <p><%= link_to "Invite friends", new_event_invite_path(@event) %></p>
-      <% end %>
-    </p>
+    </div>
+
+
 
   </div>
 </div>
