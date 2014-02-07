@@ -1,11 +1,16 @@
 <% # view for when user has any events %>
 <br>
-<h4>Events you are hosting:</h4>
-<% @events.each do |event| %>
-<p><%= link_to event.what, event_path(event) %></p>
-<% end %>
+<div class="row">
+	<div class="col-md-12">
+	<h4>Events you are hosting:</h4>
+	<% @events.each do |event| %>
+	<p><%= link_to event.what, event_path(event) %> <%= event.when.strftime"%b %d %I:%M%p" %></p>
+	<hr>
+	<% end %>
 
-<p><%= link_to "Add an event", new_user_event_path(@user) %></p><br>
+	<p><%= link_to "Add an event", new_user_event_path(@user) %></p><br>
+</div>
+</div>
 
 
 
