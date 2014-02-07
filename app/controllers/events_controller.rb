@@ -55,7 +55,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @guests = @event.users
-    # @user = User.find(params[:event][:user_id])
+    @user = User.find(params[:event][:user_id])
   
 
     respond_to do |format|
