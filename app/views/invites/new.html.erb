@@ -13,18 +13,22 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="checkbox">
-    <% @to_invite.each do |user| %>
-      <p><%= check_box_tag "invitee_ids[]", user.id %>
-        <%= label_tag "invitee_ids[]", user.name %>
-        <%= user.email %>
-      </p>
-      </label>
-      <hr>
-    <% end %>
-  </div>
-  <button type="submit">
-    Send invites
-  </button>
+  <% if @to_invite.count == 0 %>
+    <p>There are no more friends to invite.</p>
+    <p><%= link_to "Add friends", users_path %></p>
+  <% else %>
+    <div class="checkbox">
+      <% @to_invite.each do |user| %>
+        <p><%= check_box_tag "invitee_ids[]", user.id %>
+          <%= label_tag "invitee_ids[]", user.name %>
+          <%= user.email %>
+        </p>
+        </label>
+        <hr>
+      <% end %>
+    </div>
+    <button type="submit">
+      Send invites
+    </button>
+  <% end %>
 <% end %>

@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<p><%= link_to 'edit profile', edit_user_path %> |
+<%= link_to "add friends", users_path%></p>
 <p>
-  <strong>Name:</strong>
-  <%= @user.name %>
+  <%= image_tag("silhouette.png") %><%= @user.name %>
 </p>
 
 <p>
@@ -10,15 +10,12 @@
   <%= @user.email %>
 </p>
 
-<%= link_to 'edit profile', edit_user_path %>
-
 
 <h4>Friends:</h4>
-	<%= link_to "Add friends", users_path%><br><br>
 	<% # only display list of friends if any exist 	%>
 	<% if !current_user.friendships.empty? %>
 		<% current_user.friendships.each do |friendship| %>
-			<p><%= friendship.friend.name %> <%= link_to "remove", friendship, :method => :delete %></p>
+			<p><%= image_tag("silhouette.png") %><%= friendship.friend.name %> <%= link_to "remove", friendship, :method => :delete %></p>
 		<% end %>
 	<% end %>
 
