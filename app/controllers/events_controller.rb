@@ -8,7 +8,7 @@ class EventsController < ApplicationController
     # you can only see events that you host or have been invited to
     @user = current_user
     @invites = Invite.where(user_id: @user.id)
-    @events = Event.where(user_id: @user.id)
+    @events = Event.where(user_id: @user.id).order("on_sale DESC")
   end
 
   # GET /events/1

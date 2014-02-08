@@ -5,6 +5,7 @@ class InvitesController < ApplicationController
   # GET /invites.json
   def index
     @invites = Invite.all
+    
   end
 
   # GET /invites/1

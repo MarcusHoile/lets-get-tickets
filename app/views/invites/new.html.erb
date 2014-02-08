@@ -18,6 +18,7 @@
     <% @to_invite.each do |user| %>
       <p><%= check_box_tag "invitee_ids[]", user.id %>
         <%= label_tag "invitee_ids[]", user.name %>
+        <%= user.email %>
       </p>
       </label>
       <hr>

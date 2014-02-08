@@ -12,7 +12,7 @@ class UserMailer < ActionMailer::Base
   	
   	@guest = guest
   	@event = event
-    @url = "http://ltesgettickets.herokuapp.com/events/#{@event.id}"
+    @url = "http://letsgettickets.herokuapp.com/events/#{@event.id}"
     # add invite object id as identifier
   	mail(to: @guest.email, subject: "Let's get tickets for #{event.what}")
   end
