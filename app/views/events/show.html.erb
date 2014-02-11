@@ -33,16 +33,24 @@
     </p><br>
 
     
-      <strong>Host:</strong><p>
-      <%= image_tag("silhouette.png") %><%= @user.name %>
-    </p><br>
+      <strong> <%= pluralize(@confirmed.count + 1, "Ticket") %> Confirmed:</strong>
     <p>
-      <strong>Invited:</strong>
-      <% @invites.each do |invite| %>
-        <p><%= image_tag("silhouette.png") %><%= invite.user.name %> is <%= invite.attending %></p>
+      <%= image_tag("silhouette.png") %><%= @user.name %>
+    </p>
+    <p>
+      <% @confirmed.each do |invite| %>
+      <% user = User.find(invite.user_id) %>
+      <%= image_tag("silhouette.png") %><%= user.name %>
       <% end %>
-      <% if current_user == @event.owner %>
-          <p><%= link_to "Invite friends", new_event_invite_path(@event) %></p>
+    </p>
+    <br>
+    <p>
+
+    <strong><%= @undecided.count %> Undecided:</strong>
+    <p>
+      <% @undecided.each do |invite| %>
+      <% user = User.find(invite.user_id) %>
+      <%= image_tag("silhouette.png") %><%= user.name %>
       <% end %>
     </p>    
 

@@ -22,8 +22,11 @@ class EventsController < ApplicationController
     @date = @event.when
     # find the invite for the current user, for each event
     # there is only one invite per person per event
+    # @invite isn used to display the rsvp buttons
     @invite = @event.invites.where(user_id: current_user.id).first
-    
+    @undecided = @event.invites.where(attending: "Undecided")
+    @confirmed = @event.invites.where(attending: "Going")
+    # @confirmed =  @confirmed.count + 1
 
 
     # delete the invite id once rsvpd
