@@ -71,24 +71,30 @@
       <p class="spotlight"><%= number_to_currency(@event.price)  %></p>
     </p>
 
-      <% # event owner does not need to rsvp. these buttons are hidden %>
-    <div>
-      <% if @user != current_user %>
-        <%= form_for(@invite) do |f| %>
-          <%= f.hidden_field :user_id, value: current_user.id  %>
-          <%= f.hidden_field :attending, value: "Going"  %>
-          <button type="submit" class="btn btn-success rsvp">
-          Get me a ticket
-          </button>
-        <% end %>
       
+    <div>
+      <% # event owner does not need to rsvp. these buttons are filtered out with if statement %>
+      <% if @user != current_user %>
+      <% # hide buttons if you have already responded %>
+        <% if @invite.attending == "Undecided"  %>
 
-        <%= form_for(@invite) do |f| %>
-          <%= f.hidden_field :user_id, value: current_user.id  %>
-          <%= f.hidden_field :attending, value: "Not Going"  %>
-          <button type="submit" class="btn btn-danger rsvp">
-          Decline
-          </button>
+          <%= form_for(@invite) do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id  %>
+            <%= f.hidden_field :attending, value: "Going"  %>
+            <button type="submit" class="btn btn-success rsvp">
+            Get me a ticket
+            </button>
+          <% end %>
+        
+
+          <%= form_for(@invite) do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id  %>
+            <%= f.hidden_field :attending, value: "Not Going"  %>
+            <button type="submit" class="btn btn-danger rsvp">
+            Decline
+            </button>
+          <% end %>
+
         <% end %>
       <% end %>
     </div>

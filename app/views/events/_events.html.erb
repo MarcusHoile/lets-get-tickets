@@ -1,7 +1,7 @@
 <% # view for when user has any events %>
 <%= link_to "Add an event", new_user_event_path(@user) %>
 
-
+<% if current_user.events.count > 0 %>
 <h4>Events you are hosting:</h4>	
 <table class="table table-hover">
 	<thead>
@@ -41,6 +41,8 @@
  	<% end 	%>
 
 </table>
+
+<% end %>
 
 
 
