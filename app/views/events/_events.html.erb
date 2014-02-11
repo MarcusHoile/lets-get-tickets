@@ -1,65 +1,88 @@
 <% # view for when user has any events %>
-<p><%= link_to "Add an event", new_user_event_path(@user) %></p>
+<%= link_to "Add an event", new_user_event_path(@user) %>
 
 
-<div class="row">
-	<div class="col-md-12">
-	<h4>Events you are hosting:</h4>
-	<% @events.each do |event| %>
-	<p><%= link_to event.what, event_path(event) %> <%= event.when.strftime"%b %d %I:%M%p" %>
-		Invited:<%= event.invites.count %>
-		going:<%= event.invites.where(attending: "Going").count %>
-		Undecided: <%= event.invites.where(attending: "Undecided").count%>
-		 <p class="spotlight"><%= distance_of_time_in_words(Time.now, event.on_sale) %></p>
-	
-	</p>
-	<hr>
-	<% end %>
+<h4>Events you are hosting:</h4>	
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>Event</th>
+			<th>When</th>
+			<th>Invited</th>
+			<th>Confirmed</th>
+			<th>Undecided</th>
+			<th>Time to Respond</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @events.each do |event| %>
+			<tr>
+				<td>
+					<%= link_to event.what, event_path(event) %>
+				</td>
+				<td>
+					<%= event.when.strftime"%b %d %I:%M%p" %>
+				</td>
+				<td>
+					<%= event.invites.count %>
+				</td>
+				<td>
+					<%= event.invites.where(attending: "Going").count %>
+				</td>
+				<td>
+					<%= event.invites.where(attending: "Undecided").count%>
+				</td>
+				<td>
+					<%= distance_of_time_in_words(Time.now, event.on_sale) %>
+				</td>
+			</tr>
+		</tbody>
 
-	<p></p><br>
-</div>
-</div>
+ 	<% end 	%>
+
+</table>
 
 
-<% if @invites.count > 0%>
-	<h4>Events you have been invited to:</h4>
-		<hr>
-		<% # display each invite with buttons to rsvp %>
-		<% @invites.each do |invite| %>
-			<div class="row">
 
-				<div class="col-md-2">
-				  <%= form_for(invite) do |f| %>
-				    <%= f.hidden_field :user_id, value: current_user.id  %>
-				    <%= f.hidden_field :attending, value: "Going"  %>
-		    
-		    
-				    <button type="submit" class="btn btn-success btn-sm">
-				    Get me a ticket
-				    </button>
-			  	<% end %>
-				</div>
 
-				<div class="col-md-2">
-				  <%= form_for(invite) do |f| %>
-				    <%= f.hidden_field :user_id, value: current_user.id  %>
-				    <%= f.hidden_field :attending, value: "Not Going"  %>
-				    
-				    <button type="submit" class="btn btn-danger btn-sm">
-					    Decline
-				    </button>
-			  	
-				  <% end %>
-			  </div>
-				<div class="col-md-8">
-					<strong><%= link_to invite.event.what, event_path(invite.event) %> <%= invite.event.when.strftime"%b %d %I:%M%p" %></strong>
-					<p>You are <%= invite.attending %></p>
-				</div>
+<% if @invites.count > 0 %>
+	<h4>Invited to:</h4>
+	<% # display each invite with buttons to rsvp %>
 
-		  </div>
-		  <hr>
-		<% end %>
-	<% end %>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Event</th>
+					<th>When</th>
+					<th>RSVP</th>
+					<th>Time to Respond</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @invites.each do |invite| %>
+					<tr>
+						<td>
+							<%= link_to invite.event.what, event_path(invite.event) %>
+						</td>
+						<td>
+							<%= invite.event.when.strftime"%b %d %I:%M%p" %>
+						</td>
+						<td>
+							<%= invite.attending %>
+						</td>
+						<td>
+							<%= distance_of_time_in_words(Time.now, invite.event.on_sale) %>
+						</td>
+					</tr>
+				</tbody>
+
+		 	<% end 	%>
+
+		</table>
+
+  <hr>
+<% end %>
+
 
 
 
