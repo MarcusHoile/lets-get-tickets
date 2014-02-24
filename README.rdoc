@@ -4,6 +4,6 @@ This website utilises ruby 2.0.0 on rails. It is hosted on heroku and uses postg
 
 http://letsgettickets.herokuapp.com
 
-test test funk funk
+test test what what
 
 
