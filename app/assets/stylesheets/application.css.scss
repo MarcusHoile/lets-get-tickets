@@ -20,14 +20,21 @@
   display: table;
 }
 
-.row {
-	padding: 5px;
-}
 
+
+$navbar-default-toggle-border-color: #1B676B;
+$navbar-default-link-color: #428bca;
+$navbar-default-link-hover-bg: #F54828;
+$navbar-default-toggle-hover-bg: #EAFDE6;
+$navbar-default-toggle-icon-bar-bg: #1B676B;
+$navbar-default-link-hover-color: #fff;
+$navbar-default-brand-hover-color: #1B676B;
 
 @import 'bootstrap';
 
-
+.container-fluid {
+	max-width: 1000px;
+}
 
 .container {
 	max-width: 700px;
@@ -43,8 +50,8 @@
     min-height: 100%;
 }*/
 body {
-    background: #D8D8D8;
-    padding-top:50px;
+    background: #2E0D23;
+    
     height:100%;
     color:white;
 }
@@ -68,6 +75,11 @@ body {
 	border-radius: 5px;
 	padding: 10px;
 	font-size: 18px;
+}
+
+.event-detail-label {
+	color: #F54828;
+	/*font-style: bold;*/
 }
 
 .confirm, .decline {
@@ -276,6 +288,60 @@ header {
 
 p {
 	margin: 0;
+}
+
+
+
+
+/*#sign-up {
+	padding:8px;
+	padding-left:12px;
+	padding-right:12px;
+	margin:7px;
+	background: #5C58B7;
+	color:white;
+	border: solid 1px #5458D8;
+}
+
+.sign-up {
+	padding: 10px 80px;	
+	margin:7px;
+	font-size: 20px;
+	background: #5C58B7;
+	color:white;
+	border: solid 1px #5458D8;
+}
+
+#sign-up:hover  {
+	background: #5C85F8;
+}
+
+.sign-up:hover {
+	background: #5C85F8;
+	color: #fff;	
+}*/
+
+
+
+
+.navbar {
+	margin-bottom:0;
+	border:none;
+	border-bottom: solid 2px black;
+
+}
+
+.navbar-right > li > a {
+	margin:0;	
+}
+
+
+/*.navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand {
+	color: #428bca;
+}*/
+
+.navbar-right {
+	padding-top:0;
 }
 
 		

@@ -10,7 +10,7 @@
   <div class="col-md-6 event-details">
 
     <div>
-      <p->When:</p>
+      <p class="event-detail-label">When:</p>
       <div class="event-detail">
         <%= @event.when.strftime"%a %d %b %I:%M%p" %>
       </div>
@@ -18,7 +18,7 @@
     <br>
 
     <div>
-      <p>What:</p>
+      <p class="event-detail-label">What:</p>
       <div class="event-detail">
         <%= @event.what %>
       </div>
@@ -27,7 +27,7 @@
 
 
     <div>
-      <p>Where:</p>
+      <p class="event-detail-label">Where:</p>
       <div class="event-detail">
         <%= @event.where %>
       </div>
@@ -36,7 +36,7 @@
 
     
     <div>
-      <p>Cost:</p>
+      <p class="event-detail-label">Cost:</p>
       <div class="event-detail">
         <%= number_to_currency(@event.price)  %>
       </div>
@@ -47,7 +47,7 @@
 
 
   <div class="col-md-6 rsvp-details">
-    <p>I will buy tickets in:</p>
+    <p class="event-detail-label">I will buy tickets in:</p>
     <div class="countdown">
       <div class="col">
         <span class="ce-days"></span> <span class="ce-days-label"></span>
@@ -92,7 +92,7 @@
 
     <div class="guest-list">
       <div class="confirmed-list">
-        <p> <%= pluralize(@confirmed.count + 1, "Ticket") %> Confirmed:</p>
+        <p class="event-detail-label"> <%= pluralize(@confirmed.count + 1, "Ticket") %> Confirmed:</p>
         <p class="guest"><%= @owner.name %> - Event Host</p>
         
           <% @confirmed.each do |invite| %>
@@ -103,13 +103,11 @@
       </div> <!-- confirmed -->
 
       <div class="undecided-list">
-        <p><%= @undecided.count %> Undecided:</p>
-        <p>
-          <% @undecided.each do |invite| %>
-            <% user = User.find(invite.user_id) %>
-            <p class="guest"><%= user.name %></p>
-          <% end %>
-        </p>    
+        <p class="event-detail-label"><%= @undecided.count %> Undecided:</p>
+        <% @undecided.each do |invite| %>
+          <% user = User.find(invite.user_id) %>
+          <p class="guest"><%= user.name %></p>
+        <% end %>   
       </div> <!-- undecided -->
 
       <% if @owner == current_user %>
