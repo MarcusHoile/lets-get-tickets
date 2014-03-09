@@ -145,12 +145,23 @@ footer {
     height: 60px;
     width: 100%;
     text-align:center;
-  	padding: 30px;
+  	padding: 20px;
   	margin-top: 80px;
+
+}
+
+footer ul {
+	margin: 0;
+
+}
+
+footer ul li {
+	display:inline-block;
 }
 
 footer a {
-	padding: 5px 40px;
+	padding: 0 40px;
+
 }
 
 .nav-container {
@@ -237,6 +248,7 @@ ol {
 	text-align:center;
 
 }
+
 button {
 	margin: 5px;
 	/*width: 140px;*/
@@ -246,9 +258,6 @@ button {
 	margin: 0 auto;
 }
 
-header {
-
-}
 
 .nav a {
 	padding:10px 20px;
