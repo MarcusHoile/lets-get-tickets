@@ -53,7 +53,8 @@ body {
 }
 
 .navbar, footer {
-	background: #F8E4C1;
+	background: #300030;
+
 }
 
 .navbar {
@@ -96,11 +97,12 @@ body {
 	background-color: rgba(0,193,118, 1);
 }
 
-.confirmed {
+.confirmed-list {
 	margin: 15px 0;
 }
 .guest {
 	padding: 10px;
+	border-bottom: none;
 
 }
 

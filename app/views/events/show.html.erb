@@ -91,18 +91,18 @@
     </div><!-- rsvp buttons -->
 
     <div class="guest-list">
-      <div class="confirmed">
+      <div class="confirmed-list">
         <p> <%= pluralize(@confirmed.count + 1, "Ticket") %> Confirmed:</p>
         <p class="guest"><%= @owner.name %> - Event Host</p>
-        <p>
+        
           <% @confirmed.each do |invite| %>
             <% user = User.find(invite.user_id) %>
             <p class="guest"><%= user.name %></p>
           <% end %>
-        </p>
+      
       </div> <!-- confirmed -->
 
-      <div class="undecided">
+      <div class="undecided-list">
         <p><%= @undecided.count %> Undecided:</p>
         <p>
           <% @undecided.each do |invite| %>
@@ -128,6 +128,10 @@
       month: <%= @event.on_sale.month %>,
       year: <%= @event.on_sale.year %>
     });
+
+    $(".confirmed-list p:last").css("borderBottom", "solid 1px #F54828");
+    $(".undecided-list p:last").css("borderBottom", "solid 1px #F54828");
+
   });
 </script>
 
