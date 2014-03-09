@@ -16,7 +16,7 @@ class EventsController < ApplicationController
   def show
     # display event details
     # event owner has different view, can edit and add friends
-    @user = @event.owner
+    @owner = @event.owner
     @guests = @event.users
     @invites = @event.invites
     @date = @event.when
@@ -27,8 +27,11 @@ class EventsController < ApplicationController
     @undecided = @event.invites.where(attending: "Undecided")
     @confirmed = @event.invites.where(attending: "Going")
     # @confirmed =  @confirmed.count + 1
-
-
+    
+    gon.day = @event.on_sale.day
+    gon.hour = @event.on_sale.hour
+    # gon.minute = @event.on_sale.minute
+    # gon.second = @event.on_sale.second
     # delete the invite id once rsvpd
     
 

@@ -34,6 +34,9 @@ gem 'devise'
 
 gem 'dotiw'
 
+# enables passing ruby variables to javascript
+gem 'gon'
+
 gem 'httparty'
 
 group :doc do

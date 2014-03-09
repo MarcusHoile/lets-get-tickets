@@ -25,14 +25,15 @@
 }
 
 
-
 @import 'bootstrap';
+
+
 
 .container {
 	max-width: 700px;
 	margin: 5px auto;
 	height: 100%;
-	background: #fff;
+	/*background: #fff;*/
 	padding: 15px;
 	border-radius: 10px;
 }
@@ -42,10 +43,81 @@
     min-height: 100%;
 }*/
 body {
-    background: #DCD982;
+    background: #2E0D23;
     padding-top:50px;
     height:100%;
+    color:white;
+}
+.container, .event-detail, .guest, .decline {
+	border: solid 1px #F54828;
+}
 
+.navbar, footer {
+	background: #F8E4C1;
+}
+
+.navbar {
+	margin: 0;
+	text-align:center;
+	/*border-bottom: solid #44642A 2px;*/
+}
+
+.event-detail {
+	
+	border-radius: 5px;
+	padding: 10px;
+	font-size: 18px;
+}
+
+.confirm, .decline {
+	border-radius: 5px;
+}
+
+.confirm {
+	/*background: #00C176;*/
+	background-color: rgba(0,193,118, 0.4);
+	border: solid 1px #00C176;
+}
+
+.decline {
+	/*background: #EB1523;*/
+	background-color: rgba(235,21,35, 0.2);
+	border:solid 1px #EB1523;
+
+}
+
+.decline:hover {
+	/*background: #EB1523;*/
+	background-color: rgba(235,21,35, 1);
+
+}
+
+.confirm:hover {
+	background-color: rgba(0,193,118, 1);
+}
+
+.confirmed {
+	margin: 15px 0;
+}
+.guest {
+	padding: 10px;
+
+}
+
+.col {
+	display: inline-block;
+	padding: 0 5px;
+	margin: 0 5px;
+	text-align:center;
+	background: #000;
+	width: 65px;
+}
+.ce-seconds, .ce-minutes, .ce-hours, .ce-days {
+	display:block;
+}
+
+.ce-seconds-digit, .ce-minutes-digit, .ce-hours-digit, .ce-days-digit {
+	font-size: 32px;
 }
 
 .details {
@@ -60,22 +132,11 @@ footer {
     width: 100%;
     text-align:center;
   	padding: 30px;
-		
-		background: #e6e6e6;
-
+  	margin-top: 80px;
 }
+
 footer a {
 	padding: 5px 40px;
-}
-
-
-
-.navbar {
-	margin: 0;
-	background: #668F48;
-	text-align:center;
-	border-bottom: solid #44642A 2px;
-
 }
 
 .nav-container {
@@ -104,7 +165,9 @@ footer a {
 
 .rsvp {
 	display:inline-block;
-	width: 200px;
+	width: 100%;
+	margin:5px 0;
+	padding: 10px;
 }
 
 .landing-box {
@@ -209,4 +272,9 @@ header {
 	font-size: 18px;
 }
 
+p {
+	margin: 0;
+}
+
+		
 

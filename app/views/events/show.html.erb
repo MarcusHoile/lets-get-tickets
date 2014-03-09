@@ -2,107 +2,134 @@
 
 <div class="row">
   <div class="col-md-12">
-    <h1>Let's get tickets to <%= @event.what %></h1><br>
-    <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
-    <% end %>
-
+    <h1>Let's get tickets to <%= @event.what %></h1>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-md-6 details">
+  <div class="col-md-6 event-details">
 
-    <p>
-      <strong>When:</strong>
-      <%= @event.when.strftime"%a %d %b %I:%M%p" %>
-    </p><br>
-
-    <p>
-      <strong>What:</strong>
-      <%= @event.what %>
-    </p><br>
-
-
-    <p>
-      <strong>Where:</strong>
-      <%= @event.where %>
-    </p><br>
-
-    
-      <strong> <%= pluralize(@confirmed.count + 1, "Ticket") %> Confirmed:</strong>
-    <p>
-      <%= image_tag("silhouette.png") %><%= @user.name %>
-    </p>
-    <p>
-      <% @confirmed.each do |invite| %>
-      <% user = User.find(invite.user_id) %>
-      <p><%= image_tag("silhouette.png") %><%= user.name %></p>
-      <% end %>
-    </p>
-    <br>
-    <p>
-
-    <strong><%= @undecided.count %> Undecided:</strong>
-    <p>
-      <% @undecided.each do |invite| %>
-      <% user = User.find(invite.user_id) %>
-      <p><%= image_tag("silhouette.png") %><%= user.name %></p>
-      <% end %>
-    </p>    
-
-
-    <% if @user == current_user %>
-      <%= link_to 'Edit', edit_event_path(@event) %>
-    <% end %>
-
-    
-  </div>
-
-
-  <div class="col-md-6">
-      <p>I will buy tickets in:</p>
-    <p class="spotlight"><%= distance_of_time_in_words(Time.now, @event.on_sale) %></p>
-    <p>
-      <strong>Cost:</strong>
-      <p class="spotlight"><%= number_to_currency(@event.price)  %></p>
-    </p>
-
-      
     <div>
+      <p->When:</p>
+      <div class="event-detail">
+        <%= @event.when.strftime"%a %d %b %I:%M%p" %>
+      </div>
+    </div>
+    <br>
+
+    <div>
+      <p>What:</p>
+      <div class="event-detail">
+        <%= @event.what %>
+      </div>
+    </div>
+    <br>
+
+
+    <div>
+      <p>Where:</p>
+      <div class="event-detail">
+        <%= @event.where %>
+      </div>
+    </div>
+    <br>
+
+    
+    <div>
+      <p>Cost:</p>
+      <div class="event-detail">
+        <%= number_to_currency(@event.price)  %>
+      </div>
+    </div>
+    <br>
+ 
+  </div> <!-- event-details -->
+
+
+  <div class="col-md-6 rsvp-details">
+    <p>I will buy tickets in:</p>
+    <div class="countdown">
+      <div class="col">
+        <span class="ce-days"></span> <span class="ce-days-label"></span>
+      </div>
+      <div class="col">
+        <span class="ce-hours"></span> <span class="ce-hours-label"></span>
+      </div>
+      <div class="col">
+        <span class="ce-minutes"></span> <span class="ce-minutes-label"></span>
+      </div>
+      <div class="col">
+        <span class="ce-seconds"></span> <span class="ce-seconds-label"></span>
+      </div>
+    </div><!-- countdown -->
+    <p>
+    <br>      
+    <div id="rsvp-buttons">
       <% # event owner does not need to rsvp. these buttons are filtered out with if statement %>
-      <% if @user != current_user %>
+      <% if @owner != current_user %>
       <% # hide buttons if you have already responded %>
         <% if @invite.attending == "Undecided"  %>
 
           <%= form_for(@invite) do |f| %>
             <%= f.hidden_field :user_id, value: current_user.id  %>
             <%= f.hidden_field :attending, value: "Going"  %>
-            <button type="submit" class="btn btn-success rsvp">
-            Get me a ticket
+            <button type="submit" class="confirm rsvp">
+              Get me a ticket
             </button>
           <% end %>
-        
+      
 
           <%= form_for(@invite) do |f| %>
             <%= f.hidden_field :user_id, value: current_user.id  %>
             <%= f.hidden_field :attending, value: "Not Going"  %>
-            <button type="submit" class="btn btn-danger rsvp">
-            Decline
+            <button type="submit" class="decline rsvp">
+              Decline
             </button>
           <% end %>
-
         <% end %>
       <% end %>
-    </div>
+    </div><!-- rsvp buttons -->
+
+    <div class="guest-list">
+      <div class="confirmed">
+        <p> <%= pluralize(@confirmed.count + 1, "Ticket") %> Confirmed:</p>
+        <p class="guest"><%= @owner.name %> - Event Host</p>
+        <p>
+          <% @confirmed.each do |invite| %>
+            <% user = User.find(invite.user_id) %>
+            <p class="guest"><%= user.name %></p>
+          <% end %>
+        </p>
+      </div> <!-- confirmed -->
+
+      <div class="undecided">
+        <p><%= @undecided.count %> Undecided:</p>
+        <p>
+          <% @undecided.each do |invite| %>
+            <% user = User.find(invite.user_id) %>
+            <p class="guest"><%= user.name %></p>
+          <% end %>
+        </p>    
+      </div> <!-- undecided -->
+
+      <% if @owner == current_user %>
+        <%= link_to 'Edit', edit_event_path(@event) %>
+      <% end %>
+    </div> <!-- guest-list -->
+  </div><!-- rsvp-details -->
+</div><!-- row -->
 
 
 
-  </div>
-</div>
+<script>
+  $(document).ready(function() {
+    $(".countdown").countEverest({
+      day: <%= @event.on_sale.day %>,
+      month: <%= @event.on_sale.month %>,
+      year: <%= @event.on_sale.year %>
+    });
+  });
+</script>
 
 
 

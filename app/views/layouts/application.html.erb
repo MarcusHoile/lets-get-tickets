@@ -1,37 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Let's Get Tickets</title>
-    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <%= csrf_meta_tags %>
-    <script type="text/javascript">
+<head>
+  <title>Let's Get Tickets</title>
+  <%= include_gon %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <script type="text/javascript">
 
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-47891202-1']);
-      _gaq.push(['_trackPageview']);
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-47891202-1']);
+  _gaq.push(['_trackPageview']);
 
-     (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-    </script>
-  </head>
-  <body>
+  </script>
+</head>
+<body>
 
-    <%= render "pages/header" %>
+  <%= render "pages/header" %>
 
-    <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <% if notice %>
+      <p class="alert alert-notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+      <p class="alert alert-error"><%= alert %></p>
+      <% end %>
+    </div>
+  </div>
 
-      <%= yield %>
-      </div>
-      <footer>
-        <%= link_to 'About Us', '/about' %>
-        <%= link_to 'Contact Us', '/contact' %>
-      </footer>
+  <div class="container">
 
-    
-  </body>
+    <%= yield %>
+  </div>
+  <footer>
+    <%= link_to 'About Us', '/about' %>
+    <%= link_to 'Contact Us', '/contact' %>
+  </footer>
+
+
+</body>
 
 </html>
