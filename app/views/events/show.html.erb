@@ -129,8 +129,10 @@
       year: <%= @event.on_sale.year %>
     });
 
-    $(".confirmed-list p:last").css("borderBottom", "solid 1px #F54828");
-    $(".undecided-list p:last").css("borderBottom", "solid 1px #F54828");
+    $(".confirmed-list .guest:last").css({borderBottom: "solid 1px #F54828", borderBottomLeftRadius: "5px", borderBottomRightRadius: "5px"});
+    $(".confirmed-list .guest").first().css({ borderTopLeftRadius: "5px", borderTopRightRadius: "5px"});
+    $(".undecided-list .guest:last").css({borderBottom: "solid 1px #F54828", borderBottomLeftRadius: "5px", borderBottomRightRadius: "5px"});
+    $(".undecided-list .guest").first().css({ borderTopLeftRadius: "5px", borderTopRightRadius: "5px"});
 
   });
 </script>
