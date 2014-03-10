@@ -1,13 +1,13 @@
-<h1>My Events</h1>
-<% # render view based on user's events and friends %>
 
-<% # if user has invites display events, else prompt to add friends and create events %>
-<% if !@invites.empty? %>
-	<%= render "events" %>
-<% elsif current_user.friendships.empty? %>
-	<%= render "friend" %>
-<% elsif @events.empty? %>
-	<%= render "add_event" %>
-<% else %>
-	<%= render "events" %>
-<% end %>
+	<% # render view based on user's events and friends %>
+
+	<% # if user has invites display events, else prompt to add friends and create events %>
+	<% if !@invites.empty? %>
+		<%= render "events" %>
+	<% elsif current_user.friendships.empty? %>
+		<%= render "friend" %>
+	<% elsif @events.empty? %>
+		<%= render "add_event" %>
+	<% else %>
+		<%= render "events" %>
+	<% end %>

@@ -41,8 +41,14 @@ $navbar-default-brand-hover-color: #1B676B;
 	margin: 5px auto;
 	height: 100%;
 	/*background: #fff;*/
-	padding: 15px;
+	/*padding: 15px;*/
 	border-radius: 10px;
+	padding-left:0;
+	padding-right:0;
+}
+
+.event-container {
+	padding: 15px;
 }
 
 /*html {
@@ -79,7 +85,6 @@ body {
 
 .event-detail-label {
 	color: #F54828;
-	/*font-style: bold;*/
 }
 
 .confirm, .decline {
@@ -139,29 +144,45 @@ body {
 }
 
 footer {
-		position:relative;
-		left:0;
-		right:0;
-    height: 60px;
-    width: 100%;
-    text-align:center;
-  	padding: 20px;
-  	margin-top: 80px;
+	position:relative;
+	left:0;
+	right:0;
+  height: 60px;
+  width: 100%;
+  text-align:center;
+	margin-top: 80px;
 
 }
 
 footer ul {
 	margin: 0;
-
+	padding:0;
 }
 
-footer ul li {
+footer li {
+	display: inline-block;
+}
+
+footer ul li a{
 	display:inline-block;
+	height: 60px;
+	padding: 20px;
+	display:inline-block;
+}
+
+footer ul li a:hover {
+	background: #F54828;
 }
 
 footer a {
 	padding: 0 40px;
 
+
+}
+
+footer a:hover {
+	color: #fff;
+	text-decoration:none;
 }
 
 .nav-container {
@@ -351,6 +372,29 @@ p {
 
 .navbar-right {
 	padding-top:0;
+}
+
+tr {
+	height: 80px;
+}
+.table > tbody + tbody {
+	border-top: 0;
+}
+.event-list-date {
+	width:80px;
+}
+
+.event-list-title {
+	font-size:18px;
+}
+
+.event-list-cost {
+	font-size: 24px;
+}
+
+.table > tbody > tr > td {
+	border:0;
+
 }
 
 		

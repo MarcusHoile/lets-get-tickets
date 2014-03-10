@@ -1,46 +1,40 @@
+<div class="event-container">
+	<h1>My Events</h1>
+
+
 <% # view for when user has any events %>
 <%= link_to "Add an event", new_user_event_path(@user) %>
 
 <% if current_user.events.count > 0 %>
-<h4>Events you are hosting:</h4>	
-<table class="table table-hover">
-	<thead>
-		<tr>
-			<th>Event</th>
-			<th>When</th>
-			<th>Invited</th>
-			<th>Confirmed</th>
-			<th>Undecided</th>
-			<th>Time to Respond</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @events.each do |event| %>
+<h4>Events you are hosting:</h4>
+
+	<table class="table table-hover event-list">
+		<thead>
 			<tr>
-				<td>
+				<th>Event</th>
+				<th>Cost</th>
+				<th>RSVP Deadline</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @events.each do |event| %>
+			<tr>
+				<td class="event-list-title">
 					<%= link_to event.what, event_path(event) %>
 				</td>
-				<td>
-					<%= event.when.strftime"%b %d %I:%M%p" %>
+				<td class="event-list-cost">
+					<%= number_to_currency(event.price) %>
 				</td>
-				<td>
-					<%= event.invites.count %>
-				</td>
-				<td>
-					<%= event.invites.where(attending: "Going").count %>
-				</td>
-				<td>
-					<%= event.invites.where(attending: "Undecided").count%>
-				</td>
-				<td>
-					<%= distance_of_time_in_words(Time.now, event.on_sale) %>
+				<td class="event-list-date">
+					<%= event.on_sale.strftime"%b %d %I:%M %P"  %>
 				</td>
 			</tr>
 		</tbody>
 
- 	<% end 	%>
+		<% end 	%>
 
-</table>
+	</table>
+
 
 <% end %>
 
@@ -48,32 +42,30 @@
 
 
 <% if @invites.count > 0 %>
+<div class="event-container">
 	<h4>Invited to:</h4>
+</div>
 	<% # display each invite with buttons to rsvp %>
 
 		<table class="table table-hover">
 			<thead>
 				<tr>
 					<th>Event</th>
-					<th>When</th>
-					<th>RSVP</th>
-					<th>Time to Respond</th>
+					<th>Cost</th>
+					<th>Deadline</th>
 				</tr>
 			</thead>
 			<tbody>
 				<% @invites.each do |invite| %>
 					<tr>
-						<td>
+						<td class="event-list-title">
 							<%= link_to invite.event.what, event_path(invite.event) %>
 						</td>
 						<td>
-							<%= invite.event.when.strftime"%b %d %I:%M%p" %>
+							You are <%= invite.attending %>
 						</td>
-						<td>
-							<%= invite.attending %>
-						</td>
-						<td>
-							<%= distance_of_time_in_words(Time.now, invite.event.on_sale) %>
+						<td class="event-list-date">
+							<%= invite.event.on_sale.strftime"%b %d %I:%M %P" %>
 						</td>
 					</tr>
 				</tbody>
@@ -85,6 +77,7 @@
   <hr>
 <% end %>
 
+</div>
 
 
 
