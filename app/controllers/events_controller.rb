@@ -8,7 +8,16 @@ class EventsController < ApplicationController
     # you can only see events that you host or have been invited to
     @user = current_user
     @invites = Invite.where(user_id: @user.id)
-    @events = Event.all   #where(user_id: @user.id).order("on_sale DESC")
+    events_hosting = Event.where(user_id: @user.id)
+    events_guest = @user.events
+    @events = []
+    events_hosting.each do |event|
+      @events << event
+    end
+    events_guest.each do |event|
+      @events << event
+    end
+    @events = @events.sort_by(&:on_sale)
   end
 
   # GET /events/1
