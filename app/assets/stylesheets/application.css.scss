@@ -49,6 +49,7 @@ $navbar-default-brand-hover-color: #1B676B;
 
 .event-container {
 	padding: 15px;
+
 }
 
 /*html {
@@ -57,10 +58,14 @@ $navbar-default-brand-hover-color: #1B676B;
 }*/
 body {
     background: #822339;
-    
     height:100%;
     color:white;
 }
+
+#content {
+	padding: 0 10px;
+}
+
 .container, .event-detail, .guest, .decline {
 	border: solid 1px #FF773D;
 }
@@ -84,7 +89,7 @@ body {
 }
 
 .event-detail-label {
-	color: #F54828;
+	color: #FF773D;
 }
 
 .confirm, .decline {
