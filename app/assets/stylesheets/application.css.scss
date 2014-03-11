@@ -23,7 +23,7 @@
 
 
 $navbar-default-toggle-border-color: #1B676B;
-$navbar-default-link-color: #428bca;
+$navbar-default-link-color: #fff;
 $navbar-default-link-hover-bg: #F54828;
 $navbar-default-toggle-hover-bg: #EAFDE6;
 $navbar-default-toggle-icon-bar-bg: #1B676B;
@@ -56,17 +56,17 @@ $navbar-default-brand-hover-color: #1B676B;
     min-height: 100%;
 }*/
 body {
-    background: #2E0D23;
+    background: #822339;
     
     height:100%;
     color:white;
 }
 .container, .event-detail, .guest, .decline {
-	border: solid 1px #F54828;
+	border: solid 1px #FF773D;
 }
 
 .navbar, footer {
-	background: #300030;
+	background: #542437;
 
 }
 
@@ -176,6 +176,7 @@ footer ul li a:hover {
 
 footer a {
 	padding: 0 40px;
+	color:#fff;
 
 
 }
@@ -355,9 +356,9 @@ p {
 
 
 .navbar {
-	margin-bottom:0;
+	margin-bottom:20px;
 	border:none;
-	border-bottom: solid 2px black;
+	/*border-bottom: solid 2px black;*/
 
 }
 
