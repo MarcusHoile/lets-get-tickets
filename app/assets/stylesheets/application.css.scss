@@ -22,11 +22,11 @@
 
 
 
-$navbar-default-toggle-border-color: #fff;
+$navbar-default-toggle-border-color: #BD1550;
 $navbar-default-link-color: #fff;
 $navbar-default-link-hover-bg: #F54828;
 $navbar-default-toggle-hover-bg: #F54828;
-$navbar-default-toggle-icon-bar-bg: #fff;
+$navbar-default-toggle-icon-bar-bg: #BD1550;
 $navbar-default-link-hover-color: #fff;
 $navbar-default-brand-hover-color: #1B676B;
 $table-bg-hover: #822339;
@@ -95,6 +95,7 @@ body {
 .navbar {
 	margin: 0;
 	text-align:center;
+	border:none;
 	border-bottom: solid 1px #FF773D;
 	
 }
