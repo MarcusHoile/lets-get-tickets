@@ -13,7 +13,6 @@
 				<th>Event</th>
 				<th>Cost</th>
 				<th>Date</th>
-				<th>*</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -27,11 +26,6 @@
 				</td>
 				<td class="event-list-date">
 					<%= event.on_sale.strftime"%b %d %I:%M %P"  %>
-				</td>
-				<td>
-					<% if current_user == event.owner %>
-					<button class="btn">hosting</button>
-					<% end %>
 				</td>
 			</tr>
 		</tbody>

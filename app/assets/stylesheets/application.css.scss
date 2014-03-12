@@ -22,13 +22,15 @@
 
 
 
-$navbar-default-toggle-border-color: #1B676B;
+$navbar-default-toggle-border-color: #fff;
 $navbar-default-link-color: #fff;
 $navbar-default-link-hover-bg: #F54828;
-$navbar-default-toggle-hover-bg: #EAFDE6;
-$navbar-default-toggle-icon-bar-bg: #1B676B;
+$navbar-default-toggle-hover-bg: #F54828;
+$navbar-default-toggle-icon-bar-bg: #fff;
 $navbar-default-link-hover-color: #fff;
 $navbar-default-brand-hover-color: #1B676B;
+$table-bg-hover: #822339;
+$navbar-inverse-bg: #000;
 
 @import 'bootstrap';
 
@@ -36,15 +38,30 @@ $navbar-default-brand-hover-color: #1B676B;
 	max-width: 1000px;
 }
 
+.dropdown-menu {
+	background:#822339 ;
+}
+
+.dropdown-menu li a:hover {
+	background: #FF773D;
+}
+
+a {
+	color:#fff;
+}
 .container {
 	max-width: 700px;
-	margin: 5px auto;
+	margin: 25px auto;
 	height: 100%;
 	/*background: #fff;*/
 	/*padding: 15px;*/
-	border-radius: 10px;
+	
 	padding-left:0;
 	padding-right:0;
+}
+
+.container-border {
+	border-radius: 10px;
 }
 
 .event-container {
@@ -57,7 +74,7 @@ $navbar-default-brand-hover-color: #1B676B;
     min-height: 100%;
 }*/
 body {
-    background: #822339;
+    background: #542437;
     height:100%;
     color:white;
 }
@@ -66,7 +83,7 @@ body {
 	padding: 0 10px;
 }
 
-.container, .event-detail, .guest, .decline {
+.container-border, .event-detail, .guest, .decline {
 	border: solid 1px #FF773D;
 }
 
@@ -78,7 +95,8 @@ body {
 .navbar {
 	margin: 0;
 	text-align:center;
-	/*border-bottom: solid #44642A 2px;*/
+	border-bottom: solid 1px #FF773D;
+	
 }
 
 .event-detail {
@@ -233,6 +251,7 @@ footer a:hover {
 #steps {
 	width:100%;
 	font-size: 18px;
+	color: #000;
 }
 
 .form {
@@ -244,7 +263,7 @@ footer a:hover {
 	width: 200px;
 	
 	display:block;
-	margin: 0 35%;
+	margin: 0 auto;
 }
 
 #landing-header {
@@ -261,6 +280,7 @@ footer a:hover {
 	font-family:'Rock Salt', cursive;
 	font-size: 36px;
 	text-align:center;
+	color: #000;
 }
 
 ol {
@@ -360,12 +380,6 @@ p {
 
 
 
-.navbar {
-	margin-bottom:20px;
-	border:none;
-	/*border-bottom: solid 2px black;*/
-
-}
 
 .navbar-right > li > a {
 	margin:0;	
@@ -392,15 +406,16 @@ tr {
 
 .event-list-title {
 	font-size:18px;
+
 }
 
 .event-list-cost {
 	font-size: 24px;
 }
 
-.table > tbody > tr > td {
+/*.table > tbody > tr > td {
 	border:0;
-}
+}*/
 
 #table-head {
 	padding:0;
