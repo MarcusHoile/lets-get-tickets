@@ -1,8 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
-  # GET /events
-  # GET /events.json
   def index
     # it is the index of invites for the current user
     # you can only see events that you host or have been invited to
@@ -20,8 +18,6 @@ class EventsController < ApplicationController
     @events = @events.sort_by(&:on_sale)
   end
 
-  # GET /events/1
-  # GET /events/1.json
   def show
     # display event details
     # event owner has different view, can edit and add friends
@@ -39,8 +35,6 @@ class EventsController < ApplicationController
     
     gon.day = @event.on_sale.day
     gon.hour = @event.on_sale.hour
-    # gon.minute = @event.on_sale.minute
-    # gon.second = @event.on_sale.second
     # delete the invite id once rsvpd
     
 
@@ -57,7 +51,6 @@ class EventsController < ApplicationController
     @friendships = current_user.friendships
   end
 
-  # GET /events/1/edit
   def edit
     # need the same data as new above
     @event = Event.find(params[:id])
@@ -65,20 +58,19 @@ class EventsController < ApplicationController
     @friendships = current_user.friendships
   end
 
-  # POST /events
-  # POST /events.json
+
   def create
     @event = Event.new(event_params)
     @guests = @event.users
-    @user = User.find(params[:event][:user_id])
-  
+    @owner = @event.owner
+
 
     respond_to do |format|
       if @event.save
         # if user invited friends when creating event
         # invite emails are triggered
         @guests.each do |guest|
-          UserMailer.invite_email(@user, guest, @event).deliver
+          UserMailer.invite_email(@owner, guest, @event).deliver
         end
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render action: 'show', status: :created, location: @event }
@@ -89,8 +81,7 @@ class EventsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /events/1
-  # PATCH/PUT /events/1.json
+
   def update
     respond_to do |format|
       if @event.update(event_params)
@@ -104,8 +95,7 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /events/1
-  # DELETE /events/1.json
+
   def destroy
     # there is no links to destroy atm
     @event.destroy
@@ -116,15 +106,16 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
- 
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:when, :what, :description, :on_sale, :price, :where, :user_id, user_ids:[])
-    end
+
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:when, :what, :description, :on_sale, :price, :where, :user_id, user_ids:[])
+  end
 end

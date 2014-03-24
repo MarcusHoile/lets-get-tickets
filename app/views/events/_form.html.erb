@@ -37,7 +37,7 @@
     <%= f.hidden_field :user_id, value: @user.id  %>
     <div>
       <% # display friends to invite only if available %>
-      <% if !current_user.friendships.empty?%>
+      <% if current_user.friendships.present? %>
       <h4>Invite Friends:</h4>
       <div class="checkbox">
         <%= hidden_field_tag "event[user_ids][]", nil %>
@@ -52,12 +52,9 @@
       <% end %>
 
       <div class="actions">
-        <% # display differnt copy for button when updating %>
-        <% if @event.id == nil %>
-          <button class="btn btn-primary">Create Event</button>
-        <% else %>
-          <button class="btn btn-primary">Update Event</button>
-        <% end %>
+        <%# display differnt copy for button when updating %>
+        <% button_text = (@event.new_record?) ? "Create Event" : "Update Event" %>
+        <button class="btn btn-primary"><%= button_text %></button>
       </div>
     </div>
 </div>

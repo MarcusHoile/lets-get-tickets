@@ -52,10 +52,7 @@ a {
 .container {
 	max-width: 800px;
 	margin: 25px auto;
-	height: 100%;
-	/*background: #fff;*/
-	/*padding: 15px;*/
-	
+	height: 100%;	
 	padding-left:0;
 	padding-right:0;
 }
@@ -73,10 +70,6 @@ a {
 
 }
 
-/*html {
-    position: relative;
-    min-height: 100%;
-}*/
 body {
     background: #542437;
     height:100%;
@@ -120,20 +113,17 @@ body {
 }
 
 .confirm {
-	/*background: #00C176;*/
 	background-color: rgba(0,193,118, 0.4);
 	border: solid 1px #00C176;
 }
 
 .decline {
-	/*background: #EB1523;*/
 	background-color: rgba(235,21,35, 0.2);
 	border:solid 1px #EB1523;
 
 }
 
 .decline:hover {
-	/*background: #EB1523;*/
 	background-color: rgba(235,21,35, 1);
 
 }
@@ -303,7 +293,6 @@ ol {
 
 button {
 	margin: 5px;
-	/*width: 140px;*/
 }
 
 .navbar-right {
@@ -351,49 +340,9 @@ p {
 	margin: 0;
 }
 
-
-
-
-/*#sign-up {
-	padding:8px;
-	padding-left:12px;
-	padding-right:12px;
-	margin:7px;
-	background: #5C58B7;
-	color:white;
-	border: solid 1px #5458D8;
-}
-
-.sign-up {
-	padding: 10px 80px;	
-	margin:7px;
-	font-size: 20px;
-	background: #5C58B7;
-	color:white;
-	border: solid 1px #5458D8;
-}
-
-#sign-up:hover  {
-	background: #5C85F8;
-}
-
-.sign-up:hover {
-	background: #5C85F8;
-	color: #fff;	
-}*/
-
-
-
-
-
 .navbar-right > li > a {
 	margin:0;	
 }
-
-
-/*.navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand {
-	color: #428bca;
-}*/
 
 .navbar-right {
 	padding-top:0;
@@ -417,10 +366,6 @@ tr {
 .event-list-cost {
 	font-size: 24px;
 }
-
-/*.table > tbody > tr > td {
-	border:0;
-}*/
 
 #table-head {
 	padding:0;
