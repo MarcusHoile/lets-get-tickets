@@ -47,6 +47,29 @@ $navbar-inverse-bg: #000;
 	background: #FF773D;
 }
 
+.stripe {
+	height: 30px;
+	width:100%;
+}
+
+#background2 {
+	background: #C02942;
+	bottom:60px;
+	left:0;
+}
+
+#background3 {
+	background: #D95B43;
+	bottom:30px;
+	left:0;
+}
+
+#background4 {
+	background: #ECD078;
+	bottom:0;
+	left:0;
+}
+
 a {
 	color:#fff;
 }
@@ -200,8 +223,6 @@ footer ul li a:hover {
 footer a {
 	padding: 0 40px;
 	color:#fff;
-
-
 }
 
 footer a:hover {
@@ -343,18 +364,16 @@ button {
 
 
 #landing {
-	
 	background-size:100%;
-	height: 680px;
 }
 
 
 .clearfix:after {
-   content: " "; 
-   visibility: hidden;
-   display: block;
-   height: 0;
-   clear: both;
+	content: " "; 
+	visibility: hidden;
+	display: block;
+	height: 0;
+	clear: both;
 }
 
 .alert-notice {
