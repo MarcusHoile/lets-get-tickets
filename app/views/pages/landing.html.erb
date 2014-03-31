@@ -6,15 +6,15 @@
     <p id="tagline">
       Never miss out on a gig again.
     </p>
-    <a href="/users/sign_up"><button class="btn btn-primary started" >Sign Up</button></a>
+    <a href="/users/sign_up" id="started-button"><button class="btn started" >Sign Up</button></a>
   </div>
 </div>
 <div class="row">
   <div class="col-md-12 landing-box">
       <div class="row" id="steps">
-        <div class="step-item col-md-3"><p class="step-copy">Tell your friends about to the gig</p></div>
-        <div class="step-item col-md-3"><p class="step-copy">Invite your friends</p></div>
-        <div class="step-item col-md-3"><p class="step-copy">RSVPs</p></div>
+        <div class="step-item col-md-3"><%= icon('calendar', '', class: 'icons') %><p class="step-copy">Set the date when you will buy the tickets</p></div>
+        <div class="step-item col-md-3"><%= icon('envelope', '', class: 'icons') %><p class="step-copy">Invite your friends</p></div>
+        <div class="step-item col-md-3"><%= icon('ticket', '', class: 'icons') %><p class="step-copy">Buy tickets for your RSVPs!</p></div>
       </div> 
   </div>
 </div>
