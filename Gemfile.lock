@@ -47,6 +47,8 @@ GEM
     dotiw (0.4.1)
     erubis (2.7.0)
     execjs (2.0.2)
+    font-awesome-sass (4.0.3)
+      sass (~> 3.2)
     gon (5.0.4)
       actionpack (>= 2.3.0)
       json
@@ -137,6 +139,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   dotiw
+  font-awesome-sass
   gon
   httparty
   jbuilder (~> 1.2)

@@ -236,17 +236,18 @@ footer a:hover {
 }
 
 .landing-box {
-	background-color:rgba(255,255,255,0.9);
+	
 	padding:15px;
 	border-radius: 20px;
-	margin: 50px 24%;
+	margin: 50px;
 	
 }
 
 #steps {
-	width:100%;
 	font-size: 18px;
 	color: #000;
+	margin: 0 40px;
+	text-align:center;
 }
 
 .form {
@@ -255,21 +256,21 @@ footer a:hover {
 
 	
 .started {
-	width: 200px;
-	
+	width: 200px;	
 	display:block;
 	margin: 0 auto;
 }
 
 #landing-header {
 	font-family:'Rock Salt', cursive;
-	color:#fff;
+	color:#FF773D;
 	font-size:60px;
 	text-align:center;
 	margin-top: 40px;
 }
 .landing {
-	background:none;
+	max-width: 960px;
+	margin:0 auto;
 }
 #cta {
 	font-family:'Rock Salt', cursive;
@@ -283,8 +284,18 @@ ol {
 	padding: 15px;
 }
 
+.step-item {
+	border: solid 1px #FF773D;
+	margin: 0 20px;
+	border-radius: 20px;
+}
+
+.step-copy {
+	height:200px;
+}
+
 #tagline {
-	color:#000;
+	color:#fff;
 	margin:20px;
 	font-size: 24px;
 	text-align:center;
@@ -313,7 +324,7 @@ button {
 
 
 #landing {
-	background: url(http://feminspire.com/wp-content/uploads/2012/12/bigstock_silhouettes_of_concert_crowd_i_1565261621.jpg) no-repeat;
+	
 	background-size:100%;
 	height: 680px;
 }
