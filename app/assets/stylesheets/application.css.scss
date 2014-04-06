@@ -376,13 +376,20 @@ button {
 	clear: both;
 }
 
-.alert-notice {
-	color:green;
-	border: solid black 1px;
+.alert {
+	text-align: center;
+	color:#fff;
+	margin: 5px 20px;
+	font-size: 14px;
 }
+
+.alert-notice {
+	background: #8A9B0F;
+	
+}
+
 .alert-error {
-	color:red;
-	font-size: 18px;
+	background: #F54828;
 }
 
 p {
