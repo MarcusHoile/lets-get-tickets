@@ -72,7 +72,7 @@ class EventsController < ApplicationController
         @guests.each do |guest|
           UserMailer.invite_email(@owner, guest, @event).deliver
         end
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to @event }
         format.json { render action: 'show', status: :created, location: @event }
       else
         format.html { render action: 'new' }
