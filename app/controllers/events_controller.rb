@@ -22,7 +22,7 @@ class EventsController < ApplicationController
     # display event details
     # event owner has different view, can edit and add friends
     @owner = @event.owner
-    @guests = @event.users
+    @guests = @event.invited_users
     @invites = @event.invites
     @date = @event.event_when
     # find the invite for the current user, for each event
@@ -64,7 +64,7 @@ class EventsController < ApplicationController
     # event_params[:when] = Chronic.parse(event_params[:when])
     @event = Event.new(event_params)
     @event.owner = current_user
-    @guests = @event.users
+    @guests = @event.invited_users
 
     respond_to do |format|
       if @event.save
@@ -73,7 +73,7 @@ class EventsController < ApplicationController
         # @guests.each do |guest|
         #   UserMailer.invite_email(@owner, guest, @event).deliver
         # end
-        format.html { redirect_to @event }
+        format.html { redirect_to new_event_invite_path(@event) }
         format.json { render action: 'show', status: :created, location: @event }
       else
         format.html { render action: 'new' }

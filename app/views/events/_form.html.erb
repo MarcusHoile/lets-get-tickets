@@ -34,28 +34,11 @@
         <%= f.datetime_select :on_sale %>
       </div>
       <br>
-      <div>
-        <% # display friends to invite only if available %>
-        <% if current_user.friendships.present? %>
-        <h4>Invite Friends:</h4>
-        <div class="checkbox">
-          <%= hidden_field_tag "event[user_ids][]", nil %>
-          <% @friendships.each do |friendship| %>
-            <p><%= check_box_tag "event[user_ids][]", friendship.friend_id, @event.user_ids.include?(friendship.friend_id), id: dom_id(friendship)%>
-              <%= label_tag dom_id(friendship), friendship.friend.name %>
-            </p>
-            </label>
-            <hr>
-          <% end %>
-        </div>
-        <% end %>
-
-        <div class="actions">
-          <%# display differnt copy for button when updating %>
-          <% button_text = (@event.new_record?) ? "Create Event" : "Update Event" %>
-          <button class="btn btn-primary"><%= button_text %></button>
-        </div>
+      <div class="actions">
+        <%# display differnt copy for button when updating %>
+        <% button_text = (@event.new_record?) ? "Create Event" : "Update Event" %>
+        <button class="btn btn-primary"><%= button_text %></button>
       </div>
-  </div>
+    </div>
   <% end %>
 </div>

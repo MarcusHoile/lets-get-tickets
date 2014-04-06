@@ -13,38 +13,39 @@ class InvitesController < ApplicationController
   def new
 
     @event = Event.find(params[:event_id])
-    # all the user's friendships
-    @friendships = current_user.friendships
+    # # all the user's friendships
+    # @friendships = current_user.friendships
 
-    # all invites for this event
-    @invites = @event.invites
-    # variable to be passed to the view
-    @to_invite = []
-
-    # figure who hasn't been invited
-    if @invites.empty?
-      # all friends need to be listed, user objects stored in array
-      @friendships.each do |friendship|
-        @to_invite << friendship.friend
-      end
-    else
-      # store all the user ids for users who are already invited
-      @invited = []
-      @invites.each do |invite|
-        @invited << invite.user_id
-      end
-
-    @friends = current_user.friends
-
-      # Filter out all invited user ids from full friend list
-      @uninvited = @friends - @invited
-      # convert uninvited ids into user objects
-      @uninvited.each do |user_id|
-        @to_invite << User.find(user_id)
-      end
-    end
-    @to_invite = 
+    # # all invites for this event
+    # @invites = @event.invites
+    
+    @to_invite = current_user.friends - @event.invited_users
     @invite = @event.invites.new
+
+    # # figure who hasn't been invited
+    # if @invites.empty?
+    #   # all friends need to be listed, user objects stored in array
+    #   @friendships.each do |friendship|
+    #     @to_invite << friendship.friend
+    #   end
+    # else
+    #   # store all the user ids for users who are already invited
+    #   @invited = []
+    #   @invites.each do |invite|
+    #     @invited << invite.user_id
+    #   end
+
+    # @friends = current_user.friends
+
+    #   # Filter out all invited user ids from full friend list
+    #   @uninvited = @friends - @invited
+    #   # convert uninvited ids into user objects
+    #   @uninvited.each do |user_id|
+    #     @to_invite << User.find(user_id)
+    #   end
+    # end
+    # @to_invite = 
+    
 
   end
 
