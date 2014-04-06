@@ -290,13 +290,13 @@ footer a:hover {
 	width: 200px;	
 	display:block;
 	margin: 0 auto;
-	background: #C02942;
-	border: solid 1px #FF773D;
+	background: rgba(138,155,15, 1);
+	border: solid 1px green;
 }
 
 .started:hover {
-	background: #FF773D;
-	border: solid 1px #FF773D;
+	// background: #FF773D;
+	background: rgba(138,155,15, 0.7);
 	color:white;
 
 }
