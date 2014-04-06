@@ -34,7 +34,9 @@ $table-bg-hover: #822339;
 $navbar-inverse-bg: #000;
 
 @import 'bootstrap';
-
+html, body {
+	height:100%;
+}
 .container-fluid {
 	max-width: 1000px;
 }
@@ -76,14 +78,12 @@ a {
 .container {
 	max-width: 800px;
 	margin: 25px auto;
-	height: 100%;	
 	padding-left:0;
 	padding-right:0;
 }
 
 .container-border {
 	border-radius: 10px;
-
 	padding-bottom: 5em;
 
 }
@@ -99,13 +99,13 @@ a {
 }
 
 body {
-    background: #542437;
-    height:100%;
-    color:white;
+	background: #542437;
+	color:white;
 }
 
 #content {
 	padding: 0 10px;
+	min-height:100%;
 }
 
 .container-border, .event-detail, .guest, .decline {
@@ -191,12 +191,12 @@ body {
 
 footer {
 	position:relative;
-	left:0;
-	right:0;
   height: 60px;
   width: 100%;
   text-align:center;
-	margin-top: 80px;
+	bottom:0px;
+  left:0px;
+  margin-bottom:0px;
 
 }
 
@@ -253,7 +253,6 @@ footer a:hover {
 	margin-left: 200px;
 }
 
-
 .rsvp {
 	display:inline-block;
 	width: 100%;
@@ -277,7 +276,7 @@ footer a:hover {
 }
 
 .form {
-	margin: 5px;
+	margin: 30px;
 }
 
 #started-button {

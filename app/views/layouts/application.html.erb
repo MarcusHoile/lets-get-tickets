@@ -12,9 +12,9 @@
 
   <%= render "pages/header" %>
   <div id="content">
+
     <div class="row alerts">
       <div class="col-md-12">
-
         <% flash.each do |key, value| %>
           <%= content_tag :div, value, :class => "alert alert-#{key}" unless value.blank? %>
         <% end %>
@@ -24,18 +24,20 @@
     <div class="container">
       <div class="container-border">
 
-      <%= yield %>
+        <%= yield %>
+
       </div>
     </div>
-  </div>
-  <footer>
-    <ul class="footer">
-      <li><%= link_to 'About Us', '/about' %></li>
-      <li><%= link_to 'Contact Us', '/contact' %></li>
-    </ul>
-  </footer>
 
 
+
+  </div><!-- content -->
+      <footer>
+      <ul class="footer">
+        <li><%= link_to 'About Us', '/about' %></li>
+        <li><%= link_to 'Contact Us', '/contact' %></li>
+      </ul>
+    </footer>
 </body>
 
 </html>
