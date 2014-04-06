@@ -65,7 +65,7 @@ a:hover {
 }
 
 #background1 {
-	background: #C02942;
+	background: #f;
 	bottom:60px;
 	left:0;
 }
@@ -126,16 +126,20 @@ body {
 	padding: 0 10px;
 	min-height:100%;
 	border-radius: 10px;
-	// padding-bottom: 5em;
 	max-width: 900px;
 	margin: 25px auto;
-	// padding-left:0;
-	// padding-right:0;
+	border: solid 1px #FF773D;
+
 }
 
-#content, .event-detail, .guest, .decline {
+.event-detail, .guest, .decline {
 	border: solid 1px #FF773D;
+	border-bottom: solid 1px #F54828;
+	border-left: solid 1px #E97F02;	
+	border-right: solid 1px #C02942;
+
 }
+
 
 .navbar, footer {
 	background: #542437;
