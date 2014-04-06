@@ -15,7 +15,7 @@ class EventsController < ApplicationController
     events_guest.each do |event|
       @events << event
     end
-    @events = @events.sort_by(&:on_sale)
+    # @events = @events.sort_by(&:on_sale)
   end
 
   def show
@@ -32,7 +32,7 @@ class EventsController < ApplicationController
     @undecided = @event.invites.where(attending: "Undecided")
     @confirmed = @event.invites.where(attending: "Going")
     # @confirmed =  @confirmed.count + 1
-    
+    binding.pry
     gon.day = @event.on_sale.day
     gon.hour = @event.on_sale.hour
     # delete the invite id once rsvpd
@@ -117,6 +117,6 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:event_when_text, :what, :description, :on_sale, :price, :where, user_ids:[])
+    params.require(:event).permit(:event_when_text, :what, :description, :on_sale_text, :price, :where, user_ids:[])
   end
 end
