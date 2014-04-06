@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
-<p><%= link_to 'edit profile', edit_user_path %> |
-<%= link_to "add friends", users_path%></p>
+<p><%= link_to 'edit profile', edit_user_path, class: "button" %>
+<%= link_to "add friends", users_path, class: "button" %></p>
 <p>
   <%= image_tag("silhouette.png") %><%= @user.name %>
 </p>
