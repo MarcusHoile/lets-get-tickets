@@ -1,10 +1,10 @@
   
-<div class="inner-container">
+<div class="inner-container container-fluid">
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-sm-9">
       <h3>Let's get tickets to</h3>
     </div>
-    <div class="col-md-3 controls">
+    <div class="col-sm-3 controls">
       <% if @owner == current_user %>
         <%= link_to 'Edit', edit_event_path(@event), class: "button" %>
       <% end %>
@@ -17,7 +17,6 @@
   </div>
   <div class="row">
     <div class="col-md-6 event-details">
-
       <div>
         <p class="event-detail-label">When:</p>
         <div class="event-detail">
@@ -32,16 +31,12 @@
           <%= @event.where.titleize %>
         </div>
       </div>
-      <br>
-
-      
       <div>
         <p class="event-detail-label">Cost:</p>
         <div class="event-detail">
           <%= number_to_currency(@event.price)  %>
         </div>
       </div>
-      <br>
    
     </div> <!-- event-details -->
 
