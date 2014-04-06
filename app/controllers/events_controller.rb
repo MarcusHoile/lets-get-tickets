@@ -24,7 +24,7 @@ class EventsController < ApplicationController
     @owner = @event.owner
     @guests = @event.users
     @invites = @event.invites
-    @date = @event.when
+    @date = @event.event_when
     # find the invite for the current user, for each event
     # there is only one invite per person per event
     # @invite isn used to display the rsvp buttons
@@ -61,6 +61,7 @@ class EventsController < ApplicationController
 
 
   def create
+    # event_params[:when] = Chronic.parse(event_params[:when])
     @event = Event.new(event_params)
     @event.owner = current_user
     @guests = @event.users
@@ -116,6 +117,6 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:when, :what, :description, :on_sale, :price, :where, user_ids:[])
+    params.require(:event).permit(:event_when_text, :what, :description, :on_sale, :price, :where, user_ids:[])
   end
 end
