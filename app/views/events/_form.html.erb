@@ -35,8 +35,6 @@
         <%= f.datetime_select :on_sale %>
       </div>
       <br>
-     
-      <%= f.hidden_field :user_id, value: @user.id  %>
       <div>
         <% # display friends to invite only if available %>
         <% if current_user.friendships.present? %>

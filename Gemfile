@@ -38,7 +38,12 @@ gem 'dotiw'
 # enables passing ruby variables to javascript
 gem 'gon'
 
+gem 'pry'
+
 gem 'httparty'
+
+# human readable date parser
+gem 'chronic'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

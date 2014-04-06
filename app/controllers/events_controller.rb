@@ -42,8 +42,9 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
+    
     @user = current_user
+    @event = Event.new
     # need to lookup friendships to determine appropriate view
     # if user has no friends they are prompted to add friends before creating event
     # if user has no events but has friends, they can create event
@@ -61,9 +62,8 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.owner = current_user
     @guests = @event.users
-    @owner = @event.owner
-
 
     respond_to do |format|
       if @event.save
@@ -116,6 +116,6 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:when, :what, :description, :on_sale, :price, :where, :user_id, user_ids:[])
+    params.require(:event).permit(:when, :what, :description, :on_sale, :price, :where, user_ids:[])
   end
 end
