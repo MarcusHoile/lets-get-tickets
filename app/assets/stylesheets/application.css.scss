@@ -45,6 +45,16 @@ html, body {
 	background:#822339 ;
 }
 
+a {
+	color: #fff;
+	text-decoration:none;
+}
+
+a:hover {
+	color: #fff;
+	text-decoration:none;
+}
+
 .dropdown-menu li a:hover {
 	background: #FF773D;
 }
@@ -84,6 +94,19 @@ a {
 
 .container-title {
 	margin: 30px;
+}
+
+.controls {
+	text-align: right;
+}
+
+.button {
+	padding: 10px 20px;
+	border: solid 1px #FF773D;
+}
+
+.button:hover {
+	background:#F54828;
 }
 
 .container-border {

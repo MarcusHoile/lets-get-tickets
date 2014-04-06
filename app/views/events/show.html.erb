@@ -1,12 +1,20 @@
   
 <div class="event-container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-9">
       <h3>Let's get tickets to</h3>
+    </div>
+    <div class="col-md-3 controls">
+      <% if @owner == current_user %>
+        <%= link_to 'Edit', edit_event_path(@event), class: "button" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
       <h1><%= @event.what.titleize %></h1>
     </div>
   </div>
-
   <div class="row">
     <div class="col-md-6 event-details">
 
@@ -101,10 +109,6 @@
             <p class="guest"><%= user.name %></p>
           <% end %>   
         </div> <!-- undecided -->
-
-        <% if @owner == current_user %>
-          <%= link_to 'Edit', edit_event_path(@event) %>
-        <% end %>
       </div> <!-- guest-list -->
     </div><!-- rsvp-details -->
   </div><!-- row -->
