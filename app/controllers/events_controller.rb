@@ -15,7 +15,7 @@ class EventsController < ApplicationController
     events_guest.each do |event|
       @events << event
     end
-    # @events = @events.sort_by(&:on_sale)
+    @events = @events.sort_by(&:on_sale)
   end
 
   def show
@@ -31,8 +31,6 @@ class EventsController < ApplicationController
     @invite = @event.invites.where(user_id: current_user.id).first
     @undecided = @event.invites.where(attending: "Undecided")
     @confirmed = @event.invites.where(attending: "Going")
-    # @confirmed =  @confirmed.count + 1
-    binding.pry
     gon.day = @event.on_sale.day
     gon.hour = @event.on_sale.hour
     # delete the invite id once rsvpd
