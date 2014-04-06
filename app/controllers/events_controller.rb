@@ -70,9 +70,9 @@ class EventsController < ApplicationController
       if @event.save
         # if user invited friends when creating event
         # invite emails are triggered
-        @guests.each do |guest|
-          UserMailer.invite_email(@owner, guest, @event).deliver
-        end
+        # @guests.each do |guest|
+        #   UserMailer.invite_email(@owner, guest, @event).deliver
+        # end
         format.html { redirect_to @event }
         format.json { render action: 'show', status: :created, location: @event }
       else
