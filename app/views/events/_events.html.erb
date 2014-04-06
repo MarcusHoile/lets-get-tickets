@@ -19,7 +19,7 @@
 			<% @events.each do |event| %>
 			<tr>
 				<td class="event-list-title">
-					<%= link_to event.what.titleize`, event_path(event) %>
+					<%= link_to event.what.titleize, event_path(event) %>
 				</td>
 				<td class="event-list-cost">
 					<%= number_to_currency(event.price) %>
