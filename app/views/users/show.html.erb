@@ -1,23 +1,26 @@
-<p id="notice"><%= notice %></p>
-<p><%= link_to 'edit profile', edit_user_path, class: "button" %>
-<%= link_to "add friends", users_path, class: "button" %></p>
-<p>
-  <%= image_tag("silhouette.png") %><%= @user.name %>
-</p>
+<div class="inner-container">
+	<p id="notice"><%= notice %></p>
+	<p><%= link_to 'edit profile', edit_user_path, class: "button" %>
+	<%= link_to "add friends", users_path, class: "button" %></p>
+	<p>
+	  <%= @user.name %>
+	</p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+	<p>
+	  <strong>Email:</strong>
+	  <%= @user.email %>
+	</p>
 
 
-<h4>Friends:</h4>
+	<h4>Friends:</h4>
 	<% # only display list of friends if any exist 	%>
 	<% if !current_user.friendships.empty? %>
 		<% current_user.friendships.each do |friendship| %>
 			<p><%= image_tag("silhouette.png") %><%= friendship.friend.name %> <%= link_to "remove", friendship, :method => :delete %></p>
 		<% end %>
 	<% end %>
+
+</div>
 
 
 
