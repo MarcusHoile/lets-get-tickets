@@ -22,15 +22,14 @@
   </div>
   <div class="row">
     <div class="col-md-6 event-details">
-      <div>
+      <div class="event-detail-container">
         <p class="event-detail-label">When:</p>
         <div class="event-detail">
           <%= @event.event_when.strftime"%a %d %b %I:%M %P" %>
         </div>
       </div>
-      <br>
 
-      <div>
+      <div class="event-detail-container">
         <p class="event-detail-label">Where:</p>
         <div class="event-detail">
           <%= @event.where.titleize %>
@@ -40,28 +39,28 @@
         <div id="map-canvas">
         </div>
       </div>
-
-   
     </div> <!-- event-details -->
 
 
     <div class="col-md-6 rsvp-details">
-      <p class="event-detail-label"><%= @owner.name %> will buy tickets in:</p>
-      <div class="countdown">
-        <div class="col">
-          <span class="ce-days"></span> <span class="ce-days-label"></span>
-        </div>
-        <div class="col">
-          <span class="ce-hours"></span> <span class="ce-hours-label"></span>
-        </div>
-        <div class="col">
-          <span class="ce-minutes"></span> <span class="ce-minutes-label"></span>
-        </div>
-        <div class="col">
-          <span class="ce-seconds"></span> <span class="ce-seconds-label"></span>
-        </div>
-      </div><!-- countdown -->
-      <div>
+      <div class="event-detail-container">
+        <p class="event-detail-label"><%= @owner.name %> will buy tickets in:</p>
+        <div class="countdown">
+          <div class="col">
+            <span class="ce-days"></span> <span class="ce-days-label"></span>
+          </div>
+          <div class="col">
+            <span class="ce-hours"></span> <span class="ce-hours-label"></span>
+          </div>
+          <div class="col">
+            <span class="ce-minutes"></span> <span class="ce-minutes-label"></span>
+          </div>
+          <div class="col">
+            <span class="ce-seconds"></span> <span class="ce-seconds-label"></span>
+          </div>
+        </div><!-- countdown -->
+      </div>
+      <div class="event-detail-container">
         <p class="event-detail-label">Cost:</p>
         <div class="event-detail">
           <%= number_to_currency(@event.price)  %>
@@ -93,7 +92,7 @@
         <% end %>
       </div><!-- rsvp buttons -->
 
-      <div class="guest-list">
+      <div class="guest-list event-detail-container">
         <div class="confirmed-list">
           <p class="event-detail-label"> <%= pluralize(@confirmed.count + 1, "Ticket") %> Confirmed:</p>
           <p class="guest"><%= @owner.name %> - Event Host</p>
@@ -105,7 +104,7 @@
         
         </div> <!-- confirmed -->
 
-        <div class="undecided-list">
+        <div class="undecided-list event-detail-container">
           <p class="event-detail-label"><%= @undecided.count %> Undecided:</p>
           <% @undecided.each do |invite| %>
             <% user = User.find(invite.user_id) %>
