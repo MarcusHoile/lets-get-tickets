@@ -13,6 +13,7 @@ class Event < ActiveRecord::Base
   before_save :save_event_when_text
   before_save :save_on_sale_text
 
+  serialize :latlng, Hash
 
 
   def event_when_text

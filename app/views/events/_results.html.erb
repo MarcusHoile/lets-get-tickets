@@ -16,10 +16,13 @@
 				<%= event["location"]["name"] %>
 			</td>
 			<td class="event-list-date">
-				<%#= DateTime.strptime(event["datetime_start"], "%Y-%m-%d %I:%M:%S").strftime"%b %d %I:%M %P" %>
+				<%= event["datetime_start"] %>
 			</td>
-			<td class="event-lat-lng hidden">
-				<%= event["point"] %>
+			<td class="event-lat hidden">
+				<%= event["point"]["lat"] %>
+			</td>
+			<td class="event-lng hidden">
+				<%= event["point"]["lng"] %>
 			</td>
 		</tr>
 	</tbody>

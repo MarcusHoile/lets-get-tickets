@@ -40,6 +40,10 @@
         <%= f.label :on_sale_text, "When are you buying the tickets?" %>
         <%= f.text_field :on_sale_text, class: "form-control", placeholder: "eg in 3 days, next friday 12pm" %>
       </div>
+      <div class="field">
+        <%= f.hidden_field :lat, class: "form-control" %>
+        <%= f.hidden_field :lng, class: "form-control" %>
+      </div>
       <br>
       <div class="actions">
         <%# display differnt copy for button when updating %>

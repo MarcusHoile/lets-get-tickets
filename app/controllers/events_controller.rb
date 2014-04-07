@@ -111,7 +111,6 @@ class EventsController < ApplicationController
       #     puts transform["url"]
       #   end
       # end
-
     respond_to do |format|
       format.html { redirect_to new_event }
       format.js 
@@ -130,6 +129,6 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:event_when_text, :what, :description, :on_sale_text, :price, :where, user_ids:[])
+    params.require(:event).permit(:event_when_text, :what, :description, :on_sale_text, :price, :where, :lat, :lng)
   end
 end
