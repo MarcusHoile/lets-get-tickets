@@ -75,9 +75,20 @@
           
             <% @confirmed.each do |invite| %>
               <% user = User.find(invite.user_id) %>
-            <div class="guest">
-              <p class="guest-name"><%= user.name %></p>
-            </div>
+              <div class="guest">
+                <p class="guest-name"><%= user.name %></p>
+                <div class="rsvp-container">
+                  <div class="rsvp-button">
+                    <%= form_for(invite) do |f| %>
+                      <%= f.hidden_field :user_id, value: user.id  %>
+                      <%= f.hidden_field :attending, value: "Not Going"  %>
+                        <button type="submit" class="decline rsvp rsvp-edit">
+                         <i class="fa fa-times"></i>
+                        </button>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
             <% end %>
         
         </div> <!-- confirmed -->
