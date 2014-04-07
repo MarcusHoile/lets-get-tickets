@@ -5,10 +5,10 @@
   
 <div class="inner-container container-fluid">
   <div class="row">
-    <div class="col-sm-9">
+    <div class="col-sm-6">
       <h3>Let's get tickets to</h3>
     </div>
-    <div class="col-sm-3 controls">
+    <div class="col-sm-6 controls">
       <% if @owner == current_user %>
         <%= link_to 'Edit', edit_event_path(@event), class: "button" %>
         <%= link_to 'Invite more friends', edit_event_path(@event), class: "button" %>
@@ -40,12 +40,7 @@
         <div id="map-canvas">
         </div>
       </div>
-      <div>
-        <p class="event-detail-label">Cost:</p>
-        <div class="event-detail">
-          <%= number_to_currency(@event.price)  %>
-        </div>
-      </div>
+
    
     </div> <!-- event-details -->
 
@@ -66,8 +61,12 @@
           <span class="ce-seconds"></span> <span class="ce-seconds-label"></span>
         </div>
       </div><!-- countdown -->
-      <p>
-      <br>      
+      <div>
+        <p class="event-detail-label">Cost:</p>
+        <div class="event-detail">
+          <%= number_to_currency(@event.price)  %>
+        </div>
+      </div>     
       <div id="rsvp-buttons">
         <% # event owner does not need to rsvp. these buttons are filtered out with if statement %>
         <% if @owner != current_user %>
