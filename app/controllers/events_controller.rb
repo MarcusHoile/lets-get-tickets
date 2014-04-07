@@ -101,7 +101,7 @@ class EventsController < ApplicationController
   end
 
   def search
-    query = params[:q]
+    query = params[:q].to_uri
     auth = {:username => "marcushoile", :password => "bmm6vbmv3bmm"}
     response = HTTParty.get('http://api.eventfinder.com.au/v2/events.json?row=2&q=' + query, :basic_auth => auth)  
     @results = response["events"]

@@ -35,6 +35,8 @@ gem 'devise'
 
 gem 'dotiw'
 
+gem 'uri-handler'
+
 # enables passing ruby variables to javascript
 gem 'gon'
 
