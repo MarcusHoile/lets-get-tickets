@@ -43,18 +43,14 @@ class EventsController < ApplicationController
     
     @user = current_user
     @event = Event.new
-    # need to lookup friendships to determine appropriate view
-    # if user has no friends they are prompted to add friends before creating event
-    # if user has no events but has friends, they can create event
-    # else they see all events they are included in
-    @friendships = current_user.friendships
+
+  
   end
 
   def edit
     # need the same data as new above
     @event = Event.find(params[:id])
     @user = @event.owner
-    @friendships = current_user.friendships
   end
 
 
@@ -102,6 +98,25 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    query = params[:q]
+    auth = {:username => "marcushoile", :password => "bmm6vbmv3bmm"}
+    response = HTTParty.get('http://api.eventfinder.com.au/v2/events.json?row=2&q=' + query, :basic_auth => auth)  
+    @events = response["events"]
+      # event["images"]["images"].each do |image|
+      #   puts image["id"]
+      #   image["transforms"]["transforms"].each do |transform|
+      #     puts transform["url"]
+      #   end
+      # end
+
+    # respond_to do |format|
+    #   format.html { redirect_to new_event }
+    #   format.json { head :no_content }
+    # end
+
   end
 
   private

@@ -1,3 +1,10 @@
+<%= form_tag({controller: "events", action: "search"}, method: "get") do %>
+  <%= label_tag(:q, "Search for an Event:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+<div id="event-results"></div>
+
 <div class="form">
   <div role="form">
     <%= form_for(@event, :class => "role col-md-12", ) do |f| %>
@@ -41,4 +48,11 @@
       </div>
     </div>
   <% end %>
+  <h2>ruby</h2>
+  <%# @events.each do |event| %>
+    <p><%#= event["name"] %> - <%#= event["location"]["name"] %></p>
+    <%# end %>
+  
+
 </div>
+

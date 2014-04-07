@@ -3,6 +3,7 @@ GetTickets::Application.routes.draw do
   get '/about' => "pages#aboutus"
   get '/contact' => "pages#contactus"
   get '/terms' => "pages#terms"
+  get '/search' => "events#search"
 
 
   resources :friendships
