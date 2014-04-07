@@ -80,7 +80,9 @@
           
             <% @confirmed.each do |invite| %>
               <% user = User.find(invite.user_id) %>
+            <div class="guest">
               <p class="guest-name"><%= user.name %></p>
+            </div>
             <% end %>
         
         </div> <!-- confirmed -->
