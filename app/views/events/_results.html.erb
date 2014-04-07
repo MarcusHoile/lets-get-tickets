@@ -16,7 +16,7 @@
 				<%= event["location"]["name"] %>
 			</td>
 			<td class="event-list-date">
-				<%= event["datetime_start"]  %>
+				<%= DateTime.strptime(event["datetime_start"], "%Y-%m-%d %I:%M:%S").strftime"%b %d %I:%M %P" %>
 			</td>
 		</tr>
 	</tbody>
