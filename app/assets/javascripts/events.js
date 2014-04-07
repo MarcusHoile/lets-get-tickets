@@ -14,6 +14,27 @@ function selectThisEvent(selection) {
 	$('#event_event_when_text').val(when.trim());
 	$('#event_lat').val(parseFloat(lat));
 	$('#event_lng').val(parseFloat(lng));
+}
 
+function mapInit(lat, lng){
+	console.log(lat);
+	console.log(lng);
+  var mapCanvas = document.getElementById("map-canvas");
+  var latLng = new google.maps.LatLng(lat, lng);
+  var mapOptions = {
+    center: latLng,
+    mapTypeControl: false,
+    panControl: false,
+    zoomControl: false,
+    streetViewControl: false,
+    zoom: 12
+  };
 
+  // create a map
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+  // add a marker
+  var marker = new google.maps.Marker({
+    map: map,
+    position: latLng
+  });
 }

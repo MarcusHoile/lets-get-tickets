@@ -31,8 +31,12 @@ class EventsController < ApplicationController
     @invite = @event.invites.where(user_id: current_user.id).first
     @undecided = @event.invites.where(attending: "Undecided")
     @confirmed = @event.invites.where(attending: "Going")
-    gon.day = @event.on_sale.day
-    gon.hour = @event.on_sale.hour
+    # gon.day = @event.on_sale.day
+    # gon.hour = @event.on_sale.hour
+
+    gon.lat = @event.lat
+    gon.lng = @event.lng
+
     # delete the invite id once rsvpd
     
 
@@ -105,12 +109,7 @@ class EventsController < ApplicationController
     auth = {:username => "marcushoile", :password => "bmm6vbmv3bmm"}
     response = HTTParty.get('http://api.eventfinder.com.au/v2/events.json?row=2&q=' + query, :basic_auth => auth)  
     @results = response["events"]
-      # event["images"]["images"].each do |image|
-      #   puts image["id"]
-      #   image["transforms"]["transforms"].each do |transform|
-      #     puts transform["url"]
-      #   end
-      # end
+
     respond_to do |format|
       format.html { redirect_to new_event }
       format.js 
