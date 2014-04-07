@@ -1,0 +1,5 @@
+$('#search').append('<%= j render("results") %>');
+$('.search-result').on('click', function(){
+	var selection = $(this);
+	selectThisEvent(selection);
+});

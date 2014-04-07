@@ -104,7 +104,7 @@ class EventsController < ApplicationController
     query = params[:q]
     auth = {:username => "marcushoile", :password => "bmm6vbmv3bmm"}
     response = HTTParty.get('http://api.eventfinder.com.au/v2/events.json?row=2&q=' + query, :basic_auth => auth)  
-    @events = response["events"]
+    @results = response["events"]
       # event["images"]["images"].each do |image|
       #   puts image["id"]
       #   image["transforms"]["transforms"].each do |transform|
@@ -112,10 +112,10 @@ class EventsController < ApplicationController
       #   end
       # end
 
-    # respond_to do |format|
-    #   format.html { redirect_to new_event }
-    #   format.json { head :no_content }
-    # end
+    respond_to do |format|
+      format.html { redirect_to new_event }
+      format.js 
+    end
 
   end
 

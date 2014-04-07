@@ -1,0 +1,23 @@
+<table class="table table-hover search-results">
+	<thead id="table-head">
+		<tr>
+			<th>Event</th>
+			<th>Venue</th>
+			<th>Date</th>
+		</tr>
+	</thead>
+	<tbody>
+<% @results.each do |event| %>
+		<tr class="search-result">
+			<td class="event-list-name">
+				<%= event["name"] %>
+			</td>
+			<td class="event-list-venue">
+				<%= event["location"]["name"] %>
+			</td>
+			<td class="event-list-date">
+				<%= event["datetime_start"]  %>
+			</td>
+		</tr>
+	</tbody>
+<% end %>
