@@ -18,9 +18,9 @@
 		<tbody>
 			<% @events.each do |event| %>
 			<% if event.on_sale > Time.now %>
-				<tr>
+				<tr class="event-listing" data-url="<%= event_path(event) %>">
 					<td class="event-list-title">
-						<%= link_to event.what.titleize, event_path(event) %>
+						<%=  event.what.titleize %>
 					</td>
 					<td class="event-list-cost">
 						<%= number_to_currency(event.price) %>
@@ -35,6 +35,15 @@
 		<% end 	%>
 
 	</table>
+
+	<script>
+		$(document).ready(function(){
+			$('.event-listing').on('click', function(){
+				var path = $(this).data('url');
+				window.location.href = path;
+			});
+		});
+	</script>
 
 
 
