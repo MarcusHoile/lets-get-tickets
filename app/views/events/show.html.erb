@@ -100,7 +100,7 @@
                     <%= f.hidden_field :user_id, value: user.id  %>
                     <%= f.hidden_field :attending, value: "Not Going"  %>
                       <button type="submit" class="decline rsvp">
-                       X
+                       <i class="fa fa-times"></i>
                       </button>
                   <% end %>
                 </div>
@@ -110,7 +110,7 @@
                     <%= f.hidden_field :user_id, value: user.id  %>
                     <%= f.hidden_field :attending, value: "Going"  %>
                     <button type="submit" class="confirm rsvp">
-                      Y
+                      <i class="fa fa-check"></i>
                     </button>
                   <% end %>
                 </div>
