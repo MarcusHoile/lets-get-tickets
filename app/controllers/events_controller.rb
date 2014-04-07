@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy] 
+
 
   def index
     # it is the index of invites for the current user
@@ -28,7 +30,7 @@ class EventsController < ApplicationController
     # find the invite for the current user, for each event
     # there is only one invite per person per event
     # @invite isn used to display the rsvp buttons
-    @invite = @event.invites.where(user_id: current_user.id).first
+    # @invite = @event.invites.where(user_id: current_user.id).first
     @undecided = @event.invites.where(attending: "Undecided")
     @confirmed = @event.invites.where(attending: "Going")
     # gon.day = @event.on_sale.day

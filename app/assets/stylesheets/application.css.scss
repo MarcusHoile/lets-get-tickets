@@ -164,6 +164,10 @@ input {
 	font-size: 18px;
 }
 
+.event-detail-container {
+	display-inline:block;
+}
+
 .event-detail-label {
 	color: #FF773D;
 }
@@ -196,9 +200,27 @@ input {
 	margin: 15px 0;
 }
 .guest {
-	padding: 10px;
+	width: 100%;
 	border-bottom: none;
+}
 
+.guest-name {
+	display:inline-block;
+	width:60%;
+	padding: 10px 0;
+	margin-left: 10px;
+}
+
+.rsvp-container {
+	display:inline-block;
+	margin: 5px auto;
+	float:right;
+
+}
+.rsvp {
+	margin: 0 5px;
+	// padding: 5px;
+	min-width: 40px;
 }
 
 .col {
@@ -285,11 +307,9 @@ footer a:hover {
 	margin-left: 200px;
 }
 
-.rsvp {
+.rsvp-button, #edit_invite {
 	display:inline-block;
-	width: 100%;
-	margin:5px 0;
-	padding: 10px;
+	margin: 0 auto;
 }
 
 
@@ -375,7 +395,7 @@ ol {
 }
 
 button {
-	margin: 5px;
+	// margin: 5px;
 }
 
 .navbar-right {

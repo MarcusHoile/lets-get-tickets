@@ -17,8 +17,6 @@ function selectThisEvent(selection) {
 }
 
 function mapInit(lat, lng){
-	console.log(lat);
-	console.log(lng);
   var mapCanvas = document.getElementById("map-canvas");
   var latLng = new google.maps.LatLng(lat, lng);
   var mapOptions = {
