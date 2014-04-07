@@ -32,6 +32,7 @@ class EventsController < ApplicationController
     # @invite isn used to display the rsvp buttons
     # @invite = @event.invites.where(user_id: current_user.id).first
     @undecided = @event.invites.where(attending: "Undecided")
+    @declined = @event.invites.where(attending: "Not Going")
     @confirmed = @event.invites.where(attending: "Going")
     # gon.day = @event.on_sale.day
     # gon.hour = @event.on_sale.hour

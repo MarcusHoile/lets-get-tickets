@@ -169,6 +169,7 @@ input {
 
 .event-detail-label {
 	color: #FF773D;
+	font-size: 14px;
 }
 
 .confirm, .decline {
@@ -183,7 +184,11 @@ input {
 .decline {
 	background-color: rgba(235,21,35, 0.2);
 	border:solid 1px #EB1523;
+}
 
+.rsvp-edit {
+	background-color: rgba(238,238,238, 0.1);
+	border: none;
 }
 
 .decline:hover {

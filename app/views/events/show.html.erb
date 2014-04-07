@@ -83,37 +83,67 @@
         </div> <!-- confirmed -->
 
         <div class="undecided-list event-detail-container">
-          <p class="event-detail-label"><%= @undecided.count %> Undecided:</p>
-          <% @undecided.each do |invite| %>
-            <% user = User.find(invite.user_id) %>
-            <div class="guest">
-              <p class="guest-name"><%= user.name %></p>
-              <div class="rsvp-container">
+          <% if @undecided.count > 0 %>
+            <p class="event-detail-label"><%= @undecided.count %> Undecided:</p>
+            <% @undecided.each do |invite| %>
+              <% user = User.find(invite.user_id) %>
+              <div class="guest">
+                <p class="guest-name"><%= user.name %></p>
+                <div class="rsvp-container">
 
-                <div class="rsvp-button">
-                  <%= form_for(invite) do |f| %>
-                    <%= f.hidden_field :user_id, value: user.id  %>
-                    <%= f.hidden_field :attending, value: "Not Going"  %>
-                      <button type="submit" class="decline rsvp">
-                       <i class="fa fa-times"></i>
+                  <div class="rsvp-button">
+                    <%= form_for(invite) do |f| %>
+                      <%= f.hidden_field :user_id, value: user.id  %>
+                      <%= f.hidden_field :attending, value: "Not Going"  %>
+                        <button type="submit" class="decline rsvp">
+                         <i class="fa fa-times"></i>
+                        </button>
+                    <% end %>
+                  </div>
+
+                  <div class="rsvp-button">
+                    <%= form_for(invite) do |f| %>
+                      <%= f.hidden_field :user_id, value: user.id  %>
+                      <%= f.hidden_field :attending, value: "Going"  %>
+                      <button type="submit" class="confirm rsvp">
+                        <i class="fa fa-check"></i>
                       </button>
-                  <% end %>
-                </div>
+                    <% end %>
+                  </div>
 
-                <div class="rsvp-button">
-                  <%= form_for(invite) do |f| %>
-                    <%= f.hidden_field :user_id, value: user.id  %>
-                    <%= f.hidden_field :attending, value: "Going"  %>
-                    <button type="submit" class="confirm rsvp">
-                      <i class="fa fa-check"></i>
-                    </button>
-                  <% end %>
-                </div>
+                </div>              
+              </div>  
+            <% end %>   
+          <% end %>
+        </div> <!-- undecided-list div-->
 
-              </div>              
-            </div>  
-          <% end %>   
-        </div> <!-- undecided -->
+        <div class="declined-list event-detail-container">
+          <% if @declined.count > 0 %>
+            <p class="event-detail-label"><%= @declined.count %> Not Going:</p>
+            <% @declined.each do |invite| %>
+              <% user = User.find(invite.user_id) %>
+              <div class="guest">
+                <p class="guest-name"><%= user.name %></p>
+                <div class="rsvp-container">
+
+                  <div class="rsvp-button">
+                    <%= form_for(invite) do |f| %>
+                      <%= f.hidden_field :user_id, value: user.id  %>
+                      <%= f.hidden_field :attending, value: "Going"  %>
+                        <button type="submit" class="confirm rsvp rsvp-edit">
+                         <i class="fa fa-check"></i>
+                        </button>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end%>
+
+        </div>
+
+  
+
       </div> <!-- guest-list -->
     </div><!-- rsvp-details -->
   </div><!-- row -->
@@ -132,6 +162,8 @@
     $(".confirmed-list .guest").first().css({ borderTopLeftRadius: "5px", borderTopRightRadius: "5px"});
     $(".undecided-list .guest:last").css({borderBottom: "solid 1px #F54828", borderBottomLeftRadius: "5px", borderBottomRightRadius: "5px"});
     $(".undecided-list .guest").first().css({ borderTopLeftRadius: "5px", borderTopRightRadius: "5px"});
+    $(".declined-list .guest:last").css({borderBottom: "solid 1px #F54828", borderBottomLeftRadius: "5px", borderBottomRightRadius: "5px"});
+    $(".declined-list .guest").first().css({ borderTopLeftRadius: "5px", borderTopRightRadius: "5px"});
     mapInit(<%= @event.lat.to_f %>, <%= @event.lng.to_f %>);
     // mapInit(gon.lat, gon.lng);
 
