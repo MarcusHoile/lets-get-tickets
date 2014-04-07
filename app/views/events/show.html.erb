@@ -70,7 +70,7 @@
         <div class="confirmed-list">
           <p class="event-detail-label"> <%= pluralize(@confirmed.count + 1, "Ticket") %> Confirmed:</p>
           <div class="guest">
-            <p class="guest-name"><%= @owner.name %> - Event Host</p>
+            <p class="guest-name"><%= @owner.name %> - Buying the tickets</p>
           </div>
           
             <% @confirmed.each do |invite| %>
