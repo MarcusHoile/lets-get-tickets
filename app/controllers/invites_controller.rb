@@ -37,7 +37,7 @@ class InvitesController < ApplicationController
     @event = @invite.event
     respond_to do |format|
       if @invite.update(invite_params)
-        format.html { redirect_to @event, notice: 'Invite was successfully updated.' }
+        format.html { redirect_to @event }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
