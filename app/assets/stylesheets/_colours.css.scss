@@ -2,26 +2,32 @@
 
 $main-colour: #542437;
 $secondary-colour: #FF773D;
+$tertiary-colour: #F54828;
+$main-font-colour: #fff;
+$secondary-font-colour: $secondary-colour;
 $bg-highlight-1: #BD1550;
 $bg-highlight-2: #E97F02;
 $bg-highlight-3: #F8CA00;
+$decline: #e71523;
+$confirm: #00c176;
+$neutral: #eeeeee;
 
-//  buttons
+//  buttons 
 
-$btn-hover-bg: #F54828;
+$btn-hover-bg: $tertiary-colour;
 
-$btn-submit-update-bg: rgba(238,238,238, 0.1);
-$btn-submit-decline-bg: rgba(235,21,35, 0.2);
-$btn-submit-confirm-bg: rgba(0,193,118, 0.4);
-$btn-submit-decline-hover-bg: rgba(235,21,35, 1);
-$btn-submit-confirm-hover-bg: rgba(0,193,118, 1);
+$btn-submit-update-bg: rgba($neutral, 0.1);
+$btn-submit-decline-bg: rgba($decline, 0.2);
+$btn-submit-confirm-bg: rgba($confirm, 0.4);
+$btn-submit-decline-hover-bg: rgba($decline, 1);
+$btn-submit-confirm-hover-bg: rgba($confirm, 1);
 
 // fonts
 
 // links
 $main-link-colour: #fff;
 $main-link-hover-colour: #fff;
-$main-link-hover-bg: #F54828;
+$main-link-hover-bg: $tertiary-colour;
 
 // navbar
 $navbar-default-toggle-border-color: #FF773D;
@@ -34,4 +40,4 @@ $navbar-default-brand-hover-color: #1B676B;
 $navbar-inverse-bg: #000;
 
 // tables
-$table-bg-hover: #822339;
+$table-bg-hover: lighten($main-colour, 15%);

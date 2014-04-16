@@ -1,0 +1,16 @@
+a {
+	color: #fff;
+	text-decoration:none;
+	&:hover {
+		color: #fff;
+		text-decoration:none;
+	}
+}
+
+.dropdown-menu li a:hover {
+	background: #FF773D;
+}
+
+input {
+	color:#000;
+}

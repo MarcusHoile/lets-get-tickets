@@ -1,0 +1,10 @@
+tr {
+	height: 40px;
+}
+.table > tbody + tbody {
+	border-top: 0;
+}
+#table-head {
+	padding:0;
+	height:20px;
+}
