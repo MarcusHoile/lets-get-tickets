@@ -23,18 +23,11 @@
 
 
 
-$navbar-default-toggle-border-color: #FF773D;
-$navbar-default-link-color: #fff;
-$navbar-default-link-hover-bg: #F54828;
-$navbar-default-toggle-hover-bg: #fff;
-$navbar-default-toggle-icon-bar-bg: #FF773D;
-$navbar-default-link-hover-color: #fff;
-$navbar-default-brand-hover-color: #1B676B;
-$table-bg-hover: #822339;
-$navbar-inverse-bg: #000;
 
+@import 'colours';
 @import 'bootstrap';
-html, body {
+
+html, body, .landing {
 	height:100%;
 }
 .container-fluid {
@@ -65,7 +58,7 @@ a:hover {
 }
 
 #background1 {
-	background: #f;
+	background: #BD1550;
 	bottom:60px;
 	left:0;
 }
@@ -416,8 +409,6 @@ button {
 .spotlight {
 	font-size: 36px;
 }
-
-
 
 #landing {
 	background-size:100%;

@@ -11,7 +11,7 @@
     <div class="col-sm-6 controls">
       <% if @owner == current_user %>
         <%= link_to 'Edit', edit_event_path(@event), class: "button" %>
-        <%= link_to 'Invite more friends', edit_event_path(@event), class: "button" %>
+        <%= link_to 'Invite more friends', new_event_invite_path(@event), class: "button" %>
       <% end %>
     </div>
   </div>

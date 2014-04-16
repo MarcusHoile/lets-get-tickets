@@ -5,10 +5,10 @@
 	<div class="inner-container">
 	<% if @invites.present? %>
 		<%= render "events" %>
-	<% elsif current_user.friendships.empty? %>
-		<%= render "friend" %>
 	<% elsif @events.empty? %>
-		<%= render "add_event" %>
+		<script type="text/javascript">
+    	window.location.href="/events/new" 
+  	</script>
 	<% else %>
 		<%= render "events" %>
 	<% end %>

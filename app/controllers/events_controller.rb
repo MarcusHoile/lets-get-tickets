@@ -28,21 +28,11 @@ class EventsController < ApplicationController
     @guests = @event.invited_users
     @invites = @event.invites
     @date = @event.event_when
-    # find the invite for the current user, for each event
-    # there is only one invite per person per event
-    # @invite isn used to display the rsvp buttons
-    # @invite = @event.invites.where(user_id: current_user.id).first
     @undecided = @event.invites.where(attending: "Undecided")
     @declined = @event.invites.where(attending: "Not Going")
     @confirmed = @event.invites.where(attending: "Going")
-    # gon.day = @event.on_sale.day
-    # gon.hour = @event.on_sale.hour
-
     gon.lat = @event.lat
     gon.lng = @event.lng
-
-    # delete the invite id once rsvpd
-    
 
   end
 
@@ -51,7 +41,6 @@ class EventsController < ApplicationController
     
     @user = current_user
     @event = Event.new
-
   
   end
 
