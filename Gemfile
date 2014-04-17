@@ -35,6 +35,8 @@ gem 'devise'
 
 gem 'dotiw'
 
+gem 'omniauth-facebook'
+
 gem 'uri-handler'
 
 # enables passing ruby variables to javascript
