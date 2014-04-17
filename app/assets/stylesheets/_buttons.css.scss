@@ -1,8 +1,8 @@
 .button {
 	padding: 10px 20px;
-	border: solid 1px #FF773D;
+	border: solid 1px $secondary-colour;
 	&.button:hover {
-		background:#F54828;
+		background:$tertiary-colour;
 	}
 }
 
@@ -11,46 +11,46 @@
 }
 
 .confirm {
-	background-color: rgba(0,193,118, 0.4);
-	border: solid 1px #00C176;
+	background-color: $btn-submit-confirm-bg;
+	border: solid 1px $confirm;
 }
 
 .decline {
-	background-color: rgba(235,21,35, 0.2);
-	border:solid 1px #EB1523;
+	background-color: $btn-submit-decline-bg;
+	border:solid 1px $decline;
 }
 
 .rsvp-edit {
-	background-color: rgba(238,238,238, 0.1);
+	background-color: $btn-submit-update-bg;
 	border: none;
 }
 
 .decline:hover {
-	background-color: rgba(235,21,35, 1);
+	background-color: $btn-submit-decline-hover-bg;
 
 }
 
 .confirm:hover {
-	background-color: rgba(0,193,118, 1);
+	background-color: $btn-submit-confirm-hover-bg;
 }
 
 #started-button {
 	text-decoration:none;
 	margin:0;
-	color: #fff;
+	color: $main-font-colour;
 }
 
 .started {
 	width: 200px;	
 	display:block;
 	margin: 0 auto;
-	background: rgba(138,155,15, 1);
-	border: solid 1px green;
+	background: $btn-signup-bg;
+	border: solid 1px darken($btn-signup-bg, 15%);
 }
 
 .started:hover {
-	background: rgba(138,155,15, 0.7);
-	color:white;
+	background: lighten($btn-signup-bg, 5%);
+	color: $main-font-colour;
 }
 
 .rsvp-button, #edit_invite {

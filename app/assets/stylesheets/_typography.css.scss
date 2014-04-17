@@ -1,16 +1,16 @@
 a {
-	color: #fff;
+	color: $main-font-colour;
 	text-decoration:none;
 	&:hover {
-		color: #fff;
+		color: $main-font-colour;
 		text-decoration:none;
 	}
 }
 
 .dropdown-menu li a:hover {
-	background: #FF773D;
+	background: $secondary-colour;
 }
 
 input {
-	color:#000;
+	color:$inverse-font-colour;
 }

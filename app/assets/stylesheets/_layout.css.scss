@@ -16,7 +16,7 @@ html, body, .landing {
 }
 
 body {
-	background: #542437;
+	background: $main-colour;
 	color:white;
 }
 
@@ -27,14 +27,14 @@ body {
 	border-radius: 10px;
 	max-width: 900px;
 	margin: 25px auto;
-	border: solid 1px #FF773D;
+	border: solid 1px $secondary-colour;
 }
 
 .event-detail, .guest, .decline {
-	border: solid 1px #FF773D;
-	border-bottom: solid 1px #F54828;
-	border-left: solid 1px #E97F02;	
-	border-right: solid 1px #C02942;
+	border: solid 1px $secondary-colour;
+	border-bottom: solid 1px $tertiary-colour;
+	border-left: solid 1px lighten($secondary-colour, 10%);	
+	border-right: solid 1px darken($tertiary-colour, 20%);
 
 }
 .nav-container {
@@ -75,7 +75,7 @@ body {
 }
 
 .event-detail-label {
-	color: #FF773D;
+	color: $secondary-colour;
 	font-size: 14px;
 }
 
@@ -184,7 +184,7 @@ body {
 }
 
 .alert-error {
-	background: #F54828;
+	background: $tertiary-colour;
 }
 
 .event-list-date {
@@ -217,7 +217,7 @@ body {
 
 #steps {
 	font-size: 18px;
-	color: #FF773D;
+	color: $secondary-colour;
 	margin: 0 40px;
 	text-align:center;
 }
@@ -230,7 +230,7 @@ body {
 
 #landing-header {
 	font-family:'Rock Salt', cursive;
-	color:#FF773D;
+	color:$secondary-colour;
 	font-size:60px;
 	text-align:center;
 	margin-top: 40px;
@@ -247,7 +247,7 @@ body {
 }
 
 .step-item {
-	border: solid 1px #FF773D;
+	border: solid 1px $secondary-colour;
 	margin: 10px 20px;
 	border-radius: 20px;
 }
