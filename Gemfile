@@ -42,7 +42,11 @@ gem 'uri-handler'
 # enables passing ruby variables to javascript
 gem 'gon'
 
-gem 'pry'
+group :development, :test do
+  gem 'dotenv-rails'
+  gem 'rspec-rails'
+  gem 'pry-rails'
+end
 
 gem 'httparty'
 
