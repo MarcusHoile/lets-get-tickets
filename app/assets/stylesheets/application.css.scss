@@ -9,15 +9,21 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require scaffolds
  *= require font-awesome
- *= require_tree .
  */
-
-
 
 @import 'colours';
 @import 'bootstrap';
+@import 'buttons';
+@import 'layout';
+@import 'tables';
+@import 'typography';
+@import 'reset';
+@import 'navigation';
+
+
+
+
 
 
 

@@ -43,6 +43,23 @@ body {
 }
 
 
+#map-canvas { height: 100%; width: 100% }
+#map-container {
+	margin: 10px auto;
+	height: 150px;
+	width: 100%;
+	border: solid #000 1px;
+}
+
+.event-detail-container {
+	margin: 15px auto;
+}
+
+.host {
+	width: 100%;
+}
+
+
 
 
 
