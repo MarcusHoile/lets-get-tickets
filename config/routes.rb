@@ -5,10 +5,13 @@ GetTickets::Application.routes.draw do
   get '/terms' => "pages#terms"
   get '/search' => "events#search"
 
+  get 'auth/:provider/callback' => 'sessions#create'
+  get 'auth/failure' => redirect('/')
+  get 'signout' => 'sessions#destroy', as: 'signout'
+
 
   resources :friendships
 
-  devise_for :users
   resources :invites
 
   resources :events do
@@ -22,10 +25,6 @@ GetTickets::Application.routes.draw do
   end
 
   resources :pages
-
-  authenticated :user do
-  root :to => "events#index"
-  end
 
   get '/' => "pages#landing"
 
