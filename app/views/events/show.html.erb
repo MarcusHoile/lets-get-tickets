@@ -1,7 +1,6 @@
 <% content_for :head do %>
-  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOAgUCn6GQzKlnMwFmO2kBvG_S3JRD38&libraries=places&sensor=false" %>
-<% end %>
 
+<% end %>
   
 <div class="inner-container container-fluid">
   <div class="row">
@@ -11,7 +10,7 @@
     <div class="col-sm-6 controls">
       <% if @owner == current_user %>
         <%= link_to 'Edit', edit_event_path(@event), class: "button" %>
-        <%= link_to 'Invite more friends', new_event_invite_path(@event), class: "button" %>
+        <%= link_to 'Invite friends', '', class: "button", id: "invite" %>
       <% end %>
     </div>
   </div>
@@ -159,7 +158,7 @@
     </div><!-- rsvp-details -->
   </div><!-- row -->
 </div><!-- event-container -->
-
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOAgUCn6GQzKlnMwFmO2kBvG_S3JRD38&libraries=places&sensor=false" %>
 
 <script>
   $(document).ready(function() {
@@ -176,8 +175,15 @@
     $(".declined-list .guest:last").css({borderBottom: "solid 1px #F54828", borderBottomLeftRadius: "5px", borderBottomRightRadius: "5px"});
     $(".declined-list .guest").first().css({ borderTopLeftRadius: "5px", borderTopRightRadius: "5px"});
     mapInit(<%= @event.lat.to_f %>, <%= @event.lng.to_f %>);
-    // mapInit(gon.lat, gon.lng);
 
+    // fb invite
+    $('#invite').on('click', function(e){
+      e.preventDefault();
+      FB.ui({
+        method: 'send',
+        link: 'http://letsgettickets.herokuapp.com/events/1',
+      });
+    })
   });
 </script>
 
