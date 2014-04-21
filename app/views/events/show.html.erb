@@ -1,8 +1,9 @@
 <% content_for :head do %>
-  <title>Let's Get Tickets to <%= @event.what.titleize %></title>
   <meta name="description" content="I'm going to buy tickets for <%= @event.what.titleize %>. Let me know if you want to go.">
-
   <link rel="image_src" href="http://www.supanova.com.au/wp-content/uploads/2010/02/tickets.jpg" / >
+<% end %>
+<% content_for :title do %>
+  <title>Let's Get Tickets to <%= @event.what.titleize %></title>
 <% end %>
   
 <div class="inner-container container-fluid">
@@ -184,7 +185,7 @@
       e.preventDefault();
       FB.ui({
         method: 'send',
-        link: 'http://letsgettickets.herokuapp.com/events/2',
+        link: '<%= event_url(@event) %>',
       });
     })
   });
