@@ -1,5 +1,4 @@
-
-	<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default" role="navigation">
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
@@ -17,7 +16,7 @@
 
 	      <ul class="nav navbar-nav navbar-right">
 
-	          
+
 					<% if user_signed_in? %>
 						<li><%= link_to 'Create event', new_event_path %></li>
 		        <li><%= link_to "My Events", events_path %></li>
@@ -31,11 +30,12 @@
 						  <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
 					  </ul>
 					<% else %>
+						<li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
 					  <li><%= link_to "Sign up", new_user_registration_path, :class => 'btn', id: "sign-up"  %></li>
 					  <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
 					<% end %>
 
-	          
+
 	        </li>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->

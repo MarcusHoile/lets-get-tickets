@@ -6,33 +6,6 @@
 	}
 }
 
-.confirm, .decline {
-	border-radius: 5px;
-}
-
-.confirm {
-	background-color: $btn-submit-confirm-bg;
-	border: solid 1px $confirm;
-}
-
-.decline {
-	background-color: $btn-submit-decline-bg;
-	border:solid 1px $decline;
-}
-
-.rsvp-edit {
-	background-color: $btn-submit-update-bg;
-	border: none;
-}
-
-.decline:hover {
-	background-color: $btn-submit-decline-hover-bg;
-
-}
-
-.confirm:hover {
-	background-color: $btn-submit-confirm-hover-bg;
-}
 
 #started-button {
 	text-decoration:none;
@@ -58,5 +31,103 @@
 	margin: 0 auto;
 }
 
+
+.btn {
+	height: 40px;
+	border-radius: 10px;
+	margin: 0 auto;
+	text-align: center;
+	color: #fff;
+	cursor: pointer;
+	
+}
+.cash {
+	background: $green;
+	border-bottom: solid 3px darken($green, 15%);
+	&:hover {
+		background: lighten($green, 10%);
+		color: #fff;
+	}
+}
+.invite-btn {
+	background: darken($wetSand, 15%);
+	border-bottom: solid 3px darken($wetSand, 40%);
+	color: darken($wetSand, 50%);
+	&:hover {
+		background: darken($wetSand, 10%);
+		color: darken($wetSand, 50%);
+	}
+	&.confirm {
+		background: $green;
+		border-bottom: solid 3px darken($green, 15%);
+		color: #fff;
+	}
+}
+.bank {
+	background: $orange;
+	border-bottom: solid 3px darken($orange, 10%);
+
+	&:hover {
+		background: lighten($orange, 10%);
+		color: #fff;
+	}
+}
+
+.onoffswitch {
+	position: relative; width: 110px;
+	display: inline-block;
+	-webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+
+.onoffswitch-checkbox, #event_ticket {
+	display: none;
+}
+
+.onoffswitch-label {
+	display: block; overflow: hidden; cursor: pointer;
+	border: 2px solid #999999; border-radius: 20px;
+}
+
+.onoffswitch-inner {
+	display: block; width: 200%; margin-left: -100%;
+	-moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+	-o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+	display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+	font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+	content: "PAID";
+	padding-left: 10px;
+	background-color: $green; color: #FFFFFF;
+}
+
+.onoffswitch-inner:after {
+	content: "NOT PAID";
+	padding-right: 10px;
+	background-color: #EEEEEE; color: #999999;
+	text-align: right;
+}
+
+.onoffswitch-switch {
+	display: block; width: 18px; margin: 6px;
+	background: #FFFFFF;
+	border: 2px solid #999999; border-radius: 20px;
+	position: absolute; top: 0; bottom: 0; right: 74px;
+	-moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+	-o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+	margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+	right: 0px; 
+}
 
 

@@ -15,4 +15,11 @@
 /log/*.log
 /tmp
 
+.env
+/config/database.yml
+
+spec
+coverage
+public
+
 

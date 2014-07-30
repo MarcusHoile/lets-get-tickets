@@ -13,11 +13,11 @@
 				<th>Event</th>
 				<th>Cost</th>
 				<th>Date</th>
+				<th>Status</th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @events.each do |event| %>
-			<% if event.on_sale > Time.now %>
 				<tr class="event-listing" data-url="<%= event_path(event) %>">
 					<td class="event-list-title">
 						<%=  event.what.titleize %>
@@ -28,8 +28,9 @@
 					<td class="event-list-date">
 						<%= event.on_sale.strftime"%b %d %I:%M %P" %>
 					</td>
+					<td class="status <%= event.status %>"><%= event.status %></td>
+					
 				</tr>
-			<% end %>
 		</tbody>
 
 		<% end 	%>

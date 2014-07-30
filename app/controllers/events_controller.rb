@@ -1,39 +1,30 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :edit, :index, :create, :update, :destroy] 
+  before_action :check_status, only: [:show]
+
+
 
 
   def index
     # it is the index of invites for the current user
     # you can only see events that you host or have been invited to
     @user = current_user
-    @invites = Invite.where(user_id: @user.id)
-    events_hosting = Event.where(user_id: @user.id)
-    events_guest = @user.events
-    @events = []
-    events_hosting.each do |event|
-      @events << event
-    end
-    events_guest.each do |event|
-      @events << event
-    end
-    @events = @events.sort_by(&:on_sale)
-
+    @events = Event.where(owner: @user) + @user.event_invitations
+    @events.sort_by!(&:on_sale)
   end
 
   def show
-    # display event details
-    # event owner has different view, can edit and add friends
     @owner = @event.owner
-    @guests = @event.invited_users
-    @invites = @event.invites
+    @user = current_user
     @date = @event.event_when
-    @undecided = @event.invites.where(attending: "Undecided")
-    @declined = @event.invites.where(attending: "Not Going")
-    @confirmed = @event.invites.where(attending: "Going")
+    @undecided = @event.invites.where(rsvp: "Undecided")
+    @declined = @event.invites.where(rsvp: "Not Going")
+    @confirmed = @event.invites.where(rsvp: "Going")
     gon.lat = @event.lat
     gon.lng = @event.lng
+    @invite = @event.invites.find_by(user_id: @user)
 
+    render layout: "events"
   end
 
   # GET /events/new
@@ -55,7 +46,6 @@ class EventsController < ApplicationController
     # event_params[:when] = Chronic.parse(event_params[:when])
     @event = Event.new(event_params)
     @event.owner = current_user
-    @guests = @event.invited_users
 
     respond_to do |format|
       if @event.save
@@ -64,7 +54,7 @@ class EventsController < ApplicationController
         # @guests.each do |guest|
         #   UserMailer.invite_email(@owner, guest, @event).deliver
         # end
-        format.html { redirect_to new_event_invite_path(@event) }
+        format.html { redirect_to event_path(@event) }
         format.json { render action: 'show', status: :created, location: @event }
       else
         format.html { render action: 'new' }
@@ -75,6 +65,7 @@ class EventsController < ApplicationController
 
 
   def update
+
     respond_to do |format|
       if @event.update(event_params)
         # will need an update email notification here
@@ -110,6 +101,10 @@ class EventsController < ApplicationController
 
   end
 
+  def campaign_form
+    @event = Event.new
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -117,10 +112,15 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def check_status
+    if @event.on_sale <= DateTime.now
+      @event.update(status: "closed")
+    end
+  end
 
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:event_when_text, :what, :description, :on_sale_text, :price, :where, :lat, :lng)
+    params.require(:event).permit(:event_when_text, :what, :description, :on_sale_text, :price, :where, :lat, :lng, :ticket)
   end
 end

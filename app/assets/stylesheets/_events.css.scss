@@ -1,0 +1,111 @@
+.event-container {
+	max-width: 900px;
+	margin: 0 auto;
+	.col-md-4 {
+		padding:0;
+	}
+	.friends {
+		padding: 5px;
+	}
+}
+.step {
+	margin: 0 3%;
+	height: 300px;
+	border-radius: 30px;
+	border: solid 1px $wetSand;
+	border-bottom: solid 5px darken($wetSand, 15%);
+	margin: 5px;
+	vertical-align: top;
+	background: $sand;
+	padding: 10px;
+}
+.step-title {
+	&.step-3 {
+		font-size: 18px;
+	}
+	span {
+		display: inline-block;
+		background: darken($wetSand, 40%);
+		height: 30px;
+		text-align: center;
+		width: 30px;
+		color: $sand;
+		border-radius: 5px;
+		padding: 2px;
+	}
+}
+
+
+.settings {
+	padding: 5px 0;
+	font-size: 28px;
+	float: right;
+	position: relative;
+	ul {
+		padding: 0;
+		font-size: 16px;
+		background: $wetSand;
+		display:none;
+		position: absolute;
+		right: 20px;
+		width: 120px;
+		li {
+			height: 40px;
+			list-style: none;
+			display: block;
+			text-align: right;
+			border: solid 1px darken($wetSand, 15%);
+			&:last-child {
+				border-top: none;
+			}
+			&:hover {
+				background: $sand;
+			}
+			a {
+				display: block;
+				padding: 0 5px;
+				line-height: 40px;
+			}
+		}
+	}
+	&:hover, &:focus {
+		ul {
+			display:block;
+		}
+	}
+}
+.event-header {
+	padding: 5px;
+	h3, .settings {
+		display: inline-block;
+	}
+}
+.event-title {
+	img, h1 {
+		display: inline-block;
+	}
+	img {
+		vertical-align: top;
+	}
+}
+.payment {
+	margin: 10px;
+}
+.friend {
+	.name, .sticker{
+		display: inline-block;
+	}
+}
+.event-details {
+	display: inline-block;
+
+}
+.outcome {
+	display: none;
+}
+.undecided {
+	display: block;
+}
+.question {
+	font-size: 60px;
+}

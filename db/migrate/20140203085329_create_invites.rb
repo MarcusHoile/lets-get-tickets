@@ -1,7 +1,7 @@
 class CreateInvites < ActiveRecord::Migration
   def change
     create_table :invites do |t|
-      t.string :attending
+      t.string :rsvp, default: "Undecided"
       t.references :user, index: true
       t.references :event, index: true
 

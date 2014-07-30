@@ -1,11 +1,6 @@
 class Invite < ActiveRecord::Base
 
   belongs_to :event
-  belongs_to :user
+  belongs_to :guest, :class_name => "User", foreign_key: "user_id"
 
-  before_create :init
-
-  def init
-  	self.attending = "Undecided"
-  end
 end

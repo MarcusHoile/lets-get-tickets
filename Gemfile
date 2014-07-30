@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'foreman'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
@@ -35,12 +36,18 @@ gem 'devise'
 
 gem 'dotiw'
 
+gem 'omniauth-facebook'
+
 gem 'uri-handler'
 
 # enables passing ruby variables to javascript
 gem 'gon'
 
-gem 'pry'
+group :development, :test do
+  gem 'dotenv-rails'
+  gem 'rspec-rails'
+  gem 'pry-rails'
+end
 
 gem 'httparty'
 

@@ -1,0 +1,43 @@
+<div class="form">
+	<div role="form">
+		<%= form_for(@event, :class => "role col-md-12", ) do |f| %>
+		<% if @event.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+			<ul>
+				<% @event.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+  	
+  	<%= render 'pages/campaign_event' %>
+
+		<%= f.hidden_field :what, value: "Port Adelaide vs Sydney Swans" %>
+		<%= f.hidden_field :where, value: "Adelaide Oval" %>
+		<%= f.hidden_field :event_when_text, value:  "2014-08-18 10:00:00" %>
+
+
+		<div class="form-group">
+			<%= f.label :price, "How much are the tickets?" %>
+			<%= f.number_field :price, :class => "form-control"%>
+		</div>
+
+		<div class="field">
+			<%= f.label :on_sale_text, "When are you buying the tickets?" %>
+			<%= f.text_field :on_sale_text, class: "form-control", placeholder: "eg in 3 days, next friday 12pm" %>
+		</div>
+		
+
+		<div class="actions">
+			<%# display differnt copy for button when updating %>
+			<% button_text = (@event.new_record?) ? "Create Event" : "Update Event" %>
+			<button class="btn btn-primary"><%= button_text %></button>
+		</div>
+		<% end %>
+
+	</div>
+</div>
+

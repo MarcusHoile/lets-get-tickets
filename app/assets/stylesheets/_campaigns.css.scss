@@ -1,0 +1,37 @@
+.campaign {
+	.icons {
+		font-size: 60px;
+	}
+	.step-item {
+		text-align: center;
+
+	}
+}
+.campaign-event {
+	margin: 20px;
+	.teams {
+		text-align: center;
+		margin: 0 auto;
+		width: 300px;
+		p {
+			font-size: 24px;
+		}
+	}
+	.team, p {
+		display: inline-block;
+		vertical-align: middle;
+		p {
+			display: block;
+			font-size: 14px;
+			line-height: 14px;
+		}
+	}
+	.event-details {
+		width: 40%;
+		margin: 0 auto;
+		* {
+			text-align: center;
+			display: block;
+		}
+	}
+}

@@ -1,6 +1,6 @@
 class InvitesController < ApplicationController
   before_action :set_invite, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:edit, :update] 
+
 
 
   def index
@@ -38,7 +38,9 @@ class InvitesController < ApplicationController
     respond_to do |format|
       if @invite.update(invite_params)
         format.html { redirect_to @event }
-        format.json { head :no_content }
+        if invite_params.include?("rsvp")
+          format.js
+        end
       else
         format.html { render action: 'edit' }
         format.json { render json: @invite.errors, status: :unprocessable_entity }
@@ -63,6 +65,6 @@ class InvitesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def invite_params
-    params.require(:invite).permit(:attending, :event_id, :user_id)
+    params.require(:invite).permit(:rsvp, :event_id, :user_id, :payment)
   end
 end

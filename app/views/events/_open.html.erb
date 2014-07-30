@@ -1,0 +1,150 @@
+<% content_for :head do %>
+<meta name="description" content="I'm going to buy tickets for <%= @event.what.titleize %>. Let me know if you want to go.">
+<link rel="image_src" href="http://www.supanova.com.au/wp-content/uploads/2010/02/tickets.jpg" / >
+<% end %>
+<% content_for :title do %>
+<title>Let's Get Tickets to <%= @event.what.titleize %></title>
+<% end %>
+<div class="container">
+  <div class="event-container">
+    <div class="row">
+      <div class="col-md-12 event-header">
+        <h3>Let's get tickets to</h3>
+        <% if @owner == current_user %>
+        <div class="settings">
+          <i class="fa fa-cog settings">
+            <ul>
+              <li>
+                <%= link_to 'Edit', edit_event_path(@event) %>
+              </li>
+              <li>
+                <%= link_to 'Invite friends', '', id: "invite" %>
+              </li>  
+            </ul>
+          </i>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 event-title">
+        <%= image_tag 'http://lorempixel.com/200/100/' %>
+        <h1><%= @event.what.titleize %></h1>
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="step">
+          <h3 class="step-title"><span>1</span> The Details</h3>
+          <div class="row">
+            <div class="col-xs-8 event-details">
+              <p><i class="fa fa-clock-o"></i> <%= @event.event_when.strftime"%a %d %b %I:%M %P" %></p>
+              <p><i class="fa fa-map-marker"></i> <%= @event.where.titleize %></p>
+            </div>
+            <div class="col-xs-4">
+              <p class="cost"><%= number_to_currency(@event.price) %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <%= image_tag 'http://lorempixel.com/200/100/' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="step">
+          <h3 class="step-title"><span>2</span> RSVP</h3>
+          <% if @user != @owner %>
+          <div class="rsvp">
+            <p>Are you coming?</p>
+            <%= form_for @invite, remote: true do |f| %>
+            <%= f.hidden_field :rsvp, value: "Undecided" %>
+            <div class="btn neutral invite-btn going" value="going">I'm in</div>
+            <div class="btn neutral invite-btn not-going" value="not-going">I'm out</div>
+            <div class="btn neutral invite-btn maybe" value="maybe">Remind me later</div>
+            <% end %>
+          </div>
+          <% end %>
+          <div class="countdown">
+            <p>The clock is ticking...</p>
+            <div class="col">
+              <span class="ce-days"></span> <span class="ce-days-label"></span>
+            </div>
+            <div class="col">
+              <span class="ce-hours"></span> <span class="ce-hours-label"></span>
+            </div>
+            <div class="col">
+              <span class="ce-minutes"></span> <span class="ce-minutes-label"></span>
+            </div>
+            <div class="col">
+              <span class="ce-seconds"></span> <span class="ce-seconds-label"></span>
+            </div>
+          </div><!-- countdown -->
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="step">
+          <div class="undecided outcome">
+            <h3 class="step-title"><span>3</span></h3>
+            <div class="question">?</div>
+          </div>
+
+          <div class="going outcome">
+            <h3 class="step-title"><span>3</span> "Cedric" will buy the tickets</h3>
+            <div class="payment">
+              <p>How would you like to pay "Cedric"?</p>
+              <div class="btn cash">Cash</div>
+              <div class="btn bank">Bank Transfer</div>
+            </div>
+            <div class="friends">
+              <div class="sticker sticker-going" data-badge="/">
+                <img src="http://lorempixel.com/40/40" alt="">
+              </div>
+              <div class="sticker sticker-not-going" data-badge="/">
+                <img src="http://lorempixel.com/40/40" alt="">
+              </div>
+              <div class="sticker sticker-maybe" data-badge="/">
+                <img src="http://lorempixel.com/40/40" alt="">
+              </div>
+              <img src="http://lorempixel.com/40/40" alt="">
+              <img src="http://lorempixel.com/40/40" alt="">
+              <img src="http://lorempixel.com/40/40" alt="">
+              <img src="http://lorempixel.com/40/40" alt="">
+              <img src="http://lorempixel.com/40/40" alt="">
+            </div>
+          </div>
+
+          <div class="not-going outcome">
+            <h3 class="step-title"><span>3</span></h3>
+
+            <h3>Screw you</h3>
+          </div>
+          <div class="maybe outcome">
+            <h3 class="step-title"><span>3</span></h3>
+            
+            <h3>Well that's ok for now but you will need to make a decision soon. The clock is ticking!</h3>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+$(document).ready(function() {
+  $(".countdown").countEverest({
+    day: <%= @event.on_sale.day %>,
+    month: <%= @event.on_sale.month %>,
+    year: <%= @event.on_sale.year %>
+  });
+
+});
+</script>
+
+
+

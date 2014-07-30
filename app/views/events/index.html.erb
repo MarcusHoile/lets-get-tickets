@@ -1,15 +1,2 @@
 
-	<% # render view based on user's events and friends %>
-
-	<% # if user has invites display events, else prompt to add friends and create events %>
-	<div class="inner-container">
-	<% if @invites.present? %>
 		<%= render "events" %>
-	<% elsif @events.empty? %>
-		<script type="text/javascript">
-    	window.location.href="/events/new" 
-  	</script>
-	<% else %>
-		<%= render "events" %>
-	<% end %>
-</div>

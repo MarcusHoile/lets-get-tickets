@@ -36,3 +36,34 @@ function mapInit(lat, lng){
     position: latLng
   });
 }
+
+jQuery.fn.submitOnCheck = function() {
+  this.find('input[type=submit]').remove();
+  return this;
+}
+
+
+$(function() {
+  // payment tracking and ticket purhcase confirmation
+  $('.edit_invite').submitOnCheck();
+  $('.edit_event').submitOnCheck();
+  $('.onoffswitch-label').on('click', function(){
+    var checkBox = $(this).prev('input')
+    var val = checkBox.is(':checked');
+    checkBox.prop('checked', !val);
+    $(this).parent('form').submit();
+  });
+  $('.ticket-confirm').on('click', function(){
+    $(this).parent('form').submit();
+  })
+
+   // rsvp to events
+   $('.invite-btn').on('click', function(){
+     var rsvp = ($(this).attr('value'));
+     $('#invite_rsvp').val(rsvp);
+     $(this).parent('form').submit();
+     $(this).addClass('confirm');
+   })
+
+
+ });
