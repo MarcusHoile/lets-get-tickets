@@ -11,6 +11,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '866294993397299',
+          xfbml      : true,
+          version    : 'v2.0'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
 
   <%= render "layouts/header" %>
   
@@ -19,7 +36,7 @@
     <%= yield %>
 
   </div><!-- content -->
-  
+  <div id="fb-root"></div>
   <footer>
     <ul class="footer">
       <li><%= link_to 'About Us', '/about' %></li>

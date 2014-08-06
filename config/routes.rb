@@ -1,31 +1,33 @@
 GetTickets::Application.routes.draw do
 
-  get '/about' => "pages#aboutus"
-  get '/contact' => "pages#contactus"
-  get '/terms' => "pages#terms"
-  get '/search' => "events#search"
+
+  match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  match 'auth/failure', to: redirect('/'), via: [:get, :post]
+  match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
 
+  # devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  # get 'auth/facebook/callback' => 'auth#facebook'
+
+  resources :invites
   resources :friendships
 
-  devise_for :users
-  resources :invites
 
   resources :events do
     resources :invites, shallow: true
     resources :tickets, shallow: true
   end
-
-  resources :users do
-    resources :events, shallow: true
-    resources :tickets, shallow: true
-  end
+  get '/about' => "pages#aboutus"
+  get '/contact' => "pages#contactus"
+  get '/terms' => "pages#terms"
+  get '/search' => "events#search"
+  # resources :users do
+  #   resources :events, shallow: true
+  #   resources :tickets, shallow: true
+  # end
 
   resources :pages
 
-  authenticated :user do
-  root :to => "events#index"
-  end
 
   get '/' => "pages#landing"
 

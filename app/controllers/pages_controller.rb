@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-	skip_before_action :authenticate_user! 
 
 	# all the static pages are here
   def aboutus
