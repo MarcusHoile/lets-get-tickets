@@ -28,7 +28,7 @@ wdi3_emails.each do |email|
     name: first_part,
     password: 'changeme',
     password_confirmation: 'changeme'
-  )
+  )   
 end
 event1 = Event.create(what: "Architecture In Helsinki", event_when:  "Mon, 31 Jul 2014 21:46:06", where: "Enmore Theatre", user_id: 1, on_sale:  "Mon, 27 Jul 2014 20:46:06", price: 46)
 

@@ -2,6 +2,10 @@
 	min-height: 100%;
 	margin-bottom: -110px;
 }
+.container-fluid {
+	max-width: 960px;
+	margin: 0 auto;
+}
 .container:after {
   content: "";
   display: block;

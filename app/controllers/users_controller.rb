@@ -36,13 +36,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    
     respond_to do |format|
       if @user.save
         # welcome email is triggered at this point
         # UserMailer.welcome_email(@user).deliver
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
+        format.js
       else
         format.html { render action: 'new' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -51,8 +51,14 @@ class UsersController < ApplicationController
   end
 
   def update
+    
+
     respond_to do |format|
-      if @user.update(user_params)
+      if @cached_guest_user.update(user_params)
+        # @event = Event.find(params[:user][:event_id])
+        # @invite = Invite.new
+        format.js
+      elsif @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
@@ -78,6 +84,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :oauth_token, :provider, :uid, :oauth_expires_at)
+      params.require(:user).permit(:name, :email, :oauth_token, :provider, :uid, :oauth_expires_at, :image, :guest_user)
     end
 end

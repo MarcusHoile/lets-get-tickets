@@ -4,6 +4,7 @@
 	display: inline-block;
 	color: #000;
 	text-align:center;
+	width: 40px; height: 40px;
 }
 .sticker-going[data-badge]:after {
 	content:attr(data-badge);

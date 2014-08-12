@@ -57,13 +57,7 @@ $(function() {
     $(this).parent('form').submit();
   })
 
-   // rsvp to events
-   $('.invite-btn').on('click', function(){
-     var rsvp = ($(this).attr('value'));
-     $('#invite_rsvp').val(rsvp);
-     $(this).parent('form').submit();
-     $(this).addClass('confirm');
-   })
+  
 
+});
 
- });

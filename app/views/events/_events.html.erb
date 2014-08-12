@@ -17,23 +17,25 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @events.each do |event| %>
-				<tr class="event-listing" data-url="<%= event_path(event) %>">
-					<td class="event-list-title">
-						<%=  event.what.titleize %>
-					</td>
-					<td class="event-list-cost">
-						<%= number_to_currency(event.price) %>
-					</td>
-					<td class="event-list-date">
-						<%= event.on_sale.strftime"%b %d %I:%M %P" %>
-					</td>
-					<td class="status <%= event.status %>"><%= event.status %></td>
-					
-				</tr>
+			<% if !@events.nil? %>
+				<% @events.each do |event| %>
+					<tr class="event-listing" data-url="<%= event_path(event) %>">
+						<td class="event-list-title">
+							<%=  event.what.titleize %>
+						</td>
+						<td class="event-list-cost">
+							<%= number_to_currency(event.price) %>
+						</td>
+						<td class="event-list-date">
+							<%= event.on_sale.strftime"%b %d %I:%M %P" %>
+						</td>
+						<td class="status <%= event.status %>"><%= event.status %></td>
+						
+					</tr>
+				<% end 	%>
+			<% end 	%>
 		</tbody>
 
-		<% end 	%>
 
 	</table>
 

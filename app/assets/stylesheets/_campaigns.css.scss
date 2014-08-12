@@ -9,6 +9,8 @@
 }
 .campaign-event {
 	margin: 20px;
+}
+.event-details {
 	.teams {
 		text-align: center;
 		margin: 0 auto;
@@ -26,12 +28,13 @@
 			line-height: 14px;
 		}
 	}
-	.event-details {
-		width: 40%;
-		margin: 0 auto;
-		* {
-			text-align: center;
-			display: block;
-		}
+}
+
+.steps {
+	.step-item {
+		text-align: center;
+	}
+	.icons {
+		font-size: 60px;
 	}
 }

@@ -1,0 +1,8 @@
+<% if !current_user %>
+<h1>You need to be logged in to view this page</h1>
+<%= link_to "Log in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-primary" %>
+<% else %>
+	<h1>Welcome <%= @current_user.name %></h1>
+	<p>You are now logged in.</p>
+
+<% end %>

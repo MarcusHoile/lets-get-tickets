@@ -4,13 +4,18 @@ GetTickets::Application.routes.draw do
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
+  get '/login', to: 'pages#login', as: 'login'
 
 
   # devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
-  # get 'auth/facebook/callback' => 'auth#facebook'
 
   resources :invites
   resources :friendships
+  resources :users do
+    resources :invites, shallow: true
+  end
+
+
 
 
   resources :events do
@@ -28,8 +33,9 @@ GetTickets::Application.routes.draw do
 
   resources :pages
 
-
   get '/' => "pages#landing"
+  get '/campaign' => "pages#campaign"
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

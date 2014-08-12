@@ -37,7 +37,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'dotiw'
 gem 'omniauth'
 gem 'omniauth-facebook'
-
+gem 'zeroclipboard-rails'
 gem 'uri-handler'
 
 # enables passing ruby variables to javascript

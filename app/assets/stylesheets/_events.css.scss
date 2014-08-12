@@ -96,10 +96,6 @@
 		display: inline-block;
 	}
 }
-.event-details {
-	display: inline-block;
-
-}
 .outcome {
 	display: none;
 }
@@ -108,4 +104,17 @@
 }
 .question {
 	font-size: 60px;
+}
+.rsvp-login {
+	display: none;
+}
+.avatar {
+	height: 40px;
+	width: 40px;
+}
+.guest-avatar {
+	font-size: 30px;
+	padding: 5px;
+	vertical-align: middle;
+	background: darken($wetSand, 15%);
 }

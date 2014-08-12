@@ -22,19 +22,24 @@ class InvitesController < ApplicationController
   end
 
   def create
-    @event = Event.find(params[:event_id])
-    # the invitee ids is an array, need to iterate to get each user id
-    params[:invitee_ids].each do |user_id|
-      @invite = Invite.create(event_id: @event.id, user_id: user_id.to_i)
-      @guest = @invite.user
-      # UserMailer.invite_email(current_user, @guest, @event).deliver
+    @user = User.find(params[:user_id])
+    @event = Event.find(params[:invite][:event_id])
+    @invite = @user.invites.new(invite_params)
+    respond_to do |format|
+      if @invite.save
+        format.json { render action: 'show', status: :created, location: @event }
+        format.js
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
     end
-    redirect_to @event
   end
 
   def update
     # invite updates are not in the user flow.
-    @event = @invite.event
+    @event = Event.find(params[:invite][:event_id])
+
     respond_to do |format|
       if @invite.update(invite_params)
         format.html { redirect_to @event }
@@ -65,6 +70,6 @@ class InvitesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def invite_params
-    params.require(:invite).permit(:rsvp, :event_id, :user_id, :payment)
+    params.require(:invite).permit(:rsvp, :event_id, :payment, :user_id, :reason)
   end
 end

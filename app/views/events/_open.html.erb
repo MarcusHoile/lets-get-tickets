@@ -10,7 +10,7 @@
     <div class="row">
       <div class="col-md-12 event-header">
         <h3>Let's get tickets to</h3>
-        <% if @owner == current_user %>
+        <% if @owner == @user %>
         <div class="settings">
           <i class="fa fa-cog settings">
             <ul>
@@ -59,12 +59,33 @@
           <% if @user != @owner %>
           <div class="rsvp">
             <p>Are you coming?</p>
-            <%= form_for @invite, remote: true do |f| %>
+            <%= form_for(shallow_args(@user,@invite), remote: true) do |f| %>
             <%= f.hidden_field :rsvp, value: "Undecided" %>
-            <div class="btn neutral invite-btn going" value="going">I'm in</div>
-            <div class="btn neutral invite-btn not-going" value="not-going">I'm out</div>
-            <div class="btn neutral invite-btn maybe" value="maybe">Remind me later</div>
+            <%= f.hidden_field :event_id, value: @event.id %>
+            <div class="btn neutral rsvp-btn going" value="going">I'm in</div>
+            <div class="btn neutral rsvp-btn not-going" value="not-going">I'm out</div>
+            <div class="btn neutral rsvp-btn maybe" value="maybe" >Remind me later</div>
             <% end %>
+            <div class="rsvp-login">
+              <p class="alert notice">To rsvp will login via facebook or enter your name.</p>
+              <%= link_to "Log in with Facebook", "/auth/facebook?origin=%2Fevents", id: "sign_in" %>
+              <p>or</p>
+              <div class="form">
+                <div role="form">
+                  <%= form_for @cached_guest_user, remote: true do |f| %>
+                  <div class="field">
+                    <%= f.label :name %><br>
+                    <%= f.text_field :name %>
+                    <%= f.hidden_field :event_id, value: @event.id%>
+                  </div>
+                  <div class="actions">
+                    <%= f.submit %>
+                  </div>
+                  <% end %>
+                </div>
+              </div>
+
+            </div>
           </div>
           <% end %>
           <div class="countdown">
@@ -86,45 +107,31 @@
       </div>
       <div class="col-md-4">
         <div class="step">
-          <div class="undecided outcome">
-            <h3 class="step-title"><span>3</span></h3>
-            <div class="question">?</div>
-          </div>
-
-          <div class="going outcome">
-            <h3 class="step-title"><span>3</span> "Cedric" will buy the tickets</h3>
-            <div class="payment">
-              <p>How would you like to pay "Cedric"?</p>
-              <div class="btn cash">Cash</div>
-              <div class="btn bank">Bank Transfer</div>
+          <% if @owner != @user %>
+            <%= render 'rsvp' %>
+          <% else %>
+            <% if @event.guests.empty? %>
+              <p>Message your friends directly or share on facebook</p>
+              <button class="btn btn-primary invite-btn" data-clipboard-text="<%= event_url(@event) %>"id="invite-btn">Copy link to clipboard</button>
+              <button class="btn btn-primary share-btn">Share on facebook</button>
+            <% end %>
+          <% end %>
+          <div class="friends">
+            <p>Guest list:</p>
+            <div class="sticker sticker-going" data-badge="/">
+              <%= image_tag @owner.image, class: 'avatar' %>
             </div>
-            <div class="friends">
-              <div class="sticker sticker-going" data-badge="/">
-                <img src="http://lorempixel.com/40/40" alt="">
-              </div>
-              <div class="sticker sticker-not-going" data-badge="/">
-                <img src="http://lorempixel.com/40/40" alt="">
-              </div>
-              <div class="sticker sticker-maybe" data-badge="/">
-                <img src="http://lorempixel.com/40/40" alt="">
-              </div>
-              <img src="http://lorempixel.com/40/40" alt="">
-              <img src="http://lorempixel.com/40/40" alt="">
-              <img src="http://lorempixel.com/40/40" alt="">
-              <img src="http://lorempixel.com/40/40" alt="">
-              <img src="http://lorempixel.com/40/40" alt="">
-            </div>
-          </div>
+              <% @event.invites.each do |invite| %>
+                <div class="sticker sticker-<%= invite.rsvp %>" id="<%= invite.id %>" data-badge="/">
+                  <% if invite.guest.image %>
+                    <%= image_tag invite.guest.image, class: 'avatar' %>
+                  <% else %>
+                    <%= icon('user', '', class: 'avatar guest-avatar') %>
+                  <% end %>
+                </div>
+              <% end %>
 
-          <div class="not-going outcome">
-            <h3 class="step-title"><span>3</span></h3>
 
-            <h3>Screw you</h3>
-          </div>
-          <div class="maybe outcome">
-            <h3 class="step-title"><span>3</span></h3>
-            
-            <h3>Well that's ok for now but you will need to make a decision soon. The clock is ticking!</h3>
           </div>
 
         </div>
@@ -143,8 +150,38 @@ $(document).ready(function() {
     year: <%= @event.on_sale.year %>
   });
 
+  var clip = new ZeroClipboard($('#invite-btn'));
+  $('.' + gon.rsvp).addClass('confirm');
+
+  
+  $('.share-btn').on('click', function(){
+    FB.ui({
+      method: 'share',
+      href: '<%= event_url(@event) %>',
+    }, function(response){});
+  });
 });
 </script>
-
+<% if @current_user || @cached_guest_user.name.present? %>
+  <script>
+    $(document).ready(function() {
+      // rsvp to events
+      $('.rsvp-btn').on('click', function(){
+        var rsvp = ($(this).attr('value'));
+        $('#invite_rsvp').val(rsvp);
+        $(this).parent('form').submit();
+        $(this).addClass('confirm');
+      });
+    });
+  </script>
+<% else %>
+  <script>
+    $(document).ready(function() {
+      $('.rsvp-btn').on('click', function(){
+        $('.rsvp-login').css('display', 'block');
+      });
+    });
+  </script>
+<% end %>
 
 

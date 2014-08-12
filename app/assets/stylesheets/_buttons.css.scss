@@ -26,7 +26,7 @@
 	color: $main-font-colour;
 }
 
-.rsvp-button, #edit_invite {
+#edit_invite {
 	display:inline-block;
 	margin: 0 auto;
 }
@@ -49,7 +49,7 @@
 		color: #fff;
 	}
 }
-.invite-btn {
+.rsvp-btn {
 	background: darken($wetSand, 15%);
 	border-bottom: solid 3px darken($wetSand, 40%);
 	color: darken($wetSand, 50%);

@@ -13,8 +13,8 @@
 
 		<h4>Your Contacts:</h4>
 		<% # only display list of friends if any exist 	%>
-		<% if !current_user.friendships.empty? %>
-			<% current_user.friendships.each do |friendship| %>
+		<% if !@current_user.friendships.empty? %>
+			<% @current_user.friendships.each do |friendship| %>
 				<p><%= friendship.friend.name %> <%= link_to "remove", friendship, :method => :delete %></p>
 			<% end %>
 		<% end %>

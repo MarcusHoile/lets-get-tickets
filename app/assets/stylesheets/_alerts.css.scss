@@ -6,7 +6,8 @@
 }
 
 .alert-notice {
-	background: #8A9B0F;
+	border: solid 1px #8A9B0F;
+	color: #8A9B0F;
 	.btn, p {
 		display: inline-block;
 	}
