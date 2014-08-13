@@ -10,9 +10,8 @@
 # guest3 = User.create(name: "Tom Arnold", email: "marcushoile3@gmail.com")
 # guest4 = User.create(name: "Sam Olle", email: "marcushoile4@gmail.com")
 
-# event1 = Event.create(what: "Architecture In Helsinki", where: "Enmore Theatre", user_id: 1)
 
-wdi3_emails = %w(alberto.forn@gmail.com fede.tagliabue@gmail.com marcus.hoile@gmail.com lukru489@gmail.com peters.sammyjo@gmail.com emacca@me.com stalin.pranava@gmail.com eduard.fastovski@gmail.com ltfschoen@gmail.com cptnmrgn10@gmail.com lukemesiti@gmail.com)
+wdi3_emails = %w(marcus.hole@gmail.com fede.tagliabue@gmail.com lukru489@gmail.com peters.sammyjo@gmail.com emacca@me.com stalin.pranava@gmail.com eduard.fastovski@gmail.com ltfschoen@gmail.com cptnmrgn10@gmail.com lukemesiti@gmail.com)
 
 wdi3_emails.each do |email|
   first_part = email[/[^@]+/]
@@ -29,5 +28,11 @@ wdi3_emails.each do |email|
     name: first_part,
     password: 'changeme',
     password_confirmation: 'changeme'
-  )
+  )   
+end
+event1 = Event.create(what: "Architecture In Helsinki", event_when:  "Mon, 31 Jul 2014 21:46:06", where: "Enmore Theatre", user_id: 1, on_sale:  "Mon, 27 Jul 2014 20:46:06", price: 46)
+
+
+User.where("id > ?", 1).each do |u|
+  event1.invites.create(user_id: u.id, rsvp: "Going");
 end

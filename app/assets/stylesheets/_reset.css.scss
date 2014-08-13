@@ -1,4 +1,13 @@
-p {
+h1, h2, h3, h4, h5, div, table, td, th, tr, tbody, thead, p {
 	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: $cream;
+}
+
+html, body {
+	height: 100%;
 }
 

@@ -1,0 +1,4 @@
+$('.rsvp-btn').removeClass('confirm');
+$('.rsvp-btn.<%= @invite.rsvp %>').addClass('confirm');
+$('.outcome').css('display', 'none');
+$('.outcome.<%= @invite.rsvp %>').css('display', 'block');

@@ -11,24 +11,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
   <%= render "layouts/header" %>
   
-
-  <div class="row alerts">
+ <div class="row alerts">
     <div class="col-md-12">
       <% flash.each do |key, value| %>
         <%= content_tag :div, value, :class => "alert alert-#{key}" unless value.blank? %>
       <% end %>
     </div>
   </div>
+
   
   <div class="container">
 
     <%= yield %>
 
   </div><!-- content -->
-  
+  <div id="fb-root"></div>
   <footer>
     <ul class="footer">
       <li><%= link_to 'About Us', '/about' %></li>

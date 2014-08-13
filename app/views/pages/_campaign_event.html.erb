@@ -1,0 +1,40 @@
+  <div class="campaign-event">
+    
+    <%= render 'events/event_details' %>
+
+      <% if current_user %>
+        <div class="form">
+          <div role="form">
+            <%= form_for(@event, :class => "role col-md-12", ) do |f| %>
+                <%= f.hidden_field :what, value: @what %>
+                <%= f.hidden_field :where, value: @where %>
+                <%= f.hidden_field :event_when_text, value: @when  %>
+
+              <div class="input-group">
+                <%= f.label :price, "How much are the tickets?" %>
+                  <span class="input-group-addon">$</span>
+                <%= f.number_field :price, :class => "form-control"%>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :on_sale_text, "When are you buying the tickets?" %>
+                <%= f.text_field :on_sale_text, class: "form-control", placeholder: "eg in 3 days, next friday 12pm" %>
+              </div>
+
+              <div class="actions">
+                <% button_text = (@event.new_record?) ? "Create Event" : "Update Event" %>
+                <button class="btn btn-primary"><%= button_text %></button>
+              </div>
+
+            <% end %>
+          </div>
+        </div>
+
+      <% else %>
+        <p>To create an event you will need to log in.</p>
+        <%= link_to "/auth/facebook?origin=%2Fcampaign", id: "sign_in" do %>
+          <div class="btn btn-primary">Log in with facebook</div>
+        <% end %>
+      <% end %>
+  </div>
+

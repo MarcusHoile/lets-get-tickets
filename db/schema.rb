@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140419022328) do
+
+ActiveRecord::Schema.define(version: 20140811113602) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +30,8 @@ ActiveRecord::Schema.define(version: 20140419022328) do
     t.datetime "updated_at"
     t.decimal  "lat"
     t.decimal  "lng"
+    t.string   "status",      default: "open"
+    t.boolean  "ticket",      default: false
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
@@ -40,11 +44,13 @@ ActiveRecord::Schema.define(version: 20140419022328) do
   end
 
   create_table "invites", force: true do |t|
-    t.string   "attending"
+    t.string   "rsvp",       default: "Undecided"
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "payment",    default: false
+    t.string   "reason"
   end
 
   add_index "invites", ["event_id"], name: "index_invites_on_event_id", using: :btree
@@ -54,10 +60,13 @@ ActiveRecord::Schema.define(version: 20140419022328) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
+    t.string   "email"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
+    t.boolean  "guest_user"
   end
 
 end

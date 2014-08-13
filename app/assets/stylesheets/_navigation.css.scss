@@ -1,12 +1,27 @@
+.container {
+	min-height: 100%;
+	margin-bottom: -110px;
+}
+.container-fluid {
+	max-width: 960px;
+	margin: 0 auto;
+}
+.container:after {
+  content: "";
+  display: block;
+}
+.site-footer, .container:after {
+  height: 60px; 
+}
 .navbar, footer {
-	background: $main-colour;
+	background: $feature-colour;
 }
 
 .navbar {
 	margin: 0;
 	text-align:center;
 	border:none;
-	border-bottom: solid 1px $secondary-colour;
+	border-radius: 0;
 }
 
 .nav {
@@ -14,6 +29,10 @@
 	height: 40px;
 	padding: 5px 0 0 0;
 
+}
+.nav-container {
+	max-width: 800px;
+	margin:0 auto;
 }
 
 
@@ -25,7 +44,7 @@
 .nav a {
 	padding:10px 20px;
 	margin: 10px auto;
-	color:$main-font-colour;
+	color: #fff;
 }
 .navbar-right > li > a {
 	margin:0;	
@@ -34,16 +53,14 @@
 .navbar-right {
 	padding-top:0;
 }
+.dropdown-menu {
+	background:#822339 ;
+}
 
 footer {
-	position:relative;
   height: 60px;
   width: 100%;
   text-align:center;
-	bottom:0px;
-  left:0px;
-  margin-bottom:0px;
-
 }
 
 footer ul {

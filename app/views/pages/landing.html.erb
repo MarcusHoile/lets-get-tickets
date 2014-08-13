@@ -1,6 +1,7 @@
 <% content_for :title do %>
   <title>Let's Get Tickets</title>
 <% end %>
+<<<<<<< HEAD
 <div class="row">
   <div class="col-md-12">
    <h1 id="landing-header">Let's Get Tickets!</h1>
@@ -9,13 +10,26 @@
     </p>
     <%= link_to "Sign in with facebook", "/auth/facebook", id: "sign_in", class: "btn started" %>
   </div>
-</div>
+=======
+
 <div class="row">
-  <div class="col-md-12 landing-box">
-      <div class="row" id="steps">
-        <div class="step-item col-md-3"><%= icon('calendar', '', class: 'icons') %><p class="step-copy">Set the date when you will buy the tickets</p></div>
-        <div class="step-item col-md-3"><%= icon('envelope', '', class: 'icons') %><p class="step-copy">Invite your friends</p></div>
-        <div class="step-item col-md-3"><%= icon('ticket', '', class: 'icons') %><p class="step-copy">Buy tickets for your RSVPs!</p></div>
-      </div> 
-  </div>
+  <div class="col-md-12">
+   <h1 id="landing-header">Let's Get Tickets!</h1>
+   <p id="tagline">
+    The easiest way to organise group tickets
+  </p>
+>>>>>>> facebook
 </div>
+
+<div class="row steps" id="steps">
+  <div class="step-item col-sm-4"><%= icon('calendar', '', class: 'icons') %><p class="step-copy">Set the date when you will buy the tickets</p></div>
+  <div class="step-item col-sm-4"><%= icon('envelope', '', class: 'icons') %><p class="step-copy">Invite your friends</p></div>
+  <div class="step-item col-sm-4"><%= icon('ticket', '', class: 'icons') %><p class="step-copy">Buy tickets for your RSVPs!</p></div>
+</div> 
+
+<div class="cta">
+
+</div>
+
+
+

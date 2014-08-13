@@ -1,0 +1,26 @@
+.countdown {
+	text-align:center;
+	padding: 5px;
+	margin-bottom: 10px;
+
+	
+}
+.col {
+	display: inline-block;
+	padding: 0 5px;
+	background: $wetSand;
+	color: darken($wetSand, 40%);
+	border: solid 1px darken($wetSand, 40%);
+	min-width: 58px
+}
+.ce-seconds, .ce-minutes, .ce-hours, .ce-days {
+	display:block;
+}
+
+.ce-seconds-digit, .ce-minutes-digit, .ce-hours-digit, .ce-days-digit  {
+	font-size: 18px;
+}
+
+.ce-seconds-label, .ce-minutes-label, .ce-hours-label, .ce-days-label {
+	font-size: 11px;
+}
