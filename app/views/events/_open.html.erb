@@ -72,7 +72,7 @@
               <p>or</p>
               <div class="form">
                 <div role="form">
-                  <%= form_for @cached_guest_user, remote: true do |f| %>
+                  <%= form_for @user, remote: true do |f| %>
                   <div class="field">
                     <%= f.label :name %><br>
                     <%= f.text_field :name %>
