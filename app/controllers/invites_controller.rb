@@ -28,7 +28,6 @@ class InvitesController < ApplicationController
     respond_to do |format|
       if @invite.save
         format.json { render action: 'show', status: :created, location: @event }
-        format.js
       else
         format.html { render action: 'new' }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -42,6 +41,13 @@ class InvitesController < ApplicationController
 
     respond_to do |format|
       if @invite.update(invite_params)
+        if @invite.rsvp == 'going'
+          @badge = '✓'
+        elsif @invite.rsvp == 'not-going'
+          @badge = 'x'
+        elsif @invite.rsvp == 'maybe'
+          @badge = '?'
+        end
         format.html { redirect_to @event }
         if invite_params.include?("rsvp")
           format.js
