@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   # before_filter :authenticate_user
   # before_filter :current_user
-  # before_filter :current_or_guest_user
+  before_filter :current_or_guest_user
   
 
 
