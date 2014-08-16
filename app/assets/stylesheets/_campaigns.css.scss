@@ -6,35 +6,37 @@
 		text-align: center;
 
 	}
-}
-.campaign-event {
-	margin: 20px;
-}
-.event-details {
-	.teams {
-		text-align: center;
-		margin: 0 auto;
-		width: 300px;
-		p {
-			font-size: 24px;
-		}
-	}
-	.team, p {
-		display: inline-block;
-		vertical-align: middle;
-		p {
-			display: block;
-			font-size: 14px;
-			line-height: 14px;
-		}
-	}
-}
 
-.steps {
-	.step-item {
-		text-align: center;
+	.campaign-event {
+		margin: 20px;
 	}
-	.icons {
-		font-size: 60px;
+	.event-details {
+		.teams {
+			text-align: center;
+			margin: 0 auto;
+			p {
+				font-size: 24px;
+			}
+		}
+		.team {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.inline {
+			display: inline-block;
+		}
+		.details {
+			max-width: 200px;
+			margin: 0 auto;
+		}
+	}
+
+	.steps {
+		.step-item {
+			text-align: center;
+		}
+		.icons {
+			font-size: 60px;
+		}
 	}
 }
