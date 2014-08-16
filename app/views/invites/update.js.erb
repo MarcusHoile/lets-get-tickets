@@ -1,11 +1,19 @@
-console.log("i started")
 $('.rsvp-btn').removeClass('confirm');
 $('.rsvp-btn.<%= @invite.rsvp %>').addClass('confirm');
 $('.outcome').css('display', 'none');
 $('.outcome.<%= @invite.rsvp %>').css('display', 'block');
-var $inviteRsvp = $('#invite-<%= @invite.id %>');
-console.log("im half way")
-$inviteRsvp.removeClass('sticker-maybe sticker-going sticker-not-going').addClass('sticker-<%= @invite.rsvp %>');
-$inviteRsvp.attr('data-badge', '<%= @badge %>');
-console.log("i finished")
+<% if @add_avatar %>
+	<% if @invite.guest.image %>
+		$('.friends').append('<div class="sticker sticker-<%= @invite.rsvp %>" id="invite-<%= @invite.id %>" data-badge="✓"><%= image_tag @invite.guest.image, class: "avatar" %></div>'
+	<% else %>
+		$('.friends').append('<div class="sticker sticker-<%= @invite.rsvp %>" id="invite-<%= @invite.id %>" data-badge="✓"><%= icon("user", "", class: "avatar guest-avatar") %></div>')
+	<% end %>
+<% else %>
+	var $inviteRsvp = $('#invite-<%= @invite.id %>');
+	$inviteRsvp.removeClass('sticker-maybe sticker-going sticker-not-going').addClass('sticker-<%= @invite.rsvp %>');
+	$inviteRsvp.attr('data-badge', '<%= @badge %>');
+<% end %>
+
+
+
 

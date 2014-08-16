@@ -52,11 +52,9 @@ class UsersController < ApplicationController
 
   def update
     
-
+    @rsvp = params["user"]["rsvp"]
     respond_to do |format|
       if @cached_guest_user.update(user_params)
-        # @event = Event.find(params[:user][:event_id])
-        # @invite = Invite.new
         format.js
       elsif @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }

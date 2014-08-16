@@ -36,9 +36,11 @@ class InvitesController < ApplicationController
   end
 
   def update
-    # invite updates are not in the user flow.
+    @add_avatar = false
     @event = Event.find(params[:invite][:event_id])
-
+    if @invite.rsvp == "Undecided"
+      @add_avatar = true
+    end
     respond_to do |format|
       if @invite.update(invite_params)
         if @invite.rsvp == 'going'
