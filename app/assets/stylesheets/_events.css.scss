@@ -42,13 +42,18 @@
 			background: darken($wetSand, 40%);
 			padding: 10px;
 			border-radius: 5px;
-			color: #fff;	
+			color: #fff;
+			width: 100px;
+			text-align: center;	
 		}
-		i {
-			font-size: 40px;
-			text-align: right;
-			color: darken($wetSand, 40%);
-		}
+		
+	}
+	i {
+		font-size: 30px;
+		color: darken($wetSand, 40%);
+		min-width: 20px;
+		padding: 5px;
+		margin: 0 auto;
 	}
 	.teams {
 		text-align: center;
@@ -65,11 +70,6 @@
 	}
 	.inline {
 		display: inline-block;
-
-	}
-	i.inline {
-		min-width: 20px;
-		padding: 10px;
 	}
 	.center {
 		text-align: center;
@@ -151,6 +151,11 @@
 }
 .question {
 	font-size: 60px;
+}
+.rsvp {
+	max-width: 500px;
+	text-align:center;
+	margin: 0 auto;
 }
 .rsvp-login {
 	display: none;

@@ -31,69 +31,73 @@
   <div class="row ">
     <%= render 'event_details' %>
   </div>
+  <div class="rsvp">
 
-        <% if @user != @owner %>
-        <div class="rsvp">
-          <p>Are you coming?</p>
-          <%= form_for(shallow_args(@user,@invite), remote: true) do |f| %>
-          <%= f.hidden_field :rsvp, value: "Undecided" %>
-          <%= f.hidden_field :event_id, value: @event.id %>
-          <div class="btn neutral rsvp-btn going" value="going">Buy me a ticket!</div>
-          <div class="btn neutral rsvp-btn not-going" value="not-going">No thanks</div>
-          <div class="btn neutral rsvp-btn maybe" value="maybe" >Maybe</div>
-          <% end %>
-          <div class="rsvp-login">
-            <p class="alert notice">To rsvp will login via facebook or enter your name.</p>
-            <%= link_to "Log in with Facebook", "/auth/facebook?origin=%2Fevents", id: "sign_in" %>
-            <p>or</p>
-            <div class="form">
-              <div role="form">
-                <%= form_for @user, remote: true do |f| %>
-                <div class="field">
-                  <%= f.label :name %><br>
-                  <%= f.text_field :name %>
-                  <%= f.hidden_field :event_id, value: @event.id%>
-                  <%= f.hidden_field :rsvp, value: "text", class: "rsvp-capture" %>
-                </div>
-                <div class="actions">
-                  <%= f.submit %>
-                </div>
-                <% end %>
-              </div>
+    <% if @user != @owner %>
+      <p class="text-left">Are you coming?</p>
+
+      <%= form_for(shallow_args(@user,@invite), remote: true) do |f| %>
+        <%= f.hidden_field :rsvp, value: "Undecided" %>
+        <%= f.hidden_field :event_id, value: @event.id %>
+        <div class="btn neutral rsvp-btn going" value="going">Buy me a ticket!</div>
+        <div class="btn neutral rsvp-btn not-going" value="not-going">No thanks</div>
+        <div class="btn neutral rsvp-btn maybe" value="maybe" >Maybe</div>
+      <% end %><!-- invite-form -->
+
+      <div class="rsvp-login">
+        <p class="alert notice">To rsvp will login via facebook or enter your name.</p>
+        <%= link_to "Log in with Facebook", "/auth/facebook?origin=%2Fevents", id: "sign_in" %>
+        <p>or</p>
+        <div class="form">
+          <div role="form">
+            <%= form_for @user, remote: true do |f| %>
+            <div class="field">
+              <%= f.label :name %><br>
+              <%= f.text_field :name %>
+              <%= f.hidden_field :event_id, value: @event.id%>
+              <%= f.hidden_field :rsvp, value: "text", class: "rsvp-capture" %>
             </div>
-
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+            <% end %>
           </div>
+        </div><!-- form -->
+      </div><!-- rsvp-login -->
+    <% end %><!-- end guest partials -->
+
+    <% if @invite.rsvp != "going" %>
+      <div class="countdown">
+        <p>The clock is ticking...</p>
+        <div class="col">
+          <span class="ce-days"></span> <span class="ce-days-label"></span>
         </div>
-        <% end %>
-        <div class="countdown">
-          <p>The clock is ticking...</p>
-          <div class="col">
-            <span class="ce-days"></span> <span class="ce-days-label"></span>
-          </div>
-          <div class="col">
-            <span class="ce-hours"></span> <span class="ce-hours-label"></span>
-          </div>
-          <div class="col">
-            <span class="ce-minutes"></span> <span class="ce-minutes-label"></span>
-          </div>
-          <div class="col">
-            <span class="ce-seconds"></span> <span class="ce-seconds-label"></span>
-          </div>
-        </div><!-- countdown -->
+        <div class="col">
+          <span class="ce-hours"></span> <span class="ce-hours-label"></span>
+        </div>
+        <div class="col">
+          <span class="ce-minutes"></span> <span class="ce-minutes-label"></span>
+        </div>
+        <div class="col">
+          <span class="ce-seconds"></span> <span class="ce-seconds-label"></span>
+        </div>
+      </div><!-- countdown -->
+    <% end %>
+  </div><!-- rsvp -->
 
-        <% if @owner != @user %>
-          <%= render 'rsvp' %>
-        <% else %>
-          <% if @event.guests.empty? %>
-            <p>Message your friends directly or share on facebook</p>
-            <button class="btn btn-primary invite-btn" data-clipboard-text="<%= event_url(@event) %>"id="invite-btn">Copy link to clipboard</button>
-            <button class="btn btn-primary share-btn">Share on facebook</button>
-          <% end %>
-        <% end %>
+        
 
-        <%= render 'guestlist' %>
+  <% if @owner != @user %>
+    <%= render 'rsvp' %>
+  <% else %>
+    <% if @event.guests.empty? %>
+      <p>Message your friends directly or share on facebook</p>
+      <button class="btn btn-primary invite-btn" data-clipboard-text="<%= event_url(@event) %>"id="invite-btn">Copy link to clipboard</button>
+      <button class="btn btn-primary share-btn">Share on facebook</button>
+    <% end %>
+  <% end %>
 
-
+  <%= render 'guestlist' %>
 
 <script>
 $(document).ready(function() {

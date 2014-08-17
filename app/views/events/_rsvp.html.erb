@@ -1,16 +1,10 @@
-
-<div class="undecided outcome">
-  <h3 class="step-title"><span>3</span></h3>
-  <div class="question">?</div>
-</div>
-
 <div class="going outcome">
-  <h3 class="step-title"><span>3</span> "Cedric" will buy the tickets</h3>
+  <h3 class="step-title"><%= @owner.name %> will buy you a ticket!</h3>
   <div class="payment">
     <%= form_for(shallow_args(@user,@invite), remote: true) do |f| %>
     <%= f.hidden_field :payment_method, value: "cash" %>
     <%= f.hidden_field :event_id, value: @event.id %>
-    <p>How would you like to pay <%= @event.owner.name %>?</p>
+    <p>Let <%= @event.owner.name %> know how you would like to pay him.</p>
     <div class="btn btn-payment cash" value="cash">Cash</div>
     <div class="btn btn-payment bank" value="bank">Bank Transfer</div>
     <% end%>
@@ -19,14 +13,10 @@
 </div>
 
 <div class="not-going outcome">
-  <h3 class="step-title"><span>3</span></h3>
-
-  <h3>Screw you</h3>
+  <p>Bummer, you still have time to change your mind.</p>
 </div>
 <div class="maybe outcome">
-  <h3 class="step-title"><span>3</span></h3>
-
-  <h3>Well that's ok for now but you will need to make a decision soon. The clock is ticking!</h3>
+  <p>Well that's ok for now but you will need to make a decision soon. The clock is ticking!</p>
 </div>
 
 <script>
