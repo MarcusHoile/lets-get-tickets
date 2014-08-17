@@ -38,6 +38,7 @@ class InvitesController < ApplicationController
   def update
     @add_avatar = false
     @event = Event.find(params[:invite][:event_id])
+
     if @invite.rsvp == "Undecided"
       @add_avatar = true
     end
@@ -78,6 +79,6 @@ class InvitesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def invite_params
-    params.require(:invite).permit(:rsvp, :event_id, :payment, :user_id, :reason)
+    params.require(:invite).permit(:rsvp, :event_id, :payment, :user_id, :reason, :payment_method)
   end
 end
