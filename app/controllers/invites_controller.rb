@@ -38,6 +38,8 @@ class InvitesController < ApplicationController
   def update
     @add_avatar = false
     @event = Event.find(params[:invite][:event_id])
+    @owner = @event.owner
+
     if @invite.rsvp == "Undecided"
       @add_avatar = true
     end
@@ -53,6 +55,9 @@ class InvitesController < ApplicationController
         format.html { redirect_to @event }
         if invite_params.include?("rsvp")
           format.js
+        end
+        if invite_params.include?("payment_method")
+          format.js { render partial: "update_payment"}
         end
       else
         format.html { render action: 'edit' }
@@ -78,6 +83,6 @@ class InvitesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def invite_params
-    params.require(:invite).permit(:rsvp, :event_id, :payment, :user_id, :reason)
+    params.require(:invite).permit(:rsvp, :event_id, :payment, :user_id, :reason, :payment_method)
   end
 end
