@@ -38,6 +38,7 @@ class InvitesController < ApplicationController
   def update
     @add_avatar = false
     @event = Event.find(params[:invite][:event_id])
+    @owner = @event.owner
 
     if @invite.rsvp == "Undecided"
       @add_avatar = true
@@ -54,6 +55,9 @@ class InvitesController < ApplicationController
         format.html { redirect_to @event }
         if invite_params.include?("rsvp")
           format.js
+        end
+        if invite_params.include?("payment_method")
+          format.js { render partial: "update_payment"}
         end
       else
         format.html { render action: 'edit' }
