@@ -1,6 +1,7 @@
-// .event-container {
-// 	max-width: 900px;
-// 	margin: 0 auto;
+.event-container {
+	max-width: 400px;
+	margin: 0 auto;
+}
 // 	.col-md-4 {
 // 		padding:0;
 // 	}
@@ -40,26 +41,31 @@
 		color: darken($wetSand, 40%);
 		&.cost {
 			background: darken($wetSand, 40%);
-			padding: 10px;
+			padding: 5px 20px;
 			border-radius: 5px;
 			color: #fff;
-			width: 100px;
 			text-align: center;	
 		}
 		
 	}
 	i {
-		font-size: 30px;
+		font-size: 18px;
 		color: darken($wetSand, 40%);
-		min-width: 20px;
+		width: 30px;
 		padding: 5px;
 		margin: 0 auto;
+		text-align: center;
 	}
 	.teams {
 		text-align: center;
 		margin: 0 auto;
+		padding-bottom: 10px;
 		p {
 			font-size: 24px;
+			padding: 5px;
+		}
+		h4 {
+			padding: 10px;
 		}
 	}
 	.team {
@@ -135,7 +141,6 @@
 	margin: 10px;
 }
 .friends {
-	max-width: 50%;
 	margin: 0 auto;
 }
 .friend {
@@ -153,9 +158,13 @@
 	font-size: 60px;
 }
 .rsvp {
-	max-width: 500px;
+	padding: 10px;
+	max-width: 320px;
 	text-align:center;
 	margin: 0 auto;
+	p {
+		padding: 5px;
+	}
 }
 .rsvp-login {
 	display: none;

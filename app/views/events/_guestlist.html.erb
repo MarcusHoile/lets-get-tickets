@@ -1,7 +1,7 @@
 <div class="friends">
   <p>Guest list:</p>
-  <div class="sticker sticker-going" data-badge="/">
-    <% if @owner %>
+  <div class="sticker sticker-going" data-badge="✓">
+    <% if !@owner.image.nil? %>
       <%= image_tag @owner.image, class: 'avatar' %>
     <% else %>
       <%= icon('user', '', class: 'avatar guest-avatar') %>

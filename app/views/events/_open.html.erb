@@ -1,9 +1,9 @@
 <% content_for :head do %>
-<meta name="description" content="I'm going to buy tickets for <%= @event.what.titleize %>. Let me know if you want to go.">
-<link rel="image_src" href="http://www.supanova.com.au/wp-content/uploads/2010/02/tickets.jpg" / >
+  <meta name="description" content="I'm going to buy tickets for <%= @event.what.titleize %>. Let me know if you want to go.">
+  <link rel="image_src" href="http://www.supanova.com.au/wp-content/uploads/2010/02/tickets.jpg" / >
 <% end %>
 <% content_for :title do %>
-<title>Let's Get Tickets to <%= @event.what.titleize %></title>
+  <title>Let's Get Tickets to <%= @event.what.titleize %></title>
 <% end %>
 <div class="event-container">
   <div class="row">
@@ -14,20 +14,15 @@
           <ul>
             <li><i class="fa fa-cog settings"></i>
               <ul>
-                <li>
-                  <%= link_to 'Edit', edit_event_path(@event) %>
-                </li>
-                <li>
-                  <%= link_to 'Invite friends', '', id: "invite" %>
-                </li>  
+                <li><%= link_to 'Edit', edit_event_path(@event) %></li>
+                <li><%= link_to 'Invite friends', '', id: "invite" %></li>  
               </ul>
             </li>
           </ul>
-        
-      </div>
+      </div><!-- settings -->
       <% end %>
-    </div>
-  </div>
+    </div><!-- event-header -->
+  </div><!-- row -->
   <div class="row ">
     <%= render 'event_details' %>
   </div>
@@ -98,48 +93,42 @@
   <% end %>
 
   <%= render 'guestlist' %>
+  </div>
 
 <script>
-$(document).ready(function() {
-  $(".countdown").countEverest({
-    day: <%= @event.on_sale.day %>,
-    month: <%= @event.on_sale.month %>,
-    year: <%= @event.on_sale.year %>
-  });
+  $(document).ready(function() {
+    $(".countdown").countEverest({
+      day: <%= @event.on_sale.day %>,
+      month: <%= @event.on_sale.month %>,
+      year: <%= @event.on_sale.year %>
+    });
 
-  var clip = new ZeroClipboard($('#invite-btn'));
-  $('.' + gon.rsvp).addClass('confirm');
+    var clip = new ZeroClipboard($('#invite-btn'));
+    $('.<%= @invite.rsvp %>').addClass('confirm');
 
-  
-  $('.share-btn').on('click', function(){
-    FB.ui({
-      method: 'share',
-      href: '<%= event_url(@event) %>',
-    }, function(response){});
-  });
-});
-</script>
-<% if @current_user || @cached_guest_user.name.present? %>
-  <script>
-    $(document).ready(function() {
+    $('.share-btn').on('click', function(){
+      FB.ui({
+        method: 'share',
+        href: '<%= event_url(@event) %>',
+      }, function(response){});
+    });
+    <% if @current_user || @cached_guest_user.name.present? %>
       // rsvp to events
       $('.rsvp-btn').on('click', function(){
         var rsvp = ($(this).attr('value'));
         $('#invite_rsvp').val(rsvp);
         $(this).parent('form').submit();
       });
-    });
-  </script>
-<% else %>
-  <script>
-    $(document).ready(function() {
+    <% else %>
       $('.rsvp-btn').on('click', function(){
         var rsvp = $(this).attr('value');
         $('#user_rsvp').attr('value', rsvp);
         $('.rsvp-login').css('display', 'block');
       });
-    });
-  </script>
-<% end %>
+    <% end %>
+  });
+</script>
+
+
 
 
