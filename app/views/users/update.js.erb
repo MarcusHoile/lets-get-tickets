@@ -1,9 +1,10 @@
 $('.rsvp-login').remove();
-
+$('#invite_rsvp').val('<%= @rsvp %>');
+$('.rsvp-btn').parent('form').submit();
  // rsvp to events
  $('.rsvp-btn').on('click', function(){
  	var rsvp = ($(this).attr('value'));
  	$('#invite_rsvp').val(rsvp);
  	$(this).parent('form').submit();
- 	$(this).addClass('confirm');
+ 	// $(this).addClass('confirm');
  });

@@ -72,11 +72,12 @@
               <p>or</p>
               <div class="form">
                 <div role="form">
-                  <%= form_for @cached_guest_user, remote: true do |f| %>
+                  <%= form_for @user, remote: true do |f| %>
                   <div class="field">
                     <%= f.label :name %><br>
                     <%= f.text_field :name %>
                     <%= f.hidden_field :event_id, value: @event.id%>
+                    <%= f.hidden_field :rsvp, value: "text", class: "rsvp-capture" %>
                   </div>
                   <div class="actions">
                     <%= f.submit %>
@@ -119,21 +120,40 @@
           <div class="friends">
             <p>Guest list:</p>
             <div class="sticker sticker-going" data-badge="/">
-              <%= image_tag @owner.image, class: 'avatar' %>
-            </div>
-              <% @event.invites.each do |invite| %>
-                <div class="sticker sticker-<%= invite.rsvp %>" id="<%= invite.id %>" data-badge="/">
-                  <% if invite.guest.image %>
-                    <%= image_tag invite.guest.image, class: 'avatar' %>
-                  <% else %>
-                    <%= icon('user', '', class: 'avatar guest-avatar') %>
-                  <% end %>
-                </div>
+              <% if @owner %>
+                <%= image_tag @owner.image, class: 'avatar' %>
+              <% else %>
+                <%= icon('user', '', class: 'avatar guest-avatar') %>
               <% end %>
-
-
+            </div>
+              <% @event.invites.reverse.each do |invite| %>
+                <% if invite.rsvp == 'going' %>
+                  <div class="sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="✓">
+                    <% if invite.guest.image %>
+                      <%= image_tag invite.guest.image, class: 'avatar' %>
+                    <% else %>
+                      <%= icon('user', '', class: 'avatar guest-avatar') %>
+                    <% end %>
+                  </div>
+                <% elsif invite.rsvp == 'not-going' %>
+                  <div class="sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="x">
+                    <% if invite.guest.image %>
+                      <%= image_tag invite.guest.image, class: 'avatar' %>
+                    <% else %>
+                      <%= icon('user', '', class: 'avatar guest-avatar') %>
+                    <% end %>
+                  </div>
+                <% elsif invite.rsvp == 'maybe' %>
+                  <div class="sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="?">
+                    <% if invite.guest.image %>
+                      <%= image_tag invite.guest.image, class: 'avatar' %>
+                    <% else %>
+                      <%= icon('user', '', class: 'avatar guest-avatar') %>
+                    <% end %>
+                  </div>
+                <% end %>
+              <% end %>
           </div>
-
         </div>
       </div>
 
@@ -170,7 +190,6 @@ $(document).ready(function() {
         var rsvp = ($(this).attr('value'));
         $('#invite_rsvp').val(rsvp);
         $(this).parent('form').submit();
-        $(this).addClass('confirm');
       });
     });
   </script>
@@ -178,6 +197,8 @@ $(document).ready(function() {
   <script>
     $(document).ready(function() {
       $('.rsvp-btn').on('click', function(){
+        var rsvp = $(this).attr('value');
+        $('#user_rsvp').attr('value', rsvp);
         $('.rsvp-login').css('display', 'block');
       });
     });
