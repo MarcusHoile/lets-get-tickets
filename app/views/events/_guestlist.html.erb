@@ -1,37 +1,46 @@
-<div class="friends">
-  <p>Guest list:</p>
-  <div class="sticker sticker-going" data-badge="✓">
-    <% if !@owner.image.nil? %>
-      <%= image_tag @owner.image, class: 'avatar' %>
-    <% else %>
-      <%= icon('user', '', class: 'avatar guest-avatar') %>
+<p>Guest list:</p>
+<div class="friends">  
+  <% @event.invites.each do |invite| %>
+    <% if invite.rsvp == 'going' %>
+      <div class="sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="✓">
+        <% if invite.guest.image %>
+          <%= image_tag invite.guest.image, class: 'avatar' %>
+        <% else %>
+          <%= icon('user', '', class: 'avatar guest-avatar') %>
+        <% end %>
+      </div>
+    <% elsif invite.rsvp == 'not-going' %>
+      <div class="sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="x">
+        <% if invite.guest.image %>
+          <%= image_tag invite.guest.image, class: 'avatar' %>
+        <% else %>
+          <%= icon('user', '', class: 'avatar guest-avatar') %>
+        <% end %>
+      </div>
+    <% elsif invite.rsvp == 'maybe' %>
+      <div class="sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="?">
+        <% if invite.guest.image %>
+          <%= image_tag invite.guest.image, class: 'avatar' %>
+        <% else %>
+          <%= icon('user', '', class: 'avatar guest-avatar') %>
+        <% end %>
+      </div>
     <% end %>
-  </div>
-    <% @event.invites.reverse.each do |invite| %>
-      <% if invite.rsvp == 'going' %>
-        <div class="sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="✓">
-          <% if invite.guest.image %>
-            <%= image_tag invite.guest.image, class: 'avatar' %>
-          <% else %>
-            <%= icon('user', '', class: 'avatar guest-avatar') %>
-          <% end %>
-        </div>
-      <% elsif invite.rsvp == 'not-going' %>
-        <div class="sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="x">
-          <% if invite.guest.image %>
-            <%= image_tag invite.guest.image, class: 'avatar' %>
-          <% else %>
-            <%= icon('user', '', class: 'avatar guest-avatar') %>
-          <% end %>
-        </div>
-      <% elsif invite.rsvp == 'maybe' %>
-        <div class="sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="?">
-          <% if invite.guest.image %>
-            <%= image_tag invite.guest.image, class: 'avatar' %>
-          <% else %>
-            <%= icon('user', '', class: 'avatar guest-avatar') %>
-          <% end %>
-        </div>
-      <% end %>
-    <% end %>
+  <% end %>
+</div>
+<div class="friends-list">
+    <% @event.invites.each do |invite| %>
+    <% get_rsvp_badge(invite) %>
+    <div class="guest"> 
+      <div class="sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="<%= @badge %>">
+        <% if invite.guest.image %>
+          <%= image_tag invite.guest.image, class: 'avatar' %>
+        <% else %>
+          <%= icon('user', '', class: 'avatar guest-avatar') %>
+        <% end %>
+      </div>
+      <p><%= invite.guest.name %></p>
+    </div>
+
+  <% end %>
 </div>

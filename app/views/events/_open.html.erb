@@ -63,7 +63,7 @@
 
     <% if @invite.rsvp != "going" %>
       <div class="countdown">
-        <p>The clock is ticking...</p>
+        <p>You will need to rsvp soon. The clock is ticking...</p>
         <div class="col">
           <span class="ce-days"></span> <span class="ce-days-label"></span>
         </div>
@@ -85,7 +85,7 @@
   <% if @owner != @user %>
     <%= render 'rsvp' %>
   <% else %>
-    <% if @event.guests.empty? %>
+    <% if @event.guests.length == 1 %>
       <p>Message your friends directly or share on facebook</p>
       <button class="btn btn-primary invite-btn" data-clipboard-text="<%= event_url(@event) %>"id="invite-btn">Copy link to clipboard</button>
       <button class="btn btn-primary share-btn">Share on facebook</button>

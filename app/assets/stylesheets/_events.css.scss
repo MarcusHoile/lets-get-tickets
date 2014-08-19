@@ -1,6 +1,7 @@
 .event-container {
-	max-width: 400px;
+	max-width: 420px;
 	margin: 0 auto;
+	text-align: center;
 }
 // 	.col-md-4 {
 // 		padding:0;
@@ -40,10 +41,12 @@
 	p {
 		color: darken($wetSand, 40%);
 		&.cost {
-			background: darken($wetSand, 40%);
+			background: #fff;
+
 			padding: 5px 20px;
 			border-radius: 5px;
-			color: #fff;
+			color: $green;
+			border: solid 1px $green;
 			text-align: center;	
 		}
 		
@@ -142,6 +145,8 @@
 }
 .friends {
 	margin: 0 auto;
+	text-align: center;
+	display: none;
 }
 .friend {
 	.name, .sticker{
@@ -159,23 +164,36 @@
 }
 .rsvp {
 	padding: 10px;
-	max-width: 320px;
+	max-width: 360px;
 	text-align:center;
 	margin: 0 auto;
 	p {
-		padding: 5px;
+		padding: 5px;	
 	}
 }
 .rsvp-login {
 	display: none;
 }
 .avatar {
-	height: 40px;
-	width: 40px;
+	height: 50px;
+	width: 50px;
 }
 .guest-avatar {
 	font-size: 30px;
 	padding: 5px;
 	vertical-align: middle;
 	background: darken($wetSand, 15%);
+}
+.friends-list{
+	padding: 0 20%;
+	text-align: left;
+	i {
+		text-align: center;
+	}
+	.guest * {
+		display: inline-block;
+	}
+	.guest {
+		margin: 3px;
+	}
 }

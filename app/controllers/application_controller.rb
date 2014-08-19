@@ -7,8 +7,13 @@ class ApplicationController < ActionController::Base
   # before_filter :authenticate_user
   # before_filter :current_user
   before_filter :current_or_guest_user
+  before_filter :current_path
+  require "erb"
+  include ERB::Util
   
-
+  def current_path
+    @current_path = url_encode(request.env['PATH_INFO'])
+  end
 
    # if user is logged in, return current_user, else return guest_user
   def current_or_guest_user
@@ -34,6 +39,7 @@ class ApplicationController < ActionController::Base
      session[:guest_user_id] = nil
      guest_user
   end
+  helper_method :guest_user
 
   
   # protected

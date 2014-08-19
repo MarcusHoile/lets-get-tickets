@@ -8,10 +8,11 @@
 .col {
 	display: inline-block;
 	padding: 0 5px;
-	background: $wetSand;
-	color: darken($wetSand, 40%);
-	border: solid 1px darken($wetSand, 40%);
-	min-width: 58px
+	background: #000;
+	color: #fff;
+	// border: solid 1px darken($wetSand, 40%);
+	min-width: 58px;
+	// margin: 0 -5px;
 }
 .ce-seconds, .ce-minutes, .ce-hours, .ce-days {
 	display:block;

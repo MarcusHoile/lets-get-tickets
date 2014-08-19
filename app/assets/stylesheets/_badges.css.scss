@@ -1,42 +1,36 @@
 .sticker {
 	position:relative;
-	background: none;
 	display: inline-block;
-	color: #000;
 	text-align:center;
-	width: 40px; height: 40px;
+	width: 50px; height: 50px;
+	margin: 3px;
+}
+
+.sticker:after {
+	position:absolute;
+	top:-6px;
+	right:-6px;
+	font-size:12px;
+	line-height:18px;
+	width:18px;height:18px;
+	border-radius: 50%;
+	background: #fff;
 }
 .sticker-going[data-badge]:after {
 	content:attr(data-badge);
-	position:absolute;
-	top:-8px;
-	right:-4px;
-	font-size:.7em;
-	line-height:18px;
-	width:18px;height:18px;
-	background: $green;
-	border-radius: 50%;
+	color: $green;
+	border: solid 1px $green;
 }
 
 .sticker-not-going[data-badge]:after {
 	content:attr(data-badge);
-	position:absolute;
-	top:-8px;
-	right:-4px;
-	font-size:.7em;
-	width:18px;height:18px;
-	line-height:18px;
-	background: $red;
-	border-radius: 50%;
+	color: $red;
+	border: solid 1px $red;
+	font-size: 12px;
+	line-height:14px;
 }
 .sticker-maybe[data-badge]:after {
 	content:attr(data-badge);
-	position:absolute;
-	top:-8px;
-	right:-4px;
-	font-size:.7em;
-	width:18px;height:18px;
-	line-height:18px;
-	background: $orange;
-	border-radius: 50%;
+	color: $orange;
+	border: solid 1px $orange;
 }

@@ -45,13 +45,7 @@ class InvitesController < ApplicationController
     end
     respond_to do |format|
       if @invite.update(invite_params)
-        if @invite.rsvp == 'going'
-          @badge = '✓'
-        elsif @invite.rsvp == 'not-going'
-          @badge = 'x'
-        elsif @invite.rsvp == 'maybe'
-          @badge = '?'
-        end
+        get_rsvp_badge(@invite)
         format.html { redirect_to @event }
         if invite_params.include?("rsvp")
           format.js

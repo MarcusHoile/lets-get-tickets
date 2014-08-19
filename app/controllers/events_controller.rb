@@ -14,9 +14,10 @@ class EventsController < ApplicationController
     # you can only see events that you host or have been invited to
     if current_user
       @events = Event.where(owner: @current_user) + @current_user.event_invitations
-      @events.sort_by!(&:on_sale)
+    elsif guest_user
+      @events = @cached_guest_user.event_invitations
     end
-    
+    @events.sort_by!(&:on_sale)
   end
 
   def show
@@ -29,7 +30,11 @@ class EventsController < ApplicationController
     gon.lat = @event.lat
     gon.lng = @event.lng
     @invite = Invite.find_by(user_id: @user.id, event_id: @event.id) || @user.invites.create(rsvp: "Undecided", event_id: @event.id)
+    if @owner == @user
+      @invite.update(rsvp: "going")
+    end
     gon.rsvp = @invite.rsvp
+    
 
     render layout: "events"
   end
