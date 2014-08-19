@@ -1,7 +1,7 @@
 class InvitesController < ApplicationController
   before_action :set_invite, only: [:show, :edit, :update, :destroy]
 
-
+  include ApplicationHelper
 
   def index
     @invites = Invite.all

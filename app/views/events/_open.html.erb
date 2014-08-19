@@ -29,7 +29,7 @@
   <div class="rsvp">
 
     <% if @user != @owner %>
-      <p class="text-left">Are you coming?</p>
+      <p>Are you coming?</p>
 
       <%= form_for(shallow_args(@user,@invite), remote: true) do |f| %>
         <%= f.hidden_field :rsvp, value: "Undecided" %>
@@ -40,25 +40,25 @@
       <% end %><!-- invite-form -->
 
       <div class="rsvp-login">
-        <p class="alert notice">To rsvp will login via facebook or enter your name.</p>
-        <%= link_to "Log in with Facebook", "/auth/facebook?origin=%2Fevents", id: "sign_in" %>
+        <p class="rsvp-notice"><%= @owner.name %> will need to know who you are. Log in via facebook or enter your name.</p>
+        <%= link_to "Login with Facebook", "/auth/facebook?origin=%2Fevents", id: "sign_in", class: "btn btn-primary" %>
         <p>or</p>
         <div class="form">
           <div role="form">
             <%= form_for @user, remote: true do |f| %>
             <div class="field">
-              <%= f.label :name %><br>
-              <%= f.text_field :name %>
+              <%= f.text_field :name, placeholder: "Name" %>
               <%= f.hidden_field :event_id, value: @event.id%>
               <%= f.hidden_field :rsvp, value: "text", class: "rsvp-capture" %>
             </div>
-            <div class="actions">
-              <%= f.submit %>
+            <div class="submit btn btn-success">
+              Submit your name 
             </div>
             <% end %>
           </div>
         </div><!-- form -->
       </div><!-- rsvp-login -->
+
     <% end %><!-- end guest partials -->
 
     <% if @invite.rsvp != "going" %>
@@ -121,6 +121,9 @@
       });
     <% else %>
       $('.rsvp-btn').on('click', function(){
+        if ($('.confirm').length == 0) {
+          $(this).addClass('confirm');
+        }
         var rsvp = $(this).attr('value');
         $('#user_rsvp').attr('value', rsvp);
         $('.rsvp-login').css('display', 'block');

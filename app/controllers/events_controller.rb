@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   before_action :check_status, only: [:show]
   # skip_before_filter :current_user
 
+  include ApplicationHelper
 
 
 
@@ -34,14 +35,14 @@ class EventsController < ApplicationController
       @invite.update(rsvp: "going")
     end
     gon.rsvp = @invite.rsvp
-    
+    @invites = @event.invites.where.not(rsvp: "Undecided")
 
     render layout: "events"
   end
 
   # GET /events/new
   def new
-    
+
     @event = Event.new
     
   end

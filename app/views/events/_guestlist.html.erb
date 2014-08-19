@@ -1,6 +1,6 @@
 <p>Guest list:</p>
 <div class="friends">  
-  <% @event.invites.each do |invite| %>
+  <% @invites.each do |invite| %>
     <% if invite.rsvp == 'going' %>
       <div class="sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="✓">
         <% if invite.guest.image %>
@@ -29,7 +29,7 @@
   <% end %>
 </div>
 <div class="friends-list">
-    <% @event.invites.each do |invite| %>
+    <% @invites.each do |invite| %>
     <% get_rsvp_badge(invite) %>
     <div class="guest"> 
       <div class="sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="<%= @badge %>">
