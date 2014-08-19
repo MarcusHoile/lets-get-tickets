@@ -42,12 +42,12 @@
 	p {
 		color: darken($wetSand, 40%);
 		&.cost {
-			background: #fff;
+			// background: #fff;
 
 			padding: 5px 20px;
 			border-radius: 5px;
-			color: $green;
-			border: solid 1px $green;
+			color: #fff;
+			background: darken($wetSand, 40%); ;
 			text-align: center;	
 		}
 		
