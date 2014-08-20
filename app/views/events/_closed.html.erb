@@ -1,77 +1,86 @@
 <% content_for :head do %>
-<meta name="description" content="I'm going to buy tickets for <%= @event.what.titleize %>. Let me know if you want to go.">
+  <meta name="description" content="I'm going to buy tickets for <%= @event.what.titleize %>. Let me know if you want to go.">
 <% end %>
 <% content_for :title do %>
 <title>Let's Get Tickets to <%= @event.what.titleize %></title>
 <% end %>
-<% if @owner == @user %>
-  <% if !@event.ticket %>
-    <div class="alert alert-notice">
-      <p>The deadline has been reached. Have you bought the tickets?</p>
-      <%= form_for @event do |f| %>
-        <%= f.check_box :ticket, checked: true  %> 
-        <div class="btn btn-success ticket-confirm">Confirm</div>
-        <%= f.submit %>
-      <% end %>
-    </div>
+
+
+<div class="event-container">
+  <div class="row">
+    <div class="col-md-12 event-header">
+      <div class="event-confirmed">
+        <% if @owner == @user %>
+          <% if !@event.ticket %>
+            <div class="guest-count"><span><%= @confirmed.count %></span> CONFIRMED GUESTS!</div>
+            <div class="ticket-notice owner">
+              <p>The deadline has been reached. Have you bought the tickets?</p>
+              <%= form_for @event do |f| %>
+                <%= f.check_box :ticket, checked: true  %> 
+                <div class="btn btn-success ticket-confirm">I've bought the tickets</div>
+                <%= f.submit %>
+              <% end %>
+            </div>
+          <% else %>  
+            <p class="ticket-notice">Mission is a go! Have fun!</p>
+          <% end %>
+        <% else %>
+          <p class="ticket-notice">Mission is a go! <%= @owner.name %> is in the process of purchasing the tickets.</p>
+        <% end %>
+      </div>
+    </div><!-- event-header -->
+  </div><!-- row -->
+  <div class="row ">
+    <%= render 'event_details' %>
+  </div>
+  <% if @owner != @user %>
+    <%= render 'guestlist' %>
+  <% else %>
+    <%= render 'payment_tracking' %>
   <% end %>
-<% end %>
-
-
-<div class="container">
-  <div class="event-container">
-    <div class="row">
-      <div class="col-md-3 event-title">
-        <%= image_tag 'http://lorempixel.com/200/100/' %>
-      </div>
-      <div class="col-md-3 event-details">
-        <h1><%= @event.what.titleize %></h1>
-        <p><i class="fa fa-clock-o"></i> <%= @event.event_when.strftime"%a %d %b %I:%M %P" %></p>
-        <p><i class="fa fa-map-marker"></i> <%= @event.where.titleize %></p>
-        <p class="cost"><%= number_to_currency(@event.price) %></p>
-      </div>
-      <div class="col-md-6">
-        <p><%= @confirmed.count %> Tickets <span class="ticket-status <%= @event.ticket %>">
-          <%= @event.ticket? ? "Purchased" : " on Order" %>
-        </span></p>
-      </div>
-    </div>
-
-    <% @confirmed.each do |invite| %>
-    
-    <div class="friend">
-      <div class="sticker sticker-going" data-badge="/">
-        <img src="http://lorempixel.com/40/40" alt="">
-      </div>
-      <div class="name"><%= invite.guest.name %></div>
-      <div class="onoffswitch">
-        <%= form_for invite, remote: true do |f| %>
-        <%= f.check_box :payment, class: "onoffswitch-checkbox" %>
-        <%= f.submit %>
-        <label class="onoffswitch-label" for="myonoffswitch">
-          <span class="onoffswitch-inner"></span>
-          <span class="onoffswitch-switch"></span>
-        </label>
-      </div>
-
-      <% end %>
-
-
-    </div>
-
-    <% end %>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="step">
-          <h3>Confirmed</h3>
-        </div>
-      </div>
-
-    </div>
   </div>
 
-</div>
+<script>
+  $(document).ready(function() {
+    $(".countdown").countEverest({
+      day: <%= @event.on_sale.day %>,
+      month: <%= @event.on_sale.month %>,
+      year: <%= @event.on_sale.year %>
+    });
+
+    var clip = new ZeroClipboard($('#invite-btn'));
+    $('.<%= @invite.rsvp %>').addClass('confirm');
+
+    $('.share-btn').on('click', function(){
+      FB.ui({
+        method: 'share',
+        href: '<%= event_url(@event) %>',
+      }, function(response){});
+    });
+    <% if @current_user || @cached_guest_user.name.present? %>
+      // rsvp to events
+      $('.rsvp-btn').on('click', function(){
+        var rsvp = ($(this).attr('value'));
+        $('#invite_rsvp').val(rsvp);
+        $(this).parent('form').submit();
+      });
+    <% else %>
+      $('.rsvp-btn').on('click', function(){
+        if ($('.confirm').length == 0) {
+          $(this).addClass('confirm');
+        }
+        var rsvp = $(this).attr('value');
+        $('#user_rsvp').attr('value', rsvp);
+        $('.rsvp-login').css('display', 'block');
+      });
+    <% end %>
+  });
+</script>
+
+
+
+
+
 
 
 

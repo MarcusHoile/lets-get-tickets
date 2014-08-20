@@ -3,7 +3,9 @@
 	text-align: center;
 	max-width: 460px;
 }
-
+.container {
+	max-width: 600px;
+}
 // 	.col-md-4 {
 // 		padding:0;
 // 	}
@@ -37,24 +39,34 @@
 // 		padding: 2px;
 // 	}
 // }
-
+.row {
+		margin: 0 5px;
+	}
 .event-details {
+	position: relative;
+	border-radius: 20px;
+	border: solid 1px darken($wetSand, 10%);
+	border-top: none;
+	border-bottom: solid 5px darken($wetSand, 30%);
+	background: lighten($wetSand, 15%);
+	padding: 15px;
+
 	p {
-		color: darken($wetSand, 40%);
+		// color: darken($wetSand, 40%);
 		&.cost {
 			// background: #fff;
 
 			padding: 5px 20px;
 			border-radius: 5px;
-			color: #fff;
-			background: darken($wetSand, 40%); ;
+			color: #ffffff;
+			background: #000;
 			text-align: center;	
 		}
 		
 	}
 	i {
 		font-size: 18px;
-		color: darken($wetSand, 40%);
+		// color: darken($wetSand, 40%);
 		width: 30px;
 		padding: 5px;
 		margin: 0 auto;
@@ -78,9 +90,7 @@
 		width: 30%;
 
 	}
-	.inline {
-		display: inline-block;
-	}
+	
 	.center {
 		text-align: center;
 	}
@@ -89,6 +99,9 @@
 		max-width: 200px;
 		margin: 0 auto;
 	}
+}
+.inline {
+	display: inline-block;
 }
 
 .settings {
@@ -129,8 +142,28 @@
 }
 .event-header {
 	padding: 5px;
-	h3, .settings {
+	h3 {
 		display: inline-block;
+	}
+	
+}
+.ticket-notice {
+	background: #fff;
+	padding: 10px;
+	border-radius: 10px;
+	border: solid 1px darken($green, 5%);
+}
+.guest-count {
+	background: $green;
+	color: #fff;
+	padding: 2px;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	span {
+		background: #fff;
+		padding: 0 5px;
+		color: $green;
+		border-radius: 10px;
 	}
 }
 .event-title {
@@ -144,7 +177,7 @@
 .payment {
 	margin: 10px;
 }
-.friends {
+.friends-icons {
 	margin: 0 auto;
 	text-align: center;
 	display: none;
@@ -192,16 +225,41 @@
 	vertical-align: middle;
 	background: darken($wetSand, 15%);
 }
+.guest-list {
+	margin: 10px auto 0 auto;
+	max-width: 320px;
+	text-align: left
+
+}
 .friends-list{
-	padding: 0 20%;
 	text-align: left;
 	i {
 		text-align: center;
 	}
-	.guest * {
-		display: inline-block;
-	}
 	.guest {
 		margin: 3px;
 	}
+}
+.invite-friends {
+	background: lighten($green, 10%);
+	color: darken($green, 30%);
+	border-radius: 10px;
+	border: solid 1px darken($green, 10%);
+	border-top: none;
+	border-bottom: solid 5px darken($green, 10%);
+	padding: 10px;
+	.btn {
+		width: 80px;
+		height: 30px;
+		line-height: 15px;
+	}
+}
+.edit-event {
+	padding: 10px;
+	position:absolute;
+	right: 10px;
+	background: $sand;
+	color: darken($wetSand, 40%);
+	border-radius: 5px;
+	border:solid 1px $wetSand;
 }

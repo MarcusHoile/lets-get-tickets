@@ -19,6 +19,7 @@ class InvitesController < ApplicationController
   end
 
   def edit
+
   end
 
   def create

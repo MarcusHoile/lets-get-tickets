@@ -1,7 +1,32 @@
+form {
+	max-width: 400px;
+	margin: 0 auto;
+	.form-group {
+		margin: 15px 0;
+	}
+	.input {
+		margin: 35px 0 10px 0;
+	}
+}
+
 .form {
 	margin: 0 auto;
 	.btn {
 		margin: 10px;
+	}
+}
+.campaign-event {
+	form{
+		max-width: 250px;
+		margin: 0 auto;
+		.input {
+			margin: 10px 0;
+			padding: 0;
+		}
+		.btn {
+			width: 100%;
+			margin: 0;
+		}
 	}
 }
 

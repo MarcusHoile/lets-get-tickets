@@ -1,4 +1,7 @@
 <div class="event-details">
+  <% if @owner == @user %>
+    <%= link_to 'Edit', edit_event_path(@event), class: "edit-event" %></li>
+  <% end %>
   <div class="teams">
     <div class="team">
       <%= image_tag 'collingwood.png' %>

@@ -27,7 +27,7 @@ class EventsController < ApplicationController
     @date = @event.event_when
     # @undecided = @event.invites.where(rsvp: "Undecided")
     # @declined = @event.invites.where(rsvp: "Not Going")
-    # @confirmed = @event.invites.where(rsvp: "Going")
+    @confirmed = @event.invites.where(rsvp: "going")
     gon.lat = @event.lat
     gon.lng = @event.lng
     @invite = Invite.find_by(user_id: @user.id, event_id: @event.id) || @user.invites.create(rsvp: "Undecided", event_id: @event.id)
@@ -67,7 +67,7 @@ class EventsController < ApplicationController
         #   UserMailer.invite_email(@owner, guest, @event).deliver
         # end
 
-        format.html { redirect_to event_path(@event), notice: 'Woot! Event created. Now all you need to do is invite some friends' }
+        format.html { redirect_to event_path(@event)   }
 
         format.json { render action: 'show', status: :created, location: @event }
       else
@@ -83,7 +83,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update(event_params)
         # will need an update email notification here
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to @event}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

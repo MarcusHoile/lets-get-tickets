@@ -34,6 +34,7 @@
 
 .btn {
 	height: 40px;
+	width: 100%;
 	border-radius: 10px;
 	margin: 0 auto;
 	text-align: center;
@@ -76,6 +77,8 @@
 .onoffswitch {
 	position: relative; width: 110px;
 	display: inline-block;
+	float: right;
+	margin: 10px 0;
 	-webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
 

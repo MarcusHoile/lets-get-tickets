@@ -9,18 +9,7 @@
   <div class="row">
     <div class="col-md-12 event-header">
       <h3>Let's get tickets to</h3>
-      <% if @owner == @user %>
-      <div class="settings">
-          <ul>
-            <li><i class="fa fa-cog settings"></i>
-              <ul>
-                <li><%= link_to 'Edit', edit_event_path(@event) %></li>
-                <li><%= link_to 'Invite friends', '', id: "invite" %></li>  
-              </ul>
-            </li>
-          </ul>
-      </div><!-- settings -->
-      <% end %>
+      
     </div><!-- event-header -->
   </div><!-- row -->
   <div class="row ">
@@ -83,12 +72,18 @@
         
 
   <% if @owner != @user %>
-    <%= render 'rsvp' %>
+    <div class="row">
+      <%= render 'rsvp' %>
+    </div>
   <% else %>
     <% if @event.guests.length == 1 %>
-      <p>Message your friends directly or share on facebook</p>
-      <button class="btn btn-primary invite-btn" data-clipboard-text="<%= event_url(@event) %>"id="invite-btn">Copy link to clipboard</button>
-      <button class="btn btn-primary share-btn">Share on facebook</button>
+      <div class="row">
+        <div class="invite-friends">
+          <p>Invite friends to the event! Email or share on facebook</p>
+          <button class="btn btn-primary invite-btn" data-clipboard-text="<%= event_url(@event) %>"id="invite-btn">Copy link</button>
+          <button class="btn btn-primary share-btn"><i class="fa fa-facebook"></i> Share</button>
+        </div>
+      </div>
     <% end %>
   <% end %>
 
