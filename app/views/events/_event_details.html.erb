@@ -1,14 +1,21 @@
 <div class="event-details">
+  <% if @owner == @user %>
+    <%= link_to 'Edit', edit_event_path(@event), class: "edit-event" %></li>
+  <% end %>
   <div class="teams">
     <div class="team">
-      <%= image_tag 'http://lorempixel.com/100/100' %>
-      <p>Port Adelaide</p>
+      <%= image_tag 'collingwood.png' %>
     </div>
-    <p>vs</p>
+    <p class="inline">V</p>
     <div class="team">
-      <%= image_tag 'http://lorempixel.com/100/100' %>
-      <p>Sydney Swans</p>
+      <%= image_tag 'hawks.png' %>
     </div>
-    <p>Sunday 27th July, Adelaide Oval</p>
+    <h4><%= @event.what %></h4>
+  </div>
+
+  <div class="details">
+    <div><i class="fa fa-clock-o"></i><p class="inline"><%= @event.event_when.strftime"%a %d %b %I:%M %P" %></p></div>
+    <div><i class="fa fa-map-marker"></i><p class="inline"> <%= @event.where.titleize %></p></div>
+    <div><i class="fa fa-tag"></i><p class="cost inline"><%= number_to_currency(@event.price) %></p></div>
   </div>
 </div>

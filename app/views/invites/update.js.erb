@@ -4,9 +4,9 @@ $('.outcome').css('display', 'none');
 $('.outcome.<%= @invite.rsvp %>').css('display', 'block');
 <% if @add_avatar %>
 	<% if @invite.guest.image %>
-		$('.friends').append('<div class="sticker sticker-<%= @invite.rsvp %>" id="invite-<%= @invite.id %>" data-badge="✓"><%= image_tag @invite.guest.image, class: "avatar" %></div>'
+		$('.friends').append('<div class="sticker sticker-<%= @invite.rsvp %>" id="invite-<%= @invite.id %>" data-badge="<%= @badge %>"><%= image_tag @invite.guest.image, class: "avatar" %></div>'
 	<% else %>
-		$('.friends').append('<div class="sticker sticker-<%= @invite.rsvp %>" id="invite-<%= @invite.id %>" data-badge="✓"><%= icon("user", "", class: "avatar guest-avatar") %></div>')
+		$('.friends').append('<div class="sticker sticker-<%= @invite.rsvp %>" id="invite-<%= @invite.id %>" data-badge="<%= @badge %>"><%= icon("user", "", class: "avatar guest-avatar") %></div>')
 	<% end %>
 <% else %>
 	var $inviteRsvp = $('#invite-<%= @invite.id %>');
@@ -14,6 +14,8 @@ $('.outcome.<%= @invite.rsvp %>').css('display', 'block');
 	$inviteRsvp.attr('data-badge', '<%= @badge %>');
 <% end %>
 
-
+<% if @invite.rsvp == "going" %>
+	$('.countdown').css('display', 'none');
+<% end %>
 
 

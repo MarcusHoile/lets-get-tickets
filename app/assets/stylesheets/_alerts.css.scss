@@ -6,8 +6,9 @@
 }
 
 .alert-notice {
-	border: solid 1px #8A9B0F;
-	color: #8A9B0F;
+	border: solid 1px darken($green, 40%);
+	background: darken($green, 20%);
+	color: #fff;
 	.btn, p {
 		display: inline-block;
 	}

@@ -1,208 +1,132 @@
 <% content_for :head do %>
-<meta name="description" content="I'm going to buy tickets for <%= @event.what.titleize %>. Let me know if you want to go.">
-<link rel="image_src" href="http://www.supanova.com.au/wp-content/uploads/2010/02/tickets.jpg" / >
+  <meta name="description" content="I'm going to buy tickets for <%= @event.what.titleize %>. Let me know if you want to go.">
+  <link rel="image_src" href="http://www.supanova.com.au/wp-content/uploads/2010/02/tickets.jpg" / >
 <% end %>
 <% content_for :title do %>
-<title>Let's Get Tickets to <%= @event.what.titleize %></title>
+  <title>Let's Get Tickets to <%= @event.what.titleize %></title>
 <% end %>
-<div class="container">
-  <div class="event-container">
-    <div class="row">
-      <div class="col-md-12 event-header">
-        <h3>Let's get tickets to</h3>
-        <% if @owner == @user %>
-        <div class="settings">
-          <i class="fa fa-cog settings">
-            <ul>
-              <li>
-                <%= link_to 'Edit', edit_event_path(@event) %>
-              </li>
-              <li>
-                <%= link_to 'Invite friends', '', id: "invite" %>
-              </li>  
-            </ul>
-          </i>
-        </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 event-title">
-        <%= image_tag 'http://lorempixel.com/200/100/' %>
-        <h1><%= @event.what.titleize %></h1>
-      </div>
+<div class="event-container">
+  <div class="row">
+    <div class="col-md-12 event-header">
+      <h3>Let's get tickets to</h3>
       
-    </div>
+    </div><!-- event-header -->
+  </div><!-- row -->
+  <div class="row ">
+    <%= render 'event_details' %>
+  </div>
+  <div class="rsvp">
+
+    <% if @user != @owner %>
+      <p>Are you coming?</p>
+
+      <%= form_for(shallow_args(@user,@invite), remote: true) do |f| %>
+        <%= f.hidden_field :rsvp, value: "Undecided" %>
+        <%= f.hidden_field :event_id, value: @event.id %>
+        <div class="btn neutral rsvp-btn going" value="going">Buy me a ticket!</div>
+        <div class="btn neutral rsvp-btn not-going" value="not-going">No thanks</div>
+        <div class="btn neutral rsvp-btn maybe" value="maybe" >Maybe</div>
+      <% end %><!-- invite-form -->
+
+      <div class="rsvp-login">
+        <p class="rsvp-notice"><%= @owner.name %> will need to know who you are. Log in via facebook or enter your name.</p>
+        <%= link_to "Login with Facebook", "/auth/facebook?origin=%2Fevents", id: "sign_in", class: "btn btn-primary" %>
+        <p>or</p>
+        <div class="form">
+          <div role="form">
+            <%= form_for @user, remote: true do |f| %>
+            <div class="field">
+              <%= f.text_field :name, placeholder: "Name" %>
+              <%= f.hidden_field :event_id, value: @event.id%>
+              <%= f.hidden_field :rsvp, value: "text", class: "rsvp-capture" %>
+            </div>
+            <div class="submit btn btn-success">
+              Submit your name 
+            </div>
+            <% end %>
+          </div>
+        </div><!-- form -->
+      </div><!-- rsvp-login -->
+
+    <% end %><!-- end guest partials -->
+
+    <% if @invite.rsvp != "going" %>
+      <div class="countdown">
+        <p>You will need to rsvp soon. The clock is ticking...</p>
+        <div class="col">
+          <span class="ce-days"></span> <span class="ce-days-label"></span>
+        </div>
+        <div class="col">
+          <span class="ce-hours"></span> <span class="ce-hours-label"></span>
+        </div>
+        <div class="col">
+          <span class="ce-minutes"></span> <span class="ce-minutes-label"></span>
+        </div>
+        <div class="col">
+          <span class="ce-seconds"></span> <span class="ce-seconds-label"></span>
+        </div>
+      </div><!-- countdown -->
+    <% end %>
+  </div><!-- rsvp -->
+
+        
+
+  <% if @owner != @user %>
     <div class="row">
-      <div class="col-md-4">
-        <div class="step">
-          <h3 class="step-title"><span>1</span> The Details</h3>
-          <div class="row">
-            <div class="col-xs-8 event-details">
-              <p><i class="fa fa-clock-o"></i> <%= @event.event_when.strftime"%a %d %b %I:%M %P" %></p>
-              <p><i class="fa fa-map-marker"></i> <%= @event.where.titleize %></p>
-            </div>
-            <div class="col-xs-4">
-              <p class="cost"><%= number_to_currency(@event.price) %></p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <%= image_tag 'http://lorempixel.com/200/100/' %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="step">
-          <h3 class="step-title"><span>2</span> RSVP</h3>
-          <% if @user != @owner %>
-          <div class="rsvp">
-            <p>Are you coming?</p>
-            <%= form_for(shallow_args(@user,@invite), remote: true) do |f| %>
-            <%= f.hidden_field :rsvp, value: "Undecided" %>
-            <%= f.hidden_field :event_id, value: @event.id %>
-            <div class="btn neutral rsvp-btn going" value="going">I'm in</div>
-            <div class="btn neutral rsvp-btn not-going" value="not-going">I'm out</div>
-            <div class="btn neutral rsvp-btn maybe" value="maybe" >Remind me later</div>
-            <% end %>
-            <div class="rsvp-login">
-              <p class="alert notice">To rsvp will login via facebook or enter your name.</p>
-              <%= link_to "Log in with Facebook", "/auth/facebook?origin=%2Fevents", id: "sign_in" %>
-              <p>or</p>
-              <div class="form">
-                <div role="form">
-                  <%= form_for @user, remote: true do |f| %>
-                  <div class="field">
-                    <%= f.label :name %><br>
-                    <%= f.text_field :name %>
-                    <%= f.hidden_field :event_id, value: @event.id%>
-                    <%= f.hidden_field :rsvp, value: "text", class: "rsvp-capture" %>
-                  </div>
-                  <div class="actions">
-                    <%= f.submit %>
-                  </div>
-                  <% end %>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <% end %>
-          <div class="countdown">
-            <p>The clock is ticking...</p>
-            <div class="col">
-              <span class="ce-days"></span> <span class="ce-days-label"></span>
-            </div>
-            <div class="col">
-              <span class="ce-hours"></span> <span class="ce-hours-label"></span>
-            </div>
-            <div class="col">
-              <span class="ce-minutes"></span> <span class="ce-minutes-label"></span>
-            </div>
-            <div class="col">
-              <span class="ce-seconds"></span> <span class="ce-seconds-label"></span>
-            </div>
-          </div><!-- countdown -->
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="step">
-          <% if @owner != @user %>
-            <%= render 'rsvp' %>
-          <% else %>
-            <% if @event.guests.empty? %>
-              <p>Message your friends directly or share on facebook</p>
-              <button class="btn btn-primary invite-btn" data-clipboard-text="<%= event_url(@event) %>"id="invite-btn">Copy link to clipboard</button>
-              <button class="btn btn-primary share-btn">Share on facebook</button>
-            <% end %>
-          <% end %>
-          <div class="friends">
-            <p>Guest list:</p>
-            <div class="sticker sticker-going" data-badge="/">
-              <% if @owner %>
-                <%= image_tag @owner.image, class: 'avatar' %>
-              <% else %>
-                <%= icon('user', '', class: 'avatar guest-avatar') %>
-              <% end %>
-            </div>
-              <% @event.invites.reverse.each do |invite| %>
-                <% if invite.rsvp == 'going' %>
-                  <div class="sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="✓">
-                    <% if invite.guest.image %>
-                      <%= image_tag invite.guest.image, class: 'avatar' %>
-                    <% else %>
-                      <%= icon('user', '', class: 'avatar guest-avatar') %>
-                    <% end %>
-                  </div>
-                <% elsif invite.rsvp == 'not-going' %>
-                  <div class="sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="x">
-                    <% if invite.guest.image %>
-                      <%= image_tag invite.guest.image, class: 'avatar' %>
-                    <% else %>
-                      <%= icon('user', '', class: 'avatar guest-avatar') %>
-                    <% end %>
-                  </div>
-                <% elsif invite.rsvp == 'maybe' %>
-                  <div class="sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="?">
-                    <% if invite.guest.image %>
-                      <%= image_tag invite.guest.image, class: 'avatar' %>
-                    <% else %>
-                      <%= icon('user', '', class: 'avatar guest-avatar') %>
-                    <% end %>
-                  </div>
-                <% end %>
-              <% end %>
-          </div>
-        </div>
-      </div>
-
+      <%= render 'rsvp' %>
     </div>
+  <% else %>
+    <% if @event.guests.length == 1 %>
+      <div class="row">
+        <div class="invite-friends">
+          <p>Invite friends to the event! Email or share on facebook</p>
+          <button class="btn btn-primary invite-btn" data-clipboard-text="<%= event_url(@event) %>"id="invite-btn">Copy link</button>
+          <button class="btn btn-primary share-btn"><i class="fa fa-facebook"></i> Share</button>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <%= render 'guestlist' %>
   </div>
 
-</div>
-
 <script>
-$(document).ready(function() {
-  $(".countdown").countEverest({
-    day: <%= @event.on_sale.day %>,
-    month: <%= @event.on_sale.month %>,
-    year: <%= @event.on_sale.year %>
-  });
+  $(document).ready(function() {
+    $(".countdown").countEverest({
+      day: <%= @event.on_sale.day %>,
+      month: <%= @event.on_sale.month %>,
+      year: <%= @event.on_sale.year %>
+    });
 
-  var clip = new ZeroClipboard($('#invite-btn'));
-  $('.' + gon.rsvp).addClass('confirm');
+    var clip = new ZeroClipboard($('#invite-btn'));
+    $('.<%= @invite.rsvp %>').addClass('confirm');
 
-  
-  $('.share-btn').on('click', function(){
-    FB.ui({
-      method: 'share',
-      href: '<%= event_url(@event) %>',
-    }, function(response){});
-  });
-});
-</script>
-<% if @current_user || @cached_guest_user.name.present? %>
-  <script>
-    $(document).ready(function() {
+    $('.share-btn').on('click', function(){
+      FB.ui({
+        method: 'share',
+        href: '<%= event_url(@event) %>',
+      }, function(response){});
+    });
+    <% if @current_user || @cached_guest_user.name.present? %>
       // rsvp to events
       $('.rsvp-btn').on('click', function(){
         var rsvp = ($(this).attr('value'));
         $('#invite_rsvp').val(rsvp);
         $(this).parent('form').submit();
       });
-    });
-  </script>
-<% else %>
-  <script>
-    $(document).ready(function() {
+    <% else %>
       $('.rsvp-btn').on('click', function(){
+        if ($('.confirm').length == 0) {
+          $(this).addClass('confirm');
+        }
         var rsvp = $(this).attr('value');
         $('#user_rsvp').attr('value', rsvp);
         $('.rsvp-login').css('display', 'block');
       });
-    });
-  </script>
-<% end %>
+    <% end %>
+  });
+</script>
+
+
 
 

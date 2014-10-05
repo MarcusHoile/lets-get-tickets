@@ -1,9 +1,3 @@
-<%= form_tag({controller: "events", action: "search"}, method: "get", remote: "true", id: "search") do %>
-  <%= label_tag(:q, "Search for an Event:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
-<% end %>
-<div id="event-results"></div>
 
 <div class="form">
   <div role="form">
@@ -21,25 +15,24 @@
       <% end %>
 
       <div class="form-group">
-        <%= f.label :what, "What is the gig?" %>
-        <%= f.text_field :what, :class => "form-control" %>
+        <%= f.label :what %>
+        <%= f.text_field :what, :class => "form-control", placholder: "What is the gig?" %>
       </div>
         <div class="form-group">
-        <%= f.label :where, "Where is the gig?" %>
-        <%= f.text_field :where, :class => "form-control"  %>
+        <%= f.label :where %>
+        <%= f.text_field :where, :class => "form-control", placholder: "Where is the gig?"  %>
       </div>
-        <div class="input-group">
-        <%= f.label :price, "How much is it?" %>
+        <div class="input-group input">
           <span class="input-group-addon">$</span>
-        <%= f.number_field :price, :class => "form-control"%>
+        <%= f.number_field :price, :class => "form-control price", placeholder: "How much is it?"%>
       </div>
       <div class="form-group">
-        <%= f.label :event_when_text, "When is the gig?" %>
-        <%= f.text_field :event_when_text, :class => "form-control", placeholder: "eg 8pm Friday 23rd April"  %>
+        <%= f.label :event_when_text, 'When is the gig?' %>
+        <%= f.text_field :event_when_text, :class => "form-control", placeholder: "When is the gig?"  %>
       </div>
       <div class="field">
-        <%= f.label :on_sale_text, "When are you buying the tickets?" %>
-        <%= f.text_field :on_sale_text, class: "form-control", placeholder: "eg in 3 days, next friday 12pm" %>
+        <%= f.label :on_sale_text, 'Buying tickets when?' %>
+        <%= f.text_field :on_sale_text, class: "form-control", placeholder: "When are you buying the tickets?" %>
       </div>
       <div class="field">
         <%= f.hidden_field :lat, class: "form-control" %>

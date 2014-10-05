@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   before_action :check_status, only: [:show]
   # skip_before_filter :current_user
 
+  include ApplicationHelper
 
 
 
@@ -14,9 +15,10 @@ class EventsController < ApplicationController
     # you can only see events that you host or have been invited to
     if current_user
       @events = Event.where(owner: @current_user) + @current_user.event_invitations
-      @events.sort_by!(&:on_sale)
+    elsif guest_user
+      @events = @cached_guest_user.event_invitations
     end
-    
+    @events.sort_by!(&:on_sale)
   end
 
   def show
@@ -25,18 +27,22 @@ class EventsController < ApplicationController
     @date = @event.event_when
     # @undecided = @event.invites.where(rsvp: "Undecided")
     # @declined = @event.invites.where(rsvp: "Not Going")
-    # @confirmed = @event.invites.where(rsvp: "Going")
+    @confirmed = @event.invites.where(rsvp: "going")
     gon.lat = @event.lat
     gon.lng = @event.lng
     @invite = Invite.find_by(user_id: @user.id, event_id: @event.id) || @user.invites.create(rsvp: "Undecided", event_id: @event.id)
+    if @owner == @user
+      @invite.update(rsvp: "going")
+    end
     gon.rsvp = @invite.rsvp
+    @invites = @event.invites.where.not(rsvp: "Undecided")
 
     render layout: "events"
   end
 
   # GET /events/new
   def new
-    
+
     @event = Event.new
     
   end
@@ -61,7 +67,7 @@ class EventsController < ApplicationController
         #   UserMailer.invite_email(@owner, guest, @event).deliver
         # end
 
-        format.html { redirect_to event_path(@event), notice: 'Woot! Event created. Now all you need to do is invite some friends' }
+        format.html { redirect_to event_path(@event)   }
 
         format.json { render action: 'show', status: :created, location: @event }
       else
@@ -77,7 +83,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update(event_params)
         # will need an update email notification here
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to @event}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

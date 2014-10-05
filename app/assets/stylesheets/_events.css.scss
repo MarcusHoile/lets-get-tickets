@@ -1,40 +1,108 @@
 .event-container {
-	max-width: 900px;
 	margin: 0 auto;
-	.col-md-4 {
-		padding:0;
-	}
-	.friends {
-		padding: 5px;
-	}
+	text-align: center;
+	max-width: 460px;
 }
-.step {
-	margin: 0 3%;
-	height: 300px;
-	border-radius: 30px;
-	border: solid 1px $wetSand;
-	border-bottom: solid 5px darken($wetSand, 15%);
-	margin: 5px;
-	vertical-align: top;
-	background: $sand;
-	padding: 10px;
+.container {
+	max-width: 600px;
 }
-.step-title {
-	&.step-3 {
-		font-size: 18px;
+// 	.col-md-4 {
+// 		padding:0;
+// 	}
+// 	.friends {
+// 		padding: 5px;
+// 	}
+// }
+// .step {
+// 	margin: 0 3%;
+// 	height: 300px;
+// 	border-radius: 30px;
+// 	border: solid 1px $wetSand;
+// 	border-bottom: solid 5px darken($wetSand, 15%);
+// 	margin: 5px;
+// 	vertical-align: top;
+// 	background: $sand;
+// 	padding: 10px;
+// }
+// .step-title {
+// 	&.step-3 {
+// 		font-size: 18px;
+// 	}
+// 	span {
+// 		display: inline-block;
+// 		background: darken($wetSand, 40%);
+// 		height: 30px;
+// 		text-align: center;
+// 		width: 30px;
+// 		color: $sand;
+// 		border-radius: 5px;
+// 		padding: 2px;
+// 	}
+// }
+.row {
+		margin: 0 5px;
 	}
-	span {
-		display: inline-block;
-		background: darken($wetSand, 40%);
-		height: 30px;
-		text-align: center;
-		width: 30px;
-		color: $sand;
-		border-radius: 5px;
-		padding: 2px;
-	}
-}
+.event-details {
+	position: relative;
+	border-radius: 20px;
+	border: solid 1px darken($wetSand, 10%);
+	border-top: none;
+	border-bottom: solid 5px darken($wetSand, 30%);
+	background: lighten($wetSand, 15%);
+	padding: 15px;
 
+	p {
+		// color: darken($wetSand, 40%);
+		&.cost {
+			// background: #fff;
+
+			padding: 5px 20px;
+			border-radius: 5px;
+			color: #ffffff;
+			background: #000;
+			text-align: center;	
+		}
+		
+	}
+	i {
+		font-size: 18px;
+		// color: darken($wetSand, 40%);
+		width: 30px;
+		padding: 5px;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.teams {
+		text-align: center;
+		margin: 0 auto;
+		padding-bottom: 10px;
+		p {
+			font-size: 24px;
+			padding: 5px;
+		}
+		h4 {
+			padding: 10px;
+		}
+	}
+	.team {
+		display: inline-block;
+		vertical-align: middle;
+		width: 30%;
+
+	}
+	
+	.center {
+		text-align: center;
+	}
+	.details {
+		text-align: left;
+		max-width: 200px;
+		margin: 0 auto;
+	}
+}
+.inline {
+	display: inline-block;
+}
 
 .settings {
 	padding: 5px 0;
@@ -44,22 +112,22 @@
 	ul {
 		padding: 0;
 		font-size: 16px;
-		background: $wetSand;
-		display:none;
-		position: absolute;
-		right: 20px;
 		width: 120px;
 		li {
-			height: 40px;
 			list-style: none;
-			display: block;
-			text-align: right;
-			border: solid 1px darken($wetSand, 15%);
-			&:last-child {
-				border-top: none;
-			}
-			&:hover {
-				background: $sand;
+			ul {
+				position: absolute;
+				top: 40px;
+				display:none;
+				background: $wetSand;
+				li {
+					height: 40px;
+					text-align: right;
+					border: solid 1px darken($wetSand, 15%);
+					&:hover {
+						background: $sand;
+					}
+				}
 			}
 			a {
 				display: block;
@@ -67,17 +135,35 @@
 				line-height: 40px;
 			}
 		}
-	}
-	&:hover, &:focus {
-		ul {
-			display:block;
+		li:hover ul {
+			display: block;
 		}
 	}
 }
 .event-header {
 	padding: 5px;
-	h3, .settings {
+	h3 {
 		display: inline-block;
+	}
+	
+}
+.ticket-notice {
+	background: #fff;
+	padding: 10px;
+	border-radius: 10px;
+	border: solid 1px darken($green, 5%);
+}
+.guest-count {
+	background: $green;
+	color: #fff;
+	padding: 2px;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	span {
+		background: #fff;
+		padding: 0 5px;
+		color: $green;
+		border-radius: 10px;
 	}
 }
 .event-title {
@@ -90,6 +176,11 @@
 }
 .payment {
 	margin: 10px;
+}
+.friends-icons {
+	margin: 0 auto;
+	text-align: center;
+	display: none;
 }
 .friend {
 	.name, .sticker{
@@ -105,16 +196,70 @@
 .question {
 	font-size: 60px;
 }
-.rsvp-login {
-	display: none;
+.rsvp {
+	padding: 10px;
+	margin: 0 auto;
+	p {
+		padding: 5px;	
+	}
 }
+.rsvp-login {
+	margin-top: 20px;
+	display: none;
+	input, .btn, .submit {width: 300px;}
+	background: #fff;
+	border-radius: 20px;
+	border: solid 1px darken($wetSand, 10%);
+}
+.rsvp-notice {
+	margin: 5px;
+}
+
 .avatar {
-	height: 40px;
-	width: 40px;
+	height: 50px;
+	width: 50px;
 }
 .guest-avatar {
 	font-size: 30px;
 	padding: 5px;
 	vertical-align: middle;
 	background: darken($wetSand, 15%);
+}
+.guest-list {
+	margin: 10px auto 0 auto;
+	max-width: 320px;
+	text-align: left
+
+}
+.friends-list{
+	text-align: left;
+	i {
+		text-align: center;
+	}
+	.guest {
+		margin: 3px;
+	}
+}
+.invite-friends {
+	background: lighten($green, 10%);
+	color: darken($green, 30%);
+	border-radius: 10px;
+	border: solid 1px darken($green, 10%);
+	border-top: none;
+	border-bottom: solid 5px darken($green, 10%);
+	padding: 10px;
+	.btn {
+		width: 80px;
+		height: 30px;
+		line-height: 15px;
+	}
+}
+.edit-event {
+	padding: 10px;
+	position:absolute;
+	right: 10px;
+	background: $sand;
+	color: darken($wetSand, 40%);
+	border-radius: 5px;
+	border:solid 1px $wetSand;
 }
