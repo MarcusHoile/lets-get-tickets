@@ -51,8 +51,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    
-    @rsvp = params["user"]["rsvp"]
+    @invite = Invite.find params[:user][:invite_id]
+    @rsvp = params[:user][:rsvp]
     respond_to do |format|
       if @cached_guest_user.update(user_params)
         format.js

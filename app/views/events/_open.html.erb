@@ -6,12 +6,6 @@
   <title>Let's Get Tickets to <%= @event.what.titleize %></title>
 <% end %>
 <div class="event-container">
-  <div class="row">
-    <div class="col-md-12 event-header">
-      <h3>Let's get tickets to</h3>
-      
-    </div><!-- event-header -->
-  </div><!-- row -->
   <div class="row ">
     <%= render 'event_details' %>
   </div>
@@ -38,9 +32,10 @@
             <div class="field">
               <%= f.text_field :name, placeholder: "Name" %>
               <%= f.hidden_field :event_id, value: @event.id%>
+              <%= f.hidden_field :invite_id, value: @invite.id%>
               <%= f.hidden_field :rsvp, value: "text", class: "rsvp-capture" %>
             </div>
-            <div class="submit btn btn-success">
+            <div class="guest-submit btn btn-success">
               Submit your name 
             </div>
             <% end %>
@@ -124,6 +119,10 @@
         $('.rsvp-login').css('display', 'block');
       });
     <% end %>
+    // register guest user
+      $('.guest-submit').on('click', function(){
+        $(this).parent('form').submit();
+      });
   });
 </script>
 
