@@ -14,8 +14,8 @@
   </div>
 
   <div class="details">
-    <div><i class="fa fa-clock-o"></i><p class="inline"><%= @event.event_when.strftime"%a %d %b %I:%M %P" %></p></div>
-    <div><i class="fa fa-map-marker"></i><p class="inline"> <%= @event.where.titleize %></p></div>
-    <div><i class="fa fa-tag"></i><p class="cost inline"><%= number_to_currency(@event.price) %></p></div>
+    <div class="detail"><i class="fa fa-clock-o"></i><p class="inline"><%= @event.event_when.strftime"%a %d %b %I:%M %P" %></p></div>
+    <div class="detail"><i class="fa fa-map-marker"></i><p class="inline"> <%= @event.where.titleize %></p></div>
+    <div class="text-center"><p class="cost inline"><%= number_to_currency(@event.price) %></p></div>
   </div>
 </div>

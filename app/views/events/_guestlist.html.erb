@@ -1,33 +1,61 @@
-<div class="guest-list">
-  <p>Guest list:</p>
-  <div class="friends-icons">  
-    <% @invites.each do |invite| %>
-      <% get_rsvp_badge(invite) %>
-      <div class="guest">
-        <div class="sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="<%= @badge %>">
-          <% if invite.guest.image %>
-            <%= image_tag invite.guest.image, class: 'avatar' %>
-          <% else %>
-            <%= icon('user', '', class: 'avatar guest-avatar') %>
-          <% end %>
-        </div>
+<div class="row">
+  <div class="guest-list">
+    
+      <div class="guest-row friends-icons">  
+        <% @invites.each do |invite| %>
+          <% get_rsvp_badge(invite) %>
+          <div class="inline guest">
+            <% if invite.guest.image %>
+              <%= image_tag invite.guest.image, class: 'avatar' %>
+            <% else %>
+              <%= icon('user', '', class: 'avatar guest-avatar') %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-  <div class="friends-list">
-      <% @invites.each do |invite| %>
-      <% get_rsvp_badge(invite) %>
-      <div class="guest"> 
-        <div class="inline sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="<%= @badge %>">
-          <% if invite.guest.image %>
-            <%= image_tag invite.guest.image, class: 'avatar inline' %>
-          <% else %>
-            <%= icon('user', '', class: 'avatar guest-avatar inline') %>
-          <% end %>
-        </div>
-        <p class="inline"><%= invite.guest.name %></p>
+      <div class="guest-row view-guest-list text-center">
+        <% if @invites.count >= 7 %>
+          <i class="fa fa-plus-square-o accordion" ></i>
+        <% else %>
+          <i class="fa fa-minus-square-o accordion" ></i>
+        <% end %>
+        <span>see who's going</span>
       </div>
 
-    <% end %>
+
+      <div class="friends-list">
+          <% @invites.each do |invite| %>
+          <% get_rsvp_badge(invite) %>
+          <div class="guest guest-row"> 
+            <div class="inline sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="<%= @badge %>">
+              <% if invite.guest.image %>
+                <%= image_tag invite.guest.image, class: 'avatar inline' %>
+              <% else %>
+                <%= icon('user', '', class: 'avatar guest-avatar inline') %>
+              <% end %>
+            </div>
+            <p class="inline"><%= invite.guest.name %></p>
+          </div>
+        <% end %>
+        
+        <div class="guest guest-row guest-register" id="guest-register">
+          <div class="inline sticker sticker-<%= @invite.rsvp %>" id="invite-<%= @invite.id %>">
+              <%= icon('user', '', class: 'avatar guest-avatar inline') %>
+          </div>
+          <div class="form inline">
+            <div role="form">
+              <%= form_for @user, remote: true do |f| %>
+                <div class="field">
+                  <%= f.text_field :name, placeholder: "Name", id: "guest-name-input" %>
+                  <%= f.hidden_field :event_id, value: @event.id%>
+                  <%= f.hidden_field :invite_id, value: @invite.id%>
+                  <%= f.hidden_field :rsvp, value: "text", class: "rsvp-capture" %>
+                </div>
+              <% end %>
+            </div>
+          </div><!-- form -->
+        </div>
+
+      </div>
   </div>
 </div>

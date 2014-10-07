@@ -5,6 +5,7 @@
   <%= include_gon %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <%= render "layouts/googleanalytics" %>
   <%= yield :head %>
@@ -13,15 +14,15 @@
 <body>
   <%= render "layouts/header" %>
   
- <div class="row alerts">
+  <div class="row alerts">
     <div class="col-md-12">
       <% flash.each do |key, value| %>
         <%= content_tag :div, value, :class => "alert alert-#{key}" unless value.blank? %>
       <% end %>
     </div>
   </div>
-
   
+  <%= yield :event_notice  %>
 
     <div class="container">
       <%= yield %>

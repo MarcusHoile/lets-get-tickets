@@ -5,31 +5,30 @@
 <title>Let's Get Tickets to <%= @event.what.titleize %></title>
 <% end %>
 
+<% content_for :event_notice do %>
+  <div class="event-notice">
+    <% if @owner == @user %>
+      <% if !@event.ticket %>
+        <div class="guest-count"><span><%= @confirmed.count %></span> CONFIRMED GUESTS!</div>
+        <div class=" owner">
+          <p>The deadline has been reached. Have you bought the tickets?</p>
+          <%= form_for @event do |f| %>
+            <%= f.check_box :ticket, checked: true  %> 
+            <div class="btn btn-success ticket-confirm">I've bought the tickets</div>
+            <%= f.submit %>
+          <% end %>
+        </div>
+      <% else %>  
+        <p>Mission is a go! Have fun!</p>
+      <% end %>
+    <% else %>
+      <p>Mission is a go! <%= @owner.name %> is in the process of purchasing the tickets.</p>
+    <% end %>
+  </div>
+<% end %>
+
 
 <div class="event-container">
-  <div class="row">
-    <div class="col-md-12 event-header">
-      <div class="event-confirmed">
-        <% if @owner == @user %>
-          <% if !@event.ticket %>
-            <div class="guest-count"><span><%= @confirmed.count %></span> CONFIRMED GUESTS!</div>
-            <div class="ticket-notice owner">
-              <p>The deadline has been reached. Have you bought the tickets?</p>
-              <%= form_for @event do |f| %>
-                <%= f.check_box :ticket, checked: true  %> 
-                <div class="btn btn-success ticket-confirm">I've bought the tickets</div>
-                <%= f.submit %>
-              <% end %>
-            </div>
-          <% else %>  
-            <p class="ticket-notice">Mission is a go! Have fun!</p>
-          <% end %>
-        <% else %>
-          <p class="ticket-notice">Mission is a go! <%= @owner.name %> is in the process of purchasing the tickets.</p>
-        <% end %>
-      </div>
-    </div><!-- event-header -->
-  </div><!-- row -->
   <div class="row ">
     <%= render 'event_details' %>
   </div>

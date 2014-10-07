@@ -5,68 +5,25 @@
 }
 .container {
 	max-width: 600px;
+	padding: 0 5px;
 }
-// 	.col-md-4 {
-// 		padding:0;
-// 	}
-// 	.friends {
-// 		padding: 5px;
-// 	}
-// }
-// .step {
-// 	margin: 0 3%;
-// 	height: 300px;
-// 	border-radius: 30px;
-// 	border: solid 1px $wetSand;
-// 	border-bottom: solid 5px darken($wetSand, 15%);
-// 	margin: 5px;
-// 	vertical-align: top;
-// 	background: $sand;
-// 	padding: 10px;
-// }
-// .step-title {
-// 	&.step-3 {
-// 		font-size: 18px;
-// 	}
-// 	span {
-// 		display: inline-block;
-// 		background: darken($wetSand, 40%);
-// 		height: 30px;
-// 		text-align: center;
-// 		width: 30px;
-// 		color: $sand;
-// 		border-radius: 5px;
-// 		padding: 2px;
-// 	}
-// }
 .row {
-		margin: 0 5px;
-	}
+	margin: 0 5px;
+}
 .event-details {
-	position: relative;
-	border-radius: 20px;
-	border: solid 1px darken($wetSand, 10%);
-	border-top: none;
-	border-bottom: solid 5px darken($wetSand, 30%);
-	background: lighten($wetSand, 15%);
-	padding: 15px;
-
+	padding: 15px 15px 0 15px;
 	p {
-		// color: darken($wetSand, 40%);
 		&.cost {
-			// background: #fff;
-
-			padding: 5px 20px;
+			padding: 8px 20px;
+			width: 200px;
 			border-radius: 5px;
 			color: #ffffff;
-			background: #000;
+			background: $red;
 			text-align: center;	
 		}
-		
 	}
 	i {
 		font-size: 18px;
-		// color: darken($wetSand, 40%);
 		width: 30px;
 		padding: 5px;
 		margin: 0 auto;
@@ -96,8 +53,15 @@
 	}
 	.details {
 		text-align: left;
-		max-width: 200px;
-		margin: 0 auto;
+		div {
+			padding: 10px 0;
+		}
+		.detail {
+			border-bottom: solid 1px $wetSand;
+			&:first-of-type {
+				border-top: solid 1px $wetSand;
+			}
+		}
 	}
 }
 .inline {
@@ -147,11 +111,19 @@
 	}
 	
 }
-.ticket-notice {
-	background: #fff;
+.event-notice {
+	width: 100%;
+	background: #000;
 	padding: 10px;
-	border-radius: 10px;
-	border: solid 1px darken($green, 5%);
+	color: #fff;
+}
+.sticky {
+	position: fixed;
+	width: 100%;
+	left: 0;
+	top: 0;
+	z-index: 100;
+	border-top: 0;
 }
 .guest-count {
 	background: $green;
@@ -177,11 +149,6 @@
 .payment {
 	margin: 10px;
 }
-.friends-icons {
-	margin: 0 auto;
-	text-align: center;
-	display: none;
-}
 .friend {
 	.name, .sticker{
 		display: inline-block;
@@ -199,17 +166,13 @@
 .rsvp {
 	padding: 10px;
 	margin: 0 auto;
-	p {
-		padding: 5px;	
-	}
 }
 .rsvp-login {
 	margin-top: 20px;
-	display: none;
-	input, .btn, .submit {width: 300px;}
-	background: #fff;
-	border-radius: 20px;
-	border: solid 1px darken($wetSand, 10%);
+	input, .btn, .submit {
+		max-width: 250px;
+		min-width: 250px;
+	}
 }
 .rsvp-notice {
 	margin: 5px;
@@ -227,17 +190,42 @@
 }
 .guest-list {
 	margin: 10px auto 0 auto;
-	max-width: 320px;
+	padding: 15px 0;
 	text-align: left
-
+}
+.guest-register {
+	display: none;
+}
+.view-guest-list {
+	cursor: pointer;
+}
+.guest-row {
+	padding: 8px;
+	border-bottom: solid 1px $wetSand;
 }
 .friends-list{
+	display:none;
 	text-align: left;
 	i {
 		text-align: center;
 	}
 	.guest {
 		margin: 3px;
+	}
+}
+.friends-icons {
+	white-space: nowrap;
+	overflow: hidden;
+	.avatar {
+		height: 30px;
+		width: 30px;
+		text-align: center;
+	}
+	.guest-avatar {
+		font-size: 20px;
+		padding: 5px;
+		vertical-align: middle;
+		background: darken($wetSand, 15%);
 	}
 }
 .invite-friends {

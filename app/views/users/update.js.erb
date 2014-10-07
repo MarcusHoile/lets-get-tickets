@@ -1,15 +1,21 @@
+$('.guest-register').remove();
+
 <% if @invite.guest.image? %>
-	$('.friends-list').append('<div class="guest"><div class="sticker" id="invite-<%= @invite.id %>" data-badge=""><%= image_tag @invite.guest.image, class: "avatar" %></div><p class="inline"><%= @invite.guest.name %></p></div>')
+	$('.friends-list').append('<div class="guest guest-row"><div class="sticker" id="invite-<%= @invite.id %>" data-badge=""><%= image_tag @invite.guest.image, class: "avatar" %></div><p class="inline"><%= @invite.guest.name %></p></div>')
 <% else %>
-	$('.friends-list').append('<div class="guest"><div class="sticker" id="invite-<%= @invite.id %>" data-badge=""><%= icon("user", "", class: "avatar guest-avatar") %></div><p class="inline"><%= @invite.guest.name %></p></div>')
-<% end %>
+	$('.friends-list').append('<div class="guest guest-row"><div class="sticker" id="invite-<%= @invite.id %>" data-badge=""><%= icon("user", "", class: "avatar guest-avatar") %></div><p class="inline"><%= @invite.guest.name %></p></div>')
+<% end %>	
+
 $('.rsvp-login').remove();
 $('#invite_rsvp').val('<%= @rsvp %>');
 $('.rsvp-btn').parent('form').submit();
+$('.rsvp-btn').off();
  // rsvp to events
 $('.rsvp-btn').on('click', function(){
  	var rsvp = ($(this).attr('value'));
  	$('#invite_rsvp').val(rsvp);
  	$(this).parent('form').submit();
 });
+
+
 
