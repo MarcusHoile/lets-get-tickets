@@ -29,8 +29,8 @@
   <div class="row ">
     <%= render 'event_details' %>
   </div>
-  <div class="rsvp">
 
+  <div class="rsvp">
     <% if @user != @owner %>
       <p>Are you coming?</p>
 
@@ -52,7 +52,7 @@
       <% end %><!-- invite-form -->
     <% end %>
       
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="loginPrompt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -72,13 +72,14 @@
         </div>
       </div>
     </div>
+    
   </div><!-- rsvp -->
 
         
 
   <% if @owner != @user %>
     <div class="row">
-      <%= render 'rsvp' %>
+      <%= render 'payment_form' %>
     </div>
   <% else %>
     <% if @event.guests.length == 1 %>
@@ -124,12 +125,12 @@
       $('.rsvp-btn').on('click', function(){
         var rsvp = $(this).attr('value');
         $('#user_rsvp').attr('value', rsvp);
-        $('#myModal').modal('show')
+        $('#loginPrompt').modal('show')
       });
     <% end %>
       // register guest user
       $('.register-name').on('click', function(){
-        $('#myModal').modal('hide')
+        $('#loginPrompt').modal('hide')
         $('.friends-list').css('display', 'block')
         $('.guest-register').css('display', 'block')
         $("#guest-name-input").focus();

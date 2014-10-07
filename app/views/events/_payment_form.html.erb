@@ -1,0 +1,38 @@
+
+
+    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="paymentLabel">Who are you?</h4>
+          </div>
+          <div class="modal-body">
+            
+            <div class="payment-form">
+              <h3 class="step-title"><%= @owner.name %> will buy you a ticket!</h3>
+              <div class="payment">
+                <%= form_for(shallow_args(@user,@invite), remote: true) do |f| %>
+                  <%= f.hidden_field :payment_method, value: "cash" %>
+                  <%= f.hidden_field :event_id, value: @event.id %>
+                  <p>How would you like to pay him?</p>
+                  <div class="btn btn-payment cash" value="cash">Cash</div>
+                  <div class="btn btn-payment bank" value="bank">Bank Transfer</div>
+                <% end%>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+<script>
+  $(document).ready(function() {
+    $('.btn-payment').on('click', function(){
+      var payment = $(this).attr('value');
+      $('#invite_payment_method').attr('value', payment);
+      $(this).parent('form').submit();
+    });
+  });
+</script>

@@ -37,12 +37,9 @@ class InvitesController < ApplicationController
   end
 
   def update
-    # @add_avatar = false
     @event = Event.find(params[:invite][:event_id])
     @owner = @event.owner
-    # if @invite.rsvp == "Undecided"
-      # @add_avatar = true
-    # end
+    @current_rsvp = @invite.rsvp
     respond_to do |format|
       if @invite.update(invite_params)
         get_rsvp_badge(@invite)
