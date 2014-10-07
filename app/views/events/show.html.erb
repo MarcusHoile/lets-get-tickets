@@ -1,3 +1,12 @@
 
 <%= render @event.status %>
 
+<script>
+	$('.close-btn').on('click', function(){
+    $(this).closest('.event-notice').hide()
+  })
+  <% if @invites.count < 7 %>
+  	$('.friends-icons').css('display', 'none');
+    $('.friends-list').css('display', 'block');
+  <% end %>
+</script>

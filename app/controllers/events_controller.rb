@@ -83,6 +83,9 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update(event_params)
         # will need an update email notification here
+        if event_params.include?("ticket")
+          format.js { render partial: "ticket_status"}
+        end
         format.html { redirect_to @event}
         format.json { head :no_content }
       else

@@ -116,6 +116,59 @@
 	background: #000;
 	padding: 10px;
 	color: #fff;
+	position: relative;
+	p {
+		text-align: center;
+	}
+	.ticket-status {
+		margin: 0 auto 3px auto;
+		text-align: center;
+		padding: 8px;
+		width: 80%;
+		&.amber {
+			background: rgba($orange, .4);
+			border: dotted 1px $orange;
+		}
+		&.green, &.guest-count {
+			background: rgba($green, .4);
+			border: dotted 1px $green;
+			span {
+				background: #fff;
+				padding: 0 5px;
+				color: #000;
+				font-size: 18px;
+				border-radius: 10px;
+			}
+		}
+	}
+	.owner-confirm-ticket {
+		max-width: 400px;
+		margin: 0 auto;
+		padding-top: 5px;
+		p, .ticket-form {
+			width: 49%;
+		}
+		form {
+			margin: 0;
+			padding: 0;
+		}
+	}
+	.close-btn {
+		color: #fff;
+		padding: 3px;
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		cursor: pointer;
+		&:hover {
+			background: darken(#fff, 75%);
+		}
+	}
+}
+.message  {
+	display: none;
+	max-width: 90%;
+	margin: 0 auto;
 }
 .sticky {
 	position: fixed;
@@ -125,19 +178,13 @@
 	z-index: 100;
 	border-top: 0;
 }
-.guest-count {
-	background: $green;
-	color: #fff;
-	padding: 2px;
-	border-top-right-radius: 10px;
-	border-top-left-radius: 10px;
-	span {
-		background: #fff;
-		padding: 0 5px;
-		color: $green;
-		border-radius: 10px;
-	}
-}
+// .guest-count {
+// 	background: $green;
+// 	color: #fff;
+// 	padding: 2px;
+// 	border-top-right-radius: 10px;
+// 	border-top-left-radius: 10px;
+// }
 .event-title {
 	img, h1 {
 		display: inline-block;
@@ -229,18 +276,30 @@
 	}
 }
 .invite-friends {
-	background: lighten($green, 10%);
-	color: darken($green, 30%);
-	border-radius: 10px;
-	border: solid 1px darken($green, 10%);
-	border-top: none;
-	border-bottom: solid 5px darken($green, 10%);
+	border: dotted 1px darken($green, 10%);
+	background: rgba($green, .4);
 	padding: 10px;
-	.btn {
-		width: 80px;
-		height: 30px;
-		line-height: 15px;
+	max-width: 80%;
+	margin: 0 auto;
+}
+.invite-btns {
+	padding-top: 8px;
+	text-align: center;
+	cursor: pointer;
+	.bttn {
+		padding: 4px 8px;
+		margin: 0 5px;
+		display: inline-block;
+		&.invite-btn {
+			border: dotted 1px darken($neutral, 15%);
+			background: rgba($neutral, 0.2);
+		}
+		&.share-btn {
+			border: dotted 1px $blue;
+			background: rgba($blue, 0.6);
+		}
 	}
+
 }
 .edit-event {
 	padding: 10px;

@@ -7,7 +7,25 @@ $inviteRsvp.attr('data-badge', '<%= @badge %>');
 
 <% if @invite.rsvp == "going" && @current_rsvp != "going" %>
 	$('.countdown').css('display', 'none');
+	$('.message').css('display', 'none')
+	$('.message-going').css('display', 'block')
 	$('#paymentModal').modal('show');
+<% elsif @invite.rsvp == "not-going" %>
+	$('.countdown').css('display', 'none');
+	$('.message').css('display', 'none')
+	$('.message-not-going').css('display', 'block')
+	setTimeout(function(){
+		$('.message').css('display', 'none')
+		$('.countdown').css('display', 'block');	
+	}, 3000)
+<% elsif @invite.rsvp == "maybe" %>
+	$('.countdown').css('display', 'none');
+	$('.message').css('display', 'none')
+	$('.message-maybe').css('display', 'block')
+	setTimeout(function(){
+		$('.message').css('display', 'none')
+		$('.countdown').css('display', 'block');	
+	}, 3000)
 <% end %>
 
 
