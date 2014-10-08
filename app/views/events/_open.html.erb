@@ -54,7 +54,9 @@
 
   </div>
 <% end %>
-
+<div class="row gig">
+  <%= render 'event_gig' %>
+</div>
 <div class="event-container">
   <div class="row ">
     <%= render 'event_details' %>
@@ -109,8 +111,9 @@
     <div class="row">
       <%= render 'payment_form' %>
     </div>
-
+    <%= render 'confirmed_guests' %>
     <%= render 'guestlist' %>
+
   </div>
 <% if @event.guests.length < 2 %>
   <script>

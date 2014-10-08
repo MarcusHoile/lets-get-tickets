@@ -58,28 +58,28 @@ $(function() {
   })
 
   // sticky notification bar
-  var $stickyNoticeTop = $('.event-notice').offset().top;
+  // var $stickyNoticeTop = $('.event-notice').offset().top;
 
   $('.view-guest-list').on('click', function(){
     $('.friends-list').toggle()
     $('.accordion').toggleClass('fa-plus-square-o')
     $('.accordion').toggleClass('fa-minus-square-o')
   });
-  function stickyNav(){ 
-    var $notification = $('.event-notice');
-    var $windowScrollTop = $(window).scrollTop();
+  // function stickyNav(){ 
+  //   var $notification = $('.event-notice');
+  //   var $windowScrollTop = $(window).scrollTop();
 
-    if ($windowScrollTop > $stickyNoticeTop) { 
-      $notification.addClass('sticky');
-      $('.container').css('margin-top', '65px');
-    } else {
-      $notification.removeClass('sticky'); 
-      $('.container').css('margin-top', '0px');
-    }
-  };
-  $(window).scroll(function() {
-    stickyNav();
-  });
+  //   if ($windowScrollTop > $stickyNoticeTop) { 
+  //     $notification.addClass('sticky');
+  //     $('.container').css('margin-top', '65px');
+  //   } else {
+  //     $notification.removeClass('sticky'); 
+  //     $('.container').css('margin-top', '0px');
+  //   }
+  // };
+  // $(window).scroll(function() {
+  //   stickyNav();
+  // });
 
 });
 

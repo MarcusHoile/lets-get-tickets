@@ -1,16 +1,12 @@
-.container {
+.page-wrap {
 	min-height: 100%;
-	// margin-bottom: -110px;
+	margin-bottom: -60px;
 }
-.container-fluid {
-	max-width: 960px;
-	margin: 0 auto;
-}
-.container:after {
+.page-wrap:after {
   content: "";
   display: block;
 }
-.site-footer, .container:after {
+.site-footer, .page-wrap:after {
   height: 60px; 
 }
 .navbar, footer {

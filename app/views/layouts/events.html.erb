@@ -14,19 +14,11 @@
 <body>
   <%= render "layouts/header" %>
   
-  <div class="row alerts">
-    <div class="col-md-12">
-      <% flash.each do |key, value| %>
-        <%= content_tag :div, value, :class => "alert alert-#{key}" unless value.blank? %>
-      <% end %>
-    </div>
-  </div>
   
   <%= yield :event_notice  %>
-
-    <div class="container">
-      <%= yield %>
-    </div>
+  <div class="page-wrap">
+    <%= yield %>
+  </div>
   <div class="feedback">
     <div class="feedback-tab">feedback</div>
     <div class="feedback-form">
@@ -44,6 +36,7 @@
       <li><%= link_to 'Contact Us', '/contact' %></li>
     </ul>
   </footer>
+  <div class="spacer"></div>
 </body>
 
 </html>
