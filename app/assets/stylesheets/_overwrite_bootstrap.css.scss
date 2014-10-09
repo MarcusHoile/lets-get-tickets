@@ -1,7 +1,8 @@
-$navbar-default-link-color: #fff;
-$navbar-default-color: #fff;
-$navbar-toggle: #fff;
-$navbar-default-toggle-icon-bar-bg: #fff;
+
 $navbar-default-bg: #00B62F;
-$navbar-default-toggle-hover-bg: darken($navbar-default-bg, 10%);
-$navbar-default-toggle-border-color:#fff;
+$navbar-toggle: darken($navbar-default-bg, 10%);
+$navbar-default-toggle-hover-bg: darken($navbar-default-bg, 5%);
+$navbar-default-toggle-border-color: darken($navbar-default-bg, 15%);
+$navbar-default-toggle-icon-bar-bg: darken($navbar-default-bg, 15%);
+$navbar-default-link-color: darken($navbar-default-bg, 15%);
+$navbar-default-color: darken($navbar-default-bg, 15%);
