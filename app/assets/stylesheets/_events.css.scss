@@ -1,3 +1,30 @@
+.home-page-brand {
+	color: darken($green, 15%);
+	margin-top: 30px;
+	margin-left: 0px;
+	#tagline {
+		width: 270px;
+		border-top: solid 1px darken($green, 15%);
+	}
+	#hp-btn {
+		color: darken($green, 15%) !important;
+
+	}
+}
+.create-event {
+	margin-top: 10px;
+	padding: 10px;
+	border: solid 1px darken($green, 15%);
+	width: 160px;
+	text-align: center;
+	&:hover {
+		background: darken($green, 2%);
+	}
+}
+#brand-splash {
+	font-size: 42px;
+	padding-bottom: 8px;
+}
 .event-container {
 	margin: 0 auto;
 	text-align: center;
@@ -15,7 +42,7 @@
 }
 .event-background {
 	height: 100px;
-	background-image: url('http://lorempixel.com/600/100')
+	background-image: url('forest_bg.jpg')
 }
 .event-details {
 	padding: 0 15px;
@@ -23,10 +50,10 @@
 		&.cost {
 			padding: 8px 20px;
 			width: 200px;
-			border-radius: 5px;
-			color: #ffffff;
-			background: $red;
-			text-align: center;	
+			color: #fff;
+			background: $green;
+			text-align: center;
+			margin-bottom: 10px;	
 		}
 	}
 	i {
@@ -64,7 +91,7 @@
 			padding: 10px 0;
 		}
 		.detail {
-			border-bottom: solid 1px $wetSand;
+			border-bottom: solid 1px $darkGrey;
 		}
 	}
 }
@@ -72,6 +99,11 @@
 	display: inline-block;
 }
 
+.ticket-status {
+	&.pending, &.confirmed, &.purchase {
+		color: $red;
+	}
+}
 .settings {
 	padding: 5px 0;
 	font-size: 28px;
@@ -87,13 +119,13 @@
 				position: absolute;
 				top: 40px;
 				display:none;
-				background: $wetSand;
+				background: $grey;
 				li {
 					height: 40px;
 					text-align: right;
-					border: solid 1px darken($wetSand, 15%);
+					border: solid 1px darken($grey, 15%);
 					&:hover {
-						background: $sand;
+						background: $grey;
 					}
 				}
 			}
@@ -115,8 +147,14 @@
 	}
 }
 .confirmed-guests {
-	padding: 8px;
-	background: #fff;
+	padding-top: 15px;
+	color: $green;
+	font-weight: 300;
+	span {
+		border: solid 1px $green;
+		padding: 4px 8px;
+		border-radius: 50%;
+	}
 }
 .event-notice {
 	min-height: 85px;
@@ -128,6 +166,31 @@
 	left: 0;
 	bottom:0;
 	z-index: 9;
+	.invite-friends {
+		max-width: 80%;
+		margin: 0 auto;
+	}
+	.invite-btns {
+		padding-top: 8px;
+		text-align: center;
+		cursor: pointer;
+		.bttn {
+			padding: 4px 8px;
+			margin: 0 5px;
+			display: inline-block;
+			&.invite-btn {
+				border: dotted 1px darken($grey, 35%);
+				background: rgba($grey, 0.3);
+			}
+			&.share-btn {
+				border: dotted 1px $blue;
+				background: rgba($blue, 0.6);
+				&:hover {
+					background: rgba($blue, 1);
+				}
+			}
+		}
+	}
 	p {
 		text-align: center;
 	}
@@ -237,18 +300,17 @@
 }
 
 .avatar {
-	height: 50px;
-	width: 50px;
+	height: 40px;
+	width: 40px;
 }
 .guest-avatar {
 	font-size: 30px;
 	padding: 5px;
 	vertical-align: middle;
-	background: darken($wetSand, 15%);
+	background: darken($grey, 15%);
 }
 .guest-list {
 	margin: 10px auto 0 auto;
-	padding: 15px 0;
 	text-align: left
 }
 .guest-register {
@@ -256,10 +318,11 @@
 }
 .view-guest-list {
 	cursor: pointer;
+	border-top: none;
 }
 .guest-row {
 	padding: 8px;
-	border-bottom: solid 1px $wetSand;
+	border-bottom: solid 1px $darkGrey;
 }
 .friends-list{
 	display:none;
@@ -271,12 +334,14 @@
 		text-align: center;
 	}
 	.guest {
-		margin: 3px;
+		padding-top: 8px;
+		border-bottom: solid 1px $darkGrey;
 	}
 }
 .friends-icons {
 	white-space: nowrap;
 	overflow: hidden;
+	border-bottom: none;
 	.avatar {
 		height: 30px;
 		width: 30px;
@@ -286,38 +351,11 @@
 		font-size: 20px;
 		padding: 5px;
 		vertical-align: middle;
-		background: darken($wetSand, 15%);
+		background: darken($grey, 15%);
 	}
 }
-.invite-friends {
-	border: dotted 1px darken($green, 10%);
-	background: rgba($green, .4);
-	padding: 10px;
-	max-width: 80%;
-	margin: 0 auto;
-}
-.invite-btns {
-	padding-top: 8px;
-	text-align: center;
-	cursor: pointer;
-	.bttn {
-		padding: 4px 8px;
-		margin: 0 5px;
-		display: inline-block;
-		&.invite-btn {
-			border: dotted 1px darken($neutral, 35%);
-			background: rgba($neutral, 0.3);
-		}
-		&.share-btn {
-			border: dotted 1px $blue;
-			background: rgba($blue, 0.6);
-			&:hover {
-				background: rgba($blue, 1);
-			}
-		}
-	}
 
-}
+
 .spacer {
 	height: 100px;
 }
@@ -326,8 +364,49 @@
 	padding: 5px 10px;
 	float:right;
 	font-size: 11px;
-	background: $sand;
-	color: darken($wetSand, 40%);
+	background: $grey;
 	border-radius: 5px;
-	border:solid 1px $wetSand;
+	color: #999999;
+	border:solid 1px #999999;
+	&:hover {
+		color: #999999;
+		background: lighten($grey, 5%);
+	}
+}				
+.landing {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	.overlay {
+		position: absolute;
+		background-color: rgba(0,51,153, .4); // Old browsers
+		@include filter-gradient(#003399, #00b051, vertical); // IE6-9
+		@include background-image(linear-gradient(top,  rgba(0,182,47, .9) 35%,rgba(67,96,156, .7) 80%));
+		z-index: 4;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+@media screen and (min-width:600px) {
+	.home-page-brand {
+		margin-top: 30px;
+		margin-left: 100px;
+	}
+	.landing {
+		background: url('beach.jpg') no-repeat;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-ms-background-size: cover;
+		background-size: cover;
+		.overlay {
+			position: absolute;
+			background-color: rgba(0,51,153, .4); // Old browsers
+			@include filter-gradient(#003399, #00b051, vertical); // IE6-9
+			@include background-image(linear-gradient(top,  rgba(0,182,47, .9) 20%,rgba(67,96,156, .7) 70%));
+			z-index: 4;
+			width: 100%;
+			height: 100%;
+		}
+	}
 }

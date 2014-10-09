@@ -4,10 +4,13 @@ h1, h2, h3, h4, h5, div, table, td, th, tr, tbody, thead, p {
 }
 
 body {
-	background: $cream;
+	background: $grey;
 }
 
 html, body {
 	height: 100%;
+}
+label {
+	font-weight: normal;
 }
 

@@ -10,7 +10,7 @@
   height: 60px; 
 }
 .navbar, footer {
-	background: $feature-colour;
+	background: $green;
 }
 
 .navbar {
@@ -53,6 +53,7 @@
 	background:#822339 ;
 }
 
+
 footer {
   height: 60px;
   width: 100%;
@@ -87,4 +88,10 @@ footer a {
 footer a:hover {
 	color: #fff;
 	text-decoration:none;
+}
+
+@media only screen and (max-width : 320px) {
+	.navbar-collapse {
+		padding: 10px;
+	}
 }
