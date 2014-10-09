@@ -15,6 +15,13 @@ class Event < ActiveRecord::Base
 
   serialize :latlng, Hash
 
+  # def confirmed_guests
+  #   invites.where(rsvp: "going")
+  #   self.guests.
+  #         joins('INNER JOIN "users" ON "invites"."id" = "league_season_matches"."home_team_id"').
+  #         where('league_season_matches.league_season_id' => current_league_season.id).
+  # end
+
 
   def event_when_text
   	@event_when_text || event_when.try(:strftime, "%a %d %b %I:%M %P")

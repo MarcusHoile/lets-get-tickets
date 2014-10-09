@@ -18,15 +18,3 @@
 	background: $tertiary-colour;
 }
 
-.ticket-status {
-	height: 20px;
-	width: 50px;
-	padding: 10px 20px;
-	border-radius: 5px;
-	&.false {
-		background: $orange;		
-	}
-	&.true {
-		background: $green;
-	}
-}

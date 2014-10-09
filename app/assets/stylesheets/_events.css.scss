@@ -5,68 +5,32 @@
 }
 .container {
 	max-width: 600px;
+	padding: 0 5px;
 }
-// 	.col-md-4 {
-// 		padding:0;
-// 	}
-// 	.friends {
-// 		padding: 5px;
-// 	}
-// }
-// .step {
-// 	margin: 0 3%;
-// 	height: 300px;
-// 	border-radius: 30px;
-// 	border: solid 1px $wetSand;
-// 	border-bottom: solid 5px darken($wetSand, 15%);
-// 	margin: 5px;
-// 	vertical-align: top;
-// 	background: $sand;
-// 	padding: 10px;
-// }
-// .step-title {
-// 	&.step-3 {
-// 		font-size: 18px;
-// 	}
-// 	span {
-// 		display: inline-block;
-// 		background: darken($wetSand, 40%);
-// 		height: 30px;
-// 		text-align: center;
-// 		width: 30px;
-// 		color: $sand;
-// 		border-radius: 5px;
-// 		padding: 2px;
-// 	}
-// }
 .row {
-		margin: 0 5px;
+	margin: 0 5px;
+	&.gig {
+		margin: 0;
 	}
+}
+.event-background {
+	height: 100px;
+	background-image: url('http://lorempixel.com/600/100')
+}
 .event-details {
-	position: relative;
-	border-radius: 20px;
-	border: solid 1px darken($wetSand, 10%);
-	border-top: none;
-	border-bottom: solid 5px darken($wetSand, 30%);
-	background: lighten($wetSand, 15%);
-	padding: 15px;
-
+	padding: 0 15px;
 	p {
-		// color: darken($wetSand, 40%);
 		&.cost {
-			// background: #fff;
-
-			padding: 5px 20px;
+			padding: 8px 20px;
+			width: 200px;
 			border-radius: 5px;
 			color: #ffffff;
-			background: #000;
+			background: $red;
 			text-align: center;	
 		}
-		
 	}
 	i {
 		font-size: 18px;
-		// color: darken($wetSand, 40%);
 		width: 30px;
 		padding: 5px;
 		margin: 0 auto;
@@ -96,8 +60,12 @@
 	}
 	.details {
 		text-align: left;
-		max-width: 200px;
-		margin: 0 auto;
+		div {
+			padding: 10px 0;
+		}
+		.detail {
+			border-bottom: solid 1px $wetSand;
+		}
 	}
 }
 .inline {
@@ -145,42 +113,100 @@
 	h3 {
 		display: inline-block;
 	}
-	
 }
-.ticket-notice {
+.confirmed-guests {
+	padding: 8px;
 	background: #fff;
+}
+.event-notice {
+	min-height: 85px;
+	width: 100%;
+	background: #000;
 	padding: 10px;
-	border-radius: 10px;
-	border: solid 1px darken($green, 5%);
-}
-.guest-count {
-	background: $green;
 	color: #fff;
-	padding: 2px;
-	border-top-right-radius: 10px;
-	border-top-left-radius: 10px;
-	span {
-		background: #fff;
-		padding: 0 5px;
-		color: $green;
-		border-radius: 10px;
+	position: fixed;
+	left: 0;
+	bottom:0;
+	z-index: 9;
+	p {
+		text-align: center;
+	}
+	.ticket-status {
+		margin: 0 auto 3px auto;
+		text-align: center;
+		padding: 8px;
+		width: 80%;
+		&.amber {
+			background: rgba($orange, .4);
+			border: dotted 1px $orange;
+		}
+		&.green, &.guest-count {
+			background: rgba($green, .4);
+			border: dotted 1px $green;
+			span {
+				background: #fff;
+				padding: 0 5px;
+				color: #000;
+				font-size: 18px;
+				border-radius: 10px;
+			}
+		}
+	}
+	.owner-confirm-ticket {
+		max-width: 400px;
+		margin: 0 auto;
+		padding-top: 5px;
+		p, .ticket-form {
+			width: 49%;
+		}
+		form {
+			margin: 0;
+			padding: 0;
+		}
+	}
+	.close-btn {
+		color: #fff;
+		padding: 3px;
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		cursor: pointer;
+		&:hover {
+			background: darken(#fff, 75%);
+		}
 	}
 }
+.message  {
+	display: none;
+	max-width: 90%;
+	margin: 0 auto;
+}
+.sticky {
+	position: fixed;
+	width: 100%;
+	left: 0;
+	top: 0;
+	z-index: 100;
+	border-top: 0;
+}
+// .guest-count {
+// 	background: $green;
+// 	color: #fff;
+// 	padding: 2px;
+// 	border-top-right-radius: 10px;
+// 	border-top-left-radius: 10px;
+// }
 .event-title {
-	img, h1 {
-		display: inline-block;
+	p {
+		padding-top: 10px;
 	}
-	img {
-		vertical-align: top;
-	}
+	max-width: 420px;
+	margin: 0 auto;
+	text-align: center;
+	color: #fff;
 }
 .payment {
 	margin: 10px;
-}
-.friends-icons {
-	margin: 0 auto;
-	text-align: center;
-	display: none;
 }
 .friend {
 	.name, .sticker{
@@ -197,19 +223,14 @@
 	font-size: 60px;
 }
 .rsvp {
-	padding: 10px;
 	margin: 0 auto;
-	p {
-		padding: 5px;	
-	}
 }
 .rsvp-login {
 	margin-top: 20px;
-	display: none;
-	input, .btn, .submit {width: 300px;}
-	background: #fff;
-	border-radius: 20px;
-	border: solid 1px darken($wetSand, 10%);
+	input, .btn, .submit {
+		max-width: 250px;
+		min-width: 250px;
+	}
 }
 .rsvp-notice {
 	margin: 5px;
@@ -227,12 +248,25 @@
 }
 .guest-list {
 	margin: 10px auto 0 auto;
-	max-width: 320px;
+	padding: 15px 0;
 	text-align: left
-
+}
+.guest-register {
+	display: none;
+}
+.view-guest-list {
+	cursor: pointer;
+}
+.guest-row {
+	padding: 8px;
+	border-bottom: solid 1px $wetSand;
 }
 .friends-list{
+	display:none;
 	text-align: left;
+	&.payments {
+		display: block;
+	}
 	i {
 		text-align: center;
 	}
@@ -240,24 +274,58 @@
 		margin: 3px;
 	}
 }
-.invite-friends {
-	background: lighten($green, 10%);
-	color: darken($green, 30%);
-	border-radius: 10px;
-	border: solid 1px darken($green, 10%);
-	border-top: none;
-	border-bottom: solid 5px darken($green, 10%);
-	padding: 10px;
-	.btn {
-		width: 80px;
+.friends-icons {
+	white-space: nowrap;
+	overflow: hidden;
+	.avatar {
 		height: 30px;
-		line-height: 15px;
+		width: 30px;
+		text-align: center;
+	}
+	.guest-avatar {
+		font-size: 20px;
+		padding: 5px;
+		vertical-align: middle;
+		background: darken($wetSand, 15%);
 	}
 }
-.edit-event {
+.invite-friends {
+	border: dotted 1px darken($green, 10%);
+	background: rgba($green, .4);
 	padding: 10px;
-	position:absolute;
-	right: 10px;
+	max-width: 80%;
+	margin: 0 auto;
+}
+.invite-btns {
+	padding-top: 8px;
+	text-align: center;
+	cursor: pointer;
+	.bttn {
+		padding: 4px 8px;
+		margin: 0 5px;
+		display: inline-block;
+		&.invite-btn {
+			border: dotted 1px darken($neutral, 35%);
+			background: rgba($neutral, 0.3);
+		}
+		&.share-btn {
+			border: dotted 1px $blue;
+			background: rgba($blue, 0.6);
+			&:hover {
+				background: rgba($blue, 1);
+			}
+		}
+	}
+
+}
+.spacer {
+	height: 100px;
+}
+.edit-event {
+	margin-top: 5px;
+	padding: 5px 10px;
+	float:right;
+	font-size: 11px;
 	background: $sand;
 	color: darken($wetSand, 40%);
 	border-radius: 5px;

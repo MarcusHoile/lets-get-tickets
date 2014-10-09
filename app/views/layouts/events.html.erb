@@ -5,6 +5,7 @@
   <%= include_gon %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <%= render "layouts/googleanalytics" %>
   <%= yield :head %>
@@ -13,19 +14,11 @@
 <body>
   <%= render "layouts/header" %>
   
- <div class="row alerts">
-    <div class="col-md-12">
-      <% flash.each do |key, value| %>
-        <%= content_tag :div, value, :class => "alert alert-#{key}" unless value.blank? %>
-      <% end %>
-    </div>
-  </div>
-
   
-
-    <div class="container">
-      <%= yield %>
-    </div>
+  <%= yield :event_notice  %>
+  <div class="page-wrap">
+    <%= yield %>
+  </div>
   <div class="feedback">
     <div class="feedback-tab">feedback</div>
     <div class="feedback-form">
@@ -43,6 +36,7 @@
       <li><%= link_to 'Contact Us', '/contact' %></li>
     </ul>
   </footer>
+  <div class="spacer"></div>
 </body>
 
 </html>

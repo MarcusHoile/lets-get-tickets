@@ -1,20 +1,5 @@
 <div class="guest-list">
-  <p>Guest list:</p>
-  <div class="friends-icons">  
-    <% @invites.each do |invite| %>
-    	<% get_rsvp_badge(invite) %>
-    	<div class="guest">
-				<div class="sticker sticker-<%= invite.rsvp %>" id="invite-<%= invite.id %>" data-badge="<%= @badge %>">
-          <% if invite.guest.image %>
-            <%= image_tag invite.guest.image, class: 'avatar' %>
-          <% else %>
-            <%= icon('user', '', class: 'avatar guest-avatar') %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  <div class="friends-list">
+  <div class="friends-list payments">
       <% @invites.each do |invite| %>
       <% get_rsvp_badge(invite) %>
       <div class="guest"> 

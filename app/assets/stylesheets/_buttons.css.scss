@@ -33,8 +33,6 @@
 
 
 .btn {
-	height: 40px;
-	width: 100%;
 	border-radius: 10px;
 	margin: 0 auto;
 	text-align: center;
@@ -62,6 +60,13 @@
 		background: $green;
 		border-bottom: solid 3px darken($green, 15%);
 		color: #fff;
+	}
+	.icon {
+		font-size: 22px;
+	}
+	p {
+		margin-top: -2px;
+		font-size:11px;
 	}
 }
 .bank {

@@ -1,3 +1,17 @@
 
 <%= render @event.status %>
 
+<script>
+	$(document).ready(function(){
+		var height = $('.event-notice').outerHeight();
+		$('.spacer').css('height', height);
+		$('.close-btn').on('click', function(){
+	    $(this).closest('.event-notice').hide()
+	    $('.spacer').hide()
+	  })
+	  <% if @invites.count < 7 %>
+	  	$('.friends-icons').css('display', 'none');
+	    $('.friends-list').css('display', 'block');
+	  <% end %>
+  })
+</script>

@@ -5,91 +5,121 @@
 <% content_for :title do %>
   <title>Let's Get Tickets to <%= @event.what.titleize %></title>
 <% end %>
+
+<% content_for :event_notice do %>
+  <div class="event-notice">
+    <% if @owner == @user && @event.guests.length < 2 %>
+      <div class="row">
+        <div class="close-btn">X</div>
+        <div class="invite-friends">
+          <p>Invite your friends! via Email or facebook</p>    
+        </div>
+        <div class="invite-btns">
+          <div class="bttn invite-btn" data-clipboard-text="<%= event_url(@event) %>"id="invite-btn">Copy link</div>
+          <div class=" bttn share-btn"><i class="fa fa-facebook"></i> Share</div>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="countdown">
+      <div class="close-btn">X</div>
+      <div class="col">
+        <span class="ce-days"></span> <span class="ce-days-label"></span>
+      </div>
+      <div class="col">
+        <span class="ce-hours"></span> <span class="ce-hours-label"></span>
+      </div>
+      <div class="col">
+        <span class="ce-minutes"></span> <span class="ce-minutes-label"></span>
+      </div>
+      <div class="col">
+        <span class="ce-seconds"></span> <span class="ce-seconds-label"></span>
+      </div>
+      <p>...til tickets will be secured</p>
+    </div><!-- countdown -->
+    
+    <div class="message-going message">
+      <div class="close-btn">X</div>
+      <p>Woot! Fun times ahead! <%= @event.owner.name %> will let you know when tickets are secured.</p>
+    </div>
+    <div class="message-not-going message">
+      <div class="close-btn">X</div>
+      <p>You will be missed :(</p>
+    </div>
+    <div class="message-maybe message">
+      <div class="close-btn">X</div>
+      <p>There is still time to decide, don't miss out!</p>
+    </div>
+
+
+  </div>
+<% end %>
+<div class="row gig">
+  <%= render 'event_gig' %>
+</div>
 <div class="event-container">
-  <div class="row">
-    <div class="col-md-12 event-header">
-      <h3>Let's get tickets to</h3>
-      
-    </div><!-- event-header -->
-  </div><!-- row -->
   <div class="row ">
     <%= render 'event_details' %>
   </div>
+
   <div class="rsvp">
-
     <% if @user != @owner %>
-      <p>Are you coming?</p>
-
       <%= form_for(shallow_args(@user,@invite), remote: true) do |f| %>
         <%= f.hidden_field :rsvp, value: "Undecided" %>
         <%= f.hidden_field :event_id, value: @event.id %>
-        <div class="btn neutral rsvp-btn going" value="going">Buy me a ticket!</div>
-        <div class="btn neutral rsvp-btn not-going" value="not-going">No thanks</div>
-        <div class="btn neutral rsvp-btn maybe" value="maybe" >Maybe</div>
+        <div class="btn neutral rsvp-btn going" value="going">
+          <div><i class="icon fa fa-check"></i></div>
+          <p>Buy me a ticket!</p>
+        </div>
+        <div class="btn neutral rsvp-btn not-going" value="not-going">
+          <div><i class="icon fa fa-times"></i></div>
+          <p>No thanks</p>
+        </div>
+        <div class="btn neutral rsvp-btn maybe" value="maybe" >
+          <div><i class="icon fa fa-question"></i></div>
+          <p>Maybe</p>
+        </div>
       <% end %><!-- invite-form -->
-
-      <div class="rsvp-login">
-        <p class="rsvp-notice"><%= @owner.name %> will need to know who you are. Log in via facebook or enter your name.</p>
-        <%= link_to "Login with Facebook", "/auth/facebook?origin=%2Fevents", id: "sign_in", class: "btn btn-primary" %>
-        <p>or</p>
-        <div class="form">
-          <div role="form">
-            <%= form_for @user, remote: true do |f| %>
-            <div class="field">
-              <%= f.text_field :name, placeholder: "Name" %>
-              <%= f.hidden_field :event_id, value: @event.id%>
-              <%= f.hidden_field :rsvp, value: "text", class: "rsvp-capture" %>
-            </div>
-            <div class="submit btn btn-success">
-              Submit your name 
-            </div>
-            <% end %>
-          </div>
-        </div><!-- form -->
-      </div><!-- rsvp-login -->
-
-    <% end %><!-- end guest partials -->
-
-    <% if @invite.rsvp != "going" %>
-      <div class="countdown">
-        <p>You will need to rsvp soon. The clock is ticking...</p>
-        <div class="col">
-          <span class="ce-days"></span> <span class="ce-days-label"></span>
-        </div>
-        <div class="col">
-          <span class="ce-hours"></span> <span class="ce-hours-label"></span>
-        </div>
-        <div class="col">
-          <span class="ce-minutes"></span> <span class="ce-minutes-label"></span>
-        </div>
-        <div class="col">
-          <span class="ce-seconds"></span> <span class="ce-seconds-label"></span>
-        </div>
-      </div><!-- countdown -->
     <% end %>
+      
+    <div class="modal fade" id="loginPrompt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Who are you?</h4>
+          </div>
+          <div class="modal-body">
+            <div class="rsvp-login">
+              <p class="rsvp-notice"><%= @owner.name %> will need to know who you are. Log in via facebook or enter your name.</p>
+              <%= link_to "Login with Facebook", "/auth/facebook?origin=%2Fevents", id: "sign_in", class: "btn btn-primary" %>
+              <p>or</p>  
+              <div class="register-name btn btn-success">
+                Submit your name 
+              </div>
+            </div><!-- rsvp-login -->
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div><!-- rsvp -->
 
         
 
-  <% if @owner != @user %>
+  
     <div class="row">
-      <%= render 'rsvp' %>
+      <%= render 'payment_form' %>
     </div>
-  <% else %>
-    <% if @event.guests.length == 1 %>
-      <div class="row">
-        <div class="invite-friends">
-          <p>Invite friends to the event! Email or share on facebook</p>
-          <button class="btn btn-primary invite-btn" data-clipboard-text="<%= event_url(@event) %>"id="invite-btn">Copy link</button>
-          <button class="btn btn-primary share-btn"><i class="fa fa-facebook"></i> Share</button>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+    <%= render 'confirmed_guests' %>
+    <%= render 'guestlist' %>
 
-  <%= render 'guestlist' %>
   </div>
-
+<% if @event.guests.length < 2 %>
+  <script>
+    $('.countdown').hide();
+  </script>
+<% end %>
 <script>
   $(document).ready(function() {
     $(".countdown").countEverest({
@@ -98,6 +128,7 @@
       year: <%= @event.on_sale.year %>
     });
 
+    
     var clip = new ZeroClipboard($('#invite-btn'));
     $('.<%= @invite.rsvp %>').addClass('confirm');
 
@@ -116,14 +147,25 @@
       });
     <% else %>
       $('.rsvp-btn').on('click', function(){
-        if ($('.confirm').length == 0) {
-          $(this).addClass('confirm');
-        }
         var rsvp = $(this).attr('value');
         $('#user_rsvp').attr('value', rsvp);
-        $('.rsvp-login').css('display', 'block');
+        $('#loginPrompt').modal('show')
       });
     <% end %>
+      // register guest user
+      $('.register-name').on('click', function(){
+        $('#loginPrompt').modal('hide')
+        $('.friends-list').css('display', 'block')
+        $('.guest-register').css('display', 'block')
+        $("#guest-name-input").focus();
+      });
+      $('#guest-name').keypress(function(e){
+        if (e.which == 13) {
+          $(this).parent('form').submit();
+        }
+      })
+
+
   });
 </script>
 

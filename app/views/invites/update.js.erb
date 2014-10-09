@@ -1,21 +1,31 @@
 $('.rsvp-btn').removeClass('confirm');
 $('.rsvp-btn.<%= @invite.rsvp %>').addClass('confirm');
-$('.outcome').css('display', 'none');
-$('.outcome.<%= @invite.rsvp %>').css('display', 'block');
-<% if @add_avatar %>
-	<% if @invite.guest.image %>
-		$('.friends').append('<div class="sticker sticker-<%= @invite.rsvp %>" id="invite-<%= @invite.id %>" data-badge="<%= @badge %>"><%= image_tag @invite.guest.image, class: "avatar" %></div>'
-	<% else %>
-		$('.friends').append('<div class="sticker sticker-<%= @invite.rsvp %>" id="invite-<%= @invite.id %>" data-badge="<%= @badge %>"><%= icon("user", "", class: "avatar guest-avatar") %></div>')
-	<% end %>
-<% else %>
-	var $inviteRsvp = $('#invite-<%= @invite.id %>');
-	$inviteRsvp.removeClass('sticker-maybe sticker-going sticker-not-going').addClass('sticker-<%= @invite.rsvp %>');
-	$inviteRsvp.attr('data-badge', '<%= @badge %>');
-<% end %>
 
-<% if @invite.rsvp == "going" %>
+var $inviteRsvp = $('#invite-<%= @invite.id %>');
+$inviteRsvp.removeClass('sticker-maybe sticker-going sticker-not-going').addClass('sticker-<%= @invite.rsvp %>');
+$inviteRsvp.attr('data-badge', '<%= @badge %>');
+
+<% if @invite.rsvp == "going" && @current_rsvp != "going" %>
 	$('.countdown').css('display', 'none');
+	$('.message').css('display', 'none')
+	$('.message-going').css('display', 'block')
+	$('#paymentModal').modal('show');
+<% elsif @invite.rsvp == "not-going" %>
+	$('.countdown').css('display', 'none');
+	$('.message').css('display', 'none')
+	$('.message-not-going').css('display', 'block')
+	setTimeout(function(){
+		$('.message').css('display', 'none')
+		$('.countdown').css('display', 'block');	
+	}, 3000)
+<% elsif @invite.rsvp == "maybe" %>
+	$('.countdown').css('display', 'none');
+	$('.message').css('display', 'none')
+	$('.message-maybe').css('display', 'block')
+	setTimeout(function(){
+		$('.message').css('display', 'none')
+		$('.countdown').css('display', 'block');	
+	}, 3000)
 <% end %>
 
 
