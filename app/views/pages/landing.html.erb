@@ -1,24 +1,16 @@
 <% content_for :title do %>
-  <title>Let's Get Tickets</title>
+  <title>planndit</title>
 <% end %>
-
-<div class="row">
-  <div class="col-md-12">
-   <h1 id="landing-header">Let's Get Tickets!</h1>
-   <p id="tagline">
-    The easiest way to organise group tickets
-  </p>
+<div class="overlay">
+	<div class="row">
+	  <div class="col-md-12">
+	  	<div class="home-page-brand">
+		   <h1 id="brand-splash">planndit</h1>
+		   <p id="tagline">
+		    The easiest way to organise group tickets
+		  </p>
+		  <div class="create-event">
+		  	<%= link_to 'Create an event', new_event_path, id: "hp-btn" %></div>
+	  </div>
+	</div>
 </div>
-
-<div class="row steps" id="steps">
-  <div class="step-item col-sm-4"><%= icon('calendar', '', class: 'icons') %><p class="step-copy">Set the date when you will buy the tickets</p></div>
-  <div class="step-item col-sm-4"><%= icon('envelope', '', class: 'icons') %><p class="step-copy">Invite your friends</p></div>
-  <div class="step-item col-sm-4"><%= icon('ticket', '', class: 'icons') %><p class="step-copy">Buy tickets for your RSVPs!</p></div>
-</div> 
-
-<div class="cta">
-
-</div>
-
-
-

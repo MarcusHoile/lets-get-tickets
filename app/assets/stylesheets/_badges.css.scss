@@ -18,23 +18,20 @@
 }
 .sticker-going[data-badge]:after {
 	content:attr(data-badge);
-	color: darken($green, 30%);
+	color: darken($green, 15%);
 	background: $green;
-	// border: solid 1px $green;
 }
 
 .sticker-not-going[data-badge]:after {
 	content:attr(data-badge);
-	color: darkenn($red, 30%);
+	color: darken($red, 25%);
 	background: $red;
-	// border: solid 1px $red;
 	font-size: 12px;
-	line-height:14px;
+	line-height:16px;
 }
 .sticker-maybe[data-badge]:after {
 	content:attr(data-badge);
 	color: darken($orange, 20%);
 	background: $orange;
-	// border: solid 1px $orange;
 }
 

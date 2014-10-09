@@ -7,23 +7,14 @@
     <%= csrf_meta_tags %>
     <link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
     <%= render "layouts/googleanalytics" %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
 
-    <%= render "layouts/header" %>
-        <% flash.each do |key, value| %>
-          <%= content_tag :div, value, :class => "alert alert-#{key}" unless value.blank? %>
-        <% end %>
-
-    <div id="landing" class="clearfix">
-    	<div class="landing">
-
-        <%= yield %>
-        
-			</div>	
-    </div>
-    <div class="stripe" id="background1"></div>
-    <div class="stripe" id="background2"></div>
-    <div class="stripe" id="background3"></div>
+  	<div class="landing">
+      
+      <%= yield %>
+      
+		</div>	
   </body>
 </html>

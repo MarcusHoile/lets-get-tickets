@@ -21,33 +21,14 @@ input {
 }
 .content {
 	h1, h2, h3, h4, p, i {
-		color: darken($wetSand, 40%);
+		color: darken($grey, 40%);
 	}
 }
 
-.step {
-	p {
-		color: darken($wetSand, 40%);
-		&.cost {
-			background: darken($wetSand, 40%);
-			padding: 10px;
-			border-radius: 5px;
-			color: #fff;	
-		}
-		i {
-			font-size: 22px;
-			text-align: right;
-			color: darken($wetSand, 40%);
-		}
-	}
-}
 
 @media only screen and (max-width : 320px) {
 	h1 {
 		font-size: 22px;
 		margin-top:0;
-	}
-	h3 {
-		font-size: 16px;
 	}
 }

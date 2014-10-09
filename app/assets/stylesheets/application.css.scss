@@ -11,9 +11,9 @@
  *= require_self
  *= require font-awesome
  */
-$navbar-default-link-color: #fff;
-$navbar-default-color: #fff ;
 
+@import 'compass';
+@import 'overwrite_bootstrap';
 @import 'bootstrap';
 @import 'colours';
 @import 'reset';

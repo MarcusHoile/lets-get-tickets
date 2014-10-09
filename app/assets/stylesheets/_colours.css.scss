@@ -1,57 +1,14 @@
-$cream: #FAFAF2;
-$sand: #F9F3E5;
-$wetSand: #EFE3CD;
-$green: #7DC7A3;
+$green: #00B62F;
 $orange: #FD9802;
 $red: #e71523;
 $blue: #43609C;
-$feature-colour: #ED5136;
-
-
-
-
-// base colours
-
-$main-colour: #FAFAF2;
+$grey: #eaeaea;
+$darkGrey: darken($grey, 10%);
+// #E42E93; flaming galah
+// #462EBA; purple!
+// #00B62F; bright green
+// #E07F93; real galah
 $secondary-colour: #FF773D;
 $tertiary-colour: #F54828;
 $main-font-colour: #000;
-$inverse-font-colour: #000;
-$secondary-font-colour: $secondary-colour;
-$bg-highlight-1: #BD1550;
-$bg-highlight-2: #E97F02;
-$bg-highlight-3: #F8CA00;
-$decline: #e71523;
-$confirm: #00c176;
-$neutral: #eeeeee;
-$alert: #8a9b0f;
-
-//  buttons 
-
-$btn-hover-bg: $tertiary-colour;
-$btn-submit-update-bg: rgba($neutral, 0.1);
-$btn-submit-decline-bg: rgba($decline, 0.2);
-$btn-submit-confirm-bg: rgba($confirm, 0.4);
-$btn-submit-decline-hover-bg: rgba($decline, 1);
-$btn-submit-confirm-hover-bg: rgba($confirm, 1);
-$btn-signup-bg: $alert;
-
-// fonts
-
-// links
-$main-link-colour: $main-font-colour;
-$main-link-hover-colour: $main-font-colour;
-$main-link-hover-bg: $tertiary-colour;
-
-// navbar
-$navbar-default-toggle-border-color: $secondary-colour;
-$navbar-default-link-color: $main-font-colour;
-$navbar-default-link-hover-bg: $tertiary-colour;
-$navbar-default-toggle-hover-bg: $tertiary-colour;
-$navbar-default-toggle-icon-bar-bg: $secondary-colour;
-$navbar-default-link-hover-color: $main-font-colour;
-$navbar-default-brand-hover-color: $main-font-colour;
-$navbar-default-brand-hover-bg: $tertiary-colour;
-
-// tables
-$table-bg-hover: lighten($main-colour, 10%);
+$inverse-font-colour: #fff;

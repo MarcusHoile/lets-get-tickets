@@ -9,7 +9,7 @@ class PagesController < ApplicationController
 
   # landing page has its own layout to support bg image
   def landing
-  	render layout: "campaign"
+  	render layout: "landing_layout"
   end
   def campaign
     @what = "Sydney Swans vs Port Adelaide"

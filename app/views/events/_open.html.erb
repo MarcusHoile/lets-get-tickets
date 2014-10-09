@@ -105,13 +105,24 @@
 
   </div><!-- rsvp -->
 
-        
+  <div class="row">
+    <%= render 'payment_form' %>
+  </div>
 
-  
-    <div class="row">
-      <%= render 'payment_form' %>
-    </div>
-    <%= render 'confirmed_guests' %>
+    <% if @owner == @user %>
+      <div class="invite-friends">
+        <p>Invite your friends! via Email or facebook</p>    
+        <div class="invite-btns">
+          <div class="bttn invite-btn" data-clipboard-text="<%= event_url(@event) %>"id="invite-btn">Copy link</div>
+          <div class=" bttn share-btn"><i class="fa fa-facebook"></i> Share</div>
+        </div>
+      </div>
+      <%= render 'confirmed_guests' %>
+    <% else %>
+      <%= render 'confirmed_guests' %>
+    <% end %>
+
+    
     <%= render 'guestlist' %>
 
   </div>
