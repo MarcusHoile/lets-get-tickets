@@ -1,10 +1,27 @@
 .campaign {
+		padding-top: 80px;
+		color: darken($green, 15%);
 	.icons {
 		font-size: 60px;
 	}
 	.step-item {
+		margin: 10px;
+		padding: 20px;
 		text-align: center;
+		border: solid 1px darken($green, 15%);
+		max-width:120px;
+		.icons {
+			font-size: 32px;
+		}
 
+	}
+	.campaigner {
+		position: absolute;
+		left: 20px;
+		top: 50vh;
+	}
+	.step-copy {
+		font-size: 18px;
 	}
 
 	.campaign-event {
@@ -28,15 +45,6 @@
 		.details {
 			max-width: 200px;
 			margin: 0 auto;
-		}
-	}
-
-	.steps {
-		.step-item {
-			text-align: center;
-		}
-		.icons {
-			font-size: 60px;
 		}
 	}
 }

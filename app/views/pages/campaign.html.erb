@@ -2,43 +2,37 @@
 <title>Let's Get Tickets</title>
 <% end %>
 <div class="campaign">
-  <% if !@current_user %>
-    <div class="row">
-      <div class="col-md-12">
-        <h1 id="landing-header">Let's Get Tickets!</h1>
-        <p id="tagline">
-          The easiest way to organise group tickets
-        </p>
-        <p>Get your friends excited</p>
-        <p>No awkward payment reminders with freinds</p>
-        <p>Get more committment</p>
-          
+  <h1 class="campaigner">planndit</h1>
+  <div class="row" id="steps">
+    <div class="col-md-3">
+      <div class="step-item">
+        <%= icon('group', '', class: 'icons') %>
+        <p class="step-copy">Friends</p>
       </div>
     </div>
-    <div class="row" id="steps">
-      <div class="step-item col-md-3">
-        <%= icon('group', '', class: 'icons') %>
-        <p class="step-copy">Invite your friends to see who is interested</p>
-      </div>
 
-      <div class="step-item col-md-3">
+    <div class="col-md-3">
+      <div class="step-item">
         <%= icon('calendar', '', class: 'icons') %>
-        <p class="step-copy">Set the date when you will buy the tickets</p>
+        <p class="step-copy">Gig</p>
       </div>
+    </div>
 
-      <div class="step-item col-md-3">
+    <div class="col-md-3">
+      <div class="step-item">
         <%= icon('ticket', '', class: 'icons') %>
-        <p class="step-copy">Buy tickets for confirmed friends!</p>
+        <p class="step-copy">Tickets</p>
       </div>
+    </div>
 
-      <div class="step-item col-md-3">
+    <div class="col-md-3">
+      <div class="step-item">
         <%= icon('dollar', '', class: 'icons') %>
-        <p class="step-copy">Keep track of who has paid</p>
+        <p class="step-copy">Paid</p>
       </div>
+    </div>
 
-    </div><!-- steps -->
-  <% end %>
+  </div><!-- steps -->
 
-  <%= render 'pages/campaign_event' %>
   
 </div>

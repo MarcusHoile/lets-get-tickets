@@ -12,17 +12,7 @@ class PagesController < ApplicationController
   	render layout: "landing_layout"
   end
   def campaign
-    @what = "Sydney Swans vs Port Adelaide"
-    @when = "7:30pm Saturday"
-    @where = "Adelaide Oval"
-    if current_user
-      user = @current_user
-      @event = user.hosted_events.new(what: @what, event_when: @when, where: @where)
-    else
-      @event = Event.new(what: @what, event_when: @when, where: @where)
-    end
-    
-    render layout: "campaign"
+    render layout: "landing_layout"
   end
 
   def login

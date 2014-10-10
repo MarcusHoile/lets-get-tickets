@@ -58,6 +58,7 @@ class ApplicationController < ActionController::Base
     redirect_to :login unless current_user
   end
 
+
     # called (once) when the user logs in, insert any code your application needs
   # to hand off from guest_user to current_user.
   def logging_in

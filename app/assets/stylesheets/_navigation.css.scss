@@ -6,9 +6,6 @@
   content: "";
   display: block;
 }
-.site-footer, .page-wrap:after {
-  height: 60px; 
-}
 .navbar, footer {
 	background: $green;
 }
@@ -54,12 +51,6 @@
 }
 
 
-footer {
-  height: 60px;
-  width: 100%;
-  text-align:center;
-}
-
 footer ul {
 	margin: 0;
 	padding:0;
@@ -76,18 +67,15 @@ footer ul li a{
 	display:inline-block;
 }
 
-footer ul li a:hover {
-	background: $tertiary-colour;
-}
-
 footer a {
 	padding: 0 40px;
-	color:#fff;
+	color: darken($green, 15%);
 }
 
 footer a:hover {
-	color: #fff;
 	text-decoration:none;
+	color: darken($green, 15%);
+	background: darken($green, 5%);
 }
 
 @media only screen and (max-width : 320px) {

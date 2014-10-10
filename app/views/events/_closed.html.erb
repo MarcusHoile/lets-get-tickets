@@ -54,22 +54,22 @@
 
   <% if !@event.ticket %>
     <% if @owner == @user %>
-      <div class="ticket-status purchase">
-        Deadline has been reached. You need to purchase <%= @confirmed.count %> tickets
+      <div class="ticket-status">
+        <span class="warning event-alert">Deadline</span> <%= @confirmed.count %> people have requested tickets
       </div>
     <% else %>
-      <div class="ticket-status pending">
-        Deadline has been reached. Awaiting confirmation of tickets.
+      <div class="ticket-status">
+        <span class="warning event-alert">Closed</span> Awaiting confirmation of tickets.
       </div>
     <% end %>
   <% elsif @event.ticket %> 
     <% if @owner == @user %>
-      <div class="ticket-status confirmed"> 
-        Tickets purchased! Awesome, enjoy the show!
+      <div class="ticket-status"> 
+        <span class="confirm event-alert">Tickets purchased!</span> Awesome, enjoy the show!
       </div>
     <% else %>
-      <div class="ticket-status confirmed"> 
-        Tickets have been purchased!
+      <div class="ticket-status"> 
+        <span class="confirm event-alert">Tickets purchased!</span> Confirm with <%= @owner.name %> that your ticket is secured
       </div>
     <% end %>
   <% end %>

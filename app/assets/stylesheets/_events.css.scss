@@ -17,6 +17,7 @@
 		}
 	}
 }
+
 .create-event {
 	margin-top: 20px;	
 }
@@ -99,8 +100,16 @@
 }
 
 .ticket-status {
-	&.pending, &.confirmed, &.purchase {
+	.event-alert {
+		padding: 4px 8px;
+	}
+	.warning {
+		border: solid 1px $red;
 		color: $red;
+	}
+	.confirm {
+		border: solid 1px $green;
+		color: $green;
 	}
 }
 .settings {
