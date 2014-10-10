@@ -18,12 +18,24 @@
 	}
 }
 
+.fleft {
+	float: left;
+}
+.little-p {
+	height: 50px;
+}
+.small-p {
+	height: 20px;
+}
+
 .create-event {
 	margin-top: 20px;	
+	float: right;
 }
 #brand-splash {
 	font-size: 42px;
 	padding-bottom: 8px;
+	font-weight: 200;
 }
 .event-container {
 	margin: 0 auto;

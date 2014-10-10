@@ -1,17 +1,21 @@
 <% content_for :title do %>
-  <title>planndit</title>
+<title>planndit</title>
 <% end %>
 <div class="overlay">
 	<div class="row">
-	  <div class="col-md-12">
-	  	<div class="home-page-brand">
-		   <h1 id="brand-splash">planndit</h1>
-		   <p id="tagline">
-		    The easiest way to organise group tickets
-		  </p>
-		  <div class="create-event">
-		  	 <%= link_to 'Create an event', new_event_path, id: "hp-btn" %>
-		  </div>
-	  </div>
+		<div class="col-md-12">
+			<div class="home-page-brand">
+				<div class="fleft">
+					<span><%= image_tag 'planndit_icon_flipped.png', class: "little-p" %></span>
+				</div>
+				<div class="fleft">
+					<h1 id="brand-splash">planndit</h1>
+					<p id="tagline">The easiest way to organise group tickets</p>
+					<div class="create-event">
+						<%= link_to 'Create an event', new_event_path, id: "hp-btn" %>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
