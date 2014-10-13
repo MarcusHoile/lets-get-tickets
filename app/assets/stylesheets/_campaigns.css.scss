@@ -1,8 +1,34 @@
 .campaign {
 		padding-top: 80px;
 		color: darken($green, 15%);
+	.row {
+		position: relative;
+	}
 	.icons {
 		font-size: 60px;
+	}
+	.stick-figure {
+		height: 140px;
+		margin-left: 45%;
+		margin-top: 220px;
+	}
+	.step-1 {
+		left: 20%;
+		top: 25vh;
+		position: absolute;
+	}
+	.step-4 {
+		right: 20%;
+		top: 25vh;
+		position: absolute;
+	}
+	.step-2 {
+		position: absolute;
+		left: 35%;
+	}
+		.step-3 {
+		position: absolute;
+		right: 35%;
 	}
 	
 	.step-item {
@@ -13,6 +39,9 @@
 		max-width:120px;
 		.icons {
 			font-size: 32px;
+		}
+		&.center {
+			margin: 0 auto;
 		}
 
 	}
