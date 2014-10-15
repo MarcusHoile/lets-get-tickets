@@ -1,50 +1,53 @@
+<% if current_user %>
+  <div class="form">
+    <div role="form">
+      <%= form_for(@event, :class => "role col-md-12", ) do |f| %>
+        <% if @event.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-<div class="form">
-  <div role="form">
-    <%= form_for(@event, :class => "role col-md-12", ) do |f| %>
-      <% if @event.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+            <ul>
+            <% @event.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-          <ul>
-          <% @event.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-      <div class="form-group">
-        <%= f.label :what %>
-        <%= f.text_field :what, :class => "form-control", placholder: "What is the gig?" %>
-      </div>
         <div class="form-group">
-        <%= f.label :where %>
-        <%= f.text_field :where, :class => "form-control", placholder: "Where is the gig?"  %>
+          <%= f.label :what %>
+          <%= f.text_field :what, :class => "form-control", placholder: "What is the gig?" %>
+        </div>
+          <div class="form-group">
+          <%= f.label :where %>
+          <%= f.text_field :where, :class => "form-control", placholder: "Where is the gig?"  %>
+        </div>
+          <div class="input-group input">
+            <span class="input-group-addon">$</span>
+          <%= f.number_field :price, :class => "form-control price", placeholder: "How much is it?"%>
+        </div>
+        <div class="form-group">
+          <%= f.label :event_when_text, 'When is the gig?' %>
+          <%= f.text_field :event_when_text, :class => "form-control", placeholder: " eg DD/MM/YYYY or Monday 19th 8pm"  %>
+        </div>
+        <div class="field">
+          <%= f.label :on_sale_text, 'When is the deadline to rsvp?' %>
+          <%= f.text_field :on_sale_text, class: "form-control", placeholder: "eg Next friday, In 3 days or Monday 19th 8pm" %>
+        </div>
+        <div class="field">
+          <%= f.hidden_field :lat, class: "form-control" %>
+          <%= f.hidden_field :lng, class: "form-control" %>
+        </div>
+        <br>
+        <div class="actions">
+          <%# display differnt copy for button when updating %>
+          <% button_text = (@event.new_record?) ? "Create Event" : "Update Event" %>
+          <button class="btn btn-primary"><%= button_text %></button>
+        </div>
       </div>
-        <div class="input-group input">
-          <span class="input-group-addon">$</span>
-        <%= f.number_field :price, :class => "form-control price", placeholder: "How much is it?"%>
-      </div>
-      <div class="form-group">
-        <%= f.label :event_when_text, 'When is the gig?' %>
-        <%= f.text_field :event_when_text, :class => "form-control", placeholder: " eg DD/MM/YYYY or Monday 19th 8pm"  %>
-      </div>
-      <div class="field">
-        <%= f.label :on_sale_text, 'When is the deadline to rsvp?' %>
-        <%= f.text_field :on_sale_text, class: "form-control", placeholder: "eg Next friday, In 3 days or Monday 19th 8pm" %>
-      </div>
-      <div class="field">
-        <%= f.hidden_field :lat, class: "form-control" %>
-        <%= f.hidden_field :lng, class: "form-control" %>
-      </div>
-      <br>
-      <div class="actions">
-        <%# display differnt copy for button when updating %>
-        <% button_text = (@event.new_record?) ? "Create Event" : "Update Event" %>
-        <button class="btn btn-primary"><%= button_text %></button>
-      </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% else %>
+  <%= render 'pages/login' %>
+<% end %>
 

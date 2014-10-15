@@ -391,18 +391,25 @@
 .spacer {
 	height: 100px;
 }
-.edit-event {
-	margin-top: 5px;
-	padding: 5px 10px;
-	float:right;
-	font-size: 11px;
-	background: $grey;
-	border-radius: 5px;
-	color: #999999;
-	border:solid 1px #999999;
-	&:hover {
+.event-settings{
+	float: right;
+	list-style: none;
+	li {
+		display: inline-block;
+	}
+	a {
+		margin-top: 5px;
+		padding: 5px 10px;
+		float:right;
+		font-size: 11px;
+		background: $grey;
+		border-radius: 5px;
 		color: #999999;
-		background: lighten($grey, 5%);
+		border:solid 1px #999999;
+		&:hover {
+			color: #999999;
+			background: lighten($grey, 5%);
+		}				
 	}
 }				
 .landing {

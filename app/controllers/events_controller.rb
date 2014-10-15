@@ -2,15 +2,9 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   before_action :check_status, only: [:show]
-  before_action :authenticate_user, only: [:new]
-
-
-  # skip_before_filter :current_user
+  # before_action :authenticate_user, only: [:new]
 
   include ApplicationHelper
-
-
-
 
 
   def index
@@ -135,6 +129,8 @@ class EventsController < ApplicationController
   def check_status
     if @event.status !=  "invite" && @event.on_sale <= DateTime.now
       @event.update(status: "closed")
+    elsif @event.on_sale > DateTime.now
+      @event.update(status: "open")
     end
   end
 
