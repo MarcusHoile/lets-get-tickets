@@ -1,6 +1,6 @@
 .campaign {
-		padding-top: 80px;
-		color: darken($green, 15%);
+	padding-top: 80px;
+	color: darken($green, 15%);
 	.row {
 		position: relative;
 	}
@@ -8,9 +8,11 @@
 		font-size: 60px;
 	}
 	.stick-figure {
-		height: 140px;
-		margin-left: 45%;
+		margin-left: 46%;
 		margin-top: 220px;
+		img {
+			height: 140px;
+		}
 	}
 	.step-1 {
 		left: 20%;
@@ -24,11 +26,11 @@
 	}
 	.step-2 {
 		position: absolute;
-		left: 35%;
+		left: 28%;
 	}
-		.step-3 {
+	.step-3 {
 		position: absolute;
-		right: 35%;
+		right: 28%;
 	}
 	
 	.step-item {
@@ -36,7 +38,7 @@
 		padding: 20px;
 		text-align: center;
 		border: solid 1px darken($green, 15%);
-		max-width:120px;
+		width:120px;
 		.icons {
 			font-size: 32px;
 		}
@@ -80,5 +82,20 @@
 			max-width: 200px;
 			margin: 0 auto;
 		}
+	}
+}
+
+@media only screen and (max-width : 640px) {
+	.step-1 {
+		left: 5%;
+	}
+	.step-4 {
+		right: 5%;
+	}
+	.step-2 {
+		left: 8%;
+	}
+	.step-3 {
+		right: 8%;
 	}
 }
