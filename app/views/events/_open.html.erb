@@ -1,6 +1,6 @@
 <% content_for :head do %>
   <meta name="description" content="I'm going to buy tickets for <%= @event.what.titleize %>. Let me know if you want to come along.">
-  <link rel="image_src" href="<%= @event.image ? @event.image : 'assets/logo.png' %>" / >
+  <link rel="image_src" href="<%= @event.image ? @event.image : '/assets/logo.png' %>" / >
 <% end %>
 <% content_for :title do %>
   <title>Who want's to see <%= @event.what.titleize %>?</title>
