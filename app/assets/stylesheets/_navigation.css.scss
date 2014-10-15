@@ -3,8 +3,8 @@
 	margin-bottom: -60px;
 }
 .page-wrap:after {
-  content: "";
-  display: block;
+	content: "";
+	display: block;
 }
 .navbar, footer {
 	background: $green;
@@ -16,7 +16,11 @@
 	border:none;
 	border-radius: 0;
 }
-
+@media screen and (max-width: 768px) {
+	#bs-example-navbar-collapse-1 {
+		min-height: 90px;
+	}
+}
 .nav {
 	display:inline-block;
 	height: 40px;
@@ -47,7 +51,13 @@
 	padding-top:0;
 }
 .dropdown-menu {
-	background:#822339 ;
+	background: $green;
+}
+.navbar-link:hover {
+	background: darken($green, 10%)
+}
+.dropdown-menu li a:hover {
+	background: darken($green, 5%);
 }
 
 

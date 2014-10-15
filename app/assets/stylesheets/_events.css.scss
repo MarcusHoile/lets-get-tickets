@@ -338,6 +338,9 @@
 	vertical-align: middle;
 	background: darken($grey, 15%);
 }
+.guests {
+	padding-bottom: 120px;
+}
 .guest-list {
 	margin: 10px auto 0 auto;
 	text-align: left
@@ -406,16 +409,19 @@
 	height: 100%;
 	width: 100%;
 	position: relative;
-	background-color: rgb(0,182,47); // Old browsers
+	background-color: rgb(0,182,47);
+}
 
-	// .overlay {
-	// 	position: absolute;
-	// 	// @include filter-gradient(#003399, #00b051, vertical); // IE6-9
-	// 	// @include background-image(linear-gradient(top,  rgba(0,182,47, .9) 35%,rgba(67,96,156, .7) 80%));
-	// 	z-index: 4;
-	// 	width: 100%;
-	// 	height: 100%;
-	// }
+.login-window {
+	max-width: 420px;
+	margin: 0 auto;
+	margin-top: 80px;
+	background: #fff;
+	padding: 30px;
+	text-align: center;
+	.login-btn {
+		padding: 15px;
+	}
 }
 
 // @media screen and (min-width:600px) {

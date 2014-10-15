@@ -28,11 +28,11 @@
       </div>
       <div class="form-group">
         <%= f.label :event_when_text, 'When is the gig?' %>
-        <%= f.text_field :event_when_text, :class => "form-control", placeholder: "When is the gig?"  %>
+        <%= f.text_field :event_when_text, :class => "form-control", placeholder: " eg DD/MM/YYYY or Monday 19th 8pm"  %>
       </div>
       <div class="field">
-        <%= f.label :on_sale_text, 'Buying tickets when?' %>
-        <%= f.text_field :on_sale_text, class: "form-control", placeholder: "When are you buying the tickets?" %>
+        <%= f.label :on_sale_text, 'When is the deadline to rsvp?' %>
+        <%= f.text_field :on_sale_text, class: "form-control", placeholder: "eg Next friday, In 3 days or Monday 19th 8pm" %>
       </div>
       <div class="field">
         <%= f.hidden_field :lat, class: "form-control" %>

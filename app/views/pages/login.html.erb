@@ -1,8 +1,11 @@
-<% if !current_user %>
-<h1>You need to be logged in to view this page</h1>
-<%= link_to "Log in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-primary" %>
-<% else %>
-	<h1>Welcome <%= @current_user.name %></h1>
-	<p>You are now logged in.</p>
-
-<% end %>
+<div class="login-window">
+	<% if !current_user %>
+		<p>To create and manage events you will need to be logged in.</p>
+		<div class="login-btn">
+			<%= link_to "Log in with Facebook", "/auth/facebook?origin=" +  @current_path, id: "sign_in", class: "btn btn-primary" %>
+		</div>
+	<% else %>
+		<h3>Welcome <%= @current_user.name %></h3>
+		<p>You are now logged in.</p>
+	<% end %>
+</div>
