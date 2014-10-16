@@ -1,11 +1,3 @@
-<% content_for :head do %>
-  <meta name="description" content="I'm going to buy tickets soon. Let me know if you want me to buy you a ticket.">
-  <link rel="image_src" href="<%= @event.image ? @event.image : '/assets/logo.png' %>" / >
-<% end %>
-<% content_for :title do %>
-  <title><%= @event.what.titleize %> are playing!</title>
-<% end %>
-
 <% content_for :event_notice do %>
   <div class="event-notice">
     <% if @owner == @user && @event.guests.length < 2 %>
