@@ -2,9 +2,44 @@
 	.planner {
 		position: absolute;
 		top: 30vh;
-		left: 48vw;
+		left: 51vw;
 		img {
 			height: 80px;
 		}
+		.pin {
+			position: relative;
+			right: 70px;
+			top: 15px;
+			display:inline-block;	
+			img {
+				height: 50px;
+			}
+		}
+		.circle {
+			border-radius: 50%;
+			border: solid 1px darken($green, 19%);
+			position: relative;
+		}
+		.inner-circle {
+			height: 15px;
+			width: 60px;
+			top: -15px;
+			left: -35px;
+		}
+		.middle-circle {
+			height: 30px;
+			width: 120px;
+			top: -37px;
+			left: -65px;
+			border-color: darken($green, 13%);
+		}
+		.outer-circle {
+			height: 45px;
+			width: 180px;
+			top: -73px;
+			left: -93px;
+			border-color: darken($green, 6%);
+		}
+		
 	}
 }
