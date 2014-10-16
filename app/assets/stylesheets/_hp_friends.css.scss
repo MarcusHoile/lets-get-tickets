@@ -7,9 +7,10 @@
 			border: solid 3px darken($green, 15%);
 		}
 		.big-one {
-			width: 100vw;
-			height: 100vh;
-			bottom: -90vh;
+			width: 110vw;
+			height: 110vw;
+			bottom: -100vw;
+			left: -5vw;
 			background: darken($green, 25%);
 			z-index: 10000;
 		}
@@ -56,16 +57,13 @@
 			}
 		}
 		.left-bottom {
-			bottom: 30vh;
+			bottom: 33vh;
 			left: -50px;
 			.body {
 				width: 180px;
 				height: 200px;
-				margin-top: 90px;
-				margin-left: -120px;
-				-ms-transform: rotate(40deg); /* IE 9 */
-				-webkit-transform: rotate(40deg); /* Chrome, Safari, Opera */
-				transform: rotate(40deg);
+				margin-top: 140px;
+				margin-left: -20px;
 			}
 		}
 		.bottom-left {
