@@ -1,0 +1,160 @@
+.home-page {
+	.friends {
+		.friend {
+			position: absolute;
+			border-radius: 50%;
+			background: darken($green, 10%);
+			border: solid 3px darken($green, 15%);
+		}
+		.big-one {
+			width: 100vw;
+			height: 100vh;
+			bottom: -90vh;
+			background: darken($green, 25%);
+			z-index: 10000;
+		}
+		.xl {
+			height: 250px;
+			width: 250px;
+		}
+		.big {
+			height: 200px;
+			width: 200px;
+		}
+		.sm {
+			height: 100px;
+			width: 100px;
+		}
+		.medium {
+			height: 150px;
+			width: 150px;
+		}
+		.left {
+			left: -30px;
+		}
+		.bottom {
+			bottom: -40px;
+		}
+		.right {
+			right: -40px;
+		}
+		.left-top {
+			top: 20vh;
+			left: -65px;
+		}
+		.left-middle {
+			top: 30vh;
+			left: -20px;
+			.body {
+				height: 200px;
+				width: 120px;
+				margin-top: 50px;
+				margin-left: -90px;
+				-ms-transform: rotate(40deg); /* IE 9 */
+				-webkit-transform: rotate(40deg); /* Chrome, Safari, Opera */
+				transform: rotate(40deg);
+			}
+		}
+		.left-bottom {
+			bottom: 30vh;
+			left: -50px;
+			.body {
+				width: 180px;
+				height: 200px;
+				margin-top: 90px;
+				margin-left: -120px;
+				-ms-transform: rotate(40deg); /* IE 9 */
+				-webkit-transform: rotate(40deg); /* Chrome, Safari, Opera */
+				transform: rotate(40deg);
+			}
+		}
+		.bottom-left {
+			left: 0;
+			z-index: 999;
+			&.medium {
+				left: 18vh;
+				z-index: 1;
+				bottom: 60px;
+				.body {
+					height: 150px;
+					width: 155px;
+					margin-top: 130px;
+				}
+			}
+		}
+		.bottom-middle {
+			bottom: -10vh;
+			left: 38vw;
+			z-index: 999;
+		}
+		.bottom-right {
+			right: 22vw;
+			bottom: 15vh;
+			height: 170px;
+			width: 170px;
+
+			&.big {
+				bottom: 20vh;
+				.body {
+					width: 190px;
+					height: 200px;
+					margin-top: 150px;
+					margin-left: -10px;
+				}
+			}
+			&.xl {
+				height: 220px;
+				width: 220px;
+				right: 5vw;
+				z-index: 998;
+				.body {
+					width: 250px;
+					height: 200px;
+					margin-top: 200px;
+					margin-left: -10px;
+				}
+			}
+			&.right {
+				right: -3vw;
+				height: 252px;
+				width: 252px;
+				bottom: 15vh;
+			}
+			&.lean {
+				margin-right: 10px;
+				-ms-transform: rotate(-10deg); /* IE 9 */
+				-webkit-transform: rotate(-10deg); /* Chrome, Safari, Opera */
+				transform: rotate(-10deg);
+			}
+		}
+		.right-top {
+			top: 10vh;
+			height: 80px;
+			width: 80px;
+		}
+		.right-middle {
+			top: 25vh;
+			.body {
+				width: 160px;
+				height: 150px;
+				margin-top: 100px;
+				margin-left: 70px;
+				-ms-transform: rotate(-40deg); /* IE 9 */
+				-webkit-transform: rotate(-40deg); /* Chrome, Safari, Opera */
+				transform: rotate(-40deg);
+			}
+
+		}
+		.right-bottom {
+			bottom: 20vh;
+		}
+
+		.body {
+			border: solid 3px darken($green, 15%);
+			border-top-left-radius: 30%;
+			border-top-right-radius: 30%;
+			position: relative;
+			background: darken($green, 10%);
+		}
+	}
+}
