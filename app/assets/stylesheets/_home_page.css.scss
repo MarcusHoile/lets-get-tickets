@@ -92,15 +92,15 @@
 	}
 	@include circlekeyframes($animName) {
 		0%, 20% { border-color: $colorStart;}
-		60% { border-color: $colorEnd; }
+		65% { border-color: $colorEnd; }
 		100% { border-color: $colorStart;}
 
 	}
 }
 
-@include circle($animName: innerCircle, $colorStart: $green, $colorEnd: darken($green,20%), $duration: 2s, $delay: 0 );
-@include circle($animName: middleCircle, $colorStart: $green, $colorEnd: darken($green, 16%), $duration: 2s, $delay: .3s );
-@include circle($animName: outerCircle, $colorStart: $green, $colorEnd: darken($green, 12%), $duration: 2s, $delay: .6s );
+@include circle($animName: innerCircle, $colorStart: $green, $colorEnd: darken($green,20%), $duration: 1.8s, $delay: 0 );
+@include circle($animName: middleCircle, $colorStart: $green, $colorEnd: darken($green, 16%), $duration: 1.8s, $delay: .3s );
+@include circle($animName: outerCircle, $colorStart: $green, $colorEnd: darken($green, 8%), $duration: 1.8s, $delay: .6s );
 
 
 
