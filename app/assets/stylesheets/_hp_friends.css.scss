@@ -7,14 +7,9 @@
 			background: darken($green, 10%);
 			border: solid 3px darken($green, 15%);
 		}
-		.friendOne {
-			display: block;
-		}
 		.big-one {
 			width: 110vw;
 			height: 110vw;
-			bottom: -100vw;
-			left: -5vw;
 			background: darken($green, 25%);
 			z-index: 10000;
 		}
@@ -34,22 +29,7 @@
 			height: 150px;
 			width: 150px;
 		}
-		.left {
-			left: -30px;
-		}
-		.bottom {
-			bottom: -40px;
-		}
-		.right {
-			right: -40px;
-		}
-		.left-top {
-			top: 20vh;
-			left: -65px;
-		}
 		.left-middle {
-			top: 30vh;
-			left: -20px;
 			.body {
 				height: 200px;
 				width: 120px;
@@ -61,8 +41,6 @@
 			}
 		}
 		.left-bottom {
-			bottom: 33vh;
-			left: -10px;
 			.body {
 				width: 180px;
 				height: 250px;
@@ -71,12 +49,9 @@
 			}
 		}
 		.bottom-left {
-			left: 0;
 			z-index: 999;
 			&.medium {
-				left: 18vh;
 				z-index: 1;
-				bottom: 60px;
 				.body {
 					height: 150px;
 					width: 155px;
@@ -85,18 +60,13 @@
 			}
 		}
 		.bottom-middle {
-			bottom: -10vh;
-			left: 38vw;
 			z-index: 999;
 		}
 		.bottom-right {
-			right: 22vw;
-			bottom: 15vh;
 			height: 170px;
 			width: 170px;
 
 			&.big {
-				bottom: 20vh;
 				.body {
 					width: 190px;
 					height: 200px;
@@ -107,35 +77,32 @@
 			&.xl {
 				height: 220px;
 				width: 220px;
-				right: 5vw;
 				z-index: 998;
 				.body {
 					width: 250px;
 					height: 200px;
 					margin-top: 220px;
 					margin-left: 0px;
+					&.lean {
+						margin-top: 190px;
+						margin-right: 10px;
+						-ms-transform: rotate(-10deg); /* IE 9 */
+						-webkit-transform: rotate(-10deg); /* Chrome, Safari, Opera */
+						transform: rotate(-10deg);
+					}
 				}
 			}
 			&.right {
-				right: -3vw;
 				height: 252px;
 				width: 252px;
-				bottom: 15vh;
 			}
-			&.lean {
-				margin-right: 30px;
-				-ms-transform: rotate(-10deg); /* IE 9 */
-				-webkit-transform: rotate(-10deg); /* Chrome, Safari, Opera */
-				transform: rotate(-10deg);
-			}
+			
 		}
 		.right-top {
-			top: 10vh;
 			height: 80px;
 			width: 80px;
 		}
 		.right-middle {
-			top: 25vh;
 			.body {
 				width: 160px;
 				height: 150px;
@@ -147,10 +114,6 @@
 			}
 
 		}
-		.right-bottom {
-			bottom: 20vh;
-		}
-
 		.body {
 			border: solid 3px darken($green, 15%);
 			border-top-left-radius: 30%;
@@ -165,12 +128,16 @@
 	-webkit-animation-name: $name;
 	-webkit-animation-duration: $duration;
 	-webkit-animation-delay: $delay; /* Chrome, Safari, Opera */
+	-webkit-animation-timing-function: ease-in-out; /* Chrome, Safari, Opera */
+	-webkit-animation-fill-mode: forwards;
 	-moz-animation-name: $name;
 	-moz-animation-duration: $duration;
 	-moz-animation-delay: $delay; /* Chrome, Safari, Opera */
 	animation-name: $name;
 	animation-duration: $duration;
 	animation-delay: $delay; /* Chrome, Safari, Opera */
+	animation-timing-function: ease-in-out; /* Chrome, Safari, Opera */
+
 }
 @mixin keyframes($name) { 
 	@-webkit-keyframes #{$name} { @content }
@@ -179,6 +146,13 @@
 	@keyframes         #{$name} { @content }
 }
 
+
+@mixin rotatekeyframes($name) { 
+	@-webkit-keyframes #{$name} { @content }
+	@-moz-keyframes    #{$name} { @content }
+	@-ms-keyframes     #{$name} { @content }
+	@keyframes         #{$name} { @content }
+}
 
 
 @mixin left($animName, $bottomStart, $bottomEnd, $leftStart, $leftEnd, $duration, $delay){
@@ -204,25 +178,34 @@
 }
 
 
+$delaySize: .5s;
 
+@media screen and (min-width: 900px) {
 
-@include left($animName:friend-1, $bottomStart:15vh, $bottomEnd: 65vh, $leftStart: -200px, $leftEnd: -65px, $duration: 1s, $delay: .8s);
-@include left($animName:friend-2, $bottomStart:15vh, $bottomEnd: 55vh, $leftStart: -200px, $leftEnd: -20px, $duration: 1s, $delay: .5s);
-@include left($animName:friend-3, $bottomStart:25vh, $bottomEnd: 33vh, $leftStart: -200px, $leftEnd: -10px, $duration:1s, $delay: 2s);
-@include left($animName:friend-4, $bottomStart:-220px, $bottomEnd:-40px, $leftStart: 0, $leftEnd: 0, $duration:1s, $delay: 0);
-@include left($animName:friend-5, $bottomStart:-240px, $bottomEnd:60px, $leftStart: 18vw, $leftEnd: 18vw, $duration:1s, $delay: .5s);
-@include left($animName:friend-6, $bottomStart:-30vh, $bottomEnd:-10vh, $leftStart: 38vw, $leftEnd: 38vw, $duration:1s, $delay: 1.5s);
+	@include left($animName:friend-1, $bottomStart:15vh, $bottomEnd: 65vh, $leftStart: -200px, $leftEnd: -65px, $duration: 1s, $delay: ($delaySize * 4));
+	@include left($animName:friend-2, $bottomStart:15vh, $bottomEnd: 55vh, $leftStart: -200px, $leftEnd: -20px, $duration: 1s, $delay: ($delaySize * 3));
+	@include left($animName:friend-3, $bottomStart:25vh, $bottomEnd: 33vh, $leftStart: -200px, $leftEnd: -10px, $duration:1s, $delay: ($delaySize * 10));
+	@include left($animName:friend-4, $bottomStart:-220px, $bottomEnd:-40px, $leftStart: 0, $leftEnd: 0, $duration:1s, $delay: ($delaySize * 6));
+	@include left($animName:friend-5, $bottomStart:-240px, $bottomEnd:60px, $leftStart: 18vw, $leftEnd: 18vw, $duration:1s, $delay: ($delaySize * 1));
+	@include left($animName:friend-6, $bottomStart:-40vh, $bottomEnd:-10vh, $leftStart: 35vw, $leftEnd: 40vw, $duration:1s, $delay: ($delaySize * 7));
+	@include right($animName:friend-7, $bottomStart:-20vh, $bottomEnd:10vh, $rightStart: 15vw , $rightEnd: 22vw, $duration:1s, $delay: ($delaySize * 5));
+	@include right($animName:friend-8, $bottomStart:10vh, $bottomEnd:15vh, $rightStart: -5vw , $rightEnd: 8vw, $duration:2s, $delay: ($delaySize * .5));
+	@include right($animName:friend-9, $bottomStart:-20vh, $bottomEnd:15vh, $rightStart: -35vw , $rightEnd: -3vw, $duration:1s, $delay: ($delaySize * 11));
+	@include right($animName:friend-10, $bottomStart:45vh, $bottomEnd:55vh, $rightStart: -22vw , $rightEnd: -3vw, $duration:1s, $delay: ($delaySize * 2));
+	@include right($animName:friend-11, $bottomStart:80vh, $bottomEnd:80vh, $rightStart: -120px, $rightEnd: -40px, $duration:1s, $delay: ($delaySize * 9));
+	// @include left($animName:friend-12, $bottomStart:-180vh, $bottomEnd:50vh, $leftStart: -5vw, $leftEnd: -5vw, $duration:3s, $delay: 5s);
 
-
-@include right($animName:friend-7, $bottomStart:-20vh, $bottomEnd:20vh, $rightStart: 22vw , $rightEnd: 22vw, $duration:1s, $delay: 1s);
-@include right($animName:friend-8, $bottomStart:-10vh, $bottomEnd:15vh, $rightStart: -22vw , $rightEnd: -3vw, $duration:1s, $delay: 1s);
-@include right($animName:friend-9, $bottomStart:-10vh, $bottomEnd:15vh, $rightStart: -22vw , $rightEnd: -3vw, $duration:1s, $delay: 1s);
-
-@include right($animName:friend-11, $bottomStart:80vh, $bottomEnd:80vh, $rightStart: -120px, $rightEnd: -40px, $duration:1s, $delay: 1s);
-@include left($animName:friend-12, $bottomStart:-130vh, $bottomEnd:50vh, $leftStart: -5vw, $leftEnd: -5vw, $duration:3s, $delay: 3s);
-
-
-
-
-
+}
+.friend-1 {bottom: 15vh;left: -200px;}
+.friend-2 {bottom: 15vh;left: -200px;}
+.friend-3 {bottom: 25vh;left: -200px;}
+.friend-4 {bottom: -220px;left: 0;}
+.friend-5 {bottom: -240px;left: 18vw;}
+.friend-6 {bottom: -40vh;left: 35vw;}
+.friend-7 {bottom: -30vh;right: 22vw;}
+.friend-8 {bottom: 15vh;right: -5vw; display: none;}
+.friend-9 {bottom: -20vh;right: -35vw;}
+.friend-10 {bottom: 45vh;right: -22vw;}
+.friend-11 {bottom: 80vh;right: -120px;}
+.friend-12 {bottom: -180vh;left: -5vw;}
 
