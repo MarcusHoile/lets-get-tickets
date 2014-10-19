@@ -4,12 +4,12 @@
 <div class="overlay home-page">
 	<div class="planner-container">
 		<div class="planner">
-			<%= image_tag 'stick-figure-proud.png' %>
+			<%= image_tag 'stick-figure.png' %>
 		</div>
 		<div class="pin"><%= image_tag 'planndit_icon_flipped.png', class: "little-p" %></div>
-		<div class="inner-circle circle"></div>
-		<div class="middle-circle circle"></div>
-		<div class="outer-circle circle"></div>
+		<div class="innerCircle circle"></div>
+		<div class="middleCircle circle"></div>
+		<div class="outerCircle circle"></div>
 	</div>
 	<div class="friends">
 		<div class="friend friend-1 sm left left-top"></div>
@@ -45,28 +45,14 @@
 
 <script>
 $(document).ready(function(){
-	// var $friend1 = $('.friend-1')
-	// var $friend2 = $('.friend-2')
-	// var $friend3 = $('.friend-3')
-	// var $friend4 = $('.friend-4')
-	// var $friend5 = $('.friend-5')
-	// var $friend6 = $('.friend-6')
-	// var $friend7 = $('.friend-7')
-
-	// displayFriend($friend1, 300)
-	// displayFriend($friend2, 600)
-	// displayFriend($friend3, 900)
-	// displayFriend($friend4, 1200)
-	// displayFriend($friend5, 1800)
-	// displayFriend($friend6, 2100)
-	// displayFriend($friend7, 2400)
-
-	// function displayFriend(elem, time) {
 	if ($(window).width() >= 900){
 		setTimeout(function(){
 			 $('.friend-8').css('display', 'block')
 		}, 6000)
 	}
+	setTimeout(function(){
+		$('.planner img').attr('src', '/assets/stick-figure-proud.png')
+	}, 1000)
 
 })
 </script>

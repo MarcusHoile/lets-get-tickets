@@ -34,101 +34,73 @@
 			border: solid 1px $green;
 			position: relative;
 		}
-		.inner-circle {
+		.innerCircle {
 			height: 15px;
 			width: 60px;
 			top: -55px;
 			left: -35px;
 			border-color: darken($green, 3%);
-			animation:pulsateInner 1.2s;
-			-moz-animation:pulsateInner 1.2s infinite; /* Firefox */
-			-webkit-animation:pulsateInner 1.2s infinite; /* Safari and Chrome */
 		}
 
-		.middle-circle {
+		.middleCircle {
 			height: 30px;
 			width: 120px;
 			top: -77px;
 			left: -65px;
-			-webkit-animation-name: pulsateMiddle;
-			-webkit-animation-duration: 1.2s;
-			-webkit-animation-timing-function: linear;
-			-webkit-animation-iteration-count: infinite;
-			-webkit-animation-delay: .3s; /* Chrome, Safari, Opera */
-			animation-name: pulsateMiddle;
-			animation-duration: 1.2s;
-			animation-timing-function: linear;
-			animation-iteration-count: infinite;
-			animation-delay: .3s; /* Chrome, Safari, Opera */
-			-moz-animation-name: pulsateMiddle;
-			-moz-animation-duration: 1.2s;
-			-moz-animation-timing-function: linear;
-			-moz-animation-iteration-count: infinite;
-			-moz-animation-delay: .3s; /* Chrome, Safari, Opera */
 		}
-		.outer-circle {
+		.outerCircle {
 			height: 45px;
 			width: 180px;
 			top: -113px;
 			left: -93px;
-			-webkit-animation-name: pulsateOuter;
-			-webkit-animation-duration: 1.2s;
-			-webkit-animation-timing-function: linear;
-			-webkit-animation-iteration-count: infinite;
-			-webkit-animation-delay: .7s; /* Chrome, Safari, Opera */
-			-moz-animation-name: pulsateOuter;
-			-moz-animation-duration: 1.2s;
-			-moz-animation-timing-function: linear;
-			-moz-animation-iteration-count: infinite;
-			-moz-animation-delay: .7s; /* Chrome, Safari, Opera */
-			animation-name: pulsateOuter;
-			animation-duration: 1.2s;
-			animation-timing-function: linear;
-			animation-iteration-count: infinite;
-			animation-delay: 1.2s; /* Chrome, Safari, Opera */
 		}
-		
 	}
 }
-@-moz-keyframes pulsateInner /* Firefox */
-{
-	0%   {border-color:$green;}
-	50%  {border-color:darken($green, 15%);}
-	100%   {border-color:$green;}
+
+@mixin circleanimation($name, $duration, $delay) { 
+	-webkit-animation-name: $name;
+	-webkit-animation-duration: $duration;
+	-webkit-animation-delay: $delay; /* Chrome, Safari, Opera */
+	-webkit-animation-timing-function: ease-in-out; /* Chrome, Safari, Opera */
+	-webkit-animation-fill-mode: forwards;
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-name: $name;
+	-moz-animation-duration: $duration;
+	-moz-animation-delay: $delay; /* Chrome, Safari, Opera */
+	-moz-animation-fill-mode: forwards;
+	-moz-animation-iteration-count: infinite;
+	animation-name: $name;
+	animation-duration: $duration;
+	animation-delay: $delay; /* Chrome, Safari, Opera */
+	animation-timing-function: ease-in-out; /* Chrome, Safari, Opera */
+	animation-fill-mode: forwards;
+	animation-iteration-count: infinite;
+
 }
 
-@-webkit-keyframes pulsateInner /* Safari and Chrome */
-{
-	0%   {border-color:$green;}
-	50%  {border-color:darken($green, 15%);}
-	100%   {border-color:$green;}
-}
-@-moz-keyframes pulsateMiddle /* Firefox */
-{
-	0%   {border-color:$green;}
-	50%  {border-color:darken($green, 11%);}
-	100%   {border-color:$green;}
+@mixin circlekeyframes($name) { 
+	@-webkit-keyframes #{$name} { @content }
+	@-moz-keyframes    #{$name} { @content }
+	@-ms-keyframes     #{$name} { @content }
+	@keyframes         #{$name} { @content }
 }
 
-@-webkit-keyframes pulsateMiddle /* Safari and Chrome */
-{
-	0%   {border-color:$green;}
-	50%  {border-color:darken($green, 11%);}
-	100%   {border-color:$green;}
-}
-@-moz-keyframes pulsateOuter /* Firefox */
-{
-	0%   {border-color:$green;}
-	50%  {border-color:darken($green, 8%);}
-	100%   {border-color:$green;}
+@mixin circle($animName, $colorStart, $colorEnd, $duration, $delay){
+	.#{$animName} { 
+		@content;
+		@include circleanimation($animName, $duration, $delay); 
+	}
+	@include circlekeyframes($animName) {
+		0%, 20% { border-color: $colorStart;}
+		60% { border-color: $colorEnd; }
+		100% { border-color: $colorStart;}
+
+	}
 }
 
-@-webkit-keyframes pulsateOuter /* Safari and Chrome */
-{
-	0%   {border-color:$green;}
-	50%  {border-color:darken($green, 8%);}
-	100%   {border-color:$green;}
-}
+@include circle($animName: innerCircle, $colorStart: $green, $colorEnd: darken($green,20%), $duration: 2s, $delay: 0 );
+@include circle($animName: middleCircle, $colorStart: $green, $colorEnd: darken($green, 16%), $duration: 2s, $delay: .3s );
+@include circle($animName: outerCircle, $colorStart: $green, $colorEnd: darken($green, 12%), $duration: 2s, $delay: .6s );
 
 
 

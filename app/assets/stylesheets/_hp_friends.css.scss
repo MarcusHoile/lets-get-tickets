@@ -1,7 +1,6 @@
 .home-page {
 	.friends {
 		.friend {
-			display:none;
 			position: absolute;
 			border-radius: 50%;
 			background: darken($green, 10%);
@@ -146,15 +145,6 @@
 	@keyframes         #{$name} { @content }
 }
 
-
-@mixin rotatekeyframes($name) { 
-	@-webkit-keyframes #{$name} { @content }
-	@-moz-keyframes    #{$name} { @content }
-	@-ms-keyframes     #{$name} { @content }
-	@keyframes         #{$name} { @content }
-}
-
-
 @mixin left($animName, $bottomStart, $bottomEnd, $leftStart, $leftEnd, $duration, $delay){
 	.#{$animName} { 
 		@content;
@@ -179,21 +169,12 @@
 
 
 $delaySize: .5s;
-
+@media screen and (max-width: 600px) {
+	.friend {
+		display: none;
+	}
+}
 @media screen and (min-width: 900px) {
-	.friend {display: block;}
-	.friend-1 {bottom: 15vh;left: -200px;}
-	.friend-2 {bottom: 15vh;left: -200px;}
-	.friend-3 {bottom: 25vh;left: -200px;}
-	.friend-4 {bottom: -220px;left: 0;}
-	.friend-5 {bottom: -240px;left: 18vw;}
-	.friend-6 {bottom: -40vh;left: 35vw;}
-	.friend-7 {bottom: -30vh;right: 22vw;}
-	.friend-8 {bottom: 15vh;right: -5vw; display: none;}
-	.friend-9 {bottom: -20vh;right: -35vw;}
-	.friend-10 {bottom: 45vh;right: -22vw;}
-	.friend-11 {bottom: 80vh;right: -120px;}
-	.friend-12 {bottom: -180vh;left: -5vw;}
 
 	@include left($animName:friend-1, $bottomStart:15vh, $bottomEnd: 65vh, $leftStart: -200px, $leftEnd: -65px, $duration: 1s, $delay: ($delaySize * 4));
 	@include left($animName:friend-2, $bottomStart:15vh, $bottomEnd: 55vh, $leftStart: -200px, $leftEnd: -20px, $duration: 1s, $delay: ($delaySize * 3));
@@ -209,5 +190,17 @@ $delaySize: .5s;
 	// @include left($animName:friend-12, $bottomStart:-180vh, $bottomEnd:50vh, $leftStart: -5vw, $leftEnd: -5vw, $duration:3s, $delay: 5s);
 
 }
+.friend-1 {bottom: 15vh;left: -200px;}
+.friend-2 {bottom: 15vh;left: -200px;}
+.friend-3 {bottom: 25vh;left: -200px;}
+.friend-4 {bottom: -220px;left: 0;}
+.friend-5 {bottom: -240px;left: 18vw;}
+.friend-6 {bottom: -40vh;left: 35vw;}
+.friend-7 {bottom: -30vh;right: 22vw;}
+.friend-8 {bottom: 15vh;right: -5vw; display: none;}
+.friend-9 {bottom: -20vh;right: -35vw;}
+.friend-10 {bottom: 45vh;right: -22vw;}
+.friend-11 {bottom: 80vh;right: -120px;}
+.friend-12 {bottom: -180vh;left: -5vw;}
 
 
