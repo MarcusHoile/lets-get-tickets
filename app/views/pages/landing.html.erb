@@ -4,12 +4,15 @@
 <div class="overlay home-page">
 	<div class="planner-container">
 		<div class="planner">
-			<%= image_tag 'stick-figure.png' %>
+			<%= image_tag 'stick-figure.png', class: "the-planner" %>
 		</div>
 		<div class="pin"><%= image_tag 'planndit_icon_flipped.png', class: "little-p" %></div>
 		<div class="innerCircle circle"></div>
 		<div class="middleCircle circle"></div>
 		<div class="outerCircle circle"></div>
+		<div class="guest-container">
+			<%= image_tag 'group-figures.png', class: "the-guests" %>
+		</div>
 	</div>
 	<div class="friends">
 		<div class="friend friend-1 sm left left-top"></div>
@@ -17,13 +20,13 @@
 		<div class="friend friend-3 medium left left-bottom"><div class="body"></div></div>
 		<div class="friend friend-4 big bottom bottom-left"></div>
 		<div class="friend friend-5 medium bottom bottom-left"><div class="body"></div></div>
-		<div class="friend friend-6 xl bottom bottom-middle"></div>
+		<div class="friend friend-6 xl bottom bottom-middle"><div class="body"></div></div>
 		<div class="friend friend-7 big bottom bottom-right"><div class="body"></div></div>
 		<div class="friend friend-8 xl bottom bottom-right"><div class="body lean"></div></div>
 		<div class="friend friend-9 xl bottom bottom-right right"><div class="body"></div></div>
 		<div class="friend friend-10 medium right right-middle"><div class="body lean"></div></div>
 		<div class="friend friend-11 sm right right-top"></div>
-		<div class="friend friend-12 big-one"></div>
+		<div class="friend friend-12 friend-13 big-one"></div>
 	</div>
 	<div class="row">
 		<div class="col-md-12">
@@ -48,11 +51,22 @@ $(document).ready(function(){
 	if ($(window).width() >= 900){
 		setTimeout(function(){
 			 $('.friend-8').css('display', 'block')
-		}, 6000)
+		}, 9000)
 	}
 	setTimeout(function(){
-		$('.planner img').attr('src', '/assets/stick-figure-proud.png')
-	}, 1000)
+		$('.the-planner').attr('src', '/assets/stick-figure-proud.png')
+	}, 2000)
+	var bigGuy = setInterval(function(){
+		checkBigGuy();
+	}, 200);
+		
+	function checkBigGuy() {
+		if ($('.friend-12').position().top <= 0){
+			$('.friend').css('display', 'none');
+			$('.the-guests').css('display', 'block');
+			clearInterval(bigGuy)
+		}
+	}
 
 })
 </script>
