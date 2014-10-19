@@ -1,15 +1,29 @@
+.landing {
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+	position: relative;
+	background-color: rgb(0,182,47);
+}
 .home-page {
-	.planner {
+	.planner-container {
 		position: absolute;
 		top: 30vh;
 		left: 51vw;
-		img {
-			height: 80px;
-		}
-		.pin {
+		.planner {
 			position: relative;
-			right: 93px;
-			top: 15px;
+			z-index: 999;
+			img {
+				height: 80px;
+			}
+
+		}
+		
+		.pin {
+			z-index: 999;
+			position: relative;
+			right: 35px;
+			top: -45px;
 			display:inline-block;	
 			img {
 				height: 50px;
@@ -17,29 +31,105 @@
 		}
 		.circle {
 			border-radius: 50%;
-			border: solid 1px darken($green, 19%);
+			border: solid 1px $green;
 			position: relative;
 		}
 		.inner-circle {
 			height: 15px;
 			width: 60px;
-			top: -15px;
+			top: -55px;
 			left: -35px;
+			border-color: darken($green, 3%);
+			animation:pulsateInner 1.2s;
+			-moz-animation:pulsateInner 1.2s infinite; /* Firefox */
+			-webkit-animation:pulsateInner 1.2s infinite; /* Safari and Chrome */
 		}
+
 		.middle-circle {
 			height: 30px;
 			width: 120px;
-			top: -37px;
+			top: -77px;
 			left: -65px;
-			border-color: darken($green, 13%);
+			-webkit-animation-name: pulsateMiddle;
+			-webkit-animation-duration: 1.2s;
+			-webkit-animation-timing-function: linear;
+			-webkit-animation-iteration-count: infinite;
+			-webkit-animation-delay: .3s; /* Chrome, Safari, Opera */
+			animation-name: pulsateMiddle;
+			animation-duration: 1.2s;
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+			animation-delay: .3s; /* Chrome, Safari, Opera */
+			-moz-animation-name: pulsateMiddle;
+			-moz-animation-duration: 1.2s;
+			-moz-animation-timing-function: linear;
+			-moz-animation-iteration-count: infinite;
+			-moz-animation-delay: .3s; /* Chrome, Safari, Opera */
 		}
 		.outer-circle {
 			height: 45px;
 			width: 180px;
-			top: -73px;
+			top: -113px;
 			left: -93px;
-			border-color: darken($green, 6%);
+			-webkit-animation-name: pulsateOuter;
+			-webkit-animation-duration: 1.2s;
+			-webkit-animation-timing-function: linear;
+			-webkit-animation-iteration-count: infinite;
+			-webkit-animation-delay: .7s; /* Chrome, Safari, Opera */
+			-moz-animation-name: pulsateOuter;
+			-moz-animation-duration: 1.2s;
+			-moz-animation-timing-function: linear;
+			-moz-animation-iteration-count: infinite;
+			-moz-animation-delay: .7s; /* Chrome, Safari, Opera */
+			animation-name: pulsateOuter;
+			animation-duration: 1.2s;
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+			animation-delay: 1.2s; /* Chrome, Safari, Opera */
 		}
 		
 	}
 }
+@-moz-keyframes pulsateInner /* Firefox */
+{
+	0%   {border-color:$green;}
+	50%  {border-color:darken($green, 15%);}
+	100%   {border-color:$green;}
+}
+
+@-webkit-keyframes pulsateInner /* Safari and Chrome */
+{
+	0%   {border-color:$green;}
+	50%  {border-color:darken($green, 15%);}
+	100%   {border-color:$green;}
+}
+@-moz-keyframes pulsateMiddle /* Firefox */
+{
+	0%   {border-color:$green;}
+	50%  {border-color:darken($green, 11%);}
+	100%   {border-color:$green;}
+}
+
+@-webkit-keyframes pulsateMiddle /* Safari and Chrome */
+{
+	0%   {border-color:$green;}
+	50%  {border-color:darken($green, 11%);}
+	100%   {border-color:$green;}
+}
+@-moz-keyframes pulsateOuter /* Firefox */
+{
+	0%   {border-color:$green;}
+	50%  {border-color:darken($green, 8%);}
+	100%   {border-color:$green;}
+}
+
+@-webkit-keyframes pulsateOuter /* Safari and Chrome */
+{
+	0%   {border-color:$green;}
+	50%  {border-color:darken($green, 8%);}
+	100%   {border-color:$green;}
+}
+
+
+
+

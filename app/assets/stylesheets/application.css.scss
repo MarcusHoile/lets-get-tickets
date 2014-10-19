@@ -12,25 +12,26 @@
  *= require font-awesome
  */
 
-@import 'compass';
-@import 'overwrite_bootstrap';
-@import 'bootstrap';
-@import 'colours';
-@import 'reset';
-@import 'tables';
-@import 'contact';
-@import 'countdown_clock';
-@import 'typography';
-@import 'navigation';
-@import 'buttons';
-@import 'forms';
-@import 'badges';
-@import 'alerts';
-@import 'maps';
-@import 'events';
-@import 'campaigns';
-@import 'home_page';
-@import 'hp_friends';
+@import "compass";
+@import "compass/reset";
+@import "overwrite_bootstrap";
+@import "bootstrap";
+@import "colours";
+@import "reset";
+@import "tables";
+@import "contact";
+@import "countdown_clock";
+@import "typography";
+@import "navigation";
+@import "buttons";
+@import "forms";
+@import "badges";
+@import "alerts";
+@import "maps";
+@import "events";
+@import "campaigns";
+@import "home_page";
+@import "hp_friends";
 
 
 

@@ -1,10 +1,14 @@
 .home-page {
 	.friends {
 		.friend {
+			// display:none;
 			position: absolute;
 			border-radius: 50%;
 			background: darken($green, 10%);
 			border: solid 3px darken($green, 15%);
+		}
+		.friendOne {
+			display: block;
 		}
 		.big-one {
 			width: 110vw;
@@ -58,10 +62,10 @@
 		}
 		.left-bottom {
 			bottom: 33vh;
-			left: -50px;
+			left: -10px;
 			.body {
 				width: 180px;
-				height: 200px;
+				height: 250px;
 				margin-top: 140px;
 				margin-left: -20px;
 			}
@@ -108,8 +112,8 @@
 				.body {
 					width: 250px;
 					height: 200px;
-					margin-top: 200px;
-					margin-left: -10px;
+					margin-top: 220px;
+					margin-left: 0px;
 				}
 			}
 			&.right {
@@ -119,7 +123,7 @@
 				bottom: 15vh;
 			}
 			&.lean {
-				margin-right: 10px;
+				margin-right: 30px;
 				-ms-transform: rotate(-10deg); /* IE 9 */
 				-webkit-transform: rotate(-10deg); /* Chrome, Safari, Opera */
 				transform: rotate(-10deg);
@@ -156,3 +160,69 @@
 		}
 	}
 }
+
+@mixin animation($name, $duration, $delay) { 
+	-webkit-animation-name: $name;
+	-webkit-animation-duration: $duration;
+	-webkit-animation-delay: $delay; /* Chrome, Safari, Opera */
+	-moz-animation-name: $name;
+	-moz-animation-duration: $duration;
+	-moz-animation-delay: $delay; /* Chrome, Safari, Opera */
+	animation-name: $name;
+	animation-duration: $duration;
+	animation-delay: $delay; /* Chrome, Safari, Opera */
+}
+@mixin keyframes($name) { 
+	@-webkit-keyframes #{$name} { @content }
+	@-moz-keyframes    #{$name} { @content }
+	@-ms-keyframes     #{$name} { @content }
+	@keyframes         #{$name} { @content }
+}
+
+
+
+@mixin left($animName, $bottomStart, $bottomEnd, $leftStart, $leftEnd, $duration, $delay){
+	.#{$animName} { 
+		@content;
+		@include animation($animName, $duration, $delay); 
+	}
+	@include keyframes($animName) {
+		from { bottom: $bottomStart; left: $leftStart;}
+		to { bottom: $bottomEnd; left: $leftEnd; }
+	}
+}
+
+@mixin right($animName, $bottomStart, $bottomEnd, $rightStart, $rightEnd, $duration, $delay){
+	.#{$animName} { 
+		@content;
+		@include animation($animName, $duration, $delay); 
+	}
+	@include keyframes($animName) {
+		from { bottom: $bottomStart; right: $rightStart;}
+		to { bottom: $bottomEnd; right: $rightEnd; }
+	}
+}
+
+
+
+
+@include left($animName:friend-1, $bottomStart:15vh, $bottomEnd: 65vh, $leftStart: -200px, $leftEnd: -65px, $duration: 1s, $delay: .8s);
+@include left($animName:friend-2, $bottomStart:15vh, $bottomEnd: 55vh, $leftStart: -200px, $leftEnd: -20px, $duration: 1s, $delay: .5s);
+@include left($animName:friend-3, $bottomStart:25vh, $bottomEnd: 33vh, $leftStart: -200px, $leftEnd: -10px, $duration:1s, $delay: 2s);
+@include left($animName:friend-4, $bottomStart:-220px, $bottomEnd:-40px, $leftStart: 0, $leftEnd: 0, $duration:1s, $delay: 0);
+@include left($animName:friend-5, $bottomStart:-240px, $bottomEnd:60px, $leftStart: 18vw, $leftEnd: 18vw, $duration:1s, $delay: .5s);
+@include left($animName:friend-6, $bottomStart:-30vh, $bottomEnd:-10vh, $leftStart: 38vw, $leftEnd: 38vw, $duration:1s, $delay: 1.5s);
+
+
+@include right($animName:friend-7, $bottomStart:-20vh, $bottomEnd:20vh, $rightStart: 22vw , $rightEnd: 22vw, $duration:1s, $delay: 1s);
+@include right($animName:friend-8, $bottomStart:-10vh, $bottomEnd:15vh, $rightStart: -22vw , $rightEnd: -3vw, $duration:1s, $delay: 1s);
+@include right($animName:friend-9, $bottomStart:-10vh, $bottomEnd:15vh, $rightStart: -22vw , $rightEnd: -3vw, $duration:1s, $delay: 1s);
+
+@include right($animName:friend-11, $bottomStart:80vh, $bottomEnd:80vh, $rightStart: -120px, $rightEnd: -40px, $duration:1s, $delay: 1s);
+@include left($animName:friend-12, $bottomStart:-130vh, $bottomEnd:50vh, $leftStart: -5vw, $leftEnd: -5vw, $duration:3s, $delay: 3s);
+
+
+
+
+
+
