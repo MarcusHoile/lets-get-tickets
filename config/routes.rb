@@ -24,8 +24,10 @@ GetTickets::Application.routes.draw do
     resources :tickets, shallow: true
   end
   get '/about' => "pages#aboutus"
-  get '/contact' => "pages#contactus"
   get '/terms' => "pages#terms"
+  get '/privacy' => "pages#terms"
+  get '/support' => "pages#terms"
+
   get '/search' => "events#search"
   # resources :users do
   #   resources :events, shallow: true
