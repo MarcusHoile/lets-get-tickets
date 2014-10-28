@@ -25,8 +25,8 @@ GetTickets::Application.routes.draw do
   end
   get '/about' => "pages#aboutus"
   get '/terms' => "pages#terms"
-  get '/privacy' => "pages#terms"
-  get '/support' => "pages#terms"
+  get '/privacy' => "pages#privacy"
+  get '/support' => "pages#support"
 
   get '/search' => "events#search"
   # resources :users do
