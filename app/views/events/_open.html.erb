@@ -84,7 +84,7 @@
           <div class="modal-body">
             <div class="rsvp-login">
               <p class="rsvp-notice"><%= @owner.name %> will need to know who you are. Log in via facebook or enter your name.</p>
-              <%= link_to "Login with Facebook", "/auth/facebook?origin=%2Fevents", id: "sign_in", class: "btn btn-primary" %>
+              <%= link_to "Login with Facebook", "/auth/facebook?origin=%2Fevents%2f<%= params[:id] %>", id: "sign_in", class: "btn btn-primary" %>
               <p>or</p>  
               <div class="register-name btn btn-success">
                 Submit your name 
