@@ -55,4 +55,11 @@ class Event < ActiveRecord::Base
     errors.add :on_sale_text, "is out of range"
   end
 
+  def owner?(user)
+    user == owner
+  end
+
+  def no_invites?
+    self.guests.count < 2
+  end
 end

@@ -1,6 +1,6 @@
 <% content_for :event_notice do %>
   <div class="event-notice">
-    <% if @owner == @user && @event.guests.length < 2 %>
+    <% if ::Policy::Content::Invite.prompt?(@user, @event) %>
       <div class="row">
         <div class="close-btn">X</div>
         <div class="invite-friends">
