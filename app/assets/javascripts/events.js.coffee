@@ -36,13 +36,6 @@ jQuery.fn.submitOnCheck = ()->
   this.find('input[type=submit]').remove()
   return this
 
-rsvp = ->
-  $('.rsvp-btn').on('click', ()->
-    rsvp = ($(this).attr('value'))
-    $('#invite_rsvp').val(rsvp)
-    $(this).parent('form').submit()
-  )
-
 loginPrompt = ->
   $('.rsvp-btn').on('click', ()->
     rsvp = $(this).attr('value')
@@ -104,6 +97,12 @@ ready = ->
   $('.event-listing').on('click', ()->
     path = $(this).data('url')
     window.location.href = path
+  )
+  
+  $('.rsvp-btn').on('click', ()->
+    rsvp = ($(this).attr('value'))
+    $('#invite_rsvp').val(rsvp)
+    $(this).parent('form').submit()
   )
 
 $(document).ready(ready)
