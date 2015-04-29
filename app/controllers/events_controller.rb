@@ -16,6 +16,8 @@ class EventsController < ApplicationController
       @events = @cached_guest_user.event_invitations
     end
     @events.sort_by!(&:on_sale)
+
+    render layout: "application"
   end
 
   def show
@@ -33,15 +35,13 @@ class EventsController < ApplicationController
     end
     gon.rsvp = @invite.rsvp
     @invites = @event.invites.where.not(rsvp: "Undecided")
-
-    render layout: "events"
   end
 
   # GET /events/new
   def new
 
     @event = Event.new
-    
+    render layout: "application"
   end
 
   def edit
@@ -112,7 +112,7 @@ class EventsController < ApplicationController
       format.html { redirect_to new_event }
       format.js 
     end
-
+    render layout: "application"
   end
 
   def campaign_form

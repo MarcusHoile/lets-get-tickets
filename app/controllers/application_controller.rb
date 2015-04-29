@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   # before_filter :current_user
   before_filter :current_or_guest_user
   before_filter :current_path
+  # TODO do i need these?
   require "erb"
   include ERB::Util
   

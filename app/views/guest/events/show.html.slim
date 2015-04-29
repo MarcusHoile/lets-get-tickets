@@ -3,13 +3,14 @@
   = render "payment_reminder"     if @user.not_paid?(@event) && @event.booked?
   = render "confirm_purchase"     if @event.closed? && @event.unconfirmed?
   = render "event_confirmation"   if @event.closed? && @user.paid?(@event)
-= render "event_title"
-= render "event_details"
-.rsvp
-  / TODO get the form to support slim!!!
-  = render "events/rsvp_form"     if @user
-  = render "events/guest_sign_in" if @user.nil?
-.row
-  = render 'payment_form'
+.main
+  = render "event_title"
+  = render "event_details"
+  .rsvp
+    / TODO get the form to support slim!!!
+    = render "events/rsvp_form"     if @user
+    = render "events/guest_sign_in" if @user.nil?
+  .row
+    = render 'payment_form'
 
-= render "guestlist"
+  = render "guestlist"

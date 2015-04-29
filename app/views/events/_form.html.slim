@@ -1,6 +1,6 @@
 - if current_user
   .form
-    div role: "form" 
+    div role="form" 
       = form_for(@event, :class => "role col-md-12", ) do |f|
         - if @event.errors.any?
           #error_explanation
@@ -28,7 +28,7 @@
         .field
           = f.hidden_field :lat, class: "form-control"
           = f.hidden_field :lng, class: "form-control"
-        br/
+        br
         .actions
           - button_text = (@event.new_record?) ? "Create Event" : "Update Event"
           button.btn.btn-primary= button_text
