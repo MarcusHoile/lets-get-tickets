@@ -1,4 +1,4 @@
-- # this page is not in any user journey
+/ this page is not in any user journey
 = form_for(@invite) do |f|
   - if @invite.errors.any?
     #error_explanation
@@ -15,6 +15,6 @@
         = check_box_tag "invitee_ids[]", user.id
         = label_tag "invitee_ids[]", user.name
       hr/
-    | x`
-  button type: "submit" 
+    | x
+  button type="submit" 
     | Send invites
