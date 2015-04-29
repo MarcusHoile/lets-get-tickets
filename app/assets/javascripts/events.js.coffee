@@ -101,6 +101,11 @@ ready = ->
     $(this).parent('form').submit()
   )
 
+  $('.event-listing').on('click', ()->
+    path = $(this).data('url')
+    window.location.href = path
+  )
+
 $(document).ready(ready)
 $(document).on('page:load', ready)
 
