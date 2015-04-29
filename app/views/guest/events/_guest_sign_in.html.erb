@@ -1,0 +1,20 @@
+<div class="modal fade" id="loginPrompt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Who are you?</h4>
+      </div>
+      <div class="modal-body">
+        <div class="rsvp-login">
+          <p class="rsvp-notice"><%= @owner.name %> will need to know who you are. Log in via facebook or enter your name.</p>
+          <%= link_to "Login with Facebook", "/auth/facebook?origin=/events/#{params[:id]}", id: "sign_in", class: "btn btn-primary" %>
+          <p>or</p>  
+          <div class="register-name btn btn-success">
+            Submit your name 
+          </div>
+        </div><!-- rsvp-login -->
+      </div>
+    </div>
+  </div>
+</div>

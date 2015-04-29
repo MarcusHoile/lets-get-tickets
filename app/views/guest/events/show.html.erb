@@ -1,0 +1,29 @@
+<div class="notifications">
+  <%= render "countdown" if @event.open? && @user.undecided? %>
+  <%= render "payment_reminder" if @user.not_paid?(@event) && @event.booked? %>
+  <%= render "confirm_purchase" if @event.closed? && @event.unconfirmed? %>
+  <%= render "event_confirmation" if @event.closed? && @user.paid?(@event) %>
+</div>
+
+<%= render "event_title" %>
+<%= render "event_details" %>
+
+<div class="rsvp">
+  <%= render "events/rsvp_form" if @user %>
+  <%= render "events/guest_sign_in" if @user.nil? %>
+</div>
+
+<div class="row">
+  <%= render 'payment_form' %>
+</div>
+
+<%= render "guestlist" %>
+
+<script>
+  $(document).ready(function(){
+    <% if @invites.count < 7 %>
+      $('.friends-icons').css('display', 'none');
+      $('.friends-list').css('display', 'block');
+    <% end %>
+  })
+</script>

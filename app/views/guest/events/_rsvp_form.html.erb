@@ -1,0 +1,16 @@
+<%= form_for(shallow_args(@user,@invite), remote: true) do |f| %>
+  <%= f.hidden_field :rsvp, value: "Undecided" %>
+  <%= f.hidden_field :event_id, value: @event.id %>
+  <div class="btn neutral rsvp-btn going" value="going">
+    <div><i class="icon fa fa-check"></i></div>
+    <p>Buy me a ticket!</p>
+  </div>
+  <div class="btn neutral rsvp-btn not-going" value="not-going">
+    <div><i class="icon fa fa-times"></i></div>
+    <p>No thanks</p>
+  </div>
+  <div class="btn neutral rsvp-btn maybe" value="maybe" >
+    <div><i class="icon fa fa-question"></i></div>
+    <p>Maybe</p>
+  </div>
+<% end %><!-- invite-form -->
