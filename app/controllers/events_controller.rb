@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
   before_action :check_status, only: [:show]
   # before_action :authenticate_user, only: [:new]
+  before_filter :set_view_path, only: [:show]
 
   include ApplicationHelper
 
@@ -121,6 +121,11 @@ class EventsController < ApplicationController
 
   private
 
+  def set_view_path
+    user_type = (current_user == @event.owner) ? "planner" : "guest"
+    prepend_view_path("#{Rails.root}/app/views/#{user_type}")
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_event
     @event = Event.find(params[:id])
@@ -133,7 +138,6 @@ class EventsController < ApplicationController
       @event.update(status: "open")
     end
   end
-
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
