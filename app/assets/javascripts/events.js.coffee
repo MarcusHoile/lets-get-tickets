@@ -95,11 +95,11 @@ ready = ->
       $(this).parent('form').submit()
   )
 
-  # $('.btn-payment').on('click', ()->
-  #   payment = $(this).attr('value')
-  #   $('#invite_payment_method').attr('value', payment)
-  #   $(this).parent('form').submit()
-  # )
+  $('.btn-payment').on('click', ()->
+    payment = $(this).attr('value')
+    $('#invite_payment_method').attr('value', payment)
+    $(this).parent('form').submit()
+  )
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
