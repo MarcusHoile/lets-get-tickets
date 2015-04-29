@@ -5,10 +5,6 @@ class InvitesController < ApplicationController
 
   def index
     @invites = Invite.all
-    
-  end
-
-  def show
   end
 
   # GET /invites/new
@@ -16,10 +12,6 @@ class InvitesController < ApplicationController
     @event = Event.find(params[:event_id])    
     @to_invite = current_user.friends - @event.invited_users
     @invite = @event.invites.new
-  end
-
-  def edit
-
   end
 
   def create
