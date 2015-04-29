@@ -1,3 +1,12 @@
+# provider          string   
+# uid               string   
+# name              string   
+# email             string   
+# oauth_token       string   
+# oauth_expires_at  datetime 
+# image             string   
+# guest_user        boolean  
+
 class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
