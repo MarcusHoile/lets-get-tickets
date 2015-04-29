@@ -1,3 +1,16 @@
+# event_when    datetime 
+# what          string   
+# description   text     
+# where         string   
+# on_sale       datetime 
+# price         integer  
+# user_id       integer  
+# lat           decimal  
+# lng           decimal  
+# status        string         default: "open"
+# image         string   
+# booked        boolean        default: false
+
 class Event < ActiveRecord::Base
 	belongs_to :owner, :class_name => "User", foreign_key: "user_id"
 	has_many :invites, dependent: :destroy
@@ -14,14 +27,6 @@ class Event < ActiveRecord::Base
   before_save :save_on_sale_text
 
   serialize :latlng, Hash
-
-  # def confirmed_guests
-  #   invites.where(rsvp: "going")
-  #   self.guests.
-  #         joins('INNER JOIN "users" ON "invites"."id" = "league_season_matches"."home_team_id"').
-  #         where('league_season_matches.league_season_id' => current_league_season.id).
-  # end
-
 
   def event_when_text
   	@event_when_text || event_when.try(:strftime, "%a %d %b %I:%M %P")
@@ -60,6 +65,22 @@ class Event < ActiveRecord::Base
   end
 
   def no_invites?
-    self.guests.count < 2
+    guests.count < 2
+  end
+
+  def booked?
+    booked
+  end
+
+  def unconfirmed?
+    !booked
+  end
+
+  def open?
+    status == 'open'
+  end
+
+  def closed?
+    status == 'closed'
   end
 end
