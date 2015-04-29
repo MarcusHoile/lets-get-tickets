@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%= yield :title %>
+  <title><%= @event.what.titleize %> are playing!</title>
   <%= include_gon %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <%= render "layouts/googleanalytics" %>
-  <%= yield :head %>
+  <meta name="description" content="I'm going to buy tickets for <%= @event.what.titleize %>. Let me know if you want to go.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+
   <%= render "layouts/header" %>
-  
-  
-  <%= yield :event_notice  %>
+
+  <%= yield :event_notice %>
+
   <div class="page-wrap">
     <%= yield %>
   </div>
