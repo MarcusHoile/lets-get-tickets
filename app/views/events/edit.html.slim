@@ -1,0 +1,9 @@
+- content_for :head do
+  meta content: "I'm going to buy tickets for #{@event.what.titleize}. Let me know if you want to go.", name: "description" /
+- content_for :title do
+  title
+    = @event.what.titleize
+    | are playing!
+.container
+  h1.container-title Update Gig
+  = render 'form'

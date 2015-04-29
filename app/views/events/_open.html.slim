@@ -1,0 +1,143 @@
+- content_for :event_notice do
+  .event-notice
+    - if ::Policy::Content::Invite.prompt?(@user, @event)
+      .row
+        .close-btn X
+        .invite-friends
+          p Invite your friends! via Email or facebook
+        .invite-btns
+          #invite-btn.bttn.invite-btn data-clipboard-text="#{event_url(@event)}"  Copy link
+          .bttn.share-btn
+            i.fa.fa-facebook
+            | Share
+    .countdown
+      .close-btn X
+      .col
+        span.ce-days
+        span.ce-days-label
+      .col
+        span.ce-hours
+        span.ce-hours-label
+      .col
+        span.ce-minutes
+        span.ce-minutes-label
+      .col
+        span.ce-seconds
+        span.ce-seconds-label
+      p ...til tickets will be secured
+    /! countdown
+    .message-going.message
+      .close-btn X
+      p
+        | Woot! Fun times ahead! #{@event.owner.name} will let you know when tickets are secured.
+    .message-not-going.message
+      .close-btn X
+      p You will be missed :(
+    .message-maybe.message
+      .close-btn X
+      p There is still time to decide, don't miss out!
+.row.gig
+  = render 'event_gig'
+.event-container
+  .row
+    = render 'event_details'
+  .rsvp
+    - if @user != @owner
+      = form_for(shallow_args(@user,@invite), remote: true) do |f|
+        = f.hidden_field :rsvp, value: "Undecided"
+        = f.hidden_field :event_id, value: @event.id
+        .btn.neutral.rsvp-btn.going value: "going" 
+          div
+            i.icon.fa.fa-check
+          p Buy me a ticket!
+        .btn.neutral.rsvp-btn.not-going value: "not-going" 
+          div
+            i.icon.fa.fa-times
+          p No thanks
+        .btn.neutral.rsvp-btn.maybe value: "maybe" 
+          div
+            i.icon.fa.fa-question
+          p Maybe
+      /! invite-form
+    #loginPrompt.modal.fade aria-hidden="true" aria-labelledby="myModalLabel", role: "dialog", tabindex: "-1" 
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close data-dismiss="modal", type: "button" 
+              span aria-hidden="true"  ×
+              span.sr-only Close
+            h4#myModalLabel.modal-title Who are you?
+          .modal-body
+            .rsvp-login
+              p.rsvp-notice
+                = @owner.name
+                | will need to know who you are. Log in via facebook or enter your name.
+              = link_to "Login with Facebook", "/auth/facebook?origin=/events/#{params[:id]}", id: "sign_in", class: "btn btn-primary"
+              p or
+              .register-name.btn.btn-success
+                | Submit your name
+            /! rsvp-login
+  /! rsvp
+  .row
+    = render 'payment_form'
+  - if @owner == @user
+    .invite-friends
+      p Invite your friends! via Email or facebook
+      .invite-btns
+        #invite-btn.bttn.invite-btn data-clipboard-text="#{event_url(@event)}"  Copy link
+        .bttn.share-btn
+          i.fa.fa-facebook
+          | Share
+    = render 'confirmed_guests'
+  - else
+    = render 'confirmed_guests'
+  = render 'guestlist'
+- if @event.guests.length < 2
+  javascript:
+    | $('.countdown').hide();
+javascript:
+  | $(document).ready(function() {
+      | $(".countdown").countEverest({
+        | day: #{@event.on_sale.day},
+        | month: #{@event.on_sale.month},
+        | year: #{@event.on_sale.year}
+      | });
+  
+      
+      | var clip = new ZeroClipboard($('#invite-btn'));
+      | $('.#{@invite.rsvp}').addClass('confirm');
+  
+      | $('.share-btn').on('click', function(){
+        | FB.ui({
+          | method: 'share',
+          | href: '#{event_url(@event)}',
+        | }, function(response){});
+      | });
+  | <haml_silent>     if @current_user || @cached_guest_user.name.present?
+  | </haml_silent><haml_block>      // rsvp to events
+        | $('.rsvp-btn').on('click', function(){
+          | var rsvp = ($(this).attr('value'));
+          | $('#invite_rsvp').val(rsvp);
+          | $(this).parent('form').submit();
+        | });
+  | </haml_block><haml_silent>     else
+  | </haml_silent><haml_block>      $('.rsvp-btn').on('click', function(){
+          | var rsvp = $(this).attr('value');
+          | $('#user_rsvp').attr('value', rsvp);
+          | $('#loginPrompt').modal('show')
+        | });
+  | </haml_block>      // register guest user
+        | $('.register-name').on('click', function(){
+          | $('#loginPrompt').modal('hide')
+          | $('.friends-list').css('display', 'block')
+          | $('.guest-register').css('display', 'block')
+          | $("#guest-name-input").focus();
+        | });
+        | $('#guest-name').keypress(function(e){
+          | if (e.which == 13) {
+            | $(this).parent('form').submit();
+          | }
+        | })
+  
+  
+    | });

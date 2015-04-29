@@ -1,0 +1,8 @@
+.owner-confirm-ticket
+  p.inline Have you bought the tickets?
+  .ticket-form.inline
+    = form_for @event do |f|
+      = f.check_box :ticket, checked: true
+      .btn.btn-success.ticket-confirm.inline Yes
+      .btn.btn-danger.inline No
+      = f.submit

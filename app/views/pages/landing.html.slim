@@ -1,0 +1,67 @@
+- content_for :title do
+  title planndit
+.overlay.home-page
+  .planner-container
+    .planner
+      = image_tag 'stick-figure.png', class: "the-planner"
+    .pin= image_tag 'planndit_icon_flipped.png', class: "little-p"
+    .innerCircle.circle
+    .middleCircle.circle
+    .outerCircle.circle
+    .guest-container
+      = image_tag 'group-figures.png', class: "the-guests"
+  .friends
+    .friend.friend-1.sm.left.left-top
+    .friend.friend-2.sm.left.left-middle
+      .body
+    .friend.friend-3.medium.left.left-bottom
+      .body
+    .friend.friend-4.big.bottom.bottom-left
+    .friend.friend-5.medium.bottom.bottom-left
+      .body
+    .friend.friend-6.xl.bottom.bottom-middle
+      .body
+    .friend.friend-7.big.bottom.bottom-right
+      .body
+    .friend.friend-8.xl.bottom.bottom-right
+      .body.lean
+    .friend.friend-9.xl.bottom.bottom-right.right
+      .body
+    .friend.friend-10.medium.right.right-middle
+      .body.lean
+    .friend.friend-11.sm.right.right-top
+    .friend.friend-12.friend-13.big-one
+  .row
+    .col-md-12
+      .home-page-brand
+        .fleft
+          span= image_tag 'planndit_icon_flipped.png', class: "little-p"
+        .fleft.name-tagline
+          h1#brand-splash planndit
+          span.tag-spacer
+          p#tagline make the plans, book your friends
+          .create-event
+            = link_to 'create an event', new_event_path, id: "hp-btn"
+javascript:
+  | $(document).ready(function(){
+  	| if ($(window).width() >= 900){
+  		| setTimeout(function(){
+  			 | $('.friend-8').css('display', 'block')
+  		| }, 9000)
+  	| }
+  	| setTimeout(function(){
+  		| $('.the-planner').attr('src', '/assets/stick-figure-proud.png')
+  	| }, 2000)
+  	| var bigGuy = setInterval(function(){
+  		| checkBigGuy();
+  	| }, 200);
+  		
+  	| function checkBigGuy() {
+  		| if ($('.friend-12').position().top <= 0){
+  			| $('.friend').css('display', 'none');
+  			| $('.the-guests').css('display', 'block');
+  			| clearInterval(bigGuy)
+  		| }
+  	| }
+  
+  | })

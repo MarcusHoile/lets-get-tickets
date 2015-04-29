@@ -1,0 +1,64 @@
+- content_for :event_notice do
+  .event-notice
+    - if @owner == @user
+      - if !@event.ticket
+        .close-btn X
+        .ticket-status.guest-count
+          span= @confirmed.count
+          | CONFIRMED GUESTS!
+        .owner-confirm-ticket
+          p.inline Have you bought the tickets?
+          .ticket-form.inline
+            = form_for @event do |f|
+              = f.check_box :ticket, checked: true
+              .btn.btn-success.ticket-confirm.inline Yes
+              .btn.btn-danger.inline No
+              = f.submit
+      - elsif @event.ticket
+        .close-btn X
+        p.tickets-purchased Tickets purchased, make sure to notify your recipients.
+    - elsif !@event.ticket
+      .close-btn X
+      h4.ticket-status.amber Tickets pending
+      p
+        = @owner.name
+        | is in the process of procuring tickets.
+    - else
+      .close-btn X
+      .ticket-status.green Tickets purchased
+      p
+        | Please contact #{@owner.name} to confirm yours has been secured.
+.row.gig
+  = render 'event_gig'
+.event-container
+  .row
+    = render 'event_details'
+  - if !@event.ticket
+    - if @owner == @user
+      .ticket-status
+        span.warning.event-alert Deadline
+        = @confirmed.count
+        | people have requested tickets
+    - else
+      .ticket-status
+        span.warning.event-alert Closed
+        | Awaiting confirmation of tickets.
+  - elsif @event.ticket
+    - if @owner == @user
+      .ticket-status
+        span.confirm.event-alert Tickets purchased!
+        | Awesome, enjoy the show!
+    - else
+      .ticket-status
+        span.confirm.event-alert Tickets purchased!
+        | Confirm with #{@owner.name} that your ticket is secured
+  - if @owner == @user
+    = render 'payment_tracking'
+  - else
+    = render 'guestlist'
+javascript:
+  | $(document).ready(function() {
+    | $('.ticket-form .btn-danger').on('click', function(){
+      | $('.event-notice').remove();
+    | })
+  | });

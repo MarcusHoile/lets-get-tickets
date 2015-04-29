@@ -1,0 +1,36 @@
+.campaign-event
+  .event-details
+    .teams
+      .team
+        = image_tag 'collingwood.png'
+      p.inline V
+      .team
+        = image_tag 'hawks.png'
+      h4= @event.what
+    .details
+      div
+        i.fa.fa-clock-o
+        p.inline= @event.event_when.strftime"%a %d %b %I:%M %P"
+      div
+        i.fa.fa-map-marker
+        p.inline
+          = @event.where.titleize
+  - if current_user
+    .form
+      div role: "form" 
+        = form_for(@event, :class => "role col-md-12", ) do |f|
+          = f.hidden_field :what, value: @what
+          = f.hidden_field :where, value: @where
+          = f.hidden_field :event_when_text, value: @when
+          .input-group.input
+            span.input-group-addon $
+            = f.number_field :price, :class => "form-control", placeholder: "How much are the tickets?"
+          .form-group.input
+            = f.text_field :on_sale_text, class: "form-control", placeholder: "When are you buying the tickets?"
+          .actions
+            - button_text = (@event.new_record?) ? "Create Event" : "Update Event"
+            button.btn.btn-primary= button_text
+  - else
+    p To create an event you will need to log in.
+    = link_to "/auth/facebook?origin=%2Fcampaign", id: "sign_in" do
+      .btn.btn-primary Log in with facebook

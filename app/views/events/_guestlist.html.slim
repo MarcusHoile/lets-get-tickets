@@ -1,0 +1,37 @@
+.row.guests
+  .guest-list
+    .guest-row.friends-icons
+      - @invites.each do |invite|
+        - get_rsvp_badge(invite)
+        .inline.guest
+          - if invite.guest.image
+            = image_tag invite.guest.image, class: 'avatar'
+          - else
+            = icon('user', '', class: 'avatar guest-avatar')
+    .guest-row.view-guest-list.text-center
+      - if @invites.count >= 7
+        i.fa.fa-plus-square-o.accordion
+      - else
+        i.fa.fa-minus-square-o.accordion
+      span view the invited
+    .friends-list
+      - @invites.each do |invite|
+        - get_rsvp_badge(invite)
+        .guest.guest-row
+          div class="inline sticker sticker-#{invite.rsvp}" data-badge="#{@badge}" id="invite-#{invite.id}" 
+            - if invite.guest.image
+              = image_tag invite.guest.image, class: 'avatar inline'
+            - else
+              = icon('user', '', class: 'avatar guest-avatar inline')
+          p.inline= invite.guest.name
+      #guest-register.guest.guest-row.guest-register
+        div class="inline sticker sticker-#{@invite.rsvp}" id="invite-#{@invite.id}" 
+          = icon('user', '', class: 'avatar guest-avatar inline')
+        .form.inline
+          div role="form"
+            = form_for @user, remote: true do |f|
+              .field
+                = f.text_field :name, placeholder: "Name", id: "guest-name-input"
+                = f.hidden_field :event_id, value: @event.id
+                = f.hidden_field :invite_id, value: @invite.id
+                = f.hidden_field :rsvp, value: "text", class: "rsvp-capture"
