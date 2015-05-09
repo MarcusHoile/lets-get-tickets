@@ -1,16 +1,22 @@
-.countdown
-  .close-btn X
-  .col
-    span.ce-days
-    span.ce-days-label
-  .col
-    span.ce-hours
-    span.ce-hours-label
-  .col
-    span.ce-minutes
-    span.ce-minutes-label
-  .col
-    span.ce-seconds
-    span.ce-seconds-label
-  p ...til tickets will be secured
-/! countdown
+.row.nopadding
+  .col-xs-12.content-module.countdown-wrapper
+    .countdown
+      .col
+        span.ce-days
+        span.ce-days-label
+      .col
+        span.ce-hours
+        span.ce-hours-label
+      .col
+        span.ce-minutes
+        span.ce-minutes-label
+      .col
+        span.ce-seconds
+        span.ce-seconds-label
+
+javascript:
+  $(".countdown").countEverest({
+    day: "#{@event.on_sale.day}",
+    month: "#{@event.on_sale.month}",
+    year: "#{@event.on_sale.year}"
+  })

@@ -1,37 +1,53 @@
-.row.guests
-  .guest-list
-    .guest-row.friends-icons
-      - @invites.each do |invite|
-        - get_rsvp_badge(invite)
-        .inline.guest
-          - if invite.guest.image
-            = image_tag invite.guest.image, class: 'avatar'
-          - else
-            = icon('user', '', class: 'avatar guest-avatar')
-    .guest-row.view-guest-list.text-center
-      - if @invites.count >= 7
-        i.fa.fa-plus-square-o.accordion
-      - else
-        i.fa.fa-minus-square-o.accordion
-      span view the invited
-    .friends-list
-      - @invites.each do |invite|
-        - get_rsvp_badge(invite)
-        .guest.guest-row
-          div class="inline sticker sticker-#{invite.rsvp}" data-badge="#{@badge}" id="invite-#{invite.id}" 
+.row.nopadding
+  .col-xs-12.content-module.guests.nopadding
+    .row.nopadding
+      h4.module-title.text-center Guest List
+      .friends-icons
+        - @invites.each do |invite|
+          - get_rsvp_badge(invite)
+          .inline.guest
             - if invite.guest.image
-              = image_tag invite.guest.image, class: 'avatar inline'
+              = image_tag invite.guest.image, class: 'avatar'
             - else
-              = icon('user', '', class: 'avatar guest-avatar inline')
-          p.inline= invite.guest.name
-      #guest-register.guest.guest-row.guest-register
-        div class="inline sticker sticker-#{@invite.rsvp}" id="invite-#{@invite.id}" 
-          = icon('user', '', class: 'avatar guest-avatar inline')
-        .form.inline
-          div role="form"
-            = form_for @user, remote: true do |f|
-              .field
-                = f.text_field :name, placeholder: "Name", id: "guest-name-input"
-                = f.hidden_field :event_id, value: @event.id
-                = f.hidden_field :invite_id, value: @invite.id
-                = f.hidden_field :rsvp, value: "text", class: "rsvp-capture"
+              = icon('user', '', class: 'avatar guest-avatar')
+    .row.nopadding
+      #accordion.panel-group aria-multiselectable="true" role="tablist" 
+        .panel.panel-default
+          #fullGuestList.panel-heading role="tab" 
+            h4.panel-title
+              a.collapsed aria-controls="guest-list-collapse" aria-expanded="true" data-parent="#accordion" data-toggle="collapse" href="#guest-list-collapse" 
+                .view-list
+          #guest-list-collapse.panel-collapse.collapse aria-labelledby="fullGuestList" role="tabpanel" 
+            .panel-body
+              - @invites.each do |invite|
+                - get_rsvp_badge(invite)
+                .guest
+                  div class="inline sticker sticker-#{invite.rsvp}" data-badge="#{@badge}" id="invite-#{invite.id}" 
+                    - if invite.guest.image
+                      = image_tag invite.guest.image, class: 'avatar inline'
+                    - else
+                      = icon('user', '', class: 'avatar guest-avatar inline')
+                  p.inline= invite.guest.name
+              #guest-register.guest.guest-register
+                div class="inline sticker sticker-#{@invite.rsvp}" id="invite-#{@invite.id}" 
+                  = icon('user', '', class: 'avatar guest-avatar inline')
+                .form.inline
+                  div role="form"
+                    = form_for @user, remote: true do |f|
+                      .field
+                        = f.text_field :name, placeholder: "Name", id: "guest-name-input"
+                        = f.hidden_field :event_id, value: @event.id
+                        = f.hidden_field :invite_id, value: @invite.id
+                        = f.hidden_field :rsvp, value: "text", class: "rsvp-capture"
+
+
+javascript:
+  $('#guest-list-collapse').on('show.bs.collapse', function () {
+    $('.friends-icons').css('display', 'none')
+  });
+  $('#guest-list-collapse').on('hide.bs.collapse', function () {
+    $('.friends-icons').css('display', 'block')
+  });
+
+
+      

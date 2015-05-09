@@ -50,17 +50,18 @@ class ApplicationController < ActionController::Base
   # end
 
   private
+  
   def current_user
   	@current_user ||= User.find(session[:user_id]) if session[:user_id]
     rescue ActiveRecord::RecordNotFound
   end
   helper_method :current_user
+
   def authenticate_user
     redirect_to :login unless current_user
   end
-
-
-    # called (once) when the user logs in, insert any code your application needs
+  
+  # called (once) when the user logs in, insert any code your application needs
   # to hand off from guest_user to current_user.
   def logging_in
     # For example:
@@ -73,7 +74,7 @@ class ApplicationController < ActionController::Base
 
   def create_guest_user
     u = User.create(email: "guest_#{Time.now.to_i}#{rand(100)}@example.com", guest_user: true)
-    # u.save!(:validate => false)
+    u.save!(:validate => false)
     session[:guest_user_id] = u.id
     u
   end

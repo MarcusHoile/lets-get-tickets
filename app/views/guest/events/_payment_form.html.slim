@@ -1,0 +1,19 @@
+#paymentModal.modal.fade aria-hidden="true" aria-labelledby="paymentLabel" role="dialog" tabindex="-1" 
+  .modal-dialog
+    .modal-content
+      .modal-body
+        .payment-form
+          button.close data-dismiss="modal" type="button" 
+            span aria-hidden="true"  ×
+            span.sr-only Close
+          p
+            | Your name is on the list and #{@owner.name} will try to secure you a ticket. If successful, you will owe #{@owner.name} $#{@event.price}.
+          h3 How would you like to pay?
+          .payment
+            = form_for(shallow_args(@user,@invite), remote: true) do |f|
+              = f.hidden_field :payment_method, value: "cash"
+              = f.hidden_field :event_id, value: @event.id
+              .btn.btn-payment.cash value: "cash"  Cash
+              .btn.btn-payment.bank value: "bank"  Bank Transfer
+          p 
+            | *no payment required right now

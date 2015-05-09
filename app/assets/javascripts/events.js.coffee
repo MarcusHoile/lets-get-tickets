@@ -43,9 +43,23 @@ loginPrompt = ->
     $('#loginPrompt').modal('show')
   )
 
+notificationsFade = ->
+  $.each([1,2,3,4,5], (i, num)->
+    $(".fade-#{num}").removeClass("fade-#{num}")
+  )
+  $('.alert-dismissable').each((i)->
+    $(this).addClass("fade-#{i}")
+  )
+
 ready = ->
   # to copy to clipboard in browser, copy event link for emails
-  clip = new ZeroClipboard($('#invite-btn'));
+  clip = new ZeroClipboard($('#invite-btn'))
+  
+  # notificationsFade()
+
+  # $('.alert-dismissable').on('closed.bs.alert', ()->
+  #   notificationsFade()
+  # )
 
   # payment tracking and ticket purhcase confirmation
   $('.edit_invite').submitOnCheck()

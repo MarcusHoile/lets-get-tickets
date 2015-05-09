@@ -3,17 +3,16 @@ class EventsController < ApplicationController
   before_action :check_status, only: [:show]
   # before_action :authenticate_user, only: [:new]
   before_filter :set_view_path, only: [:show]
+  helper_method :host_hasnt_bought_tickets?, :booked?, :paid?, :not_paid?, :confirmed_guest?
 
   include ApplicationHelper
 
 
   def index
-    # it is the index of invites for the current user
-    # you can only see events that you host or have been invited to
     if current_user
-      @events = Event.where(owner: @current_user) + @current_user.event_invitations
+      @events = Event.where(owner: current_user) + current_user.event_invitations
     elsif guest_user
-      @events = @cached_guest_user.event_invitations
+      @events = guest_user.event_invitations
     end
     @events.sort_by!(&:on_sale)
 
@@ -45,31 +44,19 @@ class EventsController < ApplicationController
   end
 
   def edit
-    # need the same data as new above
     @event = Event.find(params[:id])
     @user = @event.owner
   end
 
 
   def create
-    # event_params[:when] = Chronic.parse(event_params[:when])
     @event = Event.new(event_params)
     @event.owner = @current_user
-
     respond_to do |format|
       if @event.save
-        # if user invited friends when creating event
-        # invite emails are triggered
-        # @guests.each do |guest|
-        #   UserMailer.invite_email(@owner, guest, @event).deliver
-        # end
-
-        format.html { redirect_to event_path(@event)   }
-
-        format.json { render action: 'show', status: :created, location: @event }
+        redirect_to event_path(@event)
       else
-        format.html { render action: 'new' }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+        render action: 'new'
       end
     end
   end
@@ -121,8 +108,11 @@ class EventsController < ApplicationController
 
   private
 
+  def user_type
+    (current_user == @event.owner) ? "planner" : "guest"
+  end
+
   def set_view_path
-    user_type = (current_user == @event.owner) ? "planner" : "guest"
     prepend_view_path("#{Rails.root}/app/views/#{user_type}")
   end
 
@@ -142,5 +132,25 @@ class EventsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
     params.require(:event).permit(:event_when_text, :what, :description, :on_sale_text, :price, :where, :lat, :lng, :ticket)
+  end
+
+  def paid?
+    current_or_guest_user.invites.where(event: @event).first.payment
+  end
+
+  def not_paid?
+    !paid? && @event.booked
+  end
+
+  def confirmed_guest?
+    paid? && @event.closed?
+  end
+
+  def host_hasnt_bought_tickets?
+    @event.closed? && @event.unconfirmed?
+  end
+
+  def booked?
+    @event.closed? && @event.booked?
   end
 end

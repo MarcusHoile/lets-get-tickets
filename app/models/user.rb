@@ -34,14 +34,4 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
-
-  def paid?(event)
-    invites.where(event: event).first.payment
-  end
-
-  def not_paid?(event)
-    !paid?(event)
-  end
-
-
 end

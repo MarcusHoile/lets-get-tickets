@@ -1,15 +1,13 @@
-.event-details
-  - if @owner == @user
-    ul.event-settings
-      li= link_to 'Edit Event', edit_event_path(@event)
-      li= link_to 'Delete', @event, :data =>   confirm=("Are you sure?" ) ,  :method => :delete
-  .details
-    .detail
-      i.fa.fa-clock-o
-      p.inline= @event.event_when.strftime"%a %d %b %I:%M %P"
-    .detail
-      i.fa.fa-map-marker
-      p.inline
-        = @event.where.titleize
-    .text-center
-      p.cost.inline= number_to_currency(@event.price)
+.row.nopadding
+  .col-xs-12.content-module.details
+    .row
+      .col-xs-12
+        .detail.when
+          i.fa.fa-clock-o
+          p.inline= @event.event_when.strftime"%a %d %b %I:%M %P"
+    .row
+      .col-xs-12
+        .detail.where
+          i.fa.fa-map-marker
+          p.inline
+            = @event.where.titleize

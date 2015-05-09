@@ -1,10 +1,19 @@
-.notifications
-  = render "countdown"              if @event.open?
-  = render "booking_reminder"       if @event.closed? && @event.unconfirmed?
-  = render "notify_guests"          if @event.closed? && @event.booked?
-
+.notifications.tile
+  .row
+    .col-xs-12
+      = render "booking_reminder"  if host_hasnt_bought_tickets?
+      = render "notify_guests"     if booked?
+      = render "countdown"         if @event.open?
 .main
-  = render "event_title"
-  = render "event_details"
-  = render "guestlist"                if @event.unconfirmed?
-  = render "events/payment_tracking"  if @event.booked?
+  .row
+    .col-xs-12
+      = render "event_title"
+
+  .row
+    .col-sm-6.pleft
+      = render "event_details"
+      = render "cost"
+      = render "blackboard"
+    .col-sm-6.pright
+      = render "guestlist"           if @event.unconfirmed?
+      = render "payment_tracking"    if booked?

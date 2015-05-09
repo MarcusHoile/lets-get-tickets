@@ -1,16 +1,27 @@
 .notifications
-  = render "countdown"            if @event.open? && @user.undecided?
-  = render "payment_reminder"     if @user.not_paid?(@event) && @event.booked?
-  = render "confirm_purchase"     if @event.closed? && @event.unconfirmed?
-  = render "event_confirmation"   if @event.closed? && @user.paid?(@event)
-.main
-  = render "event_title"
-  = render "event_details"
-  .rsvp
-    / TODO get the form to support slim!!!
-    = render "events/rsvp_form"     if @user
-    = render "events/guest_sign_in" if @user.nil?
   .row
-    = render 'payment_form'
-
-  = render "guestlist"
+    .col-xs-12      
+      = render "payment_reminder"
+      = render "purchase_in_progress" 
+      = render "event_confirmation"   if confirmed_guest?
+      = render "countdown"            if @event.open?
+.main
+  .row
+    .col-xs-12
+      = render "event_title"
+  .row
+    .col-sm-6.pleft
+      = render "guest_status"
+      = render "cost"
+      = render "rsvp_form"
+      = render "image_tile"
+      / modals only displayed when user triggers
+      = render "guest_sign_in"
+      = render "payment_form"
+    .col-sm-6.pright
+      = render "event_details"
+      = render "event_description"
+      = render "guestlist"
+      = render "blackboard"
+  .row
+    .col-xs-12
