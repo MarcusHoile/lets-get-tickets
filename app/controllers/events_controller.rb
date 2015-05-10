@@ -8,27 +8,15 @@ class EventsController < ApplicationController
 
   include ApplicationHelper
 
-
   def index
     @events = Query::User::Events.all(current_user)
   end
 
   def show
-    @date = current_event.when
-    # @undecided = current_event.invites.where(rsvp: "Undecided")
-    # @declined = current_event.invites.where(rsvp: "Not Going")
-    @confirmed = current_event.invites.where(rsvp: "going")
-    gon.lat = current_event.lat
-    gon.lng = current_event.lng
-    @invite = Invite.find_by(user_id: current_user.id, event_id: current_event.id) || current_user.invites.create(rsvp: "Undecided", event_id: current_event.id)
-    if event_host == current_user
-      @invite.update(rsvp: "going")
-    end
-    gon.rsvp = @invite.rsvp
-    @invites = current_event.invites.where.not(rsvp: "Undecided")
+    @invite = Invite.find_or_create_by(user: current_user, event: current_event)
+    @invites = current_event.invites
   end
 
-  # GET /events/new
   def new
     @event = Event.new
   end
@@ -36,11 +24,11 @@ class EventsController < ApplicationController
   def edit
   end
 
-
   def create
-    @event = current_user.events.new(event_params)
-    if @event.save
-      redirect_to event_path(@event)
+    event = current_user.events.new(event_params)
+    if event.save
+      event.invites.create(user: current_user, rsvp: 'going')
+      redirect_to event_path(event)
     else
       render action: 'new'
     end
@@ -67,22 +55,7 @@ class EventsController < ApplicationController
   def destroy
     # there is no links to destroy atm
     current_event.destroy
-    respond_to do |format|
-      format.html { redirect_to events_url }
-      format.json { head :no_content }
-    end
-  end
-
-  def search
-    query = params[:q].to_uri
-    auth = {:username => "marcushoile", :password => "bmm6vbmv3bmm"}
-    response = HTTParty.get('http://api.eventfinder.com.au/v2/events.json?row=2&q=' + query, :basic_auth => auth)  
-    @results = response["events"]
-
-    respond_to do |format|
-      format.html { redirect_to new_event }
-      format.js 
-    end
+    redirect_to events_url
   end
 
   def campaign_form

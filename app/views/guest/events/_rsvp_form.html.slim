@@ -1,6 +1,6 @@
 .row.nopadding
   .col-xs-12.content-module.rsvp
-    = form_for(shallow_args(@user,@invite), remote: true) do |f|
+    = form_for(shallow_args(current_user,@invite), remote: true) do |f|
       = f.hidden_field :rsvp, value: "Undecided"
       = f.hidden_field :event_id, value: @event.id
       .btn.neutral.rsvp-btn.going value="going" 
