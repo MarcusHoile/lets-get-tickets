@@ -13,14 +13,13 @@ table.table.table-hover.event-list
       th Date
       th Status
   tbody
-    - if !@events.nil?
-      - @events.each do |event|
-        tr.event-listing data-url="#{event_path(event)}" 
-          td.event-list-title
-            = event.what.titleize
-          td.event-list-cost
-            = number_to_currency(event.price)
-          td.event-list-date
-            = event.deadline.strftime("%b %d %I:%M %P")
-          td class="status #{event.status}" 
-            | =event.status
+    - @events.each do |event|
+      tr.event-listing data-url="#{event_path(event)}" 
+        td.event-list-title
+          = event.what.titleize
+        td.event-list-cost
+          = number_to_currency(event.price)
+        td.event-list-date
+          = event.deadline.strftime("%b %d %I:%M %P")
+        td class="status #{event.status}" 
+          = event.status

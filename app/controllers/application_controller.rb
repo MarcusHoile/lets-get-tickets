@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
     @current_path = url_encode(request.env['PATH_INFO'])
   end
 
-   # if user is logged in, return authenticated_user, else return guest_user
   def current_user
     if authenticated_user
       if session[:guest_user_id]
@@ -38,12 +37,6 @@ class ApplicationController < ActionController::Base
      guest_user
   end
   
-  # protected
-
-  # def configure_permitted_parameters
-  #   devise_parameter_sanitizer.for(:sign_up) << :name
-  # end
-
   private
   
   def authenticated_user
@@ -60,6 +53,7 @@ class ApplicationController < ActionController::Base
   def migrate_guest_user_data
     guest_user.invites.update_all(user_id: authenticated_user.id)
     guest_user.events.update_all(user_id: authenticated_user.id)
+    guest_user.tickets.update_all(user_id: authenticated_user.id)
   end
 
   def create_guest_user

@@ -72,12 +72,16 @@ class Event < ActiveRecord::Base
     booked
   end
 
+  def not_booked?
+    !booked?
+  end
+
   def confirmed?
     closed? && booked?
   end
 
   def unconfirmed?
-    closed? && !booked?
+    open? || !booked?
   end
 
   def open?
@@ -86,6 +90,14 @@ class Event < ActiveRecord::Base
 
   def closed?
     status == 'closed'
+  end
+
+  def booking_reminder?
+    closed? && !booked?
+  end
+
+  def unregistered?
+    owner.name.nil?
   end
 
   def check_status

@@ -1,5 +1,6 @@
 - content_for :page_title do
-  | #{current_event.what.titleize} are playing!
+  title
+    | #{current_event.what.titleize} are playing!
 - content_for :meta_description do
   meta content="I'm going to buy tickets for #{current_event.what.titleize}. Let me know if you want to go." name="description"
 .notifications
@@ -10,20 +11,19 @@
       = render "event_confirmation"   if current_user.confirmed_guest?(current_event)
 .main
   .row
-    .col-sm-6.pleft
+    .col-sm-12
       = render "event_title"
-      = render "cost"
-    .col-sm-6.pright
-      = render "rsvp_form"
-      = render "countdown"            if current_event.open?
   .row
     .col-sm-6.pleft
+      = render "cost"
       = render "guest_status"
       = render "image_tile"
       / modals only displayed when user triggers
       = render "guest_sign_in"
       = render "payment_form"
     .col-sm-6.pright
+      = render "rsvp_form"
+      = render "countdown"            if current_event.open?
       = render "event_details"
       = render "event_description"
       = render "guestlist"
