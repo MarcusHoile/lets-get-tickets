@@ -10,4 +10,15 @@ class Invite < ActiveRecord::Base
   belongs_to :event
   belongs_to :guest, :class_name => "User", foreign_key: "user_id"
 
+  def rsvp_badge
+    case rsvp
+    when 'going'
+      '✓'
+    when 'not-going'
+      'x'
+    when 'maybe'
+      '?'
+    end
+  end
+
 end
