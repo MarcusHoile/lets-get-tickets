@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   def current_user
     if authenticated_user
       if session[:guest_user_id]
-        # logging_in
+        migrate_guest_user_data
         guest_user.destroy
         session[:guest_user_id] = nil
       end
@@ -57,13 +57,9 @@ class ApplicationController < ActionController::Base
   
   # called (once) when the user logs in, insert any code your application needs
   # to hand off from guest_user to authenticated_user.
-  def logging_in
-    # For example:
-    # guest_comments = guest_user.comments.all
-    # guest_comments.each do |comment|
-      # comment.user_id = authenticated_user.id
-      # comment.save!
-    # end
+  def migrate_guest_user_data
+    guest_user.invites.update_all(user_id: authenticated_user.id)
+    guest_user.events.update_all(user_id: authenticated_user.id)
   end
 
   def create_guest_user
