@@ -10,14 +10,7 @@ class EventsController < ApplicationController
 
 
   def index
-    if current_user
-      @events = Event.where(owner: current_user) + current_user.event_invitations
-    elsif guest_user
-      @events = guest_user.event_invitations
-    end
-    @events.sort_by!(&:deadline)
-
-    render layout: "application"
+    @events = Query::User::Events.all(current_user)
   end
 
   def show
@@ -38,7 +31,6 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    render layout: "application"
   end
 
   def edit
@@ -91,7 +83,6 @@ class EventsController < ApplicationController
       format.html { redirect_to new_event }
       format.js 
     end
-    render layout: "application"
   end
 
   def campaign_form
