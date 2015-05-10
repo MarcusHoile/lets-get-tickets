@@ -1,0 +1,18 @@
+.inner-container
+  .row
+    .col-sm-8
+      h2 Your Details
+      p.profile-detail
+        | Name: 	#{@user.name}
+      p.profile-detail
+        | Email: #{@user.email}
+    .col-sm-4
+      = link_to 'edit profile', edit_user_path, class: "button"
+      = link_to "add contacts", users_path, class: "button"
+  h4 Your Contacts:
+  - # only display list of friends if any exist
+  - if !@current_user.friendships.empty?
+    - @current_user.friendships.each do |friendship|
+      p
+        = friendship.friend.name
+        = link_to "remove", friendship, :method => :delete

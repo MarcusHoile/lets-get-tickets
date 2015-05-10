@@ -7,8 +7,8 @@ class UserMailer < ActionMailer::Base
   	mail(to: @user.email, subject: "Welcome to my site")
   end
 
-  def invite_email(owner, guest, event)
-  	@owner = owner
+  def invite_email(host, guest, event)
+  	@host = host
   	
   	@guest = guest
   	@event = event

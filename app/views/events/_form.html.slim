@@ -1,0 +1,34 @@
+.form
+  div role="form" 
+    = form_for(@event, :class => "role col-md-12", ) do |f|
+      - if @event.errors.any?
+        #error_explanation
+          h2
+            = pluralize(@event.errors.count, "error")
+            | prohibited this event from being saved:
+          ul
+            - @event.errors.full_messages.each do |msg|
+              li= msg
+      .form-group
+        = f.label :what
+        = f.text_field :what, :class => "form-control", placholder: "What is the gig?"
+      .form-group
+        = f.label :where
+        = f.text_field :where, :class => "form-control", placholder: "Where is the gig?"
+      .input-group.input
+        span.input-group-addon $
+        = f.number_field :price, :class => "form-control price", placeholder: "How much is it?"
+      .form-group
+        = f.label :when_text, 'When is the gig?'
+        = f.text_field :when_text, :class => "form-control", placeholder: " eg DD/MM/YYYY or Monday 19th 8pm"
+      .field
+        = f.label :deadline_text, 'When is the deadline to rsvp?'
+        = f.text_field :deadline_text, class: "form-control", placeholder: "eg Next friday, In 3 days or Monday 19th 8pm"
+      .field
+        = f.hidden_field :lat, class: "form-control"
+        = f.hidden_field :lng, class: "form-control"
+      br
+      .actions
+        - button_text = (@event.new_record?) ? "Create Event" : "Update Event"
+        button.btn.btn-primary= button_text
+

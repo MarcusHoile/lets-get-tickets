@@ -1,0 +1,26 @@
+- content_for :page_title do
+  | planndit
+- content_for :meta_description do
+  meta content="Manage all your events"
+h1.page-title My Events
+- # view for when user has any events
+- #button_to "Add an event", new_user_event_path(@user), class: "btn"
+table.table.table-hover.event-list
+  thead#table-head
+    tr
+      th Event
+      th Cost
+      th Date
+      th Status
+  tbody
+    - if !@events.nil?
+      - @events.each do |event|
+        tr.event-listing data-url="#{event_path(event)}" 
+          td.event-list-title
+            = event.what.titleize
+          td.event-list-cost
+            = number_to_currency(event.price)
+          td.event-list-date
+            = event.deadline.strftime("%b %d %I:%M %P")
+          td class="status #{event.status}" 
+            | =event.status

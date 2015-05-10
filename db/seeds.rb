@@ -30,7 +30,7 @@ wdi3_emails.each do |email|
     password_confirmation: 'changeme'
   )   
 end
-event1 = Event.create(what: "Architecture In Helsinki", event_when:  "Mon, 31 Jul 2014 21:46:06", where: "Enmore Theatre", user_id: 1, on_sale:  "Mon, 27 Jul 2014 20:46:06", price: 46)
+event1 = Event.create(what: "Architecture In Helsinki", when:  "Mon, 31 Jul 2014 21:46:06", where: "Enmore Theatre", user_id: 1, deadline:  "Mon, 27 Jul 2014 20:46:06", price: 46)
 
 
 User.where("id > ?", 1).each do |u|

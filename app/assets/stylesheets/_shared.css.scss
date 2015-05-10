@@ -1,0 +1,27 @@
+.nopadding {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.inline {
+  display: inline-block;
+}
+.main-container {
+  width: 80%;
+  margin: 0 auto;
+  max-width: 960px;
+}
+
+.fleft {
+  float: left;
+}
+.fright {
+  float: right;
+}
+@media screen and (min-width: 768px) {
+  .pleft {
+    padding-right: 5px !important;
+  }
+  .pright {
+    padding-left: 5px !important;
+  }
+}

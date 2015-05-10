@@ -1,0 +1,7 @@
+.guest-status {
+  text-align: center;
+  border-right: solid 1px #eaeaea;
+  &:last-of-type {
+    border-right: none;
+  }
+}

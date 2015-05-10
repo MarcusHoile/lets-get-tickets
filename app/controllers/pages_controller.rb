@@ -4,8 +4,13 @@ class PagesController < ApplicationController
   def aboutus
   end
 
-  def contactus
+  def terms
   end
+  def privacy
+  end
+  def support
+  end
+
 
   # landing page has its own layout to support bg image
   def landing

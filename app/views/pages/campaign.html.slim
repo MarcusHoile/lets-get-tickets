@@ -1,0 +1,27 @@
+- content_for :title do
+  title planndit
+a.navbar-brand href: "/" 
+  span>= image_tag 'planndit_icon_flipped.png', class: "small-p"
+  | planndit
+.campaign
+  .row
+    .step-2
+      .step-item
+        = icon('group', '', class: 'icons')
+        p.step-copy Friends
+    .step-3
+      .step-item
+        = icon('calendar', '', class: 'icons')
+        p.step-copy Gig
+  .row
+    .step-1
+      .step-item
+        = icon('ticket', '', class: 'icons')
+        p.step-copy Tickets
+    .step-4
+      .step-item
+        = icon('dollar', '', class: 'icons')
+        p.step-copy Paid
+  /! steps
+  .stick-figure
+    = image_tag "stick-figure.png"

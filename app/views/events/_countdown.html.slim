@@ -1,0 +1,23 @@
+.row.nopadding
+  .col-xs-12.content-module.countdown-wrapper
+    p #{event_host.first_name} will be buying tickets in:
+    .countdown
+      .col
+        span.ce-days
+        span.ce-days-label
+      .col
+        span.ce-hours
+        span.ce-hours-label
+      .col
+        span.ce-minutes
+        span.ce-minutes-label
+      .col
+        span.ce-seconds
+        span.ce-seconds-label
+
+javascript:
+  $(".countdown").countEverest({
+    day: "#{@event.deadline.day}",
+    month: "#{@event.deadline.month}",
+    year: "#{@event.deadline.year}"
+  })
