@@ -13,8 +13,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   has_many :invites, dependent: :destroy
-  has_many :hosted_events, class_name: "Event", dependent: :destroy
-  has_many :event_invitations, through: :invites, source: :event, dependent: :destroy
+  has_many :events, dependent: :destroy
   has_many :tickets
   has_many :friendships, dependent: :destroy
   has_many :friends, :through => :friendships
