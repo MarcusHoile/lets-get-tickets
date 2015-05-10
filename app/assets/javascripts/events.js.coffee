@@ -9,7 +9,7 @@ selectThisEvent = (selection)->
 
 	$('#event_what').val(what.trim())
 	$('#event_where').val(where.trim())
-	$('#event_event_when_text').val(whenIs.trim())
+	$('#event_when_text').val(whenIs.trim())
 	$('#event_lat').val(parseFloat(lat))
 	$('#event_lng').val(parseFloat(lng))
 

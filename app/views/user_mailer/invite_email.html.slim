@@ -6,10 +6,10 @@ html
     h1
       | Hi #{@guest.name},
     p
-      = @owner.name
+      = @host.name
       | wants to see #{@event.what} with you at #{@event.where} on #{@event.when}.
       br/
     p
-      | If you want to go #{@owner.name} will buy the tickets on your behalf.
+      | If you want to go #{@host.name} will buy the tickets on your behalf.
       a href: "#{@url}" 
         h2 RSVP here

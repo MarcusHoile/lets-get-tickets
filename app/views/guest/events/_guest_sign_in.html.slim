@@ -9,7 +9,7 @@
       .modal-body
         .rsvp-login
           p.rsvp-notice
-            = @owner.name
+            = event_host.name
             | will need to know who you are. Log in via facebook or enter your name.
           = link_to "Login with Facebook", "/auth/facebook?origin=/events/#{params[:id]}", id: "sign_in", class: "btn btn-primary"
           p or

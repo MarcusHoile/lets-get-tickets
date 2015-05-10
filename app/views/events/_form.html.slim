@@ -20,11 +20,11 @@
           span.input-group-addon $
           = f.number_field :price, :class => "form-control price", placeholder: "How much is it?"
         .form-group
-          = f.label :event_when_text, 'When is the gig?'
-          = f.text_field :event_when_text, :class => "form-control", placeholder: " eg DD/MM/YYYY or Monday 19th 8pm"
+          = f.label :when_text, 'When is the gig?'
+          = f.text_field :when_text, :class => "form-control", placeholder: " eg DD/MM/YYYY or Monday 19th 8pm"
         .field
-          = f.label :on_sale_text, 'When is the deadline to rsvp?'
-          = f.text_field :on_sale_text, class: "form-control", placeholder: "eg Next friday, In 3 days or Monday 19th 8pm"
+          = f.label :deadline_text, 'When is the deadline to rsvp?'
+          = f.text_field :deadline_text, class: "form-control", placeholder: "eg Next friday, In 3 days or Monday 19th 8pm"
         .field
           = f.hidden_field :lat, class: "form-control"
           = f.hidden_field :lng, class: "form-control"

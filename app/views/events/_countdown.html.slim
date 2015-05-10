@@ -1,5 +1,6 @@
 .row.nopadding
   .col-xs-12.content-module.countdown-wrapper
+    p #{event_host.first_name} will be buying tickets in:
     .countdown
       .col
         span.ce-days
@@ -16,7 +17,7 @@
 
 javascript:
   $(".countdown").countEverest({
-    day: "#{@event.on_sale.day}",
-    month: "#{@event.on_sale.month}",
-    year: "#{@event.on_sale.year}"
+    day: "#{@event.deadline.day}",
+    month: "#{@event.deadline.month}",
+    year: "#{@event.deadline.year}"
   })

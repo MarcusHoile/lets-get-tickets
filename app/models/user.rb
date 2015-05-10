@@ -34,4 +34,24 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
+
+  def invite_for(event)
+    invites.where(event: event).first
+  end
+
+  def paid?(event)
+    invite_for(event).payment
+  end
+
+  def not_paid?(event)
+    !paid?(event) && event.booked
+  end
+
+  def confirmed_guest?(event)
+    paid?(event) && event.closed?
+  end
+
+  def first_name
+    name.split(' ').first
+  end
 end

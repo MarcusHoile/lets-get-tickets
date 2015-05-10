@@ -33,10 +33,10 @@
                   = icon('user', '', class: 'avatar guest-avatar inline')
                 .form.inline
                   div role="form"
-                    = form_for @user, remote: true do |f|
+                    = form_for current_user, remote: true do |f|
                       .field
                         = f.text_field :name, placeholder: "Name", id: "guest-name-input"
-                        = f.hidden_field :event_id, value: @event.id
+                        = f.hidden_field :event_id, value: current_event.id
                         = f.hidden_field :invite_id, value: @invite.id
                         = f.hidden_field :rsvp, value: "text", class: "rsvp-capture"
 

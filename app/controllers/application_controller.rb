@@ -1,13 +1,10 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-
   # before_filter :authenticate_user
-  # before_filter :current_user
-  before_filter :current_or_guest_user
+  before_filter :current_user
   before_filter :current_path
+  helper_method :current_user, :guest_user, :authenticated_user
   # TODO do i need these?
   require "erb"
   include ERB::Util
@@ -16,15 +13,15 @@ class ApplicationController < ActionController::Base
     @current_path = url_encode(request.env['PATH_INFO'])
   end
 
-   # if user is logged in, return current_user, else return guest_user
-  def current_or_guest_user
-    if current_user
+   # if user is logged in, return authenticated_user, else return guest_user
+  def current_user
+    if authenticated_user
       if session[:guest_user_id]
         # logging_in
         guest_user.destroy
         session[:guest_user_id] = nil
       end
-      current_user
+      authenticated_user
     else
       guest_user
     end
@@ -40,8 +37,6 @@ class ApplicationController < ActionController::Base
      session[:guest_user_id] = nil
      guest_user
   end
-  helper_method :guest_user
-
   
   # protected
 
@@ -51,23 +46,22 @@ class ApplicationController < ActionController::Base
 
   private
   
-  def current_user
-  	@current_user ||= User.find(session[:user_id]) if session[:user_id]
+  def authenticated_user
+  	@authenticated_user ||= User.find(session[:user_id]) if session[:user_id]
     rescue ActiveRecord::RecordNotFound
   end
-  helper_method :current_user
 
   def authenticate_user
-    redirect_to :login unless current_user
+    redirect_to :login unless authenticated_user
   end
   
   # called (once) when the user logs in, insert any code your application needs
-  # to hand off from guest_user to current_user.
+  # to hand off from guest_user to authenticated_user.
   def logging_in
     # For example:
     # guest_comments = guest_user.comments.all
     # guest_comments.each do |comment|
-      # comment.user_id = current_user.id
+      # comment.user_id = authenticated_user.id
       # comment.save!
     # end
   end

@@ -3,17 +3,18 @@
     .col-xs-12      
       = render "payment_reminder"
       = render "purchase_in_progress" 
-      = render "event_confirmation"   if confirmed_guest?
-      = render "countdown"            if @event.open?
+      = render "event_confirmation"   if current_user.confirmed_guest?(current_event)
 .main
   .row
-    .col-xs-12
+    .col-sm-6.pleft
       = render "event_title"
+      = render "cost"
+    .col-sm-6.pright
+      = render "rsvp_form"
+      = render "countdown"            if current_event.open?
   .row
     .col-sm-6.pleft
       = render "guest_status"
-      = render "cost"
-      = render "rsvp_form"
       = render "image_tile"
       / modals only displayed when user triggers
       = render "guest_sign_in"
