@@ -3,18 +3,16 @@ html lang="en"
   head
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
+    = yield :meta_description
     title
-      = @event.what.titleize
-      | are playing!
+      = yield :page_title
     = include_gon
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tag
     = render "layouts/googleanalytics"
-    meta content="I'm going to buy tickets for #{@event.what.titleize}. Let me know if you want to go." name="description"
   body
     = render "layouts/header"
-    = yield :event_notice
     .main-container
       = yield
     footer

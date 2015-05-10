@@ -1,3 +1,7 @@
+- content_for :page_title do
+  | #{current_event.what.titleize} are playing!
+- content_for :meta_description do
+  meta content="I'm going to buy tickets for #{current_event.what.titleize}. Let me know if you want to go." name="description"
 .notifications
   .row
     .col-xs-12      
