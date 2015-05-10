@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   # before_filter :authenticate_user
   before_filter :current_user
   before_filter :current_path
-  helper_method :current_user, :guest_user, :authenticated_user
+  helper_method :current_user, :guest_user, :authenticated_user, :current_path
   # TODO do i need these?
   require "erb"
   include ERB::Util

@@ -13,7 +13,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @invite = Invite.find_or_create_by(user: current_user, event: current_event)
+    @invite = Invite.find_or_create_by(user_id: current_user.id, event_id: current_event.id)
     @invites = current_event.invites
   end
 

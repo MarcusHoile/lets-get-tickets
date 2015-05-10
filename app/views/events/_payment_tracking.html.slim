@@ -1,9 +1,8 @@
 .guest-list
   .friends-list.payments
     - @invites.each do |invite|
-      - get_rsvp_badge(invite)
       .guest
-        div class: "inline sticker sticker-#{invite.rsvp}" data-badge="#{@badge}", id: "invite-#{invite.id}" 
+        div class: "inline sticker sticker-#{invite.rsvp}" data-badge="#{invite.rsvp_badge}", id: "invite-#{invite.id}" 
           - if invite.guest.image
             = image_tag invite.guest.image, class: 'avatar inline'
           - else

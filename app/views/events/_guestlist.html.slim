@@ -4,7 +4,6 @@
       h4.module-title.text-center Guest List
       .friends-icons
         - @invites.each do |invite|
-          - get_rsvp_badge(invite)
           .inline.guest
             - if invite.guest.image
               = image_tag invite.guest.image, class: 'avatar'
@@ -20,9 +19,8 @@
           #guest-list-collapse.panel-collapse.collapse aria-labelledby="fullGuestList" role="tabpanel" 
             .panel-body
               - @invites.each do |invite|
-                - get_rsvp_badge(invite)
                 .guest
-                  div class="inline sticker sticker-#{invite.rsvp}" data-badge="#{@badge}" id="invite-#{invite.id}" 
+                  div class="inline sticker sticker-#{invite.rsvp}" data-badge="#{invite.rsvp_badge}" id="invite-#{invite.id}" 
                     - if invite.guest.image
                       = image_tag invite.guest.image, class: 'avatar inline'
                     - else

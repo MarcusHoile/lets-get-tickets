@@ -14,7 +14,7 @@ nav.navbar.navbar-default role="navigation"
     /! Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        - if current_user
+        - if authenticated_user
           li= link_to "My Events", events_path
           li= link_to "Sign out", signout_path, id: "sign_out", :class => 'navbar-link'
         - elsif guest_user

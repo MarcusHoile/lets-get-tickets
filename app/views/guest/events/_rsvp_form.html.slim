@@ -2,7 +2,7 @@
   .col-xs-12.content-module.rsvp
     = form_for(shallow_args(current_user,@invite), remote: true) do |f|
       = f.hidden_field :rsvp, value: "Undecided"
-      = f.hidden_field :event_id, value: @event.id
+      = f.hidden_field :event_id, value: current_event.id
       .btn.neutral.rsvp-btn.going value="going" 
         div
           i.icon.fa.fa-check
