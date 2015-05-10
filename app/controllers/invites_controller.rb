@@ -1,50 +1,27 @@
 class InvitesController < ApplicationController
   before_action :set_invite, only: [:show, :edit, :update, :destroy]
 
-  include ApplicationHelper
-
   def index
     @invites = Invite.all
   end
 
   # GET /invites/new
   def new
-    @event = Event.find(params[:event_id])    
-    @to_invite = current_user.friends - @event.invited_users
-    @invite = @event.invites.new
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @event = Event.find(params[:invite][:event_id])
-    @invite = @user.invites.new(invite_params)
-    respond_to do |format|
-      if @invite.save
-        format.json { render action: 'show', status: :created, location: @event }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   def update
-    @event = Event.find(params[:invite][:event_id])
-    @owner = @event.owner
-    @current_rsvp = @invite.rsvp
     respond_to do |format|
       if @invite.update(invite_params)
-        get_rsvp_badge(@invite)
-        format.html { redirect_to @event }
+        format.html { redirect_to @invite.event }
         if invite_params.include?("rsvp")
           format.js
         end
         if invite_params.include?("payment_method")
           format.js { render partial: "update_payment"}
         end
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @invite.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -66,6 +43,6 @@ class InvitesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def invite_params
-    params.require(:invite).permit(:rsvp, :event_id, :payment, :user_id, :reason, :payment_method)
+    params.require(:invite).permit(:rsvp, :event_id, :payment, :reason, :payment_method)
   end
 end

@@ -2,7 +2,7 @@
   .friends-list.payments
     - @invites.each do |invite|
       .guest
-        div class: "inline sticker sticker-#{invite.rsvp}" data-badge="#{invite.rsvp_badge}", id: "invite-#{invite.id}" 
+        div class="inline sticker sticker-#{invite.rsvp}" data-badge="#{invite.rsvp_badge}", id="invite-#{invite.id}" 
           - if invite.guest.image
             = image_tag invite.guest.image, class: 'avatar inline'
           - else
@@ -13,6 +13,6 @@
             = f.hidden_field :event_id, value: params[:id]
             = f.check_box :payment, class: "onoffswitch-checkbox"
             = f.submit
-            label.onoffswitch-label for: "myonoffswitch" 
+            label.onoffswitch-label for="myonoffswitch" 
               span.onoffswitch-inner
               span.onoffswitch-switch

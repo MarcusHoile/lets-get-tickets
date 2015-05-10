@@ -12,7 +12,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
-gem 'dotiw'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'zeroclipboard-rails'
@@ -20,7 +19,6 @@ gem 'uri-handler'
 gem "sprockets", "2.11.0"
 gem "slim-rails"
 gem 'httparty'
-gem 'chronic'
 gem 'gon'
 gem 'simple_form'
 

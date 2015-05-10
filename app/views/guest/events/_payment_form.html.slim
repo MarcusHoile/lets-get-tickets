@@ -10,10 +10,10 @@
             | Your name is on the list and #{event_host.name} will try to secure you a ticket. If successful, you will owe #{event_host.name} $#{@event.price}.
           h3 How would you like to pay?
           .payment
-            = form_for(shallow_args(@user,@invite), remote: true) do |f|
-              = f.hidden_field :payment_method, value: "cash"
-              = f.hidden_field :event_id, value: @event.id
-              .btn.btn-payment.cash value: "cash"  Cash
-              .btn.btn-payment.bank value: "bank"  Bank Transfer
+            = simple_form_for @invite, remote: true do |f|
+              = f.input :payment_method, as: :hidden, value: "cash"
+              = f.input :event_id, as: :hidden, value: current_event.id
+              .btn.btn-payment.cash value="cash"  Cash
+              .btn.btn-payment.bank value="bank"  Bank Transfer
           p 
             | *no payment required right now
