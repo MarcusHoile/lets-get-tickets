@@ -22,6 +22,7 @@ gem "slim-rails"
 gem 'httparty'
 gem 'chronic'
 gem 'gon'
+gem 'simple_form'
 
 group :development, :test do
   gem 'dotenv-rails'
