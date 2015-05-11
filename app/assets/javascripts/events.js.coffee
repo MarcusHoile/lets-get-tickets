@@ -1,18 +1,3 @@
-selectThisEvent = (selection)->
-	# grab the information from selected event
-	# and insert it into form inputs
-	what = selection.find('.event-list-name').text()
-	whenIs = selection.find('.event-list-date').text()
-	where = selection.find('.event-list-venue').text()
-	lat = selection.find('.event-lat').text().trim()
-	lng = selection.find('.event-lng').text().trim()
-
-	$('#event_what').val(what.trim())
-	$('#event_where').val(where.trim())
-	$('#event_when_text').val(whenIs.trim())
-	$('#event_lat').val(parseFloat(lat))
-	$('#event_lng').val(parseFloat(lng))
-
 mapInit = (lat, lng)->
   mapCanvas = document.getElementById("map-canvas")
   latLng = new google.maps.LatLng(lat, lng)
@@ -55,11 +40,18 @@ ready = ->
   # to copy to clipboard in browser, copy event link for emails
   clip = new ZeroClipboard($('#invite-btn'))
   
-  # notificationsFade()
-
-  # $('.alert-dismissable').on('closed.bs.alert', ()->
-  #   notificationsFade()
-  # )
+  if $('.rsvp .confirm').length == 0
+    $('.rsvp-btn.going').on('click', ()->
+      rsvp = $(this).attr('value')
+      $('#user_rsvp').attr('value', rsvp)
+      $('#loginPrompt').modal('show')
+    )
+  else
+    $('.rsvp-btn').on('click', ()->
+      rsvp = ($(this).attr('value'))
+      $('#invite_rsvp').val(rsvp)
+      $(this).parent('form').submit()
+    )
 
   # payment tracking and ticket purhcase confirmation
   $('.edit_invite').submitOnCheck()
@@ -112,12 +104,7 @@ ready = ->
     path = $(this).data('url')
     window.location.href = path
   )
-  
-  $('.rsvp-btn').on('click', ()->
-    rsvp = ($(this).attr('value'))
-    $('#invite_rsvp').val(rsvp)
-    $(this).parent('form').submit()
-  )
+
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
