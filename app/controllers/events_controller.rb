@@ -43,10 +43,8 @@ class EventsController < ApplicationController
           format.js { render partial: "ticket_status"}
         end
         format.html { redirect_to current_event}
-        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: current_event.errors, status: :unprocessable_entity }
       end
     end
   end

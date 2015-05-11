@@ -9,7 +9,6 @@ GetTickets::Application.routes.draw do
   # devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   resources :invites
-  resources :friendships
   resources :users do
     resources :invites, shallow: true
   end
