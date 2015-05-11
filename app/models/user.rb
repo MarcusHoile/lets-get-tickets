@@ -47,6 +47,6 @@ class User < ActiveRecord::Base
   end
 
   def first_name
-    name.split(' ').first if name
+    name.nil? ? 'Guest User' : name.split(' ').first
   end
 end
