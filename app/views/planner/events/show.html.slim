@@ -21,5 +21,6 @@
       = render "blackboard"
     .col-sm-6.pright
       = render "cost"
+      = render "guest_status"
       = render "guestlist"           if current_event.not_booked?
       = render "payment_tracking"    if current_event.booked?
