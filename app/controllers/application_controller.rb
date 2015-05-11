@@ -53,7 +53,6 @@ class ApplicationController < ActionController::Base
   def migrate_guest_user_data
     guest_user.invites.update_all(user_id: authenticated_user.id)
     guest_user.events.update_all(user_id: authenticated_user.id)
-    guest_user.tickets.update_all(user_id: authenticated_user.id)
   end
 
   def create_guest_user

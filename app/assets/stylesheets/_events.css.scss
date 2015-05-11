@@ -387,6 +387,9 @@
 }
 .guest-register {
 	display: none;
+	#guest-name-input {
+		color: #000;
+	}
 }
 .view-guest-list {
 	cursor: pointer;
@@ -422,8 +425,6 @@
 		background: darken($grey, 15%);
 	}
 }
-
-
 .spacer {
 	height: 100px;
 }
@@ -447,9 +448,7 @@
 			background: lighten($grey, 5%);
 		}				
 	}
-}				
-
-
+}
 .login-window {
 	max-width: 420px;
 	margin: 0 auto;

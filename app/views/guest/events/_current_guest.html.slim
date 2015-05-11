@@ -1,0 +1,8 @@
+- hide = @invite.guest.name.nil? ? 'hide' : '' 
+.guest.current-guest class="#{hide}"
+  div class="inline sticker sticker-#{@invite.rsvp}" data-badge="#{@invite.rsvp_badge}" id="invite-#{@invite.id}" 
+    - if @invite.guest.image
+      = image_tag @invite.guest.image, class: 'avatar inline'
+    - else
+      = icon('user', '', class: 'avatar guest-avatar inline')
+  p.inline= @invite.guest.name

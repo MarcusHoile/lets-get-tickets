@@ -14,7 +14,7 @@ class EventsController < ApplicationController
 
   def show
     @invite = Invite.find_or_create_by(user_id: current_user.id, event_id: current_event.id)
-    @invites = current_event.invites
+    @invites = current_event.invites.where.not(id: @invite.id)
   end
 
   def new

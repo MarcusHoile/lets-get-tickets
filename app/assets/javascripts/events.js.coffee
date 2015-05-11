@@ -21,12 +21,23 @@ jQuery.fn.submitOnCheck = ()->
   this.find('input[type=submit]').remove()
   return this
 
-loginPrompt = ->
+manageRsvps = ->
   $('.rsvp-btn').on('click', ()->
-    rsvp = $(this).attr('value')
-    $('#user_rsvp').attr('value', rsvp)
-    $('#loginPrompt').modal('show')
+    if $('.rsvp .confirm').length == 0
+      guestLoginPrompt($(this))
+    else
+      updateInvite($(this))
   )
+
+guestLoginPrompt = (el)->
+  rsvp = el.attr('value')
+  $('#user_rsvp').attr('value', rsvp)
+  $('#loginPrompt').modal('show')
+
+updateInvite = (el)->
+  rsvp = el.attr('value')
+  $('#invite_rsvp').val(rsvp)
+  el.parent('form').submit()
 
 notificationsFade = ->
   $.each([1,2,3,4,5], (i, num)->
@@ -36,24 +47,43 @@ notificationsFade = ->
     $(this).addClass("fade-#{i}")
   )
 
-ready = ->
-  # to copy to clipboard in browser, copy event link for emails
-  clip = new ZeroClipboard($('#invite-btn'))
-  
-  if $('.rsvp .confirm').length == 0
-    $('.rsvp-btn.going').on('click', ()->
-      rsvp = $(this).attr('value')
-      $('#user_rsvp').attr('value', rsvp)
-      $('#loginPrompt').modal('show')
-    )
-  else
-    $('.rsvp-btn').on('click', ()->
-      rsvp = ($(this).attr('value'))
-      $('#invite_rsvp').val(rsvp)
-      $(this).parent('form').submit()
-    )
+hostConfirmsTickets = ->
+  $('.ticket-confirm').on('click', ()->
+    $(this).parent('form').submit()
+  )
 
-  # payment tracking and ticket purhcase confirmation
+expandGuestList = ->
+  $('#guest-list-collapse').collapse('show')
+
+
+
+guestRegistrationForm = ->
+  focusInput = ->
+    $("#guest-name-input").focus()
+
+  $('.register-name').on('click', ()->
+    $('#loginPrompt').modal('hide')
+    $("#fullGuestList").focus()
+    expandGuestList()
+    $('.guest-register').css('display', 'block')
+    setTimeout(focusInput, 200)
+  )
+
+keyEnterToSubmit = ->
+  # allow user to press enter instead of clicking
+  $('#guest-name-input').keypress( (e)->
+    if (e.which == 13)
+      $(this).parent('form').submit()
+  )
+
+paymentMethodForm = ->
+  $('.btn-payment').on('click', ()->
+    payment = $(this).attr('value')
+    $('#invite_payment_method').attr('value', payment)
+    $(this).parent('form').submit()
+  )
+
+paymentTracking = ->
   $('.edit_invite').submitOnCheck()
   $('.edit_event').submitOnCheck()
   $('.onoffswitch-label').on('click', ()->
@@ -62,48 +92,18 @@ ready = ->
     checkBox.prop('checked', !val)
     $(this).parent('form').submit()
   )
-  $('.ticket-confirm').on('click', ()->
-    $(this).parent('form').submit()
-  )
 
-  $('.view-guest-list').on('click', ()->
-    $('.friends-list').toggle()
-    $('.accordion').toggleClass('fa-plus-square-o')
-    $('.accordion').toggleClass('fa-minus-square-o')
-  )
+ready = ->
+  # to copy to clipboard in browser, copy event link for emails
+  clip = new ZeroClipboard($('#invite-btn'))
+  
+  manageRsvps()
+  paymentTracking()
+  hostConfirmsTickets()
+  guestRegistrationForm()
+  keyEnterToSubmit()
+  paymentMethodForm()
 
-  height = $('.event-notice').outerHeight()
-
-  $('.spacer').css('height', height)
-  $('.close-btn').on('click', ()->
-    $(this).closest('.event-notice').hide()
-    $('.spacer').hide()
-  )
-
-  # form for registering guest user
-  $('.register-name').on('click', ()->
-    $('#loginPrompt').modal('hide')
-    $('.friends-list').css('display', 'block')
-    $('.guest-register').css('display', 'block')
-    $("#guest-name-input").focus()
-  )
-
-  # allow user to press enter instead of clicking
-  $('#guest-name').keypress( (e)->
-    if (e.which == 13)
-      $(this).parent('form').submit()
-  )
-
-  $('.btn-payment').on('click', ()->
-    payment = $(this).attr('value')
-    $('#invite_payment_method').attr('value', payment)
-    $(this).parent('form').submit()
-  )
-
-  $('.event-listing').on('click', ()->
-    path = $(this).data('url')
-    window.location.href = path
-  )
 
 
 $(document).ready(ready)

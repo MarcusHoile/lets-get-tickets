@@ -3,6 +3,11 @@
     .row.nopadding
       h4.module-title.text-center Guest List
       .friends-icons
+        .inline.guest
+          - if @invite.guest.image
+            = image_tag @invite.guest.image, class: 'avatar'
+          - else
+            = icon('user', '', class: 'avatar guest-avatar')
         - @invites.each do |invite|
           .inline.guest
             - if invite.guest.image
@@ -18,6 +23,8 @@
                 .view-list
           #guest-list-collapse.panel-collapse.collapse aria-labelledby="fullGuestList" role="tabpanel" 
             .panel-body
+              = render 'current_guest'
+              = render 'guest_form' if guest_user
               - @invites.each do |invite|
                 .guest
                   div class="inline sticker sticker-#{invite.rsvp}" data-badge="#{invite.rsvp_badge}" id="invite-#{invite.id}" 
@@ -26,17 +33,6 @@
                     - else
                       = icon('user', '', class: 'avatar guest-avatar inline')
                   p.inline= invite.guest.name
-              #guest-register.guest.guest-register
-                div class="inline sticker sticker-#{@invite.rsvp}" id="invite-#{@invite.id}" 
-                  = icon('user', '', class: 'avatar guest-avatar inline')
-                .form.inline
-                  div role="form"
-                    = form_for current_user, remote: true do |f|
-                      .field
-                        = f.text_field :name, placeholder: "Name", id: "guest-name-input"
-                        = f.hidden_field :event_id, value: current_event.id
-                        = f.hidden_field :invite_id, value: @invite.id
-                        = f.hidden_field :rsvp, value: "text", class: "rsvp-capture"
 
 
 javascript:

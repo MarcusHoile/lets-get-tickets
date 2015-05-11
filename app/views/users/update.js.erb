@@ -1,0 +1,23 @@
+$('.guest-register').remove();
+$('.panel-body .current-guest p').text("<%= @invite.guest.name %>")
+$('.panel-body .current-guest').removeClass('hide')
+<% image = @invite.guest.image? ? image_tag(@invite.guest.image, class: "avatar") : '<i class="fa fa-user avatar guest-avatar inline"></i>' %>
+
+addAvatar = function(image) {
+  $('.friends-icons').append("<div class='inline-guest'>" + image + "</div>")
+}
+addAvatar("<%= image %>")
+
+$('.rsvp-login').remove();
+// update the invite with the rsvp 
+$('#invite_rsvp').val('<%= @rsvp %>');
+$('.rsvp-btn').parent('form').submit();
+$('.rsvp-btn').off();
+
+ // allow guests to change their rsvp
+$('.rsvp-btn').on('click', function(){
+  var rsvp = ($(this).attr('value'));
+  $('#invite_rsvp').val(rsvp);
+  $(this).parent('form').submit();
+});
+
