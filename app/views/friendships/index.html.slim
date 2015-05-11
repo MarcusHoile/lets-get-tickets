@@ -1,8 +1,0 @@
-- # this page is not in any user journey
-h2 Friends:
-- @current_user.friendships.each do |friendship|
-  p
-    = friendship.friend.name
-    = link_to "remove", friendship, :method => :delete
-= link_to "Add friends", edit_friendship_path(@current_user)
-br/
