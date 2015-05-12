@@ -14,11 +14,9 @@ nav.navbar.navbar-default role="navigation"
     /! Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
+        li= link_to "My Events", events_path
+        li= link_to "Create an Event", new_event_path
         - if authenticated_user
-          li= link_to "My Events", events_path
           li= link_to "Sign out", signout_path, id: "sign_out", :class => 'navbar-link'
-        - elsif guest_user
-          li= link_to "Your Events", events_path
-          li= link_to "Log in with Facebook", ("/auth/facebook?origin=" +  @current_path) , id: "sign_in"
         - else
-          li= link_to "Log in with Facebook", "/auth/facebook?origin=" +  @current_path, id: "sign_in"
+          li= link_to "Log in with Facebook", ("/auth/facebook?origin=" +  @current_path) , id: "sign_in"
