@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
 
   has_many :invites, dependent: :destroy
   has_many :events, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
