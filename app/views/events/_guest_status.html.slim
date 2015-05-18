@@ -1,15 +1,7 @@
 .row.np
   .col-xs-12.content-module
     .row.np
-      .col-xs-3.guest-status
-        p.count 6
-        p.description places left
-      .col-xs-3.guest-status
-        p.count 10
-        p.description going
-      .col-xs-3.guest-status
-        p.count 3
-        p.description undecided
-      .col-xs-3.guest-status
-        p.count 7
-        p.description not going
+      - @guest_status.each do |k, count|
+        .col-xs-3.guest-status
+          p.count= count
+          p.description= k.to_s.humanize
