@@ -2,7 +2,6 @@
   = f.input :what, placholder: "What is the gig?"
   = f.input :where, placholder: "Where is the gig?"
   = f.input :price, placeholder: "How much is it?"
-  = f.input :when, placeholder: " eg DD/MM/YYYY or Monday 19th 8pm"
-  = f.input :deadline, placeholder: "eg Next friday, In 3 days or Monday 19th 8pm"
+  = f.input :when, as: :date_picker, placeholder: "DD/MM/YYYY"
+  = f.input :deadline, as: :date_picker, placeholder: "DD/MM/YYYY"
   = f.button :submit
-
