@@ -8,6 +8,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'compass-rails', '1.1.7'
 gem 'jquery-rails'
+gem 'jquery-datetimepicker-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'turbolinks'
@@ -19,8 +20,8 @@ gem 'uri-handler'
 gem "sprockets", "2.11.0"
 gem "slim-rails"
 gem 'httparty'
-gem 'gon'
 gem 'simple_form'
+gem 'reform'
 
 group :development, :test do
   gem 'dotenv-rails'
