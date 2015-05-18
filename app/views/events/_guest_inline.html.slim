@@ -1,0 +1,5 @@
+.inline.guest
+  - if invite.guest.image
+    = image_tag invite.guest.image, class: 'avatar'
+  - else
+    .iconic.iconic-person-genderless.iconic-sm title="person" aria-hidden="true"

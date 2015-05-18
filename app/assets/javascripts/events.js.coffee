@@ -55,8 +55,6 @@ hostConfirmsTickets = ->
 expandGuestList = ->
   $('#guest-list-collapse').collapse('show')
 
-
-
 guestRegistrationForm = ->
   focusInput = ->
     $("#guest-name-input").focus()
@@ -92,6 +90,10 @@ paymentTracking = ->
     checkBox.prop('checked', !val)
     $(this).parent('form').submit()
   )
+eventRow = ->
+  $('.event-listing').on('click', ()->
+    window.document.location = $(this).data("url")
+  )
 
 ready = ->
   # to copy to clipboard in browser, copy event link for emails
@@ -103,8 +105,9 @@ ready = ->
   guestRegistrationForm()
   keyEnterToSubmit()
   paymentMethodForm()
-
-
+  eventRow()
+  if $('.inline.guest').length() > 4
+    $('#guest-list-collapse').collapse('show')
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

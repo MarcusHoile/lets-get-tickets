@@ -3,17 +3,9 @@
     .row.np
       h4.module-title.text-center Guest List
       .friends-icons
-        .inline.guest
-          - if @invite.guest.image
-            = image_tag @invite.guest.image, class: 'avatar'
-          - else
-            = icon('user', '', class: 'avatar guest-avatar')
+        = render partial: 'guest_inline', object: @invite, as: :invite
         - @invites.each do |invite|
-          .inline.guest
-            - if invite.guest.image
-              = image_tag invite.guest.image, class: 'avatar'
-            - else
-              = icon('user', '', class: 'avatar guest-avatar')
+          = render partial: 'guest', object: invite, as: :invite
     .row.np
       #accordion.panel-group aria-multiselectable="true" role="tablist" 
         .panel.panel-default
@@ -23,25 +15,8 @@
                 .view-list
           #guest-list-collapse.panel-collapse.collapse aria-labelledby="fullGuestList" role="tabpanel" 
             .panel-body
-              = render 'current_guest'
+              = render partial: 'guest', object: @invite, as: :invite
               = render 'guest_form' if guest_user
               - @invites.each do |invite|
-                .guest
-                  div class="inline sticker sticker-#{invite.rsvp}" data-badge="#{invite.rsvp_badge}" id="invite-#{invite.id}" 
-                    - if invite.guest.image
-                      = image_tag invite.guest.image, class: 'avatar inline'
-                    - else
-                      = icon('user', '', class: 'avatar guest-avatar inline')
-                  p.inline= invite.guest.name
-
-
-javascript:
-  $('#guest-list-collapse').on('show.bs.collapse', function () {
-    $('.friends-icons').css('display', 'none')
-  });
-  $('#guest-list-collapse').on('hide.bs.collapse', function () {
-    $('.friends-icons').css('display', 'block')
-  });
-
-
+                = render partial: 'guest', object: invite, as: :invite
       

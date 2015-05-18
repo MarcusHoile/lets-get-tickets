@@ -1,0 +1,7 @@
+.guest
+  div class="inline sticker sticker-#{invite.rsvp}" data-badge="#{invite.rsvp_badge}" id="invite-#{invite.id}" 
+    - if invite.guest.image
+      = image_tag invite.guest.image, class: 'avatar inline'
+    - else
+      .iconic.iconic-person-genderless.iconic-md title="person" aria-hidden="true"
+  p.inline= invite.guest.name

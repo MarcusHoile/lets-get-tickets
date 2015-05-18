@@ -16,6 +16,7 @@
       = render "event_title"
   .row
     .col-sm-6.pleft
+      = render "share"
       = render "countdown"         if current_event.open?
       = render "event_details"
       = render "blackboard"

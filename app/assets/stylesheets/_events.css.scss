@@ -86,7 +86,7 @@
 		.collapsed {
 			.view-list {
 				background-color: #fff;
-				&:hover {
+				&:hover, &.in {
 					background-color: lighten(#eaeaea, 5%);
 				}
 				&:after {
@@ -176,8 +176,6 @@
 		text-align: center;
 	}
 }
-
-
 .ticket-status {
 	.event-alert {
 		padding: 4px 8px;
@@ -191,48 +189,6 @@
 		color: $green;
 	}
 }
-.settings {
-	padding: 5px 0;
-	font-size: 28px;
-	float: right;
-	position: relative;
-	ul {
-		padding: 0;
-		font-size: 16px;
-		width: 120px;
-		li {
-			list-style: none;
-			ul {
-				position: absolute;
-				top: 40px;
-				display:none;
-				background: $grey;
-				li {
-					height: 40px;
-					text-align: right;
-					border: solid 1px darken($grey, 15%);
-					&:hover {
-						background: $grey;
-					}
-				}
-			}
-			a {
-				display: block;
-				padding: 0 5px;
-				line-height: 40px;
-			}
-		}
-		li:hover ul {
-			display: block;
-		}
-	}
-}
-.event-header {
-	padding: 5px;
-	h3 {
-		display: inline-block;
-	}
-}
 .confirmed-guests {
 	padding-top: 15px;
 	color: $green;
@@ -241,89 +197,6 @@
 		border: solid 1px $green;
 		padding: 4px 8px;
 		border-radius: 50%;
-	}
-}
-.event-notice {
-	min-height: 85px;
-	width: 100%;
-	background: #000;
-	padding: 10px;
-	color: #fff;
-	position: fixed;
-	left: 0;
-	bottom:0;
-	z-index: 9;
-	.invite-friends {
-		max-width: 80%;
-		margin: 0 auto;
-	}
-	.invite-btns {
-		padding-top: 8px;
-		text-align: center;
-		cursor: pointer;
-		.bttn {
-			padding: 4px 8px;
-			margin: 0 5px;
-			display: inline-block;
-			&.invite-btn {
-				border: dotted 1px darken($grey, 35%);
-				background: rgba($grey, 0.3);
-			}
-			&.share-btn {
-				border: dotted 1px $blue;
-				background: rgba($blue, 0.6);
-				&:hover {
-					background: rgba($blue, 1);
-				}
-			}
-		}
-	}
-	p {
-		text-align: center;
-	}
-	.ticket-status {
-		margin: 0 auto 3px auto;
-		text-align: center;
-		padding: 8px;
-		width: 80%;
-		&.amber {
-			background: rgba($orange, .4);
-			border: dotted 1px $orange;
-		}
-		&.green, &.guest-count {
-			background: rgba($green, .4);
-			border: dotted 1px $green;
-			span {
-				background: #fff;
-				padding: 0 5px;
-				color: #000;
-				font-size: 18px;
-				border-radius: 10px;
-			}
-		}
-	}
-	.owner-confirm-ticket {
-		max-width: 400px;
-		margin: 0 auto;
-		padding-top: 5px;
-		p, .ticket-form {
-			width: 49%;
-		}
-		form {
-			margin: 0;
-			padding: 0;
-		}
-	}
-	.close-btn {
-		color: #fff;
-		padding: 3px;
-		position: absolute;
-		top: 5px;
-		right: 5px;
-		cursor: pointer;
-		&:hover {
-			background: darken(#fff, 75%);
-		}
 	}
 }
 .message  {
@@ -370,17 +243,6 @@
 .rsvp-notice {
 	margin: 5px;
 }
-
-.avatar {
-	height: 40px;
-	width: 40px;
-}
-.guest-avatar {
-	font-size: 30px;
-	padding: 5px;
-	vertical-align: middle;
-	background: darken($grey, 15%);
-}
 .guest-list {
 	margin: 10px auto 0 auto;
 	text-align: left
@@ -426,27 +288,6 @@
 .spacer {
 	height: 100px;
 }
-.event-settings{
-	float: right;
-	list-style: none;
-	li {
-		display: inline-block;
-	}
-	a {
-		margin-top: 5px;
-		padding: 5px 10px;
-		float:right;
-		font-size: 11px;
-		background: $grey;
-		border-radius: 5px;
-		color: #999999;
-		border:solid 1px #999999;
-		&:hover {
-			color: #999999;
-			background: lighten($grey, 5%);
-		}				
-	}
-}
 .login-window {
 	max-width: 420px;
 	margin: 0 auto;
@@ -457,6 +298,9 @@
 	.login-btn {
 		padding: 15px;
 	}
+}
+.event-listing {
+	cursor: pointer;
 }
 
 // @media screen and (min-width:600px) {
