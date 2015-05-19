@@ -21,5 +21,6 @@
 spec
 coverage
 public
+config/application.yml
 
 
