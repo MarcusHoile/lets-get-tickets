@@ -94,6 +94,14 @@ eventRow = ->
   $('.event-listing').on('click', ()->
     window.document.location = $(this).data("url")
   )
+dismissAlerts = ->
+  $('.close').on('click', (e)->
+    e.preventDefault()
+    $(this).closest('.alert-dismissable').alert('close')
+  )
+displayGuestList = ->
+  if $('.inline.guest').length > 4
+    $('#guest-list-collapse').collapse('show')
 
 ready = ->
   # to copy to clipboard in browser, copy event link for emails
@@ -106,8 +114,9 @@ ready = ->
   keyEnterToSubmit()
   paymentMethodForm()
   eventRow()
-  if $('.inline.guest').length() > 4
-    $('#guest-list-collapse').collapse('show')
+  dismissAlerts()
+  displayGuestList()
+  
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
