@@ -7,6 +7,7 @@
 .notifications.tile
   .row
     .col-xs-12
+      = render "notifications"
       = render "owner_sign_in"     if current_event.unregistered?
       = render "booking_reminder"  if current_event.booking_reminder?
       = render "notify_guests"     if current_event.confirmed?

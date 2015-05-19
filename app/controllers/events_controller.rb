@@ -16,6 +16,7 @@ class EventsController < ApplicationController
     @invite = Invite.find_or_create_by(user_id: current_user.id, event_id: current_event.id)
     @invites = current_event.invites.where.not(id: @invite.id)
     @guest_status = ::GuestStatusPresenter.new(current_event).status
+    @notifications = ::Query::Event::Notifications.all(current_event).for(current_user)
   end
 
   def new

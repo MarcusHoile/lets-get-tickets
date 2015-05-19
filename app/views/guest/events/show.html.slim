@@ -6,8 +6,7 @@
 .notifications
   .row
     .col-xs-12      
-      = render "payment_reminder"
-      = render "purchase_in_progress" 
+      = render "notifications"
       = render "event_confirmation"   if current_user.confirmed_guest?(current_event)
 .main
   .row
