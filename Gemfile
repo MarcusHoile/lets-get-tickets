@@ -27,6 +27,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'rspec-rails'
   gem 'pry-rails'
+  gem 'factory_girl_rails'
 end
 
 group :doc do

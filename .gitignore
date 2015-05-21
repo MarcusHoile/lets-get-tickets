@@ -18,7 +18,6 @@
 .env
 /config/database.yml
 
-spec
 coverage
 public
 config/application.yml
