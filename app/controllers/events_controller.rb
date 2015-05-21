@@ -77,7 +77,7 @@ class EventsController < ApplicationController
   end
 
   def event_host
-    current_event.owner
+    current_event.host
   end
 
   def check_event_status

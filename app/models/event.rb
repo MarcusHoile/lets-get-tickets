@@ -12,7 +12,7 @@
 # booked        boolean        default: false
 
 class Event < ActiveRecord::Base
-	belongs_to :owner, :class_name => "User", foreign_key: "user_id"
+	belongs_to :host, :class_name => "User", foreign_key: "user_id"
 	has_many :invites, dependent: :destroy
   has_many :guests, through: :invites, source: :guest
   has_many :tickets
@@ -25,8 +25,8 @@ class Event < ActiveRecord::Base
 
   serialize :latlng, Hash
 
-  def owner?(user)
-    user == owner
+  def host?(user)
+    user == host
   end
 
   def no_invites?
@@ -62,14 +62,12 @@ class Event < ActiveRecord::Base
   end
 
   def unregistered?
-    owner.name.nil?
+    host.name.nil?
   end
 
   def check_status
     if deadline <= DateTime.now
       update(status: "closed")
-    elsif deadline > DateTime.now
-      update(status: "open")
     end
   end
 end

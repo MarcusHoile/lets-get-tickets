@@ -4,7 +4,7 @@ module Policy
       extend self
 
       def prompt?(user, event)
-        event.owner?(user) && event.no_invites?
+        event.host?(user) && event.no_invites?
       end
     end
   end

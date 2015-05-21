@@ -4,7 +4,7 @@ module Query
       extend self
 
       def all(user)
-        Event.joins(:invites).where(owner: user).where('invites.user_id' => user).order(deadline: :desc)
+        Event.joins(:invites).where(host: user).where('invites.user_id' => user).order(deadline: :desc)
       end
     end
   end
