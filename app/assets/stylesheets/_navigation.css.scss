@@ -1,13 +1,24 @@
+.navbar {
+	background: $green;
+}
+
+footer {
+	margin-top: 80px;
+	background: darken($grey, 5%);
+}
+
 .page-wrap {
-	min-height: 100%;
-	margin-bottom: -60px;
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -60px; 
 }
 .page-wrap:after {
-	content: "";
-	display: block;
+  content: "";
+  display: block;
 }
-.navbar, footer {
-	background: $green;
+
+footer, .page-wrap:after {
+  height: 60px; 
 }
 
 .navbar {
@@ -15,6 +26,12 @@
 	text-align:center;
 	border:none;
 	border-radius: 0;
+}
+
+.navbar .small-p {
+	margin-top: -8px;
+	margin-left: -5px;
+	height: 18px;
 }
 @media screen and (max-width: 768px) {
 	#bs-example-navbar-collapse-1 {
@@ -79,13 +96,13 @@ footer ul li a{
 
 footer a {
 	padding: 0 40px;
-	color: darken($green, 15%);
+	color: darken($grey, 55%);
 }
 
 footer a:hover {
 	text-decoration:none;
-	color: darken($green, 15%);
-	background: darken($green, 5%);
+	color: darken($grey, 55%);
+	background: darken($grey, 5%);
 }
 
 @media only screen and (max-width : 320px) {

@@ -6,6 +6,35 @@
 	}
 }
 
+.btn {
+  min-width: 160px;
+}
+
+.btn.btn-dark-green {
+	margin: 0 15px;
+  border: solid 1px darken($green, 5%);
+  color: $green;
+  background: darken($green, 16%);
+  &:hover {
+    background: darken($green, 13%);
+    color: $green;
+    border: solid 1px darken($green, 10%);
+  }
+}
+
+.btn.btn-light-green {
+  min-width: 160px;
+  margin: 0 15px;
+  border: solid 1px darken($green, 10%);
+  color: darken($green, 15%);
+  background: $green;
+  &:hover {
+    background: darken($green, 13%);
+    color: $green;
+    border: solid 1px darken($green, 10%);
+  }
+}
+
 #started-button {
 	text-decoration:none;
 	margin:0;

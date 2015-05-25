@@ -6,10 +6,8 @@ class EventsController < ApplicationController
   before_filter :set_view_path, only: [:show]
   helper_method :event_host, :current_event
 
-  include ApplicationHelper
-
   def index
-    @events = Query::User::Events.all(current_user)
+    @events = ::Query::User::Events.all(current_user)
   end
 
   def show

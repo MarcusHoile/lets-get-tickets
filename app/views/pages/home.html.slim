@@ -1,0 +1,89 @@
+- content_for :nav_bar do
+  = render "layouts/nav_no_brand"
+.row.splash
+  .col-xs-12
+    .landing-tile
+      .row.third
+        .col-xs-12
+          .hp-brand
+            .logo.fleft
+              = image_tag 'planndit_icon_flipped.png', class: "small-p"
+            .brand.fleft
+              .row
+                .col-xs-12
+                  | planndit
+              .row
+                .col-xs-12.tagline
+                  | Make plans, book your friends
+      .row.third
+        .col-xs-12
+          .cta
+            = link_to new_event_path do
+              .btn.btn-dark-green
+                | Create an Event
+            a href="#guide"
+              .btn.btn-light-green
+                | Learn more
+.row.np.guide#guide
+  .col-xs-12
+    .landing-tile
+      .row
+        .col-xs-3.content-module
+          p.key-step Plan
+          .step 1
+          p Pick a gig, set a deadline to rsvp
+        .col-xs-3.content-module
+          p.key-step Invite
+          .step 2
+          p Share your plans, build the hype
+        .col-xs-3.content-module
+          p.key-step Commit
+          .step 3
+          p Track payments 
+        .col-xs-3.content-module
+          p.key-step Party Time!
+.row.np
+  .col-xs-12.content-module
+    .landing-tile
+      h2 Give your plans the green light
+      p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, ipsam in excepturi alias obcaecati perspiciatis deleniti facilis.
+hr
+.row.np
+  .col-xs-12.content-module
+    .landing-tile
+      h2 Never get caught holding the bill
+      p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, ipsam in excepturi alias obcaecati perspiciatis deleniti facilis.
+hr
+.row.np
+  .col-xs-12.content-module
+    .landing-tile
+      h2 Anonymous login makes it easier to RSVP
+      p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, ipsam in excepturi alias obcaecati perspiciatis deleniti facilis.
+hr
+.row.np
+  .col-xs-12.content-module
+    .landing-tile
+      h2 Notifications and reminders so everyone is up to speed.
+      p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, ipsam in excepturi alias obcaecati perspiciatis deleniti facilis.
+.row.np.recommendations
+  .col-xs-12.np
+    .landing-tile
+      .row.np
+        .col-sm-4.content-module
+          p.quote  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui provident neque saepe non incidunt dolores deleniti vel cum!
+          p.author Josh Kennedy
+        .col-sm-4.content-module
+          p.quote  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui provident neque saepe non incidunt dolores deleniti vel cum!
+          p.author Mark LeCras
+        .col-sm-4.content-module
+          p.quote  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui provident neque saepe non incidunt dolores deleniti vel cum!
+          p.author Nic Natinui
+.row.np.final-prompt
+  .col-xs-12.np
+    .landing-tile
+      h2 So what are you waiting for?
+      .cta
+        = link_to new_event_path do
+          .btn.btn-dark-green
+            | Create an Event
+

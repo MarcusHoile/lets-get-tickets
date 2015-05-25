@@ -1,149 +1,59 @@
-.landing {
-	overflow: hidden;
-	height: 100%;
-	width: 100%;
-	position: relative;
-	background-color: rgb(0,182,47);
+.green {
+  color: darken($green, 15%);
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  .navbar {
+    width: 90%;
+  }
+  .recommendations {
+    background: darken($green, 2%);
+    border-top: solid 1px darken($green, 4%);
+    border-bottom: solid 1px darken($green, 4%);
+  }
+  .final-prompt {
+    text-align: center;
+  }
+  hr {
+    border-color: darken($green, 5%);
+    width: 70%;
+    margin: 0 auto;
+  }
+  .splash {
+    text-align: center;
+    height: 50vh;
+    margin-bottom: 80px;
+    .third {
+      height: 35vh;
+    }
+    .brand {
+      text-align: left;
+      font-size: 70px;
+      .tagline {
+        padding-left: 60px;
+        font-size: 20px;
+      }
+    }
+  }
+  .landing-tile {
+    min-height: 35vh;
+    width: 90%;
+    margin: 0 auto;
+    h2 {
+      margin-top: 100px;
+      margin-bottom: 25px;
+    }
+  }
+  .content-module {
+    text-align: center;
+    padding: 5px;
+    .col-xs-12 {
+      min-height: 200px;
+      border: solid 2px darken($green, 5%);
+      &:hover {
+        background: darken($green, 15%);
+        color: $green;
+        border: solid 2px darken($green, 15%);
+      }
+    }
+  }
 }
-.home-page {
-	.planner-container {
-		position: absolute;
-		top: 30vh;
-		left: 51vw;
-		.planner {
-			position: relative;
-			z-index: 999;
-			img {
-				height: 80px;
-			}
-			.the-planner {
-				position: relative;
-				z-index: 998;
-			}
-		}
-		.the-guests {
-			height: 120px;
-			position: relative;
-			left: -60px;
-			top: -38vh;
-			display: none;
-		}
-		
-		.pin {
-			z-index: 999;
-			position: relative;
-			right: 35px;
-			top: -60vh;
-			display:inline-block;	
-			-webkit-animation-name: pinDrop;
-			-webkit-animation-duration: 1s;
-			-webkit-animation-delay: 1s;
-			-webkit-animation-timing-function: ease-in-out-bounce; 
-			-webkit-animation-fill-mode: forwards;
-			-moz-animation-name: pinDrop;
-			-moz-animation-duration: 1s;
-			-moz-animation-delay: 1s;
-			-moz-animation-timing-function: ease-in-out-bounce;
-			-moz-animation-fill-mode: forwards;
-			animation-name: pinDrop;
-			animation-duration: 1s;
-			animation-delay: 1s; 
-			animation-timing-function: ease-in-out-bounce;
-			animation-fill-mode: forwards;
-		}
-		img {
-			height: 50px;
-		}
-	}
-
-	.circle {
-		border-radius: 50%;
-		border: solid 1px $green;
-		position: relative;
-	}
-	.innerCircle {
-		height: 15px;
-		width: 60px;
-		top: -55px;
-		left: -35px;
-	}
-
-	.middleCircle {
-		height: 30px;
-		width: 120px;
-		top: -77px;
-		left: -65px;
-	}
-	.outerCircle {
-		height: 45px;
-		width: 180px;
-		top: -113px;
-		left: -93px;
-	}
-}
-
-
-@mixin circleanimation($name, $duration, $delay) { 
-	-webkit-animation-name: $name;
-	-webkit-animation-duration: $duration;
-	-webkit-animation-delay: $delay;
-	-webkit-animation-timing-function: ease-in-out; 
-	-webkit-animation-fill-mode: forwards;
-	-webkit-animation-iteration-count: infinite;
-	-moz-animation-name: $name;
-	-moz-animation-duration: $duration;
-	-moz-animation-delay: $delay;
-	-moz-animation-fill-mode: forwards;
-	-moz-animation-iteration-count: infinite;
-	animation-name: $name;
-	animation-duration: $duration;
-	animation-delay: $delay; 
-	animation-timing-function: ease-in-out;
-	animation-fill-mode: forwards;
-	animation-iteration-count: infinite;
-}
-
-@mixin circlekeyframes($name) { 
-	@-webkit-keyframes #{$name} { @content }
-	@-moz-keyframes    #{$name} { @content }
-	@-ms-keyframes     #{$name} { @content }
-	@keyframes         #{$name} { @content }
-}
-
-@mixin circle($animName, $colorStart, $colorEnd, $duration, $delay){
-	.#{$animName} { 
-		@content;
-		@include circleanimation($animName, $duration, $delay); 
-	}
-	@include circlekeyframes($animName) {
-		0%, 20% { border-color: $colorStart;}
-		65% { border-color: $colorEnd; }
-		100% { border-color: $colorStart;}
-	}
-}
-
-@include circle($animName: innerCircle, $colorStart: $green, $colorEnd: darken($green,20%), $duration: 1.8s, $delay: 1.6s );
-@include circle($animName: middleCircle, $colorStart: $green, $colorEnd: darken($green, 16%), $duration: 1.8s, $delay: 1.9s );
-@include circle($animName: outerCircle, $colorStart: $green, $colorEnd: darken($green, 8%), $duration: 1.8s, $delay: 2.2s );
-
-
-
-@-webkit-keyframes pinDrop {
-	0% {top: -60vh; }
-	100% {top: -6vh; }
-}
-@-moz-keyframes    pinDrop {
-	0% {top: -60vh; }
-	100% {top: -6vh; }
-}
-@-ms-keyframes     pinDrop {
-	0% {top: -60vh; }
-	100% {top: -6vh; }
-}
-@keyframes         pinDrop {
-	0% {top: -60vh; }
-	100% {top: -6vh; }
-}
-
-
-

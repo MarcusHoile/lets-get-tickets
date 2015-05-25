@@ -1,0 +1,16 @@
+nav.navbar.navbar-default role="navigation" 
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle data-target="#navbar-toggle" data-toggle="collapse" type="button" 
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+
+    #navbar-toggle.collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        li= link_to "My Events", events_path if current_user.events.present?
+        - if authenticated_user
+          li= link_to "Sign out", signout_path, id: "sign_out", :class => 'navbar-link'
+        - else
+          li= link_to "Log in", ("/auth/facebook?origin=" +  @current_path) , id: "sign_in"

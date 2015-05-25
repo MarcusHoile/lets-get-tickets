@@ -12,7 +12,34 @@ a {
 	}
 }
 
+h1 {
+	font-size: 42px;
+	font-family: 'Lato', sans-serif;
+}
 
+h2 {
+	font-size: 36px;
+}
+
+h3 {
+	font-size: 24px;
+}
+
+h4 {
+	font-size: 18px;
+}
+
+h5 {
+	font-size: 14px;
+}
+
+h6 {
+	font-size: 12px;
+}
+
+p.quote {
+	font-style: italic;
+}
 
 input {
 	color:$inverse-font-colour;
@@ -23,10 +50,3 @@ input {
 	}
 }
 
-
-@media only screen and (max-width : 320px) {
-	h1 {
-		font-size: 22px;
-		margin-top:0;
-	}
-}

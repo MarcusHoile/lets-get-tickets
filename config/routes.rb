@@ -23,10 +23,7 @@ GetTickets::Application.routes.draw do
   get '/terms' => "pages#terms"
   get '/privacy' => "pages#privacy"
   get '/support' => "pages#support"
-  get '/search' => "events#search"
-  resources :pages
+  get '/landing' => "pages#landing", as: :landing
 
-  get '/' => "pages#landing"
-  get '/campaign' => "pages#campaign"
-
+  get '/' => "pages#home"
 end

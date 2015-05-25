@@ -1,18 +1,19 @@
 doctype html
-html
+html lang="en"
   head
     meta charset="utf-8"
-    = yield :title
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    = yield :meta_description
+    = yield :page_title
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
-    = csrf_meta_tags
+    = csrf_meta_tag
     = render "layouts/googleanalytics"
-    = yield :head
-    meta content="width=device-width, initial-scale=1.0" name="viewport"
   body
-    = render "layouts/header"
-    .page-wrap
+    = render "layouts/nav"
+    .main-container
       = yield
+    = render "layouts/facebook_sdk"
     footer
       ul.footer
         li= link_to 'About Us', '/about'

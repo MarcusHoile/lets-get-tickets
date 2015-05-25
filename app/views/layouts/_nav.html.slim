@@ -1,8 +1,7 @@
 nav.navbar.navbar-default role="navigation" 
   .container-fluid
-    /! Brand and toggle get grouped for better mobile display
     .navbar-header
-      button.navbar-toggle data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" 
+      button.navbar-toggle data-target="#navbar-toggle" data-toggle="collapse" type="button" 
         span.sr-only Toggle navigation
         span.icon-bar
         span.icon-bar
@@ -11,12 +10,13 @@ nav.navbar.navbar-default role="navigation"
         span
           = image_tag 'planndit_icon_flipped.png', class: "small-p"
           | planndit
-    /! Collect the nav links, forms, and other content for toggling
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+
+    #navbar-toggle.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        li= link_to "My Events", events_path
+        - if current_user.events.present?
+          li= link_to "My Events", events_path
         li= link_to "Create an Event", new_event_path
         - if authenticated_user
           li= link_to "Sign out", signout_path, id: "sign_out", :class => 'navbar-link'
         - else
-          li= link_to "Log in with Facebook", ("/auth/facebook?origin=" +  @current_path) , id: "sign_in"
+          li= link_to "Log in", ("/auth/facebook?origin=" +  @current_path) , id: "sign_in"

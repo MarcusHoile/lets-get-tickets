@@ -1,25 +1,18 @@
-/*
- *= require jquery.datetimepicker
- */
- 
 @import "overwrite_bootstrap";
 @import "bootstrap";
 @import "iconic-bootstrap";
 @import "colours";
 @import "reset";
 @import "shared";
-@import "contact";
-@import "countdown_clock";
 @import "typography";
 @import "navigation";
 @import "buttons";
-@import "forms";
 @import "badges";
 @import "notifications";
-@import "maps";
-@import "events";
-@import "guest_status";
+@import "home_page";
+@import "guide";
+@import "landing";
 
 body {
-  background: $grey;
+  background: $green;
 }

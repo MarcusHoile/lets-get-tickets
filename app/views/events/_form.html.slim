@@ -1,7 +1,7 @@
 = simple_form_for @event do |f|
-  = f.input :what, placholder: "What is the gig?"
-  = f.input :where, placholder: "Where is the gig?"
-  = f.input :price, placeholder: "How much is it?"
-  = f.input :when, as: :date_picker, placeholder: "DD/MM/YYYY"
-  = f.input :deadline, as: :date_picker, placeholder: "DD/MM/YYYY"
-  = f.button :submit
+  = f.input :what, placeholder: "What is the gig?"
+  = f.input :where, placeholder: "Where is the gig?"
+  = f.input :price, placeholder: "How much does each ticket cost?"
+  = f.input :when, as: :date_picker, placeholder: "When is the gig?"
+  = f.input :deadline, as: :date_picker, placeholder: "When will you buy the tickets?"
+  = f.button :submit, class: "btn-light-green"
