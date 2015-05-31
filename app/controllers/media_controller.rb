@@ -11,6 +11,11 @@ class MediaController < ApplicationController
     end
   end
 
+  def destroy
+    Medium.find(params[:id]).destroy
+    redirect_to event_path(Event.find params[:event_id])
+  end
+
   private
  
   def medium_params

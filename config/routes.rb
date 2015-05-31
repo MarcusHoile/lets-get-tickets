@@ -19,7 +19,7 @@ GetTickets::Application.routes.draw do
     resources :tickets, shallow: true
   end
 
-  resources :media, only: [:create]
+  resources :media, only: [:create, :destroy]
 
   get '/about' => "pages#aboutus"
   get '/terms' => "pages#terms"
