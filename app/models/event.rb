@@ -17,12 +17,6 @@ class Event < ActiveRecord::Base
   has_many :guests, through: :invites, source: :guest
   has_many :tickets
 
-  validates :when, presence: true
-  validates :what, presence: true
-  validates :where, presence: true
-  validates :deadline, presence: true
-  validates :price, presence: true
-
   serialize :latlng, Hash
 
   def host?(user)
@@ -58,7 +52,7 @@ class Event < ActiveRecord::Base
   end
 
   def booking_reminder?
-    closed? && !booked?
+    closed? && not_booked?
   end
 
   def unregistered?
