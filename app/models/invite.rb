@@ -21,4 +21,7 @@ class Invite < ActiveRecord::Base
     end
   end
 
+  def going?
+    rsvp == 'going'
+  end
 end
