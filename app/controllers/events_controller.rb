@@ -12,8 +12,8 @@ class EventsController < ApplicationController
 
   def show
     @invite = Invite.find_or_create_by(user_id: current_user.id, event_id: current_event.id)
-    @invites = current_event.invites.where.not(id: @invite.id)
-    @guest_status = ::GuestStatusPresenter.new(current_event).status
+    @invites = Query::Event::Invites.sorted(current_event)
+    @guest_presenter = ::GuestStatusPresenter.new(current_event)
     @notifications = ::Query::Event::Notifications.all(current_event).for(current_user)
   end
 
@@ -25,9 +25,10 @@ class EventsController < ApplicationController
   end
 
   def create
-    event = Event.new(event_params.merge(user_id: current_user.id))
-    if event.save
-      event.invites.create(user_id: current_user.id, rsvp: 'going')
+    @event = ::EventForm.new(Event.new)
+    if @event.validate(parsed_params.merge(user_id: current_user.id))
+      @event.save
+      @event.invites.create(user_id: current_user.id, rsvp: 'going')
       redirect_to event_path(event)
     else
       render action: 'new'
@@ -39,10 +40,11 @@ class EventsController < ApplicationController
     respond_to do |format|
       if current_event.update(event_params)
         # TODO will need an update email notification here
-        if event_params.include?("ticket")
-          format.js { render partial: "ticket_status"}
+        if event_params.include?("booked")
+          current_user.notifications.create(event: current_event, name: 'notify_guests')
+          format.js { head 200 }
         end
-        format.html { redirect_to current_event}
+        format.html { redirect_to @event}
       else
         format.html { render action: 'edit' }
       end
@@ -82,7 +84,14 @@ class EventsController < ApplicationController
     current_event.check_status
   end
 
+  def parsed_params
+    pp = event_params
+    pp[:when] = DateTime.parse(event_params[:when])
+    pp[:deadline] = DateTime.parse(event_params[:deadline])
+    pp
+  end
+
   def event_params
-    params.require(:event).permit(:when, :what, :description, :deadline, :price, :where, :lat, :lng, :ticket)
+    params.require(:event).permit(:when, :what, :description, :deadline, :price, :where, :lat, :lng, :booked)
   end
 end
