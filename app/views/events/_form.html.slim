@@ -4,4 +4,12 @@
   = f.input :price, placeholder: "How much does each ticket cost?"
   = f.input :when, as: :date_picker, placeholder: "When is the gig?"
   = f.input :deadline, as: :date_picker, placeholder: "When will you buy the tickets?"
-  = f.button :submit, class: "btn-light-green"
+  = f.input :description, placeholder: "Tell your guests a little about the gig. Why should they go?"
+  = f.button :submit, class: "btn-green"
+
+javascript:
+  $('.datetimepicker').datetimepicker({
+    format:'DD MM YYYY h:mm',
+    formatTime:'h:mm',
+    formatDate:'DD.MM.YYYY'
+  });

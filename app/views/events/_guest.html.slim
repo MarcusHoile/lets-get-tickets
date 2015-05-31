@@ -1,7 +1,20 @@
 .guest
-  div class="inline sticker sticker-#{invite.rsvp}" data-badge="#{invite.rsvp_badge}" id="invite-#{invite.id}" 
-    - if invite.guest.image
-      = image_tag invite.guest.image, class: 'avatar inline'
-    - else
-      .iconic.iconic-person-genderless.iconic-md title="person" aria-hidden="true"
-  p.inline= invite.guest.name
+  .row
+    .col-xs-9
+      div class="inline sticker sticker-#{invite.rsvp}" id="invite-#{invite.id}" 
+        - if invite.guest.image
+          = image_tag invite.guest.image, class: 'avatar inline'
+        - else
+          .iconic.iconic-person-genderless.iconic-md title="person" aria-hidden="true"
+      p.inline= invite.guest.name
+    .col-xs-3
+      - if current_event.booked? && current_event.host?(current_user) && invite.going?
+        - unless invite.guest == current_event.host
+          .onoffswitch
+            = form_for invite, remote: true do |f|
+              = f.hidden_field :event_id, value: params[:id]
+              = f.check_box :payment, class: "onoffswitch-checkbox"
+              = f.submit
+              label.onoffswitch-label for="myonoffswitch" 
+                span.onoffswitch-inner
+                span.onoffswitch-switch

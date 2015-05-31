@@ -19,29 +19,27 @@
         .col-xs-12
           .cta
             = link_to new_event_path do
-              .btn.btn-dark-green
+              .btn.btn-green
                 | Create an Event
             a href="#guide"
-              .btn.btn-light-green
+              .btn.btn-green
                 | Learn more
 .row.np.guide#guide
   .col-xs-12
     .landing-tile
       .row
-        .col-xs-3.content-module
-          p.key-step Plan
+        .col-xs-4.content-module
           .step 1
-          p Pick a gig, set a deadline to rsvp
-        .col-xs-3.content-module
-          p.key-step Invite
+          p.key-step Make Plans
+          p Pick a gig, enter in all the details and set a deadline for rsvps.
+        .col-xs-4.content-module
           .step 2
-          p Share your plans, build the hype
-        .col-xs-3.content-module
-          p.key-step Commit
+          p.key-step Invite Friends
+          p Share your plans and find out who wants to go to the gig.
+        .col-xs-4.content-module
           .step 3
-          p Track payments 
-        .col-xs-3.content-module
-          p.key-step Party Time!
+          p.key-step Confirm Tickets
+          p Buy the tickets on behalf of your friends. Use the payment tracker to keep tabs on who has paid.
 .row.np
   .col-xs-12.content-module
     .landing-tile
@@ -68,22 +66,26 @@ hr
 .row.np.recommendations
   .col-xs-12.np
     .landing-tile
-      .row.np
+      .row
         .col-sm-4.content-module
           p.quote  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui provident neque saepe non incidunt dolores deleniti vel cum!
           p.author Josh Kennedy
+          span class="iconic person iconic-person-female" title="person female" aria-hidden="true"
         .col-sm-4.content-module
           p.quote  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui provident neque saepe non incidunt dolores deleniti vel cum!
           p.author Mark LeCras
+          span class="iconic person iconic-person-female" title="person female" aria-hidden="true"
         .col-sm-4.content-module
           p.quote  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui provident neque saepe non incidunt dolores deleniti vel cum!
           p.author Nic Natinui
+          span class="iconic person iconic-person-male" title="person male" aria-hidden="true"
+
 .row.np.final-prompt
   .col-xs-12.np
     .landing-tile
       h2 So what are you waiting for?
       .cta
         = link_to new_event_path do
-          .btn.btn-dark-green
+          .btn.btn-green
             | Create an Event
 

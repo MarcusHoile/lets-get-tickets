@@ -1,12 +1,13 @@
 .row.np
-  .col-xs-12.content-module.alert.alert-info.alert-dismissable
+  .col-xs-12.content-module.alert.alert-info.alert-dismissable.fade.in
     button.close aria-label="Close" data-dismiss="alert" type="button" 
       span aria-hidden="true"  &times;
-    .host-confirm-ticket
-      p.inline Have you bought the tickets?
-      .ticket-form.inline
-        = form_for @event do |f|
-          = f.check_box :ticket, checked: true
+    .row.host-confirm-ticket
+      .col-xs-8
+        p.inline Have you bought the tickets?
+      .col-xs-4.ticket-form.inline
+        = form_for @event, remote: true do |f|
+          = f.check_box :booked, checked: true, hidden: true
           .btn.btn-success.ticket-confirm.inline Yes
-          .btn.btn-danger.inline No
+          .btn.btn-danger.inline.dismiss-alert No
           = f.submit

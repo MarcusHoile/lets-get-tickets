@@ -1,6 +1,6 @@
 .row.np
   .col-xs-12.content-module.countdown-wrapper
-    p #{event_host.first_name} will be buying tickets in:
+    p #{event_host.try(:first_name)} will be buying tickets in:
     .countdown
       .col
         span.ce-days

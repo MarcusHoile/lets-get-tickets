@@ -6,7 +6,7 @@ html lang="en"
     = yield :meta_description
     = yield :page_title
     = stylesheet_link_tag "green", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "green", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tag
     = render "layouts/googleanalytics"
   body.green

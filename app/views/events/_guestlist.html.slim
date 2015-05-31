@@ -3,9 +3,8 @@
     .row.np
       h4.module-title.text-center Guest List
       .friends-icons
-        = render partial: 'guest_inline', object: @invite, as: :invite
         - @invites.each do |invite|
-          = render partial: 'guest', object: invite, as: :invite
+          = render partial: 'guest_inline', object: invite, as: :invite
     .row.np
       #accordion.panel-group aria-multiselectable="true" role="tablist" 
         .panel.panel-default
@@ -15,7 +14,6 @@
                 .view-list
           #guest-list-collapse.panel-collapse.collapse aria-labelledby="fullGuestList" role="tabpanel" 
             .panel-body
-              = render partial: 'guest', object: @invite, as: :invite
               = render 'guest_form' if guest_user
               - @invites.each do |invite|
                 = render partial: 'guest', object: invite, as: :invite

@@ -1,7 +1,7 @@
 .row.np
   .col-xs-12.content-module
     .row.np
-      - @guest_status.each do |k, count|
-        .col-xs-3.guest-status
+      - @guest_presenter.status.each do |k, count|
+        .guest-status class="col-xs-#{@guest_presenter.columns}"
           p.count= count
           p.description= k.to_s.humanize
