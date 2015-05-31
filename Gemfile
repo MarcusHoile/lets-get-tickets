@@ -23,6 +23,8 @@ gem 'httparty'
 gem 'simple_form'
 gem 'reform'
 gem 'momentjs-rails'
+gem 'yt', '~> 0.24.0'
+gem 'autoprefixer-rails'
 
 group :development, :test do
   gem 'dotenv-rails'
