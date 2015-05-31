@@ -12,6 +12,10 @@ class GuestStatusPresenter
     { places_left: places_left, confirmed: confirmed, undecided: undecided, not_going: not_going }.compact!
   end
 
+  def columns
+    12 / status.count
+  end
+
   def tickets_available
     event.limited
   end
