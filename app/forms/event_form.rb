@@ -6,7 +6,9 @@ class EventForm < ::Reform::Form
   property :deadline
   property :price
   property :description
+  property :user_id
 
+  validates :user_id, presence: true
   validates :when, presence: true
   validates :what, presence: true
   validates :where, presence: true

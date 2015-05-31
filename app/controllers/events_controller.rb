@@ -28,8 +28,8 @@ class EventsController < ApplicationController
     @event = ::EventForm.new(Event.new)
     if @event.validate(parsed_params.merge(user_id: current_user.id))
       @event.save
-      @event.invites.create(user_id: current_user.id, rsvp: 'going')
-      redirect_to event_path(event)
+      @event.model.invites.create(user_id: current_user.id, rsvp: 'going')
+      redirect_to event_path(@event)
     else
       render action: 'new'
     end

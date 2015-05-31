@@ -56,7 +56,7 @@ class Event < ActiveRecord::Base
   end
 
   def unregistered?
-    host.name.nil?
+    host.guest_user?
   end
 
   def check_status

@@ -48,4 +48,8 @@ class User < ActiveRecord::Base
   def first_name
     name.nil? ? 'Guest User' : name.split(' ').first
   end
+
+  def guest_user?
+    guest_user == true
+  end
 end
