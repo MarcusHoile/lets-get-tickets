@@ -22,6 +22,7 @@ gem "slim-rails"
 gem 'httparty'
 gem 'simple_form'
 gem 'reform'
+gem 'momentjs-rails'
 
 group :development, :test do
   gem 'dotenv-rails'
