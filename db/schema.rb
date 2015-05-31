@@ -11,19 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518154137) do
+ActiveRecord::Schema.define(version: 20150526124337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "contacts", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.text     "body"
-    t.string   "category"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "events", force: true do |t|
     t.string   "what"
@@ -36,7 +27,6 @@ ActiveRecord::Schema.define(version: 20150518154137) do
     t.decimal  "lat"
     t.decimal  "lng"
     t.string   "status",      default: "open"
-    t.boolean  "ticket",      default: false
     t.string   "image"
     t.boolean  "booked",      default: false
     t.datetime "deadline"
@@ -45,13 +35,6 @@ ActiveRecord::Schema.define(version: 20150518154137) do
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
-
-  create_table "friendships", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "friend_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "invites", force: true do |t|
     t.string   "rsvp",           default: "Undecided"
@@ -71,7 +54,6 @@ ActiveRecord::Schema.define(version: 20150518154137) do
     t.boolean  "active",     default: true
     t.integer  "user_id"
     t.integer  "event_id"
-    t.integer  "message_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
