@@ -10,21 +10,8 @@
   min-width: 160px;
 }
 
-.btn.btn-dark-green {
+.btn.btn-green {
 	margin: 0 15px;
-  border: solid 1px darken($green, 5%);
-  color: $green;
-  background: darken($green, 16%);
-  &:hover {
-    background: darken($green, 13%);
-    color: $green;
-    border: solid 1px darken($green, 10%);
-  }
-}
-
-.btn.btn-light-green {
-  min-width: 160px;
-  margin: 0 15px;
   border: solid 1px darken($green, 10%);
   color: darken($green, 15%);
   background: $green;
@@ -34,6 +21,18 @@
     border: solid 1px darken($green, 10%);
   }
 }
+
+// .btn.btn-light-green {
+//   min-width: 160px;
+//   margin: 0 15px;
+//   border: solid 1px darken($green, 10%);
+//   color: darken($green, 15%);
+//   background: $green;
+//   &:hover {
+//     color: darken($green, 18%);
+//     border: solid 1px darken($green, 14%);
+//   }
+// }
 
 #started-button {
 	text-decoration:none;
@@ -106,10 +105,10 @@
 }
 
 .onoffswitch {
-	position: relative; width: 110px;
+	position: relative; width: 90px;
 	display: inline-block;
 	float: right;
-	margin: 10px 0;
+	margin: 10px;
 	-webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
 
@@ -136,12 +135,14 @@
 
 .onoffswitch-inner:before {
 	content: "paid";
+	font-weight: normal;
 	padding-left: 10px;
 	background-color: $green; color: #FFFFFF;
 }
 
 .onoffswitch-inner:after {
 	content: "not paid";
+	font-weight: normal;
 	padding-right: 10px;
 	background-color: #EEEEEE; color: #999999;
 	text-align: right;
@@ -151,7 +152,7 @@
 	display: block; width: 18px; margin: 6px;
 	background: #FFFFFF;
 	border: 1px solid #999999; border-radius: 8px;
-	position: absolute; top: -4px; bottom: 1px; right: 82px;
+	position: absolute; top: -4px; bottom: 1px; right: 63px;
 	-moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
 	-o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
 }

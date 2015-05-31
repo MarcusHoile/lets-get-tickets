@@ -1,6 +1,8 @@
-	@import url(http://fonts.googleapis.com/css?family=Lato:100,300|Josefin+Sans:100);
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300|Josefin+Sans:100);
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+$main-font: 'Lato';
 .navbar-brand {
-	font-family: 'Lato', sans-serif;
+	font-family: $main-font, sans-serif;
 	font-weight: 400;
 }
 a {
@@ -14,7 +16,7 @@ a {
 
 h1 {
 	font-size: 42px;
-	font-family: 'Lato', sans-serif;
+	font-family: $main-font, sans-serif;
 }
 
 h2 {

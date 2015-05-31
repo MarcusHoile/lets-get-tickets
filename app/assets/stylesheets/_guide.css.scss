@@ -2,23 +2,28 @@
   background: darken($green, 2%);
   border-top: solid 1px darken($green, 4%);
   border-bottom: solid 1px darken($green, 4%);
+  .row {
+    width: 780px;
+    margin: 0 auto;
+    padding: 10px 0 40px 0;
+  }
   .step {
     border-radius: 50%;
     background-color: darken($green, 15%);
     color: $green;
-    height: 30px;
-    width: 30px;
+    height: 80px;
+    width: 80px;
     font-size: 16px;
-    line-height: 30px;
+    line-height: 80px;
     margin: 0 auto;
     text-align: center;
     margin-bottom: 10px;
   }
   p.key-step {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 28px;
   }
   p {
-    font-size: 18px;
+    margin: 20px;
+    font-size: 16px;
   }
 }

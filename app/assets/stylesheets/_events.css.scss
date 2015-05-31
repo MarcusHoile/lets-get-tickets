@@ -26,6 +26,10 @@
 .content-module {
 	margin: 5px 0;
 	padding: 10px 5px;
+	border-right: solid 1px darken(#eaeaea, 7%);
+	border-left: solid 1px darken(#eaeaea, 7%);
+	-webkit-box-shadow: 0 4px 2px -2px darken(#eaeaea, 9%);
+	box-shadow: 0 4px 2px -2px darken(#eaeaea, 12%);
 }
 .image-module {
 	width: 100%;
@@ -216,15 +220,6 @@
 		display: inline-block;
 	}
 }
-.outcome {
-	display: none;
-}
-.undecided {
-	display: block;
-}
-.question {
-	font-size: 60px;
-}
 .rsvp .rsvp-btn {
 	margin: 0 5%;
 }
@@ -252,32 +247,27 @@
 	cursor: pointer;
 	border-top: none;
 }
-.friends-list{
-	display:none;
-	text-align: left;
-	&.payments {
-		display: block;
-	}
-	i {
-		text-align: center;
-	}
-	.guest {
-		padding-top: 8px;
-		border-bottom: solid 1px $darkGrey;
-	}
+
+.iconic.iconic-md:before {
+	line-height: 50px;
 }
-.friends-icons {
-	border-bottom: none;
-	.avatar {
-		height: 30px;
-		width: 30px;
-		text-align: center;
+.guest p {
+	top: -10px;
+	position: relative;
+}
+.guest {
+	border-bottom: solid 1px #eaeaea;
+}
+.inline.guest {
+	color: darken(#eaeaea, 7%);
+	&.going {
+		color: $green;
 	}
-	.guest-avatar {
-		font-size: 20px;
-		padding: 5px;
-		vertical-align: middle;
-		background: darken($grey, 15%);
+	&.not-going {
+		color: $red;
+	}
+	&.maybe {
+		color: $orange;
 	}
 }
 .spacer {

@@ -20,3 +20,10 @@ $blue: #d9edf7;
 	opacity: 1;
 	// background-color: lighten($blue, 2%);
 }
+.host-confirm-ticket {
+  width: 90%;
+  .btn {
+    min-width: 0;
+    margin: 0 10px;
+  }
+}
