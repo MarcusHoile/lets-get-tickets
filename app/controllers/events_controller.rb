@@ -15,6 +15,8 @@ class EventsController < ApplicationController
     @invites = Query::Event::Invites.sorted(current_event)
     @guest_presenter = ::GuestStatusPresenter.new(current_event)
     @notifications = ::Query::Event::Notifications.all(current_event).for(current_user)
+    @media_form = ::MediumForm.new(Medium.new)
+    @media = current_event.media
   end
 
   def new

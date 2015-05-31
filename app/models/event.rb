@@ -16,6 +16,7 @@ class Event < ActiveRecord::Base
 	has_many :invites, dependent: :destroy
   has_many :guests, through: :invites, source: :guest
   has_many :tickets
+  has_many :media
 
   serialize :latlng, Hash
 

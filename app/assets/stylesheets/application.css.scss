@@ -3,7 +3,8 @@
  */
  
 @import "overwrite_bootstrap";
-@import "bootstrap";
+@import "bootstrap-sprockets";
+@import "bootstrap";  
 @import "iconic-bootstrap";
 @import "colours";
 @import "reset";
