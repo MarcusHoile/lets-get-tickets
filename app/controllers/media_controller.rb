@@ -4,7 +4,6 @@ class MediaController < ApplicationController
     @medium = MediumForm.new(Medium.new)
     @event = Event.find(medium_params[:event_id])
     if @medium.validate(medium_params)
-      binding.pry
       video = Yt::Video.new url: @medium.link
       @medium.uid = video.id
       @medium.save

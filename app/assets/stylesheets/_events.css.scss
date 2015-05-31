@@ -38,6 +38,15 @@
   background-repeat: no-repeat;
   background-position: 50% 50%;
 }
+.video-container {
+	position: relative;
+	height: 0;
+	overflow: hidden;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+}
 .main .content-module {
 	background: #fff;
 	&.blackboard {

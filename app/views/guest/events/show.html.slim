@@ -16,6 +16,7 @@
     .col-sm-6.pleft
       = render "cost"
       = render "guest_status"
+      = render "medium"            if @media
       = render "image_tile"
       / modals only displayed when user triggers
       = render "guest_sign_in"
