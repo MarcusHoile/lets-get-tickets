@@ -1,38 +1,32 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-# #   Mayor.create(name: 'Emanuel', city: cities.first)
-# guest1 = User.create(name: "Rachel O'Toole", email: "marcushoile1@gmail.com")
-# guest2 = User.create(name: "Kate Saint George", email: "marcushoile2@gmail.com")
-# guest3 = User.create(name: "Tom Arnold", email: "marcushoile3@gmail.com")
-# guest4 = User.create(name: "Sam Olle", email: "marcushoile4@gmail.com")
 
-
-wdi3_emails = %w(marcus.hole@gmail.com fede.tagliabue@gmail.com lukru489@gmail.com peters.sammyjo@gmail.com emacca@me.com stalin.pranava@gmail.com eduard.fastovski@gmail.com ltfschoen@gmail.com cptnmrgn10@gmail.com lukemesiti@gmail.com)
-
-wdi3_emails.each do |email|
-  first_part = email[/[^@]+/]
-  first_part = first_part.split('').map do |letter|
-    if letter.match(/\A[\w]+\z/)
-      letter
-    else
-      ''
-    end
-  end.join('')
-
+# create guests
+guests = 10.times.map do |n|
   User.create(
-    email: email,
-    name: first_part,
-    password: 'changeme',
-    password_confirmation: 'changeme'
+    email: "some#{n}@email.com",
+    name: "name_#{n}",
   )   
 end
-event1 = Event.create(what: "Architecture In Helsinki", when:  "Mon, 31 Jul 2014 21:46:06", where: "Enmore Theatre", user_id: 1, deadline:  "Mon, 27 Jul 2014 20:46:06", price: 46)
 
+# create events and host
+host = User.first
+open_event =   Event.create(what: "Architecture In Helsinki",
+                            when:  3.weeks.from_now,
+                            where: "Enmore Theatre",
+                            user_id: host.id,
+                            deadline: 2.weeks.from_now,
+                            price: 46)
+closed_event = Event.create(what: "West Coast Eagles",
+                            when:  3.weeks.from_now,
+                            where: "Subiaco Oval",
+                            user_id: host.id,
+                            deadline: 1.day.ago,
+                            price: 90,
+                            booked: true)
 
-User.where("id > ?", 1).each do |u|
-  event1.invites.create(user_id: u.id, rsvp: "Going");
+# create invites for events
+open_event.invites.create(user_id: host.id, rsvp: 'going')
+closed_event.invites.create(user_id: host.id, rsvp: 'going')
+guests.map do |guest|
+  open_event.invites.create(user_id: guest.id, rsvp: 'going')
+  closed_event.invites.create(user_id: guest.id, rsvp: 'going')  
 end
