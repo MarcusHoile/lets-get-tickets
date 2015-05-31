@@ -50,6 +50,7 @@ notificationsFade = ->
 hostConfirmsTickets = ->
   $('.ticket-confirm').on('click', ()->
     $(this).parent('form').submit()
+    $(this).closest('.alert-dismissable').alert('close')
   )
 
 expandGuestList = ->
@@ -99,9 +100,26 @@ dismissAlerts = ->
     e.preventDefault()
     $(this).closest('.alert-dismissable').alert('close')
   )
+  $('.dismiss-alert').on('click', (e)->
+    e.preventDefault()
+    $(this).closest('.alert-dismissable').alert('close')
+  )
 displayGuestList = ->
-  if $('.inline.guest').length > 4
+  if $('.inline.guest').length < 4
     $('#guest-list-collapse').collapse('show')
+smoothScroll = ->
+  $('a[href^="#"]').on('click', (e)->
+    e.preventDefault()
+
+    target = this.hash
+    $target = $(target)
+
+    $('html, body').stop().animate({
+      'scrollTop': $target.offset().top
+      }, 900, 'swing', ()->
+      window.location.hash = target
+    )
+  )
 
 ready = ->
   # to copy to clipboard in browser, copy event link for emails
@@ -116,6 +134,8 @@ ready = ->
   eventRow()
   dismissAlerts()
   displayGuestList()
+  smoothScroll()
+
   
 
 $(document).ready(ready)
