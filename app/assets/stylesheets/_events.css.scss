@@ -281,15 +281,15 @@
 .iconic.iconic-md:before {
 	line-height: 50px;
 }
-.guest p {
-	top: -10px;
-	position: relative;
-}
 .guest {
 	border-bottom: solid 1px #eaeaea;
+	.avatar {
+		height: 30px;
+	}
 }
 .inline.guest {
 	color: darken(#eaeaea, 7%);
+	border: none;
 	&.going {
 		color: $green;
 	}
