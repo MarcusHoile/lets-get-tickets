@@ -81,20 +81,26 @@
 			text-decoration: none;
 		}
 		.view-list {
-			background-color: lighten(#eaeaea, 5%);
 			padding: 5px 0;
+			&:hover {
+				background-color: lighten(#eaeaea, 5%);
+			}
 			&:after {
-				content: "-";
+				color: darken(#eaeaea, 25%);
+				font-family: 'iconic-sm';
+				content: "\e152";
+				font-size: 12px;
 			}
 		}
 		.collapsed {
 			.view-list {
+				border-top: solid 1px lighten(#eaeaea, 5%);
 				background-color: #fff;
 				&:hover, &.in {
 					background-color: lighten(#eaeaea, 5%);
 				}
 				&:after {
-					content: "+";
+					content: "\e14f";
 				}
 			}
 		}
