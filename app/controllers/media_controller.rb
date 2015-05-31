@@ -4,8 +4,6 @@ class MediaController < ApplicationController
     @medium = MediumForm.new(Medium.new)
     @event = Event.find(medium_params[:event_id])
     if @medium.validate(medium_params)
-      video = Yt::Video.new url: @medium.link
-      @medium.uid = video.id
       @medium.save
       redirect_to event_path(@event)
     else
@@ -16,6 +14,6 @@ class MediaController < ApplicationController
   private
  
   def medium_params
-    params.require(:medium).permit(:link, :event_id)
+    params.require(:medium).permit(:url, :event_id)
   end
 end

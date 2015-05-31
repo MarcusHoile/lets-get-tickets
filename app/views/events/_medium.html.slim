@@ -1,5 +1,5 @@
 - @media.each do |medium|
-  - video = Yt::Video.new id: medium.uid
+  - video = Yt::Video.new url: medium.url
   .row.np
     .col-xs-12.content-module.video-container
       = video.embed_html.html_safe

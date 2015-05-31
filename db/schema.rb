@@ -51,8 +51,7 @@ ActiveRecord::Schema.define(version: 20150531040618) do
   add_index "invites", ["user_id"], name: "index_invites_on_user_id", using: :btree
 
   create_table "media", force: true do |t|
-    t.string   "link"
-    t.string   "uid"
+    t.string   "url"
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
