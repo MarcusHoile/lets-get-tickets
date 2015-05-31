@@ -13,8 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.datetimepicker
-//= require jquery.datetimepicker/init
+//= require moment
 //= require bootstrap
 //= require zeroclipboard
 //= require turbolinks
 //= require_tree .
+
+Date.parseDate = function( input, format ){
+  return moment(input,format).toDate();
+};
+Date.prototype.dateFormat = function( format ){
+  return moment(this).format(format);
+};
