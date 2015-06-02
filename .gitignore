@@ -21,5 +21,6 @@
 coverage
 public
 config/application.yml
+config/secrets.yml
 
 
