@@ -2,6 +2,7 @@
   = f.input :what, placeholder: "What is the gig?"
   = f.input :where, placeholder: "Where is the gig?"
   = f.input :price, placeholder: "How much does each ticket cost?"
+  = f.input :timezone, as: :hidden
   = f.input :when, as: :date_picker, placeholder: "When is the gig?"
   = f.input :deadline, as: :date_picker, placeholder: "When will you buy the tickets?"
   = f.input :description, placeholder: "Tell your guests a little about the gig. Why should they go?"
@@ -9,7 +10,7 @@
 
 javascript:
   $('.datetimepicker').datetimepicker({
-    format:'DD MM YYYY h:mm',
+    format:'DD MM YYYY HH:mm Z',
     formatTime:'h:mm',
     formatDate:'DD.MM.YYYY'
   });

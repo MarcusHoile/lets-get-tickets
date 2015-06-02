@@ -1,5 +1,5 @@
 #guest-register.guest.guest-register
-  div class="inline sticker sticker-#{@invite.rsvp}" id="invite-#{@invite.id}" 
+  div class="inline sticker sticker-#{@presenter.invite.rsvp}" id="invite-#{@presenter.invite.id}" 
     = icon('user', '', class: 'avatar guest-avatar inline')
   .form.inline
     div role="form"
@@ -7,5 +7,5 @@
         .field
           = f.text_field :name, placeholder: "Name", id: "guest-name-input"
           = f.hidden_field :event_id, value: current_event.id
-          = f.hidden_field :invite_id, value: @invite.id
+          = f.hidden_field :invite_id, value: @presenter.invite.id
           = f.hidden_field :rsvp, value: "text", class: "rsvp-capture"

@@ -1,4 +1,10 @@
 .row.np
-  .col-xs-12.content-module
-    h3 Invite facebook friends
-    .fb-send data-href="http://www.planndit.com/#{event_path(current_event)}"
+  .col-xs-12.content-module.invite
+    .row.np
+      .col-xs-3
+        .detail-label
+          i.fa.fa-facebook-square
+          p Invite
+      .col-xs-9
+        p Send an invite to your facebook friends
+        .fb-send data-href="http://www.planndit.com/#{event_path(current_event)}"

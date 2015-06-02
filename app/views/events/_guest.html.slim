@@ -1,7 +1,7 @@
 .guest
   .row
     .col-xs-9
-      div class="inline sticker sticker-#{invite.rsvp}" id="invite-#{invite.id}" 
+      div class="inline sticker sticker-#{invite.rsvp}" id="invite-#{invite.id}" data-badge="#{invite.rsvp_badge}"
         - if invite.guest.image
           = image_tag invite.guest.image, class: 'avatar inline'
         - else

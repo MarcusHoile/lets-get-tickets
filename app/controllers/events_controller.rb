@@ -11,12 +11,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @invite = Invite.find_or_create_by(user_id: current_user.id, event_id: current_event.id)
-    @invites = Query::Event::Invites.sorted(current_event)
-    @guest_presenter = ::GuestStatusPresenter.new(current_event)
-    @notifications = ::Query::Event::Notifications.all(current_event).for(current_user)
-    @media_form = ::MediumForm.new(Medium.new)
-    @media = current_event.media
+    @presenter = ::EventPresenter.new(current_event, current_user)
   end
 
   def new
@@ -28,6 +23,7 @@ class EventsController < ApplicationController
 
   def create
     @event = ::EventForm.new(Event.new)
+    binding.pry
     if @event.validate(parsed_params.merge(user_id: current_user.id))
       @event.save
       @event.model.invites.create(user_id: current_user.id, rsvp: 'going')
@@ -88,12 +84,15 @@ class EventsController < ApplicationController
 
   def parsed_params
     pp = event_params
-    pp[:when] = DateTime.parse(event_params[:when])
-    pp[:deadline] = DateTime.parse(event_params[:deadline])
+    format = "%d %m %Y %H:%M %Z"
+    when_date = event_params[:when] + ' ' + event_params[:timezone]
+    deadline_date = event_params[:deadline] + ' ' + event_params[:timezone]
+    pp[:when] = DateTime.strptime(when_date, format).utc
+    pp[:deadline] = DateTime.strptime(deadline_date, format).utc
     pp
   end
 
   def event_params
-    params.require(:event).permit(:when, :what, :description, :deadline, :price, :where, :lat, :lng, :booked)
+    params.require(:event).permit(:when, :what, :description, :deadline, :price, :where, :lat, :lng, :booked, :timezone)
   end
 end

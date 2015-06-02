@@ -1,7 +1,0 @@
-.row.np
-  .col-xs-12.content-module
-    p Add a YouTube video
-    = simple_form_for @media_form, url: media_path do |f|
-      = f.input :url
-      = f.input :event_id, as: :hidden, input_html: {value: current_event.id}
-      = f.button :submit, 'Add'

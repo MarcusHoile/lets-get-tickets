@@ -1,7 +1,12 @@
 .row.np
-  .col-xs-12.content-module
+  .col-xs-12.content-module.guest-status
     .row.np
-      - @guest_presenter.status.each do |k, count|
-        .guest-status class="col-xs-#{@guest_presenter.columns}"
-          p.count= count
-          p.description= k.to_s.humanize
+      .col-xs-12.np
+        - @presenter.status.each do |k, count|
+          .guest-status class="col-xs-#{@presenter.columns}"
+            p.count= count
+            p.description= k.to_s.humanize
+    .row.np
+      .col-xs-12.np.avatars
+        - @presenter.invites.each do |invite|
+          = render partial: 'guest_inline', object: invite, as: :invite

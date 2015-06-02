@@ -20,6 +20,8 @@ class Event < ActiveRecord::Base
 
   serialize :latlng, Hash
 
+  attr_accessor :timezone
+
   def host?(user)
     user == host
   end

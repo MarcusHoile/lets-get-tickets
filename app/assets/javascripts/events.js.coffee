@@ -120,6 +120,26 @@ smoothScroll = ->
       window.location.hash = target
     )
   )
+addMedia = ->
+  $('.media-icons .col-xs-4').on('click', ()->
+    media_type = $(this).data('media-type')
+    $('.media-icons .col-xs-4').removeClass('selected')
+    $(this).addClass('selected')
+    $('.form').addClass('hidden')
+    $('.' + media_type + '-form').removeClass('hidden')
+  )
+setTimezone = ->
+  tz = jstz.determine()
+  $('#event_timezone').attr('value', tz.name())
+
+DateFormatting = ->
+  # Loop over and write in the date formatted using the local 
+  $('.convertDatetime').each ->
+    utcDate = new Date($(this).html())
+    console.log(utcDate)
+    timeDisplay = moment(utcDate).format('h:mma ddd Do MMM')
+    $(this).html timeDisplay
+
 
 ready = ->
   # to copy to clipboard in browser, copy event link for emails
@@ -135,6 +155,9 @@ ready = ->
   dismissAlerts()
   displayGuestList()
   smoothScroll()
+  addMedia()
+  setTimezone()
+  DateFormatting()
 
   
 

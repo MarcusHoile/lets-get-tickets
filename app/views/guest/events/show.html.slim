@@ -25,6 +25,6 @@
       = render "rsvp_form"
       = render "countdown"            if current_event.open?
       = render "event_details"
-      = render "event_description"
+      = render "event_description"    if current_event.description.present?
       = render "guestlist"
       = render "blackboard"

@@ -1,0 +1,8 @@
+.row.np
+  .col-xs-12.content-module.np.media-module
+    - if current_event.host?(current_user)
+      .delete-media
+        = link_to medium_path(@presenter.music, event_id: current_event.id), method: :delete do
+          span class="iconic iconic-trash" title="Remove video" aria-hidden="true"
+    .spotify-container
+      iframe class="music-module" src="https://embed.spotify.com/?uri=spotify%3Atrack%3A#{@presenter.music.source_id}" frameborder="0" allowtransparency="true"

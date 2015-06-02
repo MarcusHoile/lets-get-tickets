@@ -1,20 +1,7 @@
 .row.np
-  .col-xs-12.content-module.guests.np
-    .row.np
-      h4.module-title.text-center Guest List
-      .friends-icons
-        - @invites.each do |invite|
-          = render partial: 'guest_inline', object: invite, as: :invite
-    .row.np
-      #accordion.panel-group aria-multiselectable="true" role="tablist" 
-        .panel.panel-default
-          #fullGuestList.panel-heading role="tab" 
-            h4.panel-title
-              a.collapsed aria-controls="guest-list-collapse" aria-expanded="true" data-parent="#accordion" data-toggle="collapse" href="#guest-list-collapse" 
-                .view-list
-          #guest-list-collapse.panel-collapse.collapse aria-labelledby="fullGuestList" role="tabpanel" 
-            .panel-body
-              = render 'guest_form' if guest_user
-              - @invites.each do |invite|
-                = render partial: 'guest', object: invite, as: :invite
+  .col-xs-12.content-module.guests
+    p Guest List
+    = render 'guest_form' if guest_user
+    - @presenter.invites.each do |invite|
+      = render partial: 'guest', object: invite, as: :invite
       

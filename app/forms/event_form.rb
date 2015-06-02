@@ -6,6 +6,7 @@ class EventForm < ::Reform::Form
   property :deadline
   property :price
   property :description
+  property :timezone
   property :user_id
 
   validates :user_id, presence: true
