@@ -9,8 +9,11 @@
   = f.button :submit, class: "btn-green"
 
 javascript:
-  $('.datetimepicker').datetimepicker({
-    format:'DD MM YYYY HH:mm Z',
-    formatTime:'h:mm',
-    formatDate:'DD.MM.YYYY'
-  });
+  $(document).on('ready', function(){
+    $('.datetimepicker').datetimepicker({
+      format:'DD MM YYYY HH:mm',
+      formatTime:'h:mm',
+      formatDate:'DD.MM.YYYY'
+    });
+
+  })

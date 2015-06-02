@@ -20,12 +20,12 @@
       = render "event_description" if current_event.description.present?
       = render "when"
       = render "where"
+      = render "add_media"
       = render "youtube"           if @presenter.video
       = render "image_tile"        if @presenter.image
       = render "spotify"           if @presenter.music
     .col-sm-6.pright
-      = render "share" 
-      = render "add_media"
+      = render "manage_event"
       = render "countdown"         if current_event.open?
       = render "guest_status"
       = render "guestlist"

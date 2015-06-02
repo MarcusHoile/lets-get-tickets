@@ -132,6 +132,22 @@
 		padding-bottom: 5px;
 	}
 }
+.controls {
+	padding-bottom: 5px;
+	padding-top: 10px;
+	.col-xs-4 {
+		border-right: solid 1px darken($grey, 10%);
+		&.highlight {
+			cursor: pointer;
+		}
+		&.highlight:hover, &.highlight a:hover {
+			color: $green;
+		}
+		&:last-of-type {
+			border-right: none;
+		} 
+	}
+}
 .content-module .description {
 	font-size: 12px;
 }
@@ -151,13 +167,6 @@
 .guests {
 	p {
 		margin-bottom: 10px;
-	}
-}
-
-.guest-status {
-	.avatars {
-		text-align: left;
-		padding-top: 10px !important;
 	}
 }
 

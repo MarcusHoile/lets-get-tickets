@@ -4,4 +4,11 @@
   &:last-of-type {
     border-right: none;
   }
+  .avatars {
+    text-align: left;
+  }
+  hr {
+    margin: 10px auto;
+    width: 95%;
+  }
 }

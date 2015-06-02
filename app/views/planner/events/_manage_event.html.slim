@@ -1,0 +1,19 @@
+.row.np
+  .col-xs-12.content-module
+    .row
+      .col-xs-12.text-center
+        p Manage Event
+    .row.controls
+      .col-xs-4
+        .detail-label
+          .fb-send data-href="http://www.planndit.com#{event_path(current_event)}"
+          p Invite
+      .col-xs-4.highlight
+        = link_to edit_event_path(current_event)
+          .detail-label
+            i.fa.fa-edit
+            p Edit
+      .col-xs-4.highlight
+        .detail-label
+          i.fa.fa-life-ring
+          p Help

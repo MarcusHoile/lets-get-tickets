@@ -8,5 +8,6 @@
             p.description= k.to_s.humanize
     .row.np
       .col-xs-12.np.avatars
+        hr
         - @presenter.invites.each do |invite|
           = render partial: 'guest_inline', object: invite, as: :invite

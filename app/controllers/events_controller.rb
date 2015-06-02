@@ -19,6 +19,7 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @event = ::EventForm.new(current_event)
   end
 
   def create
