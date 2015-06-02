@@ -23,7 +23,6 @@ class EventsController < ApplicationController
 
   def create
     @event = ::EventForm.new(Event.new)
-    binding.pry
     if @event.validate(parsed_params.merge(user_id: current_user.id))
       @event.save
       @event.model.invites.create(user_id: current_user.id, rsvp: 'going')
