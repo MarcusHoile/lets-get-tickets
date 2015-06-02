@@ -136,7 +136,6 @@ DateFormatting = ->
   # Loop over and write in the date formatted using the local 
   $('.convertDatetime').each ->
     utcDate = new Date($(this).html())
-    console.log(utcDate)
     timeDisplay = moment(utcDate).format('h:mma ddd Do MMM')
     $(this).html timeDisplay
 
