@@ -1,0 +1,10 @@
+notifications:
+  payment_reminder: "you gots to pay"
+  booking_reminder: "you need to buy tickets"
+  notify_guests: "Awesome! Make sure to let your rsvp's know that you have secured the tickets. Have a great time!"
+development:
+  host: "localhost:3000"
+test:
+  host: "test.local"
+production:
+  host: "blog.example.com"
