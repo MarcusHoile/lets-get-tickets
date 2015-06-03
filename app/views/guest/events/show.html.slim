@@ -16,8 +16,9 @@
     .col-sm-6.pleft
       = render "cost"
       = render "guest_status"
-      = render "medium"            if @media
-      = render "image_tile"
+      = render "youtube"           if @presenter.video
+      = render "image_tile"        if @presenter.image
+      = render "spotify"           if @presenter.music
       / modals only displayed when user triggers
       = render "guest_sign_in"
       = render "payment_form"
