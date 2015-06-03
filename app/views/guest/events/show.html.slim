@@ -24,7 +24,7 @@
     .col-sm-6.pright
       = render "rsvp_form"
       = render "countdown"            if current_event.open?
-      = render "event_details"
+      = render "when"
+      = render "where"
       = render "event_description"    if current_event.description.present?
       = render "guestlist"
-      = render "blackboard"

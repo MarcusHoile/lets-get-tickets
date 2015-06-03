@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   end
 
   def paid?(event)
-    invite_for(event).payment
+    invite_for(event).try(:payment)
   end
 
   def not_paid?(event)

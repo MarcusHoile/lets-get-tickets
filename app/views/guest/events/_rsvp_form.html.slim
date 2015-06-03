@@ -1,19 +1,23 @@
 .row.np
-  .col-xs-12.content-module.rsvp
-    = form_for @invite, remote: true do |f|
+  .col-xs-12.rsvp
+    = form_for @presenter.invite, remote: true do |f|
       = f.hidden_field :rsvp, value: "Undecided"
       = f.hidden_field :event_id, value: current_event.id
-      .btn.neutral.rsvp-btn.going value="going" 
-        div
-          i.icon.fa.fa-check
-        p Buy me a ticket!
-      .btn.neutral.rsvp-btn.not-going value="not-going" 
-        div
-          i.icon.fa.fa-times
-        p No thanks
-      .btn.neutral.rsvp-btn.maybe value="maybe" 
-        div
-          i.icon.fa.fa-question
-        p Maybe
+      .row
+        .col-xs-4
+          .btn.neutral.rsvp-btn.going value="going" 
+            div
+              i.icon.fa.fa-check
+            p Buy me a ticket!
+        .col-xs-4
+          .btn.neutral.rsvp-btn.not-going value="not-going" 
+            div
+              i.icon.fa.fa-times
+            p No thanks
+        .col-xs-4
+          .btn.neutral.rsvp-btn.maybe value="maybe" 
+            div
+              i.icon.fa.fa-question
+            p Maybe
 javascript:
-  $(".#{@invite.rsvp}").addClass('confirm')
+  $(".#{@presenter.invite.rsvp}").addClass('confirm')

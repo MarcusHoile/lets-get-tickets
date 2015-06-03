@@ -37,7 +37,7 @@ guestLoginPrompt = (el)->
 updateInvite = (el)->
   rsvp = el.attr('value')
   $('#invite_rsvp').val(rsvp)
-  el.parent('form').submit()
+  el.closest('form').submit()
 
 notificationsFade = ->
   $.each([1,2,3,4,5], (i, num)->

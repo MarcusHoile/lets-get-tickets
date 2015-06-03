@@ -1,4 +1,5 @@
 .countdown {
+	margin-top: 10px;
 	text-align:center;
 }
 .col {
@@ -7,17 +8,23 @@
 	background: #000;
 	color: #fff;
 	min-width: 58px;
-	border: solid 1px #fff;
 	margin: 0 5%;
+	color: #fff;
 }
 .ce-seconds, .ce-minutes, .ce-hours, .ce-days {
 	display:block;
+	height: 50px;
+	width: 50px;
+	border: solid 1px #fff;
 }
 
 .ce-seconds-digit, .ce-minutes-digit, .ce-hours-digit, .ce-days-digit  {
-	font-size: 18px;
+	font-size: 22px;
+	line-height: 50px;
+	font-family: 'Roboto Condensed', sans-serif
 }
 
 .ce-seconds-label, .ce-minutes-label, .ce-hours-label, .ce-days-label {
 	font-size: 11px;
+	margin-bottom: 2px;
 }

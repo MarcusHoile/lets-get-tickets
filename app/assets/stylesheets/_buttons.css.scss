@@ -7,7 +7,7 @@
 }
 
 .btn {
-  min-width: 160px;
+  min-width: 100px;
 }
 
 .btn.btn-green {
@@ -21,18 +21,6 @@
     border: solid 1px darken($green, 10%);
   }
 }
-
-// .btn.btn-light-green {
-//   min-width: 160px;
-//   margin: 0 15px;
-//   border: solid 1px darken($green, 10%);
-//   color: darken($green, 15%);
-//   background: $green;
-//   &:hover {
-//     color: darken($green, 18%);
-//     border: solid 1px darken($green, 14%);
-//   }
-// }
 
 #started-button {
 	text-decoration:none;

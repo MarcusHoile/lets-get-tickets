@@ -164,11 +164,6 @@
 		}
 	}
 }
-.guests {
-	p {
-		margin-bottom: 10px;
-	}
-}
 
 .content-module.invite {
 	p {
@@ -264,8 +259,9 @@
 .payment {
 	margin: 10px;
 }
-.rsvp .rsvp-btn {
-	margin: 0 5%;
+.rsvp {
+	margin: 5px 0;
+	padding: 10px;
 }
 .rsvp-login {
 	margin-top: 20px;
@@ -297,11 +293,25 @@
 }
 .guest {
 	border-bottom: solid 1px #eaeaea;
+	.col-xs-9 {
+		margin: 8px 0;
+	}
 	&:last-of-type {
 		border: none;
 	}
 	.avatar {
 		height: 30px;
+		&.iconic-sm {
+			padding-top: 6px;
+		}
+		&.iconic-sm:before {
+			font-size: 24px;
+		}
+	}
+	p.inline {
+		padding-left: 10px;
+		line-height: 30px;
+		vertical-align: top;
 	}
 }
 .inline.guest {

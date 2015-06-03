@@ -4,4 +4,4 @@
       .delete-media
         = link_to medium_path(@presenter.image, event_id: current_event.id), method: :delete do
           span class="iconic iconic-trash" title="Remove video" aria-hidden="true"
-    .image-module.np style="background-image: url(#{@presenter.image.url})"
+    .image-module.np style="background-image: url(#{@presenter.image.try(:url)})"
