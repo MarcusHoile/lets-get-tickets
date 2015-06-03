@@ -11,75 +11,76 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531122256) do
+ActiveRecord::Schema.define(version: 20150603124858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "events", force: true do |t|
-    t.string   "what"
+  create_table "events", force: :cascade do |t|
+    t.string   "what",        limit: 255
     t.text     "description"
-    t.string   "where"
+    t.string   "where",       limit: 255
     t.integer  "price"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "lat"
     t.decimal  "lng"
-    t.string   "status",      default: "open"
-    t.string   "image"
-    t.boolean  "booked",      default: false
+    t.string   "status",      limit: 255, default: "open"
+    t.string   "image",       limit: 255
+    t.boolean  "booked",                  default: false
     t.datetime "deadline"
     t.datetime "when"
     t.integer  "limited"
+    t.boolean  "demo"
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
-  create_table "invites", force: true do |t|
-    t.string   "rsvp",           default: "Undecided"
+  create_table "invites", force: :cascade do |t|
+    t.string   "rsvp",           limit: 255, default: "undecided"
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "payment",        default: false
-    t.string   "reason"
-    t.string   "payment_method"
+    t.boolean  "payment",                    default: false
+    t.string   "reason",         limit: 255
+    t.string   "payment_method", limit: 255
   end
 
   add_index "invites", ["event_id"], name: "index_invites_on_event_id", using: :btree
   add_index "invites", ["user_id"], name: "index_invites_on_user_id", using: :btree
 
-  create_table "media", force: true do |t|
-    t.string   "url"
+  create_table "media", force: :cascade do |t|
+    t.string   "url",        limit: 255
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "media_type"
-    t.string   "source_id"
+    t.string   "media_type", limit: 255
+    t.string   "source_id",  limit: 255
   end
 
   add_index "media", ["event_id"], name: "index_media_on_event_id", using: :btree
 
-  create_table "notifications", force: true do |t|
-    t.boolean  "active",     default: true
+  create_table "notifications", force: :cascade do |t|
+    t.boolean  "active",                 default: true
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
+    t.string   "name",       limit: 255
   end
 
-  create_table "users", force: true do |t|
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "name"
-    t.string   "email"
-    t.string   "oauth_token"
+  create_table "users", force: :cascade do |t|
+    t.string   "provider",         limit: 255
+    t.string   "uid",              limit: 255
+    t.string   "name",             limit: 255
+    t.string   "email",            limit: 255
+    t.string   "oauth_token",      limit: 255
     t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image"
+    t.string   "image",            limit: 255
     t.boolean  "guest_user"
   end
 
