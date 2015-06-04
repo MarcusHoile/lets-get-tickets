@@ -24,6 +24,7 @@ gem 'reform'
 gem 'momentjs-rails'
 gem 'yt', '~> 0.24.0'
 gem 'autoprefixer-rails'
+gem 'browser'
 
 group :development, :test do
   gem 'dotenv-rails'
