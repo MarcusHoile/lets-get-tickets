@@ -1,13 +1,21 @@
 class ApplicationController < ActionController::Base
+  # TODO do i need these?
+  require "erb"
+  include ERB::Util
+  
   protect_from_forgery with: :exception
 
   # before_filter :authenticate_user
   before_filter :current_user
   before_filter :current_path
+  
+  before_action do
+    if browser.tablet? || browser.mobile?
+      request.variant = :touch
+    end
+  end
+
   helper_method :current_user, :guest_user, :authenticated_user, :current_path
-  # TODO do i need these?
-  require "erb"
-  include ERB::Util
   
   def current_path
     @current_path = url_encode(request.env['PATH_INFO'])
