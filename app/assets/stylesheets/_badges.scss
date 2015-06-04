@@ -1,36 +1,36 @@
-.sticker {
-	position:relative;
-	display: inline-block;
-	text-align:center;
-	width: 30px; height: 30px;
-}
+// .sticker {
+// 	position:relative;
+// 	display: inline-block;
+// 	text-align:center;
+// 	width: 30px; height: 30px;
+// }
 
-.sticker:after {
-	position:absolute;
-	top:-6px;
-	right:-6px;
-	font-size:12px;
-	line-height:18px;
-	width:18px;height:18px;
-	border-radius: 50%;
-	background: #fff;
-}
-.sticker-going[data-badge]:after {
-	content:attr(data-badge);
-	color: darken($green, 15%);
-	background: $green;
-}
+// .sticker:after {
+// 	position:absolute;
+// 	top:-6px;
+// 	right:-6px;
+// 	font-size:12px;
+// 	line-height:18px;
+// 	width:18px;height:18px;
+// 	border-radius: 50%;
+// 	background: #fff;
+// }
+// .sticker-going[data-badge]:after {
+// 	content:attr(data-badge);
+// 	color: darken($green, 15%);
+// 	background: $green;
+// }
 
-.sticker-not-going[data-badge]:after {
-	content:attr(data-badge);
-	color: darken($red, 25%);
-	background: $red;
-	font-size: 12px;
-	line-height:16px;
-}
-.sticker-maybe[data-badge]:after {
-	content:attr(data-badge);
-	color: darken($orange, 20%);
-	background: $orange;
-}
+// .sticker-not-going[data-badge]:after {
+// 	content:attr(data-badge);
+// 	color: darken($red, 25%);
+// 	background: $red;
+// 	font-size: 12px;
+// 	line-height:16px;
+// }
+// .sticker-maybe[data-badge]:after {
+// 	content:attr(data-badge);
+// 	color: darken($orange, 20%);
+// 	background: $orange;
+// }
 

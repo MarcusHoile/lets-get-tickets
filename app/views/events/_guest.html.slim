@@ -1,12 +1,15 @@
 .guest
   .row
     .col-xs-9
-      div class="inline sticker sticker-#{invite.rsvp}" id="invite-#{invite.id}" data-badge="#{invite.rsvp_badge}"
-        - if invite.guest.image
+      - if invite.guest.image
+        .guest-details id="invite-#{invite.id}"
           = image_tag invite.guest.image, class: 'avatar inline'
-        - else
+      - else
+        .guest-details.icon id="invite-#{invite.id}"
           .avatar.inline.iconic.iconic-person-genderless.iconic-sm title="person" aria-hidden="true"
-      p.inline= invite.guest.name
+      p.inline
+        span.rsvp-badge class="#{invite.rsvp}"
+        = invite.guest.name
     .col-xs-3
       - if current_event.booked? && current_event.host?(current_user) && invite.going?
         - unless invite.guest == current_event.host

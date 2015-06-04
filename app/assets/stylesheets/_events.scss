@@ -297,6 +297,38 @@
 	.col-xs-9 {
 		margin: 8px 0;
 	}
+	.guest-details {
+		position:relative;
+		display: inline-block;
+		text-align:center;
+		width: 30px; height: 30px;
+		&.icon {
+			background: $grey;
+		}
+		.avatar {
+			color: darken($grey, 25%);
+		}
+	}
+	.rsvp-badge {
+		display: inline-block;
+		font-size: 11px;
+		border-radius: 50%;
+		height: 6px;
+		width: 6px;
+		margin: 12px 5px;
+		&.going {
+			background: $green;
+		}
+		&.not-going {
+			background: $red;
+		}
+		&.maybe {
+			background: $orange;
+		}
+		&.undecided {
+			background: darken($grey, 10%);
+		}
+	}
 	&:last-of-type {
 		border: none;
 	}
@@ -310,7 +342,6 @@
 		}
 	}
 	p.inline {
-		padding-left: 10px;
 		line-height: 30px;
 		vertical-align: top;
 	}
