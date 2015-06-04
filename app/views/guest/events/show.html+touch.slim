@@ -13,8 +13,12 @@
     .col-sm-12
       = render "event_title"
       = render "rsvp_form"
-  .row
-    .col-sm-6.pleft
+
+      = render "countdown"            if current_event.open?
+      = render "when"
+      = render "where"
+      = render "event_description"    if current_event.description.present?
+      
       = render "cost"
       = render "guest_status"
       = render "youtube"           if @presenter.video
@@ -25,9 +29,5 @@
       = render "guest_sign_in"
       = render "payment_form"
       
-    .col-sm-6.pright
-      = render "countdown"            if current_event.open?
-      = render "when"
-      = render "where"
-      = render "event_description"    if current_event.description.present?
+
       = render "guestlist"
