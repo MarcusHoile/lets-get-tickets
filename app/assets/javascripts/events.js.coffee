@@ -39,14 +39,6 @@ updateInvite = (el)->
   $('#invite_rsvp').val(rsvp)
   el.closest('form').submit()
 
-notificationsFade = ->
-  $.each([1,2,3,4,5], (i, num)->
-    $(".fade-#{num}").removeClass("fade-#{num}")
-  )
-  $('.alert-dismissable').each((i)->
-    $(this).addClass("fade-#{i}")
-  )
-
 hostConfirmsTickets = ->
   $('.ticket-confirm').on('click', ()->
     $(this).parent('form').submit()
