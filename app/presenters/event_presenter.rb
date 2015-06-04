@@ -70,7 +70,7 @@ class EventPresenter
   end
 
   def status
-    { places_left: places_left, confirmed: confirmed, undecided: undecided, not_going: not_going }.compact!
+    { places_left: places_left, confirmed: confirmed, maybe: maybe, not_going: not_going, undecided: undecided }.compact!
   end
 
   def columns
@@ -95,6 +95,10 @@ class EventPresenter
 
   def not_going
     guests.not_going.count
+  end
+
+  def maybe
+    guests.maybe.count
   end
 
   attr_reader :event, :user
