@@ -1,0 +1,29 @@
+- content_for :page_title do
+  title
+    | #{current_event.what.titleize} are playing!
+- content_for :meta_description do
+  meta content="I'm going to buy tickets for #{current_event.what.titleize}. Let me know if you want to go." name="description"
+
+.notifications.tile
+  .row
+    .col-xs-12
+      = render "notifications"
+      = render "owner_sign_in"     if current_event.unregistered?
+      = render "booking_reminder"  if current_event.booking_reminder?
+.main
+  .row
+    .col-xs-12
+      = render "event_title"
+      = render "manage_event"
+
+      = render "cost"
+      = render "event_description" if current_event.description.present?
+      = render "when"
+      = render "where"
+      = render "add_media"
+      = render "youtube"           if @presenter.video
+      = render "image_tile"        if @presenter.image
+      = render "spotify"           if @presenter.music
+      = render "countdown"         if current_event.open?
+      = render "guest_status"
+      = render "guestlist"
