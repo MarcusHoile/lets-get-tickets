@@ -1,5 +1,10 @@
+.countdown-wrapper {
+	p {
+		font-size: 11px;
+	}
+}
+
 .countdown {
-	margin-top: 10px;
 	text-align:center;
 }
 .col {
@@ -15,7 +20,7 @@
 }
 
 .ce-seconds-digit, .ce-minutes-digit, .ce-hours-digit, .ce-days-digit  {
-	font-size: 22px;
+	font-size: 36px;
 	line-height: 50px;
 	font-family: 'Roboto Condensed', sans-serif
 }
