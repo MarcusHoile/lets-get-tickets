@@ -12,8 +12,17 @@ class EventPresenter
     @invite ||= Invite.find_or_create_by(user_id: user.id, event_id: event.id)
   end
 
+  def guest_rsvpd
+    invite.rsvp != 'undecided'
+  end
+
   def invites
     @invites ||= Query::Event::Invites.sorted(event)
+  end
+
+  def guest_list
+    other_invites = invites.reject { |i| i == invite }
+    @guest_list ||= guest_rsvpd ? other_invites.unshift(invite) : other_invites
   end
 
   def notifications
