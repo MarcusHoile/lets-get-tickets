@@ -5,13 +5,12 @@
         button.close data-dismiss="modal" type="button"
           span aria-hidden="true"  ×
           span.sr-only Close
-        h4#myModalLabel.modal-title Who are you?
+        h4#myModalLabel.modal-title Who Are You?
       .modal-body
         .rsvp-login
           p.rsvp-notice
-            = event_host.try(:name)
-            | will need to know who you are. Log in via facebook or enter your name.
-          = link_to "Login with Facebook", "/auth/facebook?origin=/events/#{params[:id]}", id: "sign_in", class: "btn btn-primary"
-          p or
-          .register-name.btn.btn-success
-            | Submit your name
+            = "#{event_host.first_name} will need to know who you are. Log in via facebook or enter your name."
+          .row
+            .col-xs-6 = link_to "Login with Facebook", "/auth/facebook?origin=/events/#{params[:id]}", id: "sign_in", class: "btn btn-primary"
+            .col-xs-6
+              .register-name.btn.btn-success Submit your name

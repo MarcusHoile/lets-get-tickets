@@ -1,19 +1,18 @@
 #paymentModal.modal.fade aria-hidden="true" aria-labelledby="paymentLabel" role="dialog" tabindex="-1" 
   .modal-dialog
     .modal-content
+      .modal-header
+        button.close data-dismiss="modal" type="button" 
+          span aria-hidden="true"  ×
+          span.sr-only Close
+        h4.modal-title Awesome! You are on the guest list!
+
       .modal-body
         .payment-form
-          button.close data-dismiss="modal" type="button" 
-            span aria-hidden="true"  ×
-            span.sr-only Close
-          p
-            | Your name is on the list and #{event_host.try(:name)} will try to secure you a ticket. If successful, you will owe #{event_host.try(:name)} $#{@event.price}.
-          h3 How would you like to pay?
+          p #{event_host.first_name} will try to secure you a ticket. Let #{event_host.first_name} know your preferred method of payment?
           .payment
             = simple_form_for @presenter.invite, remote: true do |f|
               = f.input :payment_method, as: :hidden, value: "cash"
               = f.input :event_id, as: :hidden, value: current_event.id
               .btn.btn-payment.cash value="cash"  Cash
               .btn.btn-payment.bank value="bank"  Bank Transfer
-          p 
-            | *no payment required right now

@@ -1,7 +1,9 @@
 .row.np
   .col-xs-12.content-module.guests
     p Guest List
+    .current-guest.hide
+      = render partial: 'guest', object: @presenter.invite, as: :invite
     = render 'guest_form' if guest_user
-    - @presenter.invites.each do |invite|
+    - @presenter.guest_list.each do |invite|
       = render partial: 'guest', object: invite, as: :invite
       

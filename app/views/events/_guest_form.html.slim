@@ -1,6 +1,6 @@
 #guest-register.guest.guest-register
   div class="inline sticker sticker-#{@presenter.invite.rsvp}" id="invite-#{@presenter.invite.id}" 
-    = icon('user', '', class: 'avatar guest-avatar inline')
+    .avatar.inline.iconic.iconic-person-genderless.iconic-sm title="person" aria-hidden="true"
   .form.inline
     div role="form"
       = form_for current_user, remote: true do |f|
