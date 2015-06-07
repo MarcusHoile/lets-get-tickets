@@ -21,9 +21,9 @@
             = link_to new_event_path do
               .btn.btn-green
                 | Create an Event
-            a href="#guide"
+            = link_to event_path(@demo_event) do
               .btn.btn-green
-                | Learn more
+                | View Demo
 .row.np.guide#guide
   .col-xs-12
     .landing-tile

@@ -11,6 +11,7 @@ class PagesController < ApplicationController
   end
 
   def home
+    @demo_event = Event.demo
     render layout: "green"
   end
 
