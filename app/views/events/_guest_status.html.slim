@@ -3,7 +3,7 @@
     .row.np
       .col-xs-12.np
         - @presenter.status.each do |k, count|
-          .guest-status class="col-xs-#{@presenter.columns}"
+          .guest-status.np class="col-xs-#{@presenter.columns}"
             p.count= count
             p.description= k.to_s.humanize
     .row.np
