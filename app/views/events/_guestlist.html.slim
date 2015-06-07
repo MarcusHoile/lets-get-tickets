@@ -4,6 +4,22 @@
     .current-guest.hide
       = render partial: 'guest', object: @presenter.invite, as: :invite
     = render 'guest_form' if guest_user
-    - @presenter.guest_list.each do |invite|
-      = render partial: 'guest', object: invite, as: :invite
-      
+    - if @presenter.guest_list.count <= 5
+      - @presenter.guest_list.each do |invite|
+        = render partial: 'guest', object: invite, as: :invite
+    - else
+      - @presenter.guest_shortlist.each do |invite|
+        = render partial: 'guest', object: invite, as: :invite
+            
+      #accordion.panel-group aria-multiselectable="true" role="tablist" 
+        .panel.panel-default
+          .overlay-container
+            .overlay-fade#short-list-fade
+          #collapseOne.panel-collapse.collapse aria-labelledby="otherGuests" role="tabpanel"
+            .panel-body.np
+              - @presenter.rest_of_guests.each do |invite|
+                = render partial: 'guest', object: invite, as: :invite
+          #otherGuests.panel-heading.np role="tab" 
+            h4.panel-title
+              a aria-controls="collapseOne" aria-expanded="true" data-parent="#accordion" data-toggle="collapse" href="#collapseOne" 
+                i.fa.fa-caret-down

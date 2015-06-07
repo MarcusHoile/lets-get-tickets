@@ -131,6 +131,18 @@ DateFormatting = ->
     timeDisplay = moment(utcDate).format('h:mma ddd Do MMM')
     $(this).html timeDisplay
 
+guestListReveal = ->
+  $('#accordion').on('hide.bs.collapse', ->
+    $('#short-list-fade').toggleClass('overlay-fade')
+    $('#otherGuests i').removeClass('fa-caret-up')
+    $('#otherGuests i').addClass('fa-caret-down')
+  )
+  $('#accordion').on('show.bs.collapse', ->
+    $('#short-list-fade').toggleClass('overlay-fade')
+    $('#otherGuests i').removeClass('fa-caret-down')
+    $('#otherGuests i').addClass('fa-caret-up')
+  )
+
 
 ready = ->
   # to copy to clipboard in browser, copy event link for emails
@@ -149,6 +161,7 @@ ready = ->
   addMedia()
   setTimezone()
   DateFormatting()
+  guestListReveal()
 
   
 

@@ -302,8 +302,34 @@
 	hr {
 		margin: 3px 0;
 	}
+	.panel-default {
+		border: none;
+		position: relative;
+		.overlay-container {
+			position: absolute;
+			height: 50px;
+			width: 100%;
+			top: -50px;
+			.overlay-fade {
+				height: 50px;
+				width: 100%;
+				position: relative;
+				z-index: 9;
+				background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 90%);
+			}
+		}
+	}
+	.panel-heading {
+		text-align: center;
+	}
+	i {
+		width: 100%;
+	}
 }
 .guest {
+	border-bottom: solid 1px $grey;
+	.row {padding: 2px 0;}
+	.col-xs-9 {height: 30px};
 	.guest-details {
 		position:relative;
 		display: inline-block;

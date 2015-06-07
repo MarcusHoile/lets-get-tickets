@@ -20,6 +20,14 @@ class EventPresenter
     @invites ||= Query::Event::Invites.sorted(event)
   end
 
+  def guest_shortlist
+    guest_list[0..4]
+  end
+
+  def rest_of_guests
+    guest_list[5..-1]
+  end
+
   def guest_list
     other_invites = invites.reject { |i| i == invite }
     @guest_list ||= guest_rsvpd ? other_invites.unshift(invite) : other_invites
