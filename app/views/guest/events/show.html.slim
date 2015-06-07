@@ -16,8 +16,8 @@
   .row
     .col-sm-6.pleft
       = render "cost"
-      = render "guest_status"
-      = render "youtube"           if @presenter.video
+      = render "when"
+      = render "where"
       = render "image_tile"        if @presenter.image
       = render "spotify"           if @presenter.music
 
@@ -27,7 +27,8 @@
       
     .col-sm-6.pright
       = render "countdown"            if current_event.open?
-      = render "when"
-      = render "where"
+      = render "guest_status"
+      = render "youtube"           if @presenter.video
+
       = render "event_description"    if current_event.description.present?
       = render "guestlist"
