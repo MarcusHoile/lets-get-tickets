@@ -22,6 +22,10 @@ class Event < ActiveRecord::Base
 
   attr_accessor :timezone
 
+  def self.demo
+    where(demo: true).last
+  end
+
   def host?(user)
     user == host
   end
