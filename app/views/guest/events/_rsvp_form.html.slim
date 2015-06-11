@@ -5,19 +5,19 @@
       = f.hidden_field :event_id, value: current_event.id
       .row
         .col-xs-4
-          .btn.neutral.rsvp-btn.going value="going"
+          .btn.rsvp-btn.going value="going"
             div
               i.icon.fa.fa-check
             p Buy me a ticket!
         .col-xs-4
-          .btn.neutral.rsvp-btn.not-going value="not-going"
+          .btn.rsvp-btn.not-going value="not-going"
             div
               i.icon.fa.fa-times
             p No thanks
         .col-xs-4
-          .btn.neutral.rsvp-btn.maybe value="maybe"
+          .btn.rsvp-btn.maybe value="maybe"
             div
               i.icon.fa.fa-question
             p Maybe
 javascript:
-  $(".#{@presenter.invite.rsvp}").addClass('confirm')
+  $(".#{@presenter.active_btns}").addClass('active')

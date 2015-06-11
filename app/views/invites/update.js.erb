@@ -1,5 +1,5 @@
-$('.rsvp-btn').removeClass('confirm');
-$('.rsvp-btn.<%= @invite.rsvp %>').addClass('confirm');
+$('.rsvp-btn').removeClass('active');
+$('.rsvp-btn.<%= @invite.rsvp %>').addClass('active');
 
 var $inviteRsvp = $('#invite-<%= @invite.id %>');
 $inviteRsvp.removeClass('sticker-maybe sticker-going sticker-not-going').addClass('sticker-<%= @invite.rsvp %>');

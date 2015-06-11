@@ -39,38 +39,51 @@
 	}
 }
 .rsvp-btn {
-	color: #fff;
-	&.maybe {
-		background: $orange;
-		border-bottom: solid 3px darken($orange, 10%);
-		&:hover {
-			background: lighten($orange, 5%);
-			color: #fff;
+	background: darken($grey, 15%);
+	border-bottom: solid 3px darken($grey, 40%);
+	color: darken($grey, 50%);
+	&:hover {
+		color: #fff;
+		&.maybe {
+			background: $orange;
+			border-bottom: solid 3px darken($orange, 10%);
+		}
+		&.going {
+			background: $green;
+			border-bottom: solid 3px darken($green, 10%);
+		}
+		&.not-going {
+			background: $red;
+			border-bottom: solid 3px darken($red, 10%);
 		}
 	}
-	&.going {
-		background: $green;
-		border-bottom: solid 3px darken($green, 10%);
-		&:hover {
-			background: lighten($green, 5%);
-			color: #fff;
+	&.active {
+		color: #fff;
+		&.maybe {
+			background: $orange;
+			border-bottom: solid 3px darken($orange, 10%);
+			&:hover {
+				background: lighten($orange, 5%);
+				color: #fff;
+			}
+		}
+		&.going {
+			background: $green;
+			border-bottom: solid 3px darken($green, 10%);
+			&:hover {
+				background: lighten($green, 5%);
+				color: #fff;
+			}
+		}
+		&.not-going {
+			background: $red;
+			border-bottom: solid 3px darken($red, 10%);
+			&:hover {
+				background: lighten($red, 5%);
+				color: #fff;
+			}
 		}
 	}
-	&.not-going {
-		background: $red;
-		border-bottom: solid 3px darken($red, 10%);
-		&:hover {
-			background: lighten($red, 5%);
-			color: #fff;
-		}
-	}
-
-
-	// &.confirm {
-	// 	background: $green;
-	// 	border-bottom: solid 3px darken($green, 15%);
-	// 	color: #fff;
-	// }
 	.icon {
 		font-size: 22px;
 	}

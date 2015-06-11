@@ -12,6 +12,10 @@ class EventPresenter
     @invite ||= Invite.find_or_create_by(user_id: user.id, event_id: event.id)
   end
 
+  def active_btns
+    invite.rsvp == 'indecided' ? '.going .not-going .maybe' : invite.rsvp
+  end
+
   def guest_rsvpd
     invite.rsvp != 'undecided'
   end
