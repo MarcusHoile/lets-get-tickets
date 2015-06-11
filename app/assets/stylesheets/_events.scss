@@ -42,6 +42,9 @@
 			font-size: 11px;
 		}
 	}
+	.detail-data {
+		padding-left: 20px;
+	}
 	.detail p {
 		line-height: 32px;
 	}
@@ -152,11 +155,11 @@
 }
 
 .content-module.cost {
-	background-color: $green;
-	text-align: center;
-	p {
+	.detail-label {
+		margin-top: 7px;
+	}
+	p.cost {
 		font-size: 32px;
-		color: #fff;
 		span {
 			font-size: 12px;
 			padding-left: 10px;

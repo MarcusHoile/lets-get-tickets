@@ -1,5 +1,11 @@
 .row.np
-  .col-xs-12.content-module.cost
-      p.cost.inline 
-        | #{number_to_currency(@event.price)}
-        span per person
+  .col-xs-12.content-module.details.cost
+    .row.np
+      .col-xs-3
+        .detail-label
+          i.fa.fa-money
+          p Cost
+      .col-xs-9.detail-data
+        p.cost.inline 
+          | $#{@event.price}
+          span per person

@@ -22,29 +22,6 @@
   }
 }
 
-#started-button {
-	text-decoration:none;
-	margin:0;
-	color: $main-font-colour;
-}
-
-.started {
-	width: 200px;	
-	display:block;
-	margin: 0 auto;
-}
-
-.started:hover {
-
-	color: $main-font-colour;
-}
-
-#edit_invite {
-	display:inline-block;
-	margin: 0 auto;
-}
-
-
 .btn {
 	border-radius: 10px;
 	margin: 0 auto;
@@ -62,18 +39,38 @@
 	}
 }
 .rsvp-btn {
-	background: darken($grey, 15%);
-	border-bottom: solid 3px darken($grey, 40%);
-	color: darken($grey, 50%);
-	&:hover {
-		background: darken($grey, 10%);
-		color: darken($grey, 50%);
+	color: #fff;
+	&.maybe {
+		background: $orange;
+		border-bottom: solid 3px darken($orange, 10%);
+		&:hover {
+			background: lighten($orange, 5%);
+			color: #fff;
+		}
 	}
-	&.confirm {
+	&.going {
 		background: $green;
-		border-bottom: solid 3px darken($green, 15%);
-		color: #fff;
+		border-bottom: solid 3px darken($green, 10%);
+		&:hover {
+			background: lighten($green, 5%);
+			color: #fff;
+		}
 	}
+	&.not-going {
+		background: $red;
+		border-bottom: solid 3px darken($red, 10%);
+		&:hover {
+			background: lighten($red, 5%);
+			color: #fff;
+		}
+	}
+
+
+	// &.confirm {
+	// 	background: $green;
+	// 	border-bottom: solid 3px darken($green, 15%);
+	// 	color: #fff;
+	// }
 	.icon {
 		font-size: 22px;
 	}
