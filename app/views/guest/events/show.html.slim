@@ -18,8 +18,8 @@
       = render "cost"
       = render "when"
       = render "where"
-      = render "image_tile"        if @presenter.image
       = render "spotify"           if @presenter.music
+      = render "image_tile"        if @presenter.image
 
       / modals only displayed when user triggers
       = render "guest_sign_in"

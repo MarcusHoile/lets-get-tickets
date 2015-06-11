@@ -17,15 +17,21 @@
   .row
     .col-sm-6.pleft
       = render "cost"
-      = render "event_description" if current_event.description.present?
       = render "when"
       = render "where"
-      = render "add_media"
+      = render "spotify"           if @presenter.music
+      = render "image_tile"        if @presenter.image
       = render "youtube"           if @presenter.video
       = render "image_tile"        if @presenter.image
       = render "spotify"           if @presenter.music
     .col-sm-6.pright
       = render "manage_event"
-      = render "countdown"         if current_event.open?
+      = render "add_media"
+      = render "countdown"            if current_event.open?
       = render "guest_status"
+      = render "youtube"           if @presenter.video
+
+      = render "event_description"    if current_event.description.present?
       = render "guestlist"
+
+
