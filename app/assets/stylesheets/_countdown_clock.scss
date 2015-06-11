@@ -3,7 +3,12 @@
 		font-size: 11px;
 	}
 }
-
+.time-spacer {
+	vertical-align: top;
+	.colon {
+		line-height: 50px;
+	}
+}
 .countdown {
 	text-align:center;
 }
@@ -16,7 +21,6 @@
 	display:block;
 	height: 50px;
 	width: 50px;
-	border: solid 1px #fff;
 }
 
 .ce-seconds-digit, .ce-minutes-digit, .ce-hours-digit, .ce-days-digit  {
@@ -27,5 +31,4 @@
 
 .ce-seconds-label, .ce-minutes-label, .ce-hours-label, .ce-days-label {
 	font-size: 11px;
-	margin-bottom: 2px;
 }
