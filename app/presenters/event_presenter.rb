@@ -13,7 +13,7 @@ class EventPresenter
   end
 
   def active_btns
-    invite.rsvp == 'indecided' ? '.going .not-going .maybe' : invite.rsvp
+    invite.rsvp == 'undecided' ? '.going .not-going .maybe' : invite.rsvp
   end
 
   def guest_rsvpd
