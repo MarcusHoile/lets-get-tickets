@@ -62,7 +62,8 @@ class EventPresenter
   end
 
   def video_embed
-    youtube_video.embed_html.html_safe
+    # TODO embed html hangs on local
+    youtube_video.embed_html.html_safe if Rails.env.production?
   end
 
   def forms
