@@ -296,6 +296,11 @@
 	line-height: 50px;
 }
 .guests {
+	padding-bottom: 0;
+	margin-bottom: 0;
+	.panel {
+		box-shadow: none;
+	}
 	.guest-title {
 		font-size: 18px;
 		text-align: center;
@@ -308,13 +313,18 @@
 	.panel-default {
 		border: none;
 		position: relative;
+		.guest-nav {
+			i {
+				font-size: 22px;
+			}
+		}
 		.overlay-container {
 			position: absolute;
 			height: 50px;
 			width: 100%;
-			top: -50px;
+			top: -70px;
 			.overlay-fade {
-				height: 50px;
+				height: 80px;
 				width: 100%;
 				position: relative;
 				z-index: 9;
@@ -324,9 +334,7 @@
 	}
 	.panel-heading {
 		text-align: center;
-	}
-	i {
-		width: 100%;
+		background: #fff;
 	}
 }
 .guest {
