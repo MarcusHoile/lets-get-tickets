@@ -2,12 +2,12 @@
   .row
     .col-xs-9
       - if invite.guest.image
-        .guest-details id="invite-#{invite.id}"
+        .guest-details
           = image_tag invite.guest.image, class: 'avatar inline'
       - else
-        .guest-details.icon id="invite-#{invite.id}"
+        .guest-details.icon
           .avatar.inline.iconic.iconic-person-genderless.iconic-sm title="person" aria-hidden="true"
-      p.inline
+      p.inline id="invite-#{invite.id}"
         span.rsvp-badge class="#{invite.rsvp}"
         = invite.guest.name
     .col-xs-3
