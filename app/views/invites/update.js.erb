@@ -2,8 +2,7 @@ $('.rsvp-btn').removeClass('active');
 $('.rsvp-btn.<%= @invite.rsvp %>').addClass('active');
 
 var $inviteRsvp = $('#invite-<%= @invite.id %>');
-$inviteRsvp.removeClass('sticker-maybe sticker-going sticker-not-going').addClass('sticker-<%= @invite.rsvp %>');
-$inviteRsvp.attr('data-badge', '<%= @invite.rsvp_badge %>');
+$('#invite-<%= @invite.id %> span').removeClass('maybe going not-going').addClass('<%= @invite.rsvp %>');
 
 <% if @invite.rsvp == "going" && @current_rsvp != "going" %>
 	$('#paymentModal').modal('show');
