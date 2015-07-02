@@ -23,7 +23,7 @@ jQuery.fn.submitOnCheck = ()->
 
 manageRsvps = ->
   $('.rsvp-btn').on('click', ()->
-    if $('.rsvp .confirm').length == 0
+    if $('.rsvp .active').length == 0
       guestLoginPrompt($(this))
     else
       updateInvite($(this))
