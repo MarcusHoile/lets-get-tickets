@@ -11,7 +11,7 @@
       - @presenter.guest_shortlist.each do |invite|
         = render partial: 'guest', object: invite, as: :invite
             
-      #accordion.panel-group aria-multiselectable="true" role="tablist" 
+      #accordion.panel-group.np aria-multiselectable="true" role="tablist" 
         .panel.panel-default
           .overlay-container
             .overlay-fade#short-list-fade
@@ -20,6 +20,6 @@
               - @presenter.rest_of_guests.each do |invite|
                 = render partial: 'guest', object: invite, as: :invite
           #otherGuests.panel-heading.np role="tab" 
-            h4.panel-title
+            .guest-nav
               a aria-controls="collapseOne" aria-expanded="true" data-parent="#accordion" data-toggle="collapse" href="#collapseOne" 
                 i.fa.fa-caret-down
