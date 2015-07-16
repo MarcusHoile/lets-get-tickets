@@ -219,6 +219,7 @@
 	color: #000;
 	text-align: center;
 }
+
 .ticket-status {
 	.event-alert {
 		padding: 4px 8px;
@@ -426,4 +427,70 @@
 .modal-header {
 	background: $green;
 	color: #fff;
+}
+
+.demo-header {
+	padding: 10px 0;
+	text-align: center;
+	background: darken($grey, 5%);
+	border-bottom: solid 2px darken($grey, 15%);
+	font-family: 'Lato', sans-serif;
+	.demo-switch-container {
+		position: relative;
+
+		.btn-group {
+			border-radius: 10px;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.btn {
+			background-color: #000;
+			padding: 0;
+			height: 32px;
+
+			// border: solid 1px lighten(#000, 5%);
+			a {
+				color: #666;
+				padding: 6px 25px;
+			}
+			&:first-of-type {
+				border-right: solid 1px #333;
+			}
+			&:last-of-type {
+				border-left: solid 1px #333;
+			}
+		}
+		.open.active {
+			top: 4px;
+			border-top-left-radius: 10px !important;
+			border-bottom: solid 6px darken($grey, 55%);
+		}
+		.open.active a {
+			color: $green;
+		}
+		.closed.active a {
+			color: $red;
+		}
+		.closed.inactive {
+			-webkit-transform: rotate(-2deg);
+			top: 2px;
+			left: -7px;
+			border-bottom: solid 6px darken($grey, 55%);
+			border-right: solid 4px darken($grey, 55%);
+		}
+		.closed.active {
+			top: 4px;
+			border-top-right-radius: 10px !important;
+			border-bottom: solid 6px darken($grey, 55%);
+		}
+		.open.inactive {
+			-webkit-transform: rotate(2deg);
+			top: 2px;
+			left: 7px;
+			border-bottom: solid 6px darken($grey, 55%);
+			border-left: solid 4px darken($grey, 55%);
+		}
+
+	}
 }

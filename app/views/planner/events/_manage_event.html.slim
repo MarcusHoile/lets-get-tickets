@@ -3,10 +3,10 @@
     .row.controls
       .col-xs-4
         .detail-label
-          .fb-send data-href="http://www.planndit.com#{event_path(current_event)}"
+          .fb-send data-href="http://www.planndit.com#{event_path(@event.event)}"
           p Invite friends
       .col-xs-4.highlight
-        = link_to edit_event_path(current_event)
+        = link_to edit_event_path(@event.event)
           .detail-label
             i.fa.fa-edit
             p Edit Event

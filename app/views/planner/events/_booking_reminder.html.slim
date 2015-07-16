@@ -6,7 +6,7 @@
       .col-xs-8
         p.inline Have you bought the tickets?
       .col-xs-4.ticket-form.inline
-        = form_for @event, remote: true do |f|
+        = form_for @event.event, remote: true do |f|
           = f.check_box :booked, checked: true, hidden: true
           .btn.btn-success.ticket-confirm.inline Yes
           .btn.btn-danger.inline.dismiss-alert No

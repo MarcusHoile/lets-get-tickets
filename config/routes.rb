@@ -14,10 +14,18 @@ GetTickets::Application.routes.draw do
     resources :invites, shallow: true
   end
 
+  resource :event, only: [] do
+    get :demo_closed
+    get :demo_open
+  end
+
   resources :events do
     resources :invites, shallow: true
     resources :tickets, shallow: true
   end
+
+
+
 
   resources :media, only: [:create, :destroy]
 

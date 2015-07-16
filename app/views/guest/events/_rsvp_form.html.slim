@@ -1,6 +1,6 @@
 .row.np
   .col-xs-12.rsvp
-    = form_for @presenter.invite, remote: true do |f|
+    = form_for @event.invite, remote: true do |f|
       = f.hidden_field :rsvp, value: "Undecided"
       = f.hidden_field :event_id, value: current_event.id
       .row
@@ -20,4 +20,4 @@
               i.icon.fa.fa-question
             p Maybe
 javascript:
-  $(".#{@presenter.active_btns}").addClass('active')
+  $(".#{@event.active_btns}").addClass('active')

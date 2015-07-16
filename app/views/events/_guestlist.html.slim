@@ -2,13 +2,13 @@
   .col-xs-12.content-module.guests
     p.guest-title The Guest List
     .current-guest.hide
-      = render partial: 'guest', object: @presenter.invite, as: :invite
+      = render partial: 'guest', object: @event.invite, as: :invite
     = render 'guest_form' if guest_user
-    - if @presenter.guest_list.count <= 5
-      - @presenter.guest_list.each do |invite|
+    - if @event.guest_list.count <= 5
+      - @event.guest_list.each do |invite|
         = render partial: 'guest', object: invite, as: :invite
     - else
-      - @presenter.guest_shortlist.each do |invite|
+      - @event.guest_shortlist.each do |invite|
         = render partial: 'guest', object: invite, as: :invite
             
       #accordion.panel-group.np aria-multiselectable="true" role="tablist" 
@@ -17,7 +17,7 @@
             .overlay-fade#short-list-fade
           #collapseOne.panel-collapse.collapse aria-labelledby="otherGuests" role="tabpanel"
             .panel-body.np
-              - @presenter.rest_of_guests.each do |invite|
+              - @event.rest_of_guests.each do |invite|
                 = render partial: 'guest', object: invite, as: :invite
           #otherGuests.panel-heading.np role="tab" 
             .guest-nav

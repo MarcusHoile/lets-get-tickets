@@ -1,9 +1,9 @@
 class EventsController < ApplicationController
-  before_filter :current_event, only: [:show, :edit, :update, :destroy]
   before_filter :event_host, only: [:show, :edit, :update, :destroy]
   before_filter :check_event_status, only: [:show]
   # before_action :authenticate_user, only: [:new]
   before_filter :set_view_path, only: [:show]
+  before_filter :set_demo_end_date, only: [:demo_open]
   helper_method :event_host, :current_event
 
   def index
@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @presenter = ::EventPresenter.new(current_event, current_user)
+    @event = ::Presenter::Event.new(current_event, current_user, view_context)
   end
 
   def new
@@ -60,7 +60,29 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def demo_closed
+    @event = ::Presenter::Event.new(demo_event_closed, demo_user, view_context)
+    set_demo_views
+  end
+
+  def demo_open
+    @event = ::Presenter::Event.new(demo_event_open, demo_user, view_context)
+    set_demo_views
+  end
+
   private
+
+  def demo_event_closed
+    ::Query::Event::Demo.closed
+  end
+
+  def demo_event_open
+    ::Query::Event::Demo.open
+  end
+
+  def demo_user
+    User.where(demo: true).first
+  end
 
   def user_type
     (current_user == event_host) ? "planner" : "guest"
@@ -70,12 +92,17 @@ class EventsController < ApplicationController
     prepend_view_path("#{Rails.root}/app/views/#{user_type}")
   end
 
-  def current_event
-    @event ||= Event.find(params[:id])
+  def set_demo_views
+    prepend_view_path("#{Rails.root}/app/views/planner")
+    render template: 'planner/events/show'
   end
 
-  def event_host
-    current_event.host
+  def set_demo_end_date
+    demo_event_open.update(deadline: Time.now + 3.days)
+  end
+
+  def current_event
+    @current_event ||= Event.find(params[:id])
   end
 
   def check_event_status

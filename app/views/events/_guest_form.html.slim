@@ -1,11 +1,11 @@
 #guest-register.guest.guest-register
-  .guest-details id="invite-#{@presenter.invite.id}"
+  .guest-details id="invite-#{@event.invite.id}"
     .avatar.inline.iconic.iconic-person-genderless.iconic-sm title="person" aria-hidden="true"
   .form.inline
     div role="form"
       = form_for current_user, remote: true do |f|
         .field
           = f.text_field :name, placeholder: "Name", id: "guest-name-input"
-          = f.hidden_field :event_id, value: current_event.id
-          = f.hidden_field :invite_id, value: @presenter.invite.id
+          = f.hidden_field :event_id, value: @event.id
+          = f.hidden_field :invite_id, value: @event.invite.id
           = f.hidden_field :rsvp, value: "text", class: "rsvp-capture"

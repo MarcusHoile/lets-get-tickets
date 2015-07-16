@@ -8,7 +8,7 @@ class MediaController < ApplicationController
     merged_params[:source_id] = parse_spotify_id(params[:medium]) if params[:medium][:media_type] == 'spotify'
     if @medium.validate(merged_params)
       @medium.save
-      redirect_to event_path(@event)
+      redirect_to :back
     else
       render '/events/show'
     end

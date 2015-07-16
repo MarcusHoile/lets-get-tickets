@@ -1,7 +1,6 @@
 .row.np
   .col-xs-12.content-module.countdown-wrapper
-    - name = current_event.host?(current_user) ? "You" : event_host.try(:first_name) 
-    p #{name} will be buying tickets in:
+    p #{@event.host_name} will be buying tickets in:
     .countdown
       .col
         span.ce-days

@@ -1,6 +1,6 @@
 .hidden.image-form.form
   = simple_form_for media, url: media_path do |f|
     = f.input :url, label: false, placeholder: 'Enter image url'
-    = f.input :event_id, as: :hidden, input_html: {value: current_event.id}
+    = f.input :event_id, as: :hidden, input_html: {value: @event.event.id}
     = f.input :media_type, as: :hidden, input_html: {value: "image"}
     = f.button :submit, 'Add Image', class: 'btn-green'

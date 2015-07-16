@@ -1,29 +1,29 @@
 - content_for :page_title do
   title
-    | #{current_event.what.titleize} are playing!
+    | #{@event.what.titleize} are playing!
 - content_for :meta_description do
-  meta content="I'm going to buy tickets for #{current_event.what.titleize}. Let me know if you want to go." name="description"
+  meta content="I'm going to buy tickets for #{@event.what.titleize}. Let me know if you want to go." name="description"
 .notifications
   .row
     .col-xs-12      
       = render "notifications"
-      = render "event_confirmation"   if current_user.confirmed_guest?(current_event)
+      = render "event_confirmation"   if current_user.confirmed_guest?(@event)
 .main
   .row
     .col-sm-12
       = render "event_title"
       = render "rsvp_form"
 
-      = render "countdown"            if current_event.open?
+      = render "countdown"            if @event.open?
       = render "when"
       = render "where"
-      = render "event_description"    if current_event.description.present?
+      = render "event_description"    if @event.description.present?
       
       = render "cost"
       = render "guest_status"
-      = render "youtube"           if @presenter.video
-      = render "image_tile"        if @presenter.image
-      = render "spotify"           if @presenter.music
+      = render "youtube"           if @event.video
+      = render "image_tile"        if @event.image
+      = render "spotify"           if @event.music
 
       / modals only displayed when user triggers
       = render "guest_sign_in"

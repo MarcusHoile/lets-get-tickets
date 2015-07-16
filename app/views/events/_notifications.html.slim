@@ -1,4 +1,4 @@
-- @presenter.notifications.each do |notification|
+- @event.notifications.each do |notification|
   .row.np
     .col-xs-12.content-module.alert.alert-info.alert-dismissable.fade.in
       = simple_form_for(notification, remote: true, authenticity_token: true, url: notification_url(notification)) do |f|

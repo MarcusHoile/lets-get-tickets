@@ -11,8 +11,8 @@
         span.rsvp-badge class="#{invite.rsvp}"
         = invite.guest.name
     .col-xs-3
-      - if current_event.booked? && current_event.host?(current_user) && invite.going?
-        - unless invite.guest == current_event.host
+      - if @event.booked? && @event.host?(current_user) && invite.going?
+        - unless invite.guest == @event.host
           .onoffswitch
             = form_for invite, remote: true do |f|
               = f.hidden_field :event_id, value: params[:id]

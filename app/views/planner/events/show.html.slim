@@ -1,37 +1,40 @@
 - content_for :page_title do
   title
-    | #{current_event.what.titleize} are playing!
+    | #{@event.what.titleize} are playing!
 - content_for :meta_description do
-  meta content="I'm going to buy tickets for #{current_event.what.titleize}. Let me know if you want to go." name="description"
+  meta content="I'm going to buy tickets for #{@event.what.titleize}. Let me know if you want to go." name="description"
 
-.notifications.tile
-  .row
-    .col-xs-12
-      = render "notifications"
-      = render "owner_sign_in"     if current_event.unregistered?
-      = render "booking_reminder"  if current_event.booking_reminder?
-.main
-  .row
-    .col-xs-12
-      = render "event_title"
-  .row
-    .col-sm-6.pleft
-      = render "cost"
-      = render "when"
-      = render "where"
-      = render "spotify"           if @presenter.music
-      = render "image_tile"        if @presenter.image
-      = render "youtube"           if @presenter.video
-      = render "image_tile"        if @presenter.image
-      = render "spotify"           if @presenter.music
-    .col-sm-6.pright
-      = render "manage_event"
-      = render "add_media"
-      = render "countdown"            if current_event.open?
-      = render "guest_status"
-      = render "youtube"           if @presenter.video
+- if current_path.include?('demo')
+  = render 'demo_header'
 
-      = render "event_description"    if current_event.description.present?
-      = render "guestlist"
+.main-container
+  .notifications.tile
+    .row
+      .col-xs-12
+        = render "notifications"
+        = render "owner_sign_in"     if @event.unregistered?
+        = render "booking_reminder"  if @event.booking_reminder?
+  .main
+    .row
+      .col-xs-12
+        = render "event_title"
+    .row
+      .col-sm-6.pleft
+        = render "cost"
+        = render "when"
+        = render "where"
+        = render "spotify"           if @event.music
+        = render "image_tile"        if @event.image
+        = render "youtube"           if @event.video
+      .col-sm-6.pright
+        - if @event.open?
+          = render "manage_event"
+          = render "add_media"
+          = render "countdown"
+        = render "guest_status"
+        = render "youtube"           if @event.video
+
+        = render "event_description"    if @event.description.present?
+        = render "guestlist"
 
 
