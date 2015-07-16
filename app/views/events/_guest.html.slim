@@ -7,7 +7,7 @@
       - else
         .guest-details.icon
           .avatar.inline.iconic.iconic-person-genderless.iconic-sm title="person" aria-hidden="true"
-      p.inline id="invite-#{invite.try(:id)}"
+      p.inline id="invite-#{invite.id}"
         span.rsvp-badge class="#{invite.rsvp}"
         = invite.guest.name
     .col-xs-3
