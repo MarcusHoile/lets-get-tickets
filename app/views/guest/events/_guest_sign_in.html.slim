@@ -9,7 +9,7 @@
       .modal-body
         .rsvp-login
           p.rsvp-notice
-            = "#{event_host.first_name} will need to know who you are. Log in via facebook or enter your name."
+            = "#{current_event.host.first_name} will need to know who you are. Log in via facebook or enter your name."
           .row
             .col-xs-6 = link_to "Login with Facebook", "/auth/facebook?origin=/events/#{params[:id]}", id: "sign_in", class: "btn btn-primary"
             .col-xs-6

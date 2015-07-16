@@ -1,10 +1,9 @@
 class EventsController < ApplicationController
-  before_filter :event_host, only: [:show, :edit, :update, :destroy]
   before_filter :check_event_status, only: [:show]
   # before_action :authenticate_user, only: [:new]
   before_filter :set_view_path, only: [:show]
   before_filter :set_demo_end_date, only: [:demo_open]
-  helper_method :event_host, :current_event
+  helper_method :current_event
 
   def index
     @events = ::Query::User::Events.all(current_user)
@@ -85,7 +84,7 @@ class EventsController < ApplicationController
   end
 
   def user_type
-    (current_user == event_host) ? "planner" : "guest"
+    (current_user == current_event.host) ? "planner" : "guest"
   end
 
   def set_view_path
