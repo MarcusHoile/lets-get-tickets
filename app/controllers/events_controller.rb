@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = ::Presenter::Event.new(current_event, current_user, view_context)
+    # @event = ::Presenter::Event.new(current_event, current_user, view_context)
   end
 
   def new
