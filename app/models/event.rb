@@ -15,7 +15,6 @@ class Event < ActiveRecord::Base
 	belongs_to :host, :class_name => "User", foreign_key: "user_id"
 	has_many :invites, dependent: :destroy
   has_many :guests, through: :invites, source: :guest
-  has_many :tickets
   has_many :media
 
   serialize :latlng, Hash
