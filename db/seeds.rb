@@ -8,16 +8,16 @@ guests = names.map do |name|
   )   
 end
 
-# create events and host
+# create plans and host
 host = User.find_or_create_by(name: 'Marcus Gold', email: 'marcus.gold@email.com', image: 'http://graph.facebook.com/580644047/picture')
-open_event =   Event.create(what: "The Black Keys",
+open_plan =   Plan.create(what: "The Black Keys",
                             when:  3.weeks.from_now,
                             where: "Entertainment Centre",
                             user_id: host.id,
                             deadline: 2.weeks.from_now,
                             price: 90,
                             demo: true)
-# closed_event = Event.create(what: "Sydney Swans vs West Coast Eagles",
+# closed_plan = plan.create(what: "Sydney Swans vs West Coast Eagles",
 #                             when:  3.weeks.from_now,
 #                             where: "Sydney Cricket Ground",
 #                             user_id: host.id,
@@ -27,17 +27,17 @@ open_event =   Event.create(what: "The Black Keys",
 #                             demo: true)
 
 rsvps = ['going', 'not-going', 'maybe', 'undecided']
-# create invites for events
-open_event.invites.create(user_id: host.id, rsvp: 'going')
-# closed_event.invites.create(user_id: host.id, rsvp: 'going')
+# create invites for plans
+open_plan.invites.create(user_id: host.id, rsvp: 'going')
+# closed_plan.invites.create(user_id: host.id, rsvp: 'going')
 
-open_event.media.create!(url: 'http://a.dilcdn.com/bl/wp-content/uploads/sites/8/2012/04/TheBlackKeys.jpg', media_type: 'image')
-open_event.media.create!(source_id: '0MhwaBVJghoZsEzHbr0qjl' , media_type: 'spotify')
-open_event.media.create!(url: 'https://www.youtube.com/watch?v=a_426RiwST8', media_type: 'youtube')
+open_plan.media.create!(url: 'http://a.dilcdn.com/bl/wp-content/uploads/sites/8/2012/04/TheBlackKeys.jpg', media_type: 'image')
+open_plan.media.create!(source_id: '0MhwaBVJghoZsEzHbr0qjl' , media_type: 'spotify')
+open_plan.media.create!(url: 'https://www.youtube.com/watch?v=a_426RiwST8', media_type: 'youtube')
 
 guests.map do |guest|
-  open_event.invites.create(user_id: guest.id, rsvp: rsvps.sample)
-  # closed_event.invites.create(user_id: guest.id, rsvp: rsvps.sample)
+  open_plan.invites.create(user_id: guest.id, rsvp: rsvps.sample)
+  # closed_plan.invites.create(user_id: guest.id, rsvp: rsvps.sample)
 end
 
-# add media for events, video music images
+# add media for plans, video music images
