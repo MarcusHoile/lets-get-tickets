@@ -1,0 +1,10 @@
+- @plan.notifications.each do |notification|
+  .row.np
+    .col-xs-12.content-module.alert.alert-info.alert-dismissable.fade.in
+      = simple_form_for(notification, remote: true, authenticity_token: true, url: notification_url(notification)) do |f|
+        = f.input :active, as: :hidden, input_html: { value: false }
+        = button_tag '&times;'.html_safe, type: 'submit', class: 'close'
+        / button.close aria-label="Close" data-dismiss="alert" type="submit" 
+        /   span aria-hidden="true"  &times;
+        p
+          = notification.message

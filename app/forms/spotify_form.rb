@@ -4,7 +4,7 @@ class SpotifyForm < ::Reform::Form
 
   property :url
   property :source_id
-  property :event_id
+  property :plan_id
   property :media_type
 
 end

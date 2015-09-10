@@ -1,0 +1,16 @@
+.row.np
+  .col-xs-12.content-module
+    .row.controls
+      .col-xs-4
+        .detail-label
+          .fb-send data-href="http://www.planndit.com#{plan_path(@plan.plan)}"
+          p Invite friends
+      .col-xs-4.highlight
+        = link_to edit_plan_path(@plan.plan)
+          .detail-label
+            i.fa.fa-edit
+            p Edit Plan
+      .col-xs-4.highlight
+        .detail-label
+          i.fa.fa-life-ring
+          p Help

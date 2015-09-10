@@ -1,0 +1,23 @@
+.row.np
+  .col-xs-12.rsvp
+    = form_for @plan.invite, remote: true do |f|
+      = f.hidden_field :rsvp, value: "Undecided"
+      = f.hidden_field :plan_id, value: current_plan.id
+      .row
+        .col-xs-4
+          .btn.rsvp-btn.going value="going"
+            div
+              i.icon.fa.fa-check
+            p Buy me a ticket!
+        .col-xs-4
+          .btn.rsvp-btn.not-going value="not-going"
+            div
+              i.icon.fa.fa-times
+            p No thanks
+        .col-xs-4
+          .btn.rsvp-btn.maybe value="maybe"
+            div
+              i.icon.fa.fa-question
+            p Maybe
+javascript:
+  $(".#{@plan.active_btns}").addClass('active')

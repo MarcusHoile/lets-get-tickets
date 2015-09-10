@@ -1,0 +1,18 @@
+#paymentModal.modal.fade aria-hidden="true" aria-labelledby="paymentLabel" role="dialog" tabindex="-1" 
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close data-dismiss="modal" type="button" 
+          span aria-hidden="true"  ×
+          span.sr-only Close
+        h4.modal-title Awesome! You are on the guest list!
+
+      .modal-body
+        .payment-form
+          p #{current_plan.host.first_name} will try to secure you a ticket. Let #{current_plan.host.first_name} know your preferred method of payment?
+          .payment
+            = simple_form_for @plan.invite, remote: true do |f|
+              = f.input :payment_method, as: :hidden, value: "cash"
+              = f.input :plan_id, as: :hidden, value: @plan.id
+              .btn.btn-payment.cash value="cash"  Cash
+              .btn.btn-payment.bank value="bank"  Bank Transfer

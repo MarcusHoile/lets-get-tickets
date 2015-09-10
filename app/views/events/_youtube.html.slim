@@ -1,8 +1,0 @@
-.row.with-spacer
-  .col-xs-12.content-module.np.media-module
-    - if @event.host?(current_user)
-      .delete-media
-        = link_to medium_path(@event.video, event_id: @event.id), method: :delete do
-          span class="iconic iconic-trash" title="Remove video" aria-hidden="true"
-    .video-container
-      = @event.video_embed

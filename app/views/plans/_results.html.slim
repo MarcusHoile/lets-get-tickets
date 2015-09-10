@@ -1,0 +1,19 @@
+table.table.table-hover.search-results
+  thead#table-head
+    tr
+      th Plan
+      th Venue
+      th Date
+  tbody
+    - @results.each do |plan|
+      tr.search-result
+        td.plan-list-name
+          = plan["name"]
+        td.plan-list-venue
+          = plan["location"]["name"]
+        td.plan-list-date
+          = plan["datetime_start"]
+        td.plan-lat.hidden
+          = plan["point"]["lat"]
+        td.plan-lng.hidden
+          = plan["point"]["lng"]

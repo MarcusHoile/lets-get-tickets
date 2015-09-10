@@ -9,7 +9,7 @@ nav.navbar.navbar-default role="navigation"
 
     #navbar-toggle.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        li= link_to "My Events", events_path if current_user.events.present?
+        li= link_to "My Plans", plans_path if current_user.plans.present?
         - if authenticated_user
           li= link_to "Sign out", signout_path, id: "sign_out", :class => 'navbar-link'
         - else

@@ -15,7 +15,7 @@ class InvitesController < ApplicationController
   def update
     respond_to do |format|
       if @invite.update(invite_params)
-        format.html { redirect_to @invite.event }
+        format.html { redirect_to @invite.plan }
         if invite_params.include?("rsvp")
           format.js
         end
@@ -43,6 +43,6 @@ class InvitesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def invite_params
-    params.require(:invite).permit(:rsvp, :event_id, :payment, :reason, :payment_method)
+    params.require(:invite).permit(:rsvp, :plan_id, :payment, :reason, :payment_method)
   end
 end
