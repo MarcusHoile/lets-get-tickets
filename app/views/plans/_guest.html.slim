@@ -15,7 +15,7 @@
         - unless invite.guest == @plan.host
           .onoffswitch
             = form_for invite, remote: true do |f|
-              = f.hidden_field :event_id, value: params[:id]
+              = f.hidden_field :plan_id, value: params[:id]
               = f.check_box :payment, class: "onoffswitch-checkbox"
               = f.submit
               label.onoffswitch-label for="myonoffswitch" 

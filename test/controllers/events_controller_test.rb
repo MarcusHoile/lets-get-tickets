@@ -2,13 +2,13 @@ require 'test_helper'
 
 class PlansControllerTest < ActionController::TestCase
   setup do
-    @plan = events(:one)
+    @plan = plans(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:events)
+    assert_not_nil assigns(:plans)
   end
 
   test "should get new" do
@@ -21,7 +21,7 @@ class PlansControllerTest < ActionController::TestCase
       post :create, plan: { description: @plan.description, user_id: @plan.user_id, what: @plan.what, when: @plan.when, where: @plan.where }
     end
 
-    assert_redirected_to event_path(assigns(:plan))
+    assert_redirected_to plan_path(assigns(:plan))
   end
 
   test "should show plan" do
@@ -36,7 +36,7 @@ class PlansControllerTest < ActionController::TestCase
 
   test "should update plan" do
     patch :update, id: @plan, plan: { description: @plan.description, user_id: @plan.user_id, what: @plan.what, when: @plan.when, where: @plan.where }
-    assert_redirected_to event_path(assigns(:plan))
+    assert_redirected_to plan_path(assigns(:plan))
   end
 
   test "should destroy plan" do
@@ -44,6 +44,6 @@ class PlansControllerTest < ActionController::TestCase
       delete :destroy, id: @plan
     end
 
-    assert_redirected_to events_path
+    assert_redirected_to plans_path
   end
 end

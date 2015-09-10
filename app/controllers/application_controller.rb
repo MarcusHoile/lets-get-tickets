@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
   # to hand off from guest_user to authenticated_user.
   def migrate_guest_user_data
     guest_user.invites.update_all(user_id: authenticated_user.id)
-    guest_user.events.update_all(user_id: authenticated_user.id)
+    guest_user.plans.update_all(user_id: authenticated_user.id)
   end
 
   def create_guest_user

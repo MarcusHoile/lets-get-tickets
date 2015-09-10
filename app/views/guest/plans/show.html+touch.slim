@@ -7,17 +7,17 @@
   .row
     .col-xs-12      
       = render "notifications"
-      = render "event_confirmation"   if current_user.confirmed_guest?(@plan)
+      = render "plan_confirmation"   if current_user.confirmed_guest?(@plan)
 .main
   .row
     .col-sm-12
-      = render "event_title"
+      = render "plan_title"
       = render "rsvp_form"
 
       = render "countdown"            if @plan.open?
       = render "when"
       = render "where"
-      = render "event_description"    if @plan.description.present?
+      = render "plan_description"    if @plan.description.present?
       
       = render "cost"
       = render "guest_status"

@@ -76,7 +76,7 @@ paymentMethodForm = ->
 
 paymentTracking = ->
   $('.edit_invite').submitOnCheck()
-  $('.edit_event').submitOnCheck()
+  $('.edit_plan').submitOnCheck()
   $('.onoffswitch-label').on('click', ()->
     checkBox = $(this).prev('input')
     val = checkBox.is(':checked')
@@ -122,7 +122,7 @@ addMedia = ->
   )
 setTimezone = ->
   tz = jstz.determine()
-  $('#event_timezone').attr('value', tz.name())
+  $('#plan_timezone').attr('value', tz.name())
 
 DateFormatting = ->
   # Loop over and write in the date formatted using the local 

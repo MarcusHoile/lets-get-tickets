@@ -1,5 +1,5 @@
 - content_for :meta_description do
-  meta content="Manage all your events"
+  meta content="Manage all your plans"
 h1.page-title My Plans
 table.table.table-hover.plan-list
   thead#table-head
@@ -9,8 +9,8 @@ table.table.table-hover.plan-list
       th Date
       th Status
   tbody
-    - @events.each do |plan|
-      tr.plan-listing data-url="#{event_path(plan)}" 
+    - @plans.each do |plan|
+      tr.plan-listing data-url="#{plan_path(plan)}" 
         td.plan-list-title
           = plan.what.titleize
         td.plan-list-cost

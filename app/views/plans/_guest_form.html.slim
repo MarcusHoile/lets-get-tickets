@@ -6,6 +6,6 @@
       = form_for current_user, remote: true do |f|
         .field
           = f.text_field :name, placeholder: "Name", id: "guest-name-input"
-          = f.hidden_field :event_id, value: @plan.id
+          = f.hidden_field :plan_id, value: @plan.id
           = f.hidden_field :invite_id, value: @plan.invite.id
           = f.hidden_field :rsvp, value: "text", class: "rsvp-capture"

@@ -12,7 +12,7 @@ class UserMailer < ActionMailer::Base
   	
   	@guest = guest
   	@plan = plan
-    @url = event_url(@plan)
+    @url = plan_url(@plan)
     # add invite object id as identifier
   	mail(to: @guest.email, subject: "Let's get tickets for #{plan.what}")
   end

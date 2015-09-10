@@ -17,7 +17,7 @@
   .main
     .row
       .col-xs-12
-        = render "event_title"
+        = render "plan_title"
     .row
       .col-sm-6.pleft
         = render "cost"
@@ -28,13 +28,13 @@
         = render "youtube"           if @plan.video
       .col-sm-6.pright
         - if @plan.open?
-          = render "manage_event"
+          = render "manage_plan"
           = render "add_media"
           = render "countdown"
         = render "guest_status"
         = render "youtube"           if @plan.video
 
-        = render "event_description"    if @plan.description.present?
+        = render "plan_description"    if @plan.description.present?
         = render "guestlist"
 
 

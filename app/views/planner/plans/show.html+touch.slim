@@ -13,11 +13,11 @@
 .main
   .row
     .col-xs-12
-      = render "event_title"
-      = render "manage_event"
+      = render "plan_title"
+      = render "manage_plan"
 
       = render "cost"
-      = render "event_description" if @plan.description.present?
+      = render "plan_description" if @plan.description.present?
       = render "when"
       = render "where"
       = render "add_media"

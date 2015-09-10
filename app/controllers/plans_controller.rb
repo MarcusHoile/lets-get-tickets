@@ -1,16 +1,16 @@
 class PlansController < ApplicationController
-  before_filter :check_event_status, only: [:show]
+  before_filter :check_plan_status, only: [:show]
   # before_action :authenticate_user, only: [:new]
   before_filter :set_view_path, only: [:show]
   before_filter :set_demo_end_date, only: [:demo_open]
-  helper_method :current_event
+  helper_method :current_plan
 
   def index
-    @events = ::Query::User::Plans.all(current_user)
+    @plans = ::Query::User::Plans.all(current_user)
   end
 
   def show
-    @plan = ::Presenter::Plan.new(current_event, current_user, view_context)
+    @plan = ::Presenter::Plan.new(current_plan, current_user, view_context)
   end
 
   def new
@@ -18,7 +18,7 @@ class PlansController < ApplicationController
   end
 
   def edit
-    @plan = ::PlanForm.new(current_event)
+    @plan = ::PlanForm.new(current_plan)
   end
 
   def create
@@ -26,7 +26,7 @@ class PlansController < ApplicationController
     if @plan.validate(parsed_params.merge(user_id: current_user.id))
       @plan.save
       @plan.model.invites.create(user_id: current_user.id, rsvp: 'going')
-      redirect_to event_path(@plan)
+      redirect_to plan_path(@plan)
     else
       render action: 'new'
     end
@@ -35,10 +35,10 @@ class PlansController < ApplicationController
 
   def update
     respond_to do |format|
-      if current_event.update(event_params)
+      if current_plan.update(plan_params)
         # TODO will need an update email notification here
-        if event_params.include?("booked")
-          current_user.notifications.create(plan: current_event, name: 'notify_guests')
+        if plan_params.include?("booked")
+          current_user.notifications.create(plan: current_plan, name: 'notify_guests')
           format.js { head 200 }
         end
         format.html { redirect_to @plan}
@@ -51,8 +51,8 @@ class PlansController < ApplicationController
 
   def destroy
     # there is no links to destroy atm
-    current_event.destroy
-    redirect_to events_url
+    current_plan.destroy
+    redirect_to plans_url
   end
 
   def campaign_form
@@ -60,22 +60,22 @@ class PlansController < ApplicationController
   end
 
   def demo_closed
-    @plan = ::Presenter::Plan.new(demo_event_closed, demo_user, view_context)
+    @plan = ::Presenter::Plan.new(demo_plan_closed, demo_user, view_context)
     set_demo_views
   end
 
   def demo_open
-    @plan = ::Presenter::Plan.new(demo_event_open, demo_user, view_context)
+    @plan = ::Presenter::Plan.new(demo_plan_open, demo_user, view_context)
     set_demo_views
   end
 
   private
 
-  def demo_event_closed
+  def demo_plan_closed
     ::Query::Plan::Demo.closed
   end
 
-  def demo_event_open
+  def demo_plan_open
     ::Query::Plan::Demo.open
   end
 
@@ -84,7 +84,7 @@ class PlansController < ApplicationController
   end
 
   def user_type
-    (current_user == current_event.host) ? "planner" : "guest"
+    (current_user == current_plan.host) ? "planner" : "guest"
   end
 
   def set_view_path
@@ -93,32 +93,32 @@ class PlansController < ApplicationController
 
   def set_demo_views
     prepend_view_path("#{Rails.root}/app/views/planner")
-    render template: 'planner/events/show'
+    render template: 'planner/plans/show'
   end
 
   def set_demo_end_date
-    demo_event_open.update(deadline: Time.now + 3.days)
+    demo_plan_open.update(deadline: Time.now + 3.days)
   end
 
-  def current_event
-    @current_event ||= Plan.find(params[:id])
+  def current_plan
+    @current_plan ||= Plan.find(params[:id])
   end
 
-  def check_event_status
-    current_event.check_status
+  def check_plan_status
+    current_plan.check_status
   end
 
   def parsed_params
-    pp = event_params
+    pp = plan_params
     format = "%d %m %Y %H:%M %Z"
-    when_date = event_params[:when] + ' ' + event_params[:timezone]
-    deadline_date = event_params[:deadline] + ' ' + event_params[:timezone]
+    when_date = plan_params[:when] + ' ' + plan_params[:timezone]
+    deadline_date = plan_params[:deadline] + ' ' + plan_params[:timezone]
     pp[:when] = DateTime.strptime(when_date, format).utc
     pp[:deadline] = DateTime.strptime(deadline_date, format).utc
     pp
   end
 
-  def event_params
+  def plan_params
     params.require(:plan).permit(:when, :what, :description, :deadline, :price, :where, :lat, :lng, :booked, :timezone)
   end
 end

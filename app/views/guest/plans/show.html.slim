@@ -7,11 +7,11 @@
   .row
     .col-xs-12      
       = render "notifications"
-      = render "event_confirmation"   if current_user.confirmed_guest?(@plan)
+      = render "plan_confirmation"   if current_user.confirmed_guest?(@plan)
 .main
   .row
     .col-sm-12
-      = render "event_title"
+      = render "plan_title"
       = render "rsvp_form"        if @plan.open?
   .row
     .col-sm-6.pleft
@@ -30,5 +30,5 @@
       = render "guest_status"
       = render "youtube"           if @plan.video
 
-      = render "event_description"    if @plan.description.present?
+      = render "plan_description"    if @plan.description.present?
       = render "guestlist"

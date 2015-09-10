@@ -2,7 +2,7 @@
   .col-xs-12.rsvp
     = form_for @plan.invite, remote: true do |f|
       = f.hidden_field :rsvp, value: "Undecided"
-      = f.hidden_field :event_id, value: current_event.id
+      = f.hidden_field :plan_id, value: current_plan.id
       .row
         .col-xs-4
           .btn.rsvp-btn.going value="going"

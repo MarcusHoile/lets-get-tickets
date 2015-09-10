@@ -4,7 +4,7 @@ class YoutubeForm < ::Reform::Form
   model :medium
 
   property :url
-  property :event_id
+  property :plan_id
   property :media_type
 
   validates :url, presence: {format: YT_LINK_FORMAT}

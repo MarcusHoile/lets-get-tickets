@@ -1,6 +1,6 @@
 # rsvp           string           default: "Undecided"
 # user_id        integer
-# event_id       integer
+# plan_id       integer
 # payment        boolean        default: false
 # reason         string
 # payment_method string

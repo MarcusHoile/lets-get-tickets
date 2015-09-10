@@ -17,7 +17,7 @@ module Presenter
     end
 
     def invite
-      @invite ||= Invite.find_or_create_by(user_id: user.id, event_id: plan.id)
+      @invite ||= Invite.find_or_create_by(user_id: user.id, plan_id: plan.id)
     end
 
     def active_btns

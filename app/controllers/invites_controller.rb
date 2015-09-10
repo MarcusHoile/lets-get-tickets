@@ -43,6 +43,6 @@ class InvitesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def invite_params
-    params.require(:invite).permit(:rsvp, :event_id, :payment, :reason, :payment_method)
+    params.require(:invite).permit(:rsvp, :plan_id, :payment, :reason, :payment_method)
   end
 end

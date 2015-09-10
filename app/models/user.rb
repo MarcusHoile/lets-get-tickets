@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   has_many :invites, dependent: :destroy
-  has_many :events, dependent: :destroy
+  has_many :plans, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
   def self.from_omniauth(auth)

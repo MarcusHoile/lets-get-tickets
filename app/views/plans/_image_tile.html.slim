@@ -2,6 +2,6 @@
   .col-xs-12.content-module.media-module.np
     - if @plan.host?(current_user)
       .delete-media
-        = link_to medium_path(@plan.image, event_id: @plan.id), method: :delete do
+        = link_to medium_path(@plan.image, plan_id: @plan.id), method: :delete do
           span class="iconic iconic-trash" title="Remove video" aria-hidden="true"
     .image-module.np style="background-image: url(#{@plan.image.try(:url)})"
