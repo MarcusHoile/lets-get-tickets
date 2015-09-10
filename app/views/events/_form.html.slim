@@ -1,12 +1,21 @@
 = simple_form_for @event do |f|
-  = f.input :what, placeholder: "What is the gig?"
-  = f.input :where, placeholder: "Where is the gig?"
-  = f.input :price, placeholder: "How much does each ticket cost?"
+  = f.input :what
+  = f.input :where
+  = f.label :price
+  span
+    |  (what will people need to pay you)
+  = f.input :price, label: false
   = f.input :timezone, as: :hidden
-  = f.input :when, as: :date_picker, placeholder: "When is the gig?"
-  = f.input :deadline, as: :date_picker, placeholder: "When will you buy the tickets?"
-  = f.input :description, placeholder: "Tell your guests a little about the gig. Why should they go?"
-  = f.button :submit, class: "btn-green"
+  = f.input :when, as: :date_picker
+  = f.label :deadline
+  span
+    |  (when do people need to rsvp by)
+  = f.input :deadline, as: :date_picker, label: false
+  = f.label :description
+  span
+    |  (optional)
+  = f.input :description, as: :text, placeholder: "Tell your guests a little about the gig. Why should they go?", label: false
+  = f.button :submit, 'Save My Plan', class: "btn btn-green"
 
 javascript:
   $(document).on('ready', function(){
