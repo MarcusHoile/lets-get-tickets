@@ -3,7 +3,7 @@ class MediaController < ApplicationController
   def create
     form_type = "#{params[:medium][:media_type].titleize}Form".constantize
     @medium = form_type.new(Medium.new)
-    @event = Event.find(medium_params[:event_id])
+    @plan = Plan.find(medium_params[:event_id])
     merged_params = medium_params
     merged_params[:source_id] = parse_spotify_id(params[:medium]) if params[:medium][:media_type] == 'spotify'
     if @medium.validate(merged_params)
@@ -16,7 +16,7 @@ class MediaController < ApplicationController
 
   def destroy
     Medium.find(params[:id]).destroy
-    redirect_to event_path(Event.find params[:event_id])
+    redirect_to event_path(Plan.find params[:event_id])
   end
 
   private

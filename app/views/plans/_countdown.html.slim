@@ -1,0 +1,32 @@
+.row.np
+  .col-xs-12.content-module.countdown-wrapper
+    p #{@plan.host_name} will be buying tickets in:
+    .countdown
+      .col
+        span.ce-days
+        span.ce-days-label
+      .time-spacer.inline
+        .colon
+         | :
+      .col
+        span.ce-hours
+        span.ce-hours-label
+      .time-spacer.inline
+        .colon
+         | :
+      .col
+        span.ce-minutes
+        span.ce-minutes-label
+      .time-spacer.inline
+        .colon
+         | :
+      .col
+        span.ce-seconds
+        span.ce-seconds-label
+
+javascript:
+  $(".countdown").countEverest({
+    day: "#{@plan.deadline.day}",
+    month: "#{@plan.deadline.month}",
+    year: "#{@plan.deadline.year}"
+  })

@@ -11,31 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714110638) do
+ActiveRecord::Schema.define(version: 20150910131726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "events", force: :cascade do |t|
-    t.string   "what",        limit: 255
-    t.text     "description"
-    t.string   "where",       limit: 255
-    t.integer  "price"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.decimal  "lat"
-    t.decimal  "lng"
-    t.string   "status",      limit: 255, default: "open"
-    t.string   "image",       limit: 255
-    t.boolean  "booked",                  default: false
-    t.datetime "deadline"
-    t.datetime "when"
-    t.integer  "limited"
-    t.boolean  "demo"
-  end
-
-  add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
   create_table "invites", force: :cascade do |t|
     t.string   "rsvp",           limit: 255, default: "undecided"
@@ -70,6 +49,27 @@ ActiveRecord::Schema.define(version: 20150714110638) do
     t.datetime "updated_at"
     t.string   "name",       limit: 255
   end
+
+  create_table "plans", force: :cascade do |t|
+    t.string   "what",        limit: 255
+    t.text     "description"
+    t.string   "where",       limit: 255
+    t.integer  "price"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "lat"
+    t.decimal  "lng"
+    t.string   "status",      limit: 255, default: "open"
+    t.string   "image",       limit: 255
+    t.boolean  "booked",                  default: false
+    t.datetime "deadline"
+    t.datetime "when"
+    t.integer  "limited"
+    t.boolean  "demo"
+  end
+
+  add_index "plans", ["user_id"], name: "index_plans_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",         limit: 255

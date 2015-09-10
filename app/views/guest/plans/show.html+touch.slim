@@ -1,0 +1,33 @@
+- content_for :page_title do
+  title
+    | #{@plan.what.titleize} are playing!
+- content_for :meta_description do
+  meta content="I'm going to buy tickets for #{@plan.what.titleize}. Let me know if you want to go." name="description"
+.notifications
+  .row
+    .col-xs-12      
+      = render "notifications"
+      = render "event_confirmation"   if current_user.confirmed_guest?(@plan)
+.main
+  .row
+    .col-sm-12
+      = render "event_title"
+      = render "rsvp_form"
+
+      = render "countdown"            if @plan.open?
+      = render "when"
+      = render "where"
+      = render "event_description"    if @plan.description.present?
+      
+      = render "cost"
+      = render "guest_status"
+      = render "youtube"           if @plan.video
+      = render "image_tile"        if @plan.image
+      = render "spotify"           if @plan.music
+
+      / modals only displayed when user triggers
+      = render "guest_sign_in"
+      = render "payment_form"
+      
+
+      = render "guestlist"

@@ -1,0 +1,11 @@
+#guest-register.guest.guest-register
+  .guest-details id="invite-#{@plan.invite.id}"
+    .avatar.inline.iconic.iconic-person-genderless.iconic-sm title="person" aria-hidden="true"
+  .form.inline
+    div role="form"
+      = form_for current_user, remote: true do |f|
+        .field
+          = f.text_field :name, placeholder: "Name", id: "guest-name-input"
+          = f.hidden_field :event_id, value: @plan.id
+          = f.hidden_field :invite_id, value: @plan.invite.id
+          = f.hidden_field :rsvp, value: "text", class: "rsvp-capture"

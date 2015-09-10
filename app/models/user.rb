@@ -29,20 +29,20 @@ class User < ActiveRecord::Base
     end
   end
 
-  def invite_for(event)
-    invites.where(event: event).first
+  def invite_for(plan)
+    invites.where(plan: plan).first
   end
 
-  def paid?(event)
-    invite_for(event).try(:payment)
+  def paid?(plan)
+    invite_for(plan).try(:payment)
   end
 
-  def not_paid?(event)
-    !paid?(event) && event.booked
+  def not_paid?(plan)
+    !paid?(plan) && plan.booked
   end
 
-  def confirmed_guest?(event)
-    paid?(event) && event.closed?
+  def confirmed_guest?(plan)
+    paid?(plan) && plan.closed?
   end
 
   def first_name

@@ -14,7 +14,7 @@ GetTickets::Application.routes.draw do
     resources :invites, shallow: true
   end
 
-  resource :event, only: [] do
+  resource :plan, only: [] do
     get :demo_closed
     get :demo_open
   end

@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  factory :event do
-    what 'My Event'
+  factory :plan do
+    what 'My Plan'
     description 'My Description'
     where 'Over Here'
     price 80
@@ -19,7 +19,7 @@ FactoryGirl.define do
     trait :closed do
       status 'closed'
     end
-    factory :confirmed_event, traits: [:closed, :booked]
+    factory :confirmed_plan, traits: [:closed, :booked]
   end
 
   factory :user do
@@ -33,7 +33,7 @@ FactoryGirl.define do
   end
 
   factory :invite do
-    event { create :event }
+    plan { create :plan }
     guest { create :user }
   end
 end

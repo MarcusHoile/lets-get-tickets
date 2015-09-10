@@ -1,0 +1,13 @@
+.row.np
+  .col-xs-12.content-module.details
+    .row
+      .col-xs-12
+        .detail.when
+          i.fa.fa-clock-o
+          p.inline= @plan.when.strftime"%a %d %b %I:%M %P"
+    .row
+      .col-xs-12
+        .detail.where
+          i.fa.fa-map-marker
+          p.inline
+            = @plan.where.titleize

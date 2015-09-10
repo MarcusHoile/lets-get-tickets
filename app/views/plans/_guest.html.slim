@@ -1,0 +1,23 @@
+.guest
+  .row
+    .col-xs-9
+      - if invite.guest.image
+        .guest-details
+          = image_tag invite.guest.image, class: 'avatar inline'
+      - else
+        .guest-details.icon
+          .avatar.inline.iconic.iconic-person-genderless.iconic-sm title="person" aria-hidden="true"
+      p.inline id="invite-#{invite.id}"
+        span.rsvp-badge class="#{invite.rsvp}"
+        = invite.guest.name
+    .col-xs-3
+      - if @plan.booked? && @plan.host?(current_user) && invite.going?
+        - unless invite.guest == @plan.host
+          .onoffswitch
+            = form_for invite, remote: true do |f|
+              = f.hidden_field :event_id, value: params[:id]
+              = f.check_box :payment, class: "onoffswitch-checkbox"
+              = f.submit
+              label.onoffswitch-label for="myonoffswitch" 
+                span.onoffswitch-inner
+                span.onoffswitch-switch

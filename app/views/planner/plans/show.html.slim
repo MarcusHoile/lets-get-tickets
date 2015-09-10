@@ -1,0 +1,40 @@
+- content_for :page_title do
+  title
+    | #{@plan.what.titleize} are playing!
+- content_for :meta_description do
+  meta content="I'm going to buy tickets for #{@plan.what.titleize}. Let me know if you want to go." name="description"
+
+- if current_path.include?('demo')
+  = render 'demo_header'
+
+.main-container
+  .notifications.tile
+    .row
+      .col-xs-12
+        = render "notifications"
+        = render "owner_sign_in"     if @plan.unregistered?
+        = render "booking_reminder"  if @plan.booking_reminder?
+  .main
+    .row
+      .col-xs-12
+        = render "event_title"
+    .row
+      .col-sm-6.pleft
+        = render "cost"
+        = render "when"
+        = render "where"
+        = render "spotify"           if @plan.music
+        = render "image_tile"        if @plan.image
+        = render "youtube"           if @plan.video
+      .col-sm-6.pright
+        - if @plan.open?
+          = render "manage_event"
+          = render "add_media"
+          = render "countdown"
+        = render "guest_status"
+        = render "youtube"           if @plan.video
+
+        = render "event_description"    if @plan.description.present?
+        = render "guestlist"
+
+

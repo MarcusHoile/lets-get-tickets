@@ -1,0 +1,21 @@
+- content_for :meta_description do
+  meta content="Manage all your events"
+h1.page-title My Plans
+table.table.table-hover.plan-list
+  thead#table-head
+    tr
+      th Plan
+      th Cost
+      th Date
+      th Status
+  tbody
+    - @events.each do |plan|
+      tr.plan-listing data-url="#{event_path(plan)}" 
+        td.plan-list-title
+          = plan.what.titleize
+        td.plan-list-cost
+          = number_to_currency(plan.price)
+        td.plan-list-date
+          = plan.deadline.strftime("%b %d %I:%M %P")
+        td class="status #{plan.status}" 
+          = plan.status

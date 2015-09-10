@@ -1,0 +1,13 @@
+.row.np
+  .col-xs-12.content-module.guest-status
+    .row.np
+      .col-xs-12.np
+        - @plan.status.each do |k, count|
+          .guest-status.np class="col-xs-#{@plan.columns}"
+            p.count= count
+            p.description= k.to_s.humanize
+    .row.np
+      .col-xs-12.np.avatars
+        hr
+        - @plan.invites.each do |invite|
+          = render partial: 'guest_inline', object: invite, as: :invite

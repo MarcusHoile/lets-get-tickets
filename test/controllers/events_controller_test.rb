@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class EventsControllerTest < ActionController::TestCase
+class PlansControllerTest < ActionController::TestCase
   setup do
-    @event = events(:one)
+    @plan = events(:one)
   end
 
   test "should get index" do
@@ -16,32 +16,32 @@ class EventsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create event" do
-    assert_difference('Event.count') do
-      post :create, event: { description: @event.description, user_id: @event.user_id, what: @event.what, when: @event.when, where: @event.where }
+  test "should create plan" do
+    assert_difference('Plan.count') do
+      post :create, plan: { description: @plan.description, user_id: @plan.user_id, what: @plan.what, when: @plan.when, where: @plan.where }
     end
 
-    assert_redirected_to event_path(assigns(:event))
+    assert_redirected_to event_path(assigns(:plan))
   end
 
-  test "should show event" do
-    get :show, id: @event
+  test "should show plan" do
+    get :show, id: @plan
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @event
+    get :edit, id: @plan
     assert_response :success
   end
 
-  test "should update event" do
-    patch :update, id: @event, event: { description: @event.description, user_id: @event.user_id, what: @event.what, when: @event.when, where: @event.where }
-    assert_redirected_to event_path(assigns(:event))
+  test "should update plan" do
+    patch :update, id: @plan, plan: { description: @plan.description, user_id: @plan.user_id, what: @plan.what, when: @plan.when, where: @plan.where }
+    assert_redirected_to event_path(assigns(:plan))
   end
 
-  test "should destroy event" do
-    assert_difference('Event.count', -1) do
-      delete :destroy, id: @event
+  test "should destroy plan" do
+    assert_difference('Plan.count', -1) do
+      delete :destroy, id: @plan
     end
 
     assert_redirected_to events_path

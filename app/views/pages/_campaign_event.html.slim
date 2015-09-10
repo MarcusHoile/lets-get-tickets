@@ -1,24 +1,24 @@
-.campaign-event
-  .event-details
+.campaign-plan
+  .plan-details
     .teams
       .team
         = image_tag 'collingwood.png'
       p.inline V
       .team
         = image_tag 'hawks.png'
-      h4= @event.what
+      h4= @plan.what
     .details
       div
         i.fa.fa-clock-o
-        p.inline= @event.when.strftime"%a %d %b %I:%M %P"
+        p.inline= @plan.when.strftime"%a %d %b %I:%M %P"
       div
         i.fa.fa-map-marker
         p.inline
-          = @event.where.titleize
+          = @plan.where.titleize
   - if current_user
     .form
       div role: "form" 
-        = form_for(@event, :class => "role col-md-12", ) do |f|
+        = form_for(@plan, :class => "role col-md-12", ) do |f|
           = f.hidden_field :what, value: @what
           = f.hidden_field :where, value: @where
           = f.hidden_field :when_text, value: @when
@@ -28,9 +28,9 @@
           .form-group.input
             = f.text_field :deadline_text, class: "form-control", placeholder: "When are you buying the tickets?"
           .actions
-            - button_text = (@event.new_record?) ? "Create Event" : "Update Event"
+            - button_text = (@plan.new_record?) ? "Create Plan" : "Update Plan"
             button.btn.btn-primary= button_text
   - else
-    p To create an event you will need to log in.
+    p To create an plan you will need to log in.
     = link_to "/auth/facebook?origin=%2Fcampaign", id: "sign_in" do
       .btn.btn-primary Log in with facebook
