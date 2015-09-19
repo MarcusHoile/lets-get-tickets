@@ -5,7 +5,6 @@ FactoryGirl.define do
     where 'Over Here'
     price 80
     status 'open'
-    ticket false
     booked false
     deadline 2.days.from_now
     limited false
