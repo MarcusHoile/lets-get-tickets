@@ -17,7 +17,7 @@ open_plan =   Plan.create(what: "The Black Keys",
                             deadline: 2.weeks.from_now,
                             price: 90,
                             demo: true)
-closed_plan = plan.create(what: "Sydney Swans vs West Coast Eagles",
+closed_plan = Plan.create(what: "Sydney Swans vs West Coast Eagles",
                             when:  3.weeks.from_now,
                             where: "Sydney Cricket Ground",
                             user_id: host.id,
