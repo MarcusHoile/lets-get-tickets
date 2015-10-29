@@ -1,6 +1,5 @@
 class PlansController < ApplicationController
   before_filter :check_plan_status, only: [:show]
-  # before_action :authenticate_user, only: [:new]
   before_filter :set_view_path, only: [:show]
   before_filter :set_demo_end_date, only: [:demo_open]
   helper_method :current_plan
