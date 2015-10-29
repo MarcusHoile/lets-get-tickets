@@ -25,6 +25,8 @@ gem 'momentjs-rails'
 gem 'yt', '~> 0.24.0'
 gem 'autoprefixer-rails'
 gem 'browser'
+gem 'rollbar'
+
 
 group :development, :test do
   gem 'dotenv-rails'

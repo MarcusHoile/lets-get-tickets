@@ -168,6 +168,8 @@ GEM
       multi_json
       nokogiri
       uber (~> 0.0.7)
+    rollbar (2.5.1)
+      multi_json
     rspec-core (3.2.3)
       rspec-support (~> 3.2.0)
     rspec-expectations (3.2.1)
@@ -258,6 +260,7 @@ DEPENDENCIES
   rails (= 4.2.1)
   rails_12factor
   reform
+  rollbar
   rspec-rails
   sass-rails
   sdoc
