@@ -65,6 +65,11 @@ class PlansController < ApplicationController
   end
   helper_method :plan
 
+  def invite
+    @invite ||= ::InviteForm.new(Invite.new)
+  end
+  helper_method :invite
+
   def demo_plan_closed
     ::Query::Plan::Demo.closed
   end
