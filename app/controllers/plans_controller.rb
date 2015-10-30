@@ -12,23 +12,17 @@ class PlansController < ApplicationController
     @plan = ::Presenter::Plan.new(current_plan, current_user, view_context)
   end
 
-  def new
-    @plan = ::PlanForm.new(Plan.new)
-  end
-
   def edit
     @plan = ::PlanForm.new(current_plan)
   end
 
   def create
-    @plan = ::PlanForm.new(Plan.new)
-    if @plan.validate(parsed_params.merge(user_id: current_user.id))
-      @plan.save
-      @plan.model.invites.create(user_id: current_user.id, rsvp: 'going')
-      redirect_to plan_path(@plan)
-    else
-      render action: 'new'
-    end
+    ::Hopscotch::Runner.call_each(
+      -> { @plan = ::Service::Plan::Create.call(current_user, plan, params[:plan]) },
+      -> { ::Service::Plan::Invite::Create.call(invite, plan.model, current_user, 'going')},
+      success: -> { redirect_to plan_path(@plan) },
+      failure: -> (msg) { render action: 'new' }
+    )
   end
 
 
@@ -54,10 +48,6 @@ class PlansController < ApplicationController
     redirect_to plans_url
   end
 
-  def campaign_form
-    @plan = Plan.new
-  end
-
   def demo_closed
     @plan = ::Presenter::Plan.new(demo_plan_closed, demo_user, view_context)
     set_demo_views
@@ -69,6 +59,11 @@ class PlansController < ApplicationController
   end
 
   private
+
+  def plan
+    @plan ||= ::PlanForm.new(Plan.new)
+  end
+  helper_method :plan
 
   def demo_plan_closed
     ::Query::Plan::Demo.closed
