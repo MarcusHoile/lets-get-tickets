@@ -25,6 +25,7 @@ gem 'yt', '~> 0.24.0'
 gem 'autoprefixer-rails'
 gem 'browser'
 gem 'rollbar'
+gem 'hopscotch'
 
 
 group :development, :test do
@@ -37,6 +38,10 @@ end
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
+end
+
+group :test do
+  gem 'simplecov'
 end
 
 group :doc do
