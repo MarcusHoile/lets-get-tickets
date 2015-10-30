@@ -27,18 +27,12 @@ class PlansController < ApplicationController
 
 
   def update
-    respond_to do |format|
-      if current_plan.update(plan_params)
-        # TODO will need an update email notification here
-        if plan_params.include?("booked")
-          current_user.notifications.create(plan: current_plan, name: 'notify_guests')
-          format.js { head 200 }
-        end
-        format.html { redirect_to @plan}
-      else
-        format.html { render action: 'edit' }
-      end
-    end
+    ::Hopscotch::Runner.call_each(
+      -> { ::Service::Plan::UpdateRecord.call(current_plan, params[:plan]) },
+      -> { ::Service::Plan::Guests::SendNotifications.call(current_plan, notice: 'notify_guests')},
+      success: -> { redirect_to plan_path(current_plan) },
+      failure: -> (msg) { render action: 'edit' }
+    )
   end
 
 
@@ -107,17 +101,4 @@ class PlansController < ApplicationController
     current_plan.check_status
   end
 
-  def parsed_params
-    pp = plan_params
-    format = "%d %m %Y %H:%M %Z"
-    when_date = plan_params[:when] + ' ' + plan_params[:timezone]
-    deadline_date = plan_params[:deadline] + ' ' + plan_params[:timezone]
-    pp[:when] = DateTime.strptime(when_date, format).utc
-    pp[:deadline] = DateTime.strptime(deadline_date, format).utc
-    pp
-  end
-
-  def plan_params
-    params.require(:plan).permit(:when, :what, :description, :deadline, :price, :where, :lat, :lng, :booked, :timezone)
-  end
 end
