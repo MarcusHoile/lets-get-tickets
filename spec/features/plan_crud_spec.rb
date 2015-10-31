@@ -60,18 +60,20 @@ describe 'Plans CRUD', type: :feature, js: true do
   end
 
   def fill_out_form_with_valid_params
-    fill_in 'plan_what', with: 'Some Gig'
-    fill_in 'plan_when', with: '29/10/2015 10:00'
-    fill_in 'plan_deadline', with: '29/09/2015 11:11'
-    fill_in 'plan_where', with: 'Some Place'
-    fill_in 'plan_price', with: 99
+    # have to find and fill elements as they will fail on CI builds
+    # the find will enable capybara to wait for elements
+    find(:css, "input[id$='plan_what']").set("Some Gig")
+    find(:css, "input[id$='plan_when']").set("29/10/2015 10:00")
+    find(:css, "input[id$='plan_deadline']").set('29/09/2015 11:11')
+    find(:css, "input[id$='plan_where']").set('Some Place')
+    find(:css, "input[id$='plan_price']").set(99)
   end
 
   def fill_out_form_with_invalid_params
-    fill_in 'plan_what', with: 'Some Gig'
-    fill_in 'plan_when', with: '29/10/2015 10:00'
-    fill_in 'plan_where', with: 'Some Place'
-    fill_in 'plan_price', with: 'invalid'
+    find(:css, "input[id$='plan_what']").set("Some Gig")
+    find(:css, "input[id$='plan_when']").set("29/10/2015 10:00")
+    find(:css, "input[id$='plan_where']").set('Some Place')
+    find(:css, "input[id$='plan_price']").set('invalid')
   end
 
   def submit_form
