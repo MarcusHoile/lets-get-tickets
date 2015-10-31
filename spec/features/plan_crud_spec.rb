@@ -60,18 +60,18 @@ describe 'Plans CRUD', type: :feature, js: true do
   end
 
   def fill_out_form_with_valid_params
-    fill_in 'What', with: 'Some Gig'
-    fill_in 'When', with: '29/10/2015 10:00'
-    fill_in 'Deadline', with: '29/09/2015 11:11'
-    fill_in 'Where', with: 'Some Place'
-    fill_in 'Price', with: 99
+    fill_in 'plan_what', with: 'Some Gig'
+    fill_in 'plan_when', with: '29/10/2015 10:00'
+    fill_in 'plan_deadline', with: '29/09/2015 11:11'
+    fill_in 'plan_where', with: 'Some Place'
+    fill_in 'plan_price', with: 99
   end
 
   def fill_out_form_with_invalid_params
-    fill_in 'What', with: 'Some Gig'
-    fill_in 'When', with: '29/10/2015 10:00'
-    fill_in 'Where', with: 'Some Place'
-    fill_in 'Price', with: 'invalid'
+    fill_in 'plan_what', with: 'Some Gig'
+    fill_in 'plan_when', with: '29/10/2015 10:00'
+    fill_in 'plan_where', with: 'Some Place'
+    fill_in 'plan_price', with: 'invalid'
   end
 
   def submit_form
