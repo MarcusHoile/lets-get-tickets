@@ -21,6 +21,16 @@ class Plan < ActiveRecord::Base
 
   attr_accessor :timezone
 
+  DATEFORMAT = "%d/%m/%Y %H:%M"
+
+  def self.date_display_format
+    DATEFORMAT
+  end
+
+  def self.datetimezone_format
+    DATEFORMAT + " %Z"
+  end
+
   def host?(user)
     user == host
   end
