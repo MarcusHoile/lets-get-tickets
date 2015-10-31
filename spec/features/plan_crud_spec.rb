@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe 'Plans CRUD', type: :feature, js: true do
+  subject { page }
+
   describe 'Create a plan' do
     before { visit('/') }
 
