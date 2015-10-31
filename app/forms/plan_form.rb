@@ -7,9 +7,9 @@ class PlanForm < ::Reform::Form
   property :price
   property :description
   property :timezone
-  property :user_id
+  property :host
 
-  validates :user_id, presence: true
+  validates :host, presence: true
   validates :when, presence: true
   validates :what, presence: true
   validates :where, presence: true
