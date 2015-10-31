@@ -14,7 +14,7 @@ module Service
       private
 
       def parsed_attributes(host, params)
-        format = "%d %m %Y %H:%M %Z"
+        format = ::Plan.datetimezone_format
         when_date = params[:when] + ' ' + params[:timezone]
         deadline_date = params[:deadline] + ' ' + params[:timezone]
         params[:when] = DateTime.strptime(when_date, format).utc

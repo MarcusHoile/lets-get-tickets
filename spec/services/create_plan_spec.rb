@@ -4,11 +4,11 @@ describe Service::Plan::Create do
   let(:host) { double(id: 5) }
   let(:plan) { PlanForm.new(Plan.new) }
   let(:fixtures) { { where: 'here', what: 'that', price: 80 } }
-  let(:local_time) { "31 08 2014 16:00" }
+  let(:local_time) { "31/08/2014 16:00" }
   let(:local_timezone) { local_time + ' ' + timezone }
   let(:timezone) { 'Central Time (US & Canada)' }
-  let(:params) { { when: local_time, deadline: "01 06 2014 12:00", timezone: timezone  } }
-  let(:time_format) { "%d %m %Y %H:%M %Z" }
+  let(:params) { { when: local_time, deadline: "01/06/2014 12:00", timezone: timezone  } }
+  let(:time_format) { Plan.datetimezone_format }
   let(:subject) { ::Service::Plan::Create.call(host, plan, params.merge(fixtures))}
 
   context 'success :)' do
