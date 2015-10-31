@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Service::Plan::Create do
-  let(:host) { double(id: 5) }
+  let(:host) { create(:user) }
   let(:plan) { PlanForm.new(Plan.new) }
   let(:fixtures) { { where: 'here', what: 'that', price: 80 } }
   let(:local_time) { "31/08/2014 16:00" }
@@ -26,7 +26,7 @@ describe Service::Plan::Create do
 
     it 'assigns a host to the plan' do
       subject
-      expect(plan.user_id).to eq 5
+      expect(plan.host).to eq host
     end
   end
 

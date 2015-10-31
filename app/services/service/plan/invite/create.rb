@@ -5,7 +5,7 @@ module Service
         extend self
 
         def call(invite, plan, user, rsvp)
-          if invite.validate(user_id: user, rsvp: rsvp, plan: plan)
+          if invite.validate(guest: user, rsvp: rsvp, plan: plan)
             invite.save(validate: false)
             Hopscotch::Step.success!
           else

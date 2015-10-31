@@ -19,7 +19,7 @@ module Service
         deadline_date = params[:deadline] + ' ' + params[:timezone]
         params[:when] = DateTime.strptime(when_date, format).utc
         params[:deadline] = DateTime.strptime(deadline_date, format).utc
-        params[:user_id] = host.id
+        params[:host] = host
         params
       end
 
