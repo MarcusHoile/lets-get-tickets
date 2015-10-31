@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
+ruby '2.2.1'
 
 gem 'rails', '~> 4.2'
 gem 'pg'
@@ -40,7 +40,7 @@ end
 
 group :development do
   gem "better_errors"
-  gem "binding_of_caller"
+  gem "binding_of_caller", "0.7.2"
 end
 
 group :test do
