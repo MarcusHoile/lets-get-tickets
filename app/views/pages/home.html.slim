@@ -18,12 +18,8 @@
       .row.third
         .col-xs-12
           .cta
-            = link_to new_plan_path do
-              .btn.btn-green
-                | Create an Plan
-            = link_to demo_open_plan_path do
-              .btn.btn-green
-                | View Demo
+            = link_to 'Create a Plan', new_plan_path, class: 'btn btn-green'
+            = link_to 'View Demo', demo_open_plan_path, class: 'btn btn-green'
 .row.np.guide#guide
   .col-xs-12
     .landing-tile
@@ -84,8 +80,6 @@ hr
   .col-xs-12.np
     .landing-tile
       h2 So what are you waiting for?
-      .cta
-        = link_to new_plan_path do
-          .btn.btn-green
-            | Create an Plan
+
+      = link_to 'Create a Plan', new_plan_path, class: 'btn btn-green'
 
