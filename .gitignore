@@ -14,12 +14,10 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-
+*.DS_Store
 .env
 /config/database.yml
 
 coverage
-public
-config/secrets.yml
 
 

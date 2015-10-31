@@ -1,4 +1,4 @@
-= simple_form_for @plan do |f|
+= simple_form_for plan do |f|
   = f.input :what
   = f.input :when, as: :date_picker
   = f.input :where
@@ -14,13 +14,13 @@
   = f.label :description
   span
     |  (optional)
-  = f.input :description, as: :text, placeholder: "Tell your guests a little about the gig. Why should they go?", label: false
+  = f.input :description, as: :text, placeholder: "Tell your guests a little about the gig. Why should they go?", label: false, required: false
   = f.button :submit, 'Save My Plan', class: "btn btn-green"
 
 javascript:
   $(document).on('ready', function(){
     $('.datetimepicker').datetimepicker({
-      format:'DD MM YYYY HH:mm',
+      format:'DD/MM/YYYY HH:mm',
       formatTime:'h:mm',
       formatDate:'DD.MM.YYYY'
     });

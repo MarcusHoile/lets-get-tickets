@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.2.0'
+ruby '2.2.1'
 
-gem 'rails', '4.2.1'
+gem 'rails', '~> 4.2'
 gem 'pg'
 gem 'sass-rails'
 gem 'bootstrap-sass'
@@ -26,6 +26,7 @@ gem 'yt', '~> 0.24.0'
 gem 'autoprefixer-rails'
 gem 'browser'
 gem 'rollbar'
+gem 'hopscotch'
 
 
 group :development, :test do
@@ -33,6 +34,17 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'factory_girl_rails'
+  gem "capybara"
+  gem "selenium-webdriver"
+end
+
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller", "0.7.2"
+end
+
+group :test do
+  gem 'simplecov'
 end
 
 group :doc do
